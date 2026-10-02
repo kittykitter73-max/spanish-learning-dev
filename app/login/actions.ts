@@ -20,3 +20,9 @@ export async function signup(formData: FormData) {
   if (error) redirect(`/login?error=${encodeURIComponent(error.message)}`)
   redirect('/login?message=Check your email to confirm your account, then sign in.')
 }
+
+export async function logout() {
+  const supabase = await createClient()
+  await supabase.auth.signOut()
+  redirect('/login')
+}
