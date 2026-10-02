@@ -27,6 +27,7 @@ Migrations are in `supabase/migrations/` and are the schema source of truth.
 - favorites/preferences do not increase mastery
 - recommendations are deterministic and reason-codeable first
 
+
 ## Production scoring authority
 
 The browser never declares an answer correct. Authenticated RPCs validate exposure/assessment submissions against published assessment definitions, then append evidence. Database triggers derive learner concept state and persist reason-coded recommendations.
@@ -37,6 +38,7 @@ The browser never declares an answer correct. Authenticated RPCs validate exposu
 - `/learn` remains the first complete learning vertical slice.
 - `/api/health` gives deployment monitoring a minimal health endpoint.
 - Loading/error states exist for the lesson route.
+
 
 ## Current customer journey
 `signup → confirm → onboarding → Today → recommendation/resume → lesson → scored evidence → concept state → recommendation closeout`
