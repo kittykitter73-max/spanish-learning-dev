@@ -1,7 +1,21 @@
 'use server'
 
+import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+
+async function requestOrigin() {
+  const h = await headers()
+  const forwardedHost = h.get('x-forwarded-host')
+  const host = forwardedHost ?? h.get('host')
+  const proto = h.get('x-forwarded-proto') ?? (host?.includes('localhost') ? 'http' : 'https')
+
+  if (!host) {
+    throw new Error('Unable to determine application origin for authentication redirect.')
+  }
+
+  return `${proto}://${host}`
+}
 
 export async function login(formData: FormData) {
   const email = String(formData.get('email') ?? '')
@@ -16,9 +30,18 @@ export async function signup(formData: FormData) {
   const email = String(formData.get('email') ?? '')
   const password = String(formData.get('password') ?? '')
   const supabase = await createClient()
-  const { error } = await supabase.auth.signUp({ email, password })
+  const origin = await requestOrigin()
+
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      emailRedirectTo: `${origin}/auth/callback?next=/onboarding`,
+    },
+  })
+
   if (error) redirect(`/login?error=${encodeURIComponent(error.message)}`)
-  redirect('/login?message=Check your email to confirm your account, then sign in.')
+  redirect('/login?message=Check your email to confirm your account, then continue onboarding.')
 }
 
 export async function logout() {
