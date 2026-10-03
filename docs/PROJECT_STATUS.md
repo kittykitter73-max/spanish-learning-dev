@@ -1,8 +1,8 @@
 # Borao — Development Checkpoint
 
 **Stage:** Prototype  
-**Release:** v0.8 — build-verified + regression-test hardened  
-**Environment:** GitHub `main` + live `spanish-learning-dev` Supabase; Vercel preview not yet created  
+**Release:** v0.9 — deployed + smoke-verified staging candidate  
+**Environment:** GitHub `main` + live `spanish-learning-dev` Supabase + live Vercel project `spanish-learning-dev-soqq`  
 **Working brand:** Borao (replaceable)
 
 ## Proven now
@@ -32,17 +32,29 @@ Authenticated learners have direct table writes only where intentionally allowed
 
 Three Supabase advisor warnings remain for intentionally authenticated `SECURITY DEFINER` RPCs: exposure recording, assessment submission, and content-progress save. Each validates `auth.uid()` and eligible published content before writing. Before Staging, either formally test/accept this API boundary or move privileged writes behind a private server-only service path.
 
+## Deployment status
+- Production alias: `https://spanish-learning-dev-soqq.vercel.app`.
+- Environment variables are present; the initial missing-Supabase-env runtime failure is resolved.
+- Automated deployed smoke tests pass against the exact Git commit under test.
+- Verified live routes:
+  - `/api/health` → HTTP 200
+  - `/` → HTTP 200
+  - `/login` → HTTP 200
+  - unauthenticated `/today` → redirects to login
+  - `/auth/callback` without a code → fails safely back to login
+- Health now reports the deployed Vercel Git SHA so CI cannot accidentally smoke-test a stale release.
+- Current Vercel runtime error check reports no new errors on the healthy deployment.
+
 ## Current blockers
-- No personal-team Vercel preview exists yet.
-- Supabase Auth preview redirect/site URL is not yet configured against a deployed origin.
+- Supabase Auth Site URL / Redirect URL configuration still needs to be pointed at the deployed Vercel origin before the first real signup/confirmation test.
 - Authenticated browser E2E has not yet been executed against a deployed preview; the development project currently has zero auth users, so the first real signup is the next test-enabling event.
 - Content Block 02 remains language/pedagogical QA-only.
 - Privileged RPC live audit is documented in `docs/STAGING_SECURITY_GATE.md`; current controls are strong enough to justify tamper-testing before any redesign. Staging acceptance still requires authenticated tamper tests.
 - GitHub currently reports the repository as public; it should be changed to Private before broader work continues.
 
 ## Next gate — Prototype → Staging
-- Personal Vercel preview outside Marked Matter.
-- Preview smoke workflow passes.
+- Personal Vercel deployment outside Marked Matter. ✅
+- Exact-commit deployed smoke workflow passes. ✅
 - Real signup/email-confirm/onboarding browser test.
 - Resume test across interrupted lesson.
 - Assessment-tampering test.
@@ -51,6 +63,6 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - Explicit decision on privileged write functions.
 
 ## Next 3 actions
-1. Create/import the personal Vercel preview and configure the two public Supabase environment values.
-2. Run preview smoke + authenticated E2E and fix runtime defects.
-3. Test the privileged RPC boundary and complete Content Block 02 QA before promotion to Staging.
+1. Configure Supabase Auth Site URL and allowed redirect URL(s) for `https://spanish-learning-dev-soqq.vercel.app`.
+2. Create the first real learner account and run signup → confirm → onboarding → Today → Lesson 001 → resume → evidence/mastery/recommendation E2E.
+3. Run authenticated tamper/isolation tests, then complete Content Block 02 QA before promotion to Staging.
