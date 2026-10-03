@@ -52,7 +52,7 @@ export default async function TodayPage() {
         <div>
           <p className="eyebrow">TODAY</p>
           <h1>{firstName ? `${firstName}, keep the Spanish moving.` : 'Keep the Spanish moving.'}</h1>
-          <p className="lede">A short mix chosen from what you have heard, what you can retrieve, and what still needs real use.</p>
+          <p className="lede">A short mix chosen from what you’ve encountered, what you can retrieve, and what still needs real use.</p>
         </div>
         <div className="streak-orbit" aria-label={`${evidenceCount ?? 0} learning evidence events`}>
           <strong>{evidenceCount ?? 0}</strong>
@@ -65,7 +65,7 @@ export default async function TodayPage() {
           <div className="card-topline"><span>{isResume ? 'CONTINUE YOUR MIX' : 'YOUR NEXT MIX'}</span><span>~3 MIN</span></div>
           <p className="mix-kicker">First Contact · Spoken pattern</p>
           <h2>{activeTitle}</h2>
-          <p>Hear the scene, catch the pattern, switch the intention, then use it in your own life.</p>
+          <p>Catch the pattern, retrieve it, switch the intention, then use it in your own life.</p>
           {(recommendation as any)?.reason_codes?.length > 0 && (
             <div className="reason-chips">
               {(recommendation as any).reason_codes.slice(0, 3).map((reason: string) => <span key={reason}>{reason.replaceAll('_', ' ')}</span>)}
@@ -100,7 +100,7 @@ export default async function TodayPage() {
           )) : (
             <article className="empty-learning">
               <h3>Your learning map starts with your first answer.</h3>
-              <p>Listen once, retrieve once, and Borao will begin separating what feels familiar from what you can actually use.</p>
+              <p>See it once, retrieve it once, and Borao will begin separating what feels familiar from what you can actually use.</p>
               <Link className="secondary" href="/learn">Create my first evidence</Link>
             </article>
           )}
