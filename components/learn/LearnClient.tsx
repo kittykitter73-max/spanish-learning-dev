@@ -15,7 +15,13 @@ type Segment = {
   speaker?: { slug: string; character?: { display_name: string } | null } | null
 }
 
-type Lesson = { id: string; title: string; segments: Segment[]; assessments: AssessmentItem[] }
+type Lesson = {
+  id: string
+  title: string
+  segments: Segment[]
+  assessments: AssessmentItem[]
+  hasPlayableAudio: boolean
+}
 
 const stageAssessmentIndex: Partial<Record<Stage, number>> = {
   recognition: 0,
@@ -82,7 +88,9 @@ export default function LearnClient({ lesson, initialStage = 'scene' }: { lesson
       {stage === 'scene' && <section className="card lesson">
         <p className="eyebrow">TODAY · FIRST CONTACT</p>
         <h1>{lesson.title}</h1>
-        <p className="lede">Don’t translate everything. Read the scene once and notice what repeats.</p>
+        <p className="lede">{lesson.hasPlayableAudio
+          ? 'Don’t translate everything. Listen once and notice what repeats.'
+          : 'Don’t translate everything. Read the scene once and notice what repeats.'}</p>
         <div className="dialogue">
           {dialogue.map(s => <p key={s.id}>
             <b>{s.speaker?.character?.display_name ?? 'Narrator'}</b>
@@ -92,7 +100,7 @@ export default function LearnClient({ lesson, initialStage = 'scene' }: { lesson
         <button className="primary" disabled={pending} onClick={() => startTransition(async () => {
           try { await recordExposure(lesson.id); next('recognition') }
           catch { setFeedback('Your progress did not save. Try again.') }
-        })}>Got it — quiz me</button>
+        })}>{lesson.hasPlayableAudio ? 'I heard it' : 'Got it — quiz me'}</button>
         {feedback && <p className="feedback">{feedback}</p>}
       </section>}
 
