@@ -18,6 +18,9 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
           {params.message && <p className="feedback">{params.message}</p>}
         </form>
         <p className="auth-switch">
+          Trouble with your password? <Link href="/magic-login">Email me a sign-in link</Link>
+        </p>
+        <p className="auth-switch">
           New here? <Link href="/signup">Create an account</Link>
         </p>
       </section>
