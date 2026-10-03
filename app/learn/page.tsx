@@ -40,8 +40,11 @@ export default async function LearnPage({ searchParams }: { searchParams: Search
   const { data: item, error: itemError } = await contentQuery.single()
   if (itemError || !item) throw new Error(itemError?.message ?? 'Recommended lesson not found')
 
-  const [{ data: segmentRows, error: segmentError }, { data: assessmentRows, error: assessmentError }] =
-    await Promise.all([
+  const [
+    { data: segmentRows, error: segmentError },
+    { data: assessmentRows, error: assessmentError },
+    { data: mediaRows, error: mediaError },
+  ] = await Promise.all([
       supabase
         .from('spoken_lesson_segments')
         .select(`
@@ -60,10 +63,17 @@ export default async function LearnPage({ searchParams }: { searchParams: Search
         .eq('content_item_id', item.id)
         .eq('status', 'published')
         .order('sequence_number', { ascending: true }),
+      supabase
+        .from('media_assets')
+        .select('id,media_kind,status')
+        .eq('content_item_id', item.id)
+        .eq('status', 'ready')
+        .limit(1),
     ])
 
   if (segmentError) throw new Error(segmentError.message)
   if (assessmentError) throw new Error(assessmentError.message)
+  if (mediaError) throw new Error(mediaError.message)
 
   const segments = segmentRows ?? []
   const assessments = (assessmentRows ?? []) as AssessmentItem[]
@@ -83,7 +93,16 @@ export default async function LearnPage({ searchParams }: { searchParams: Search
   return (
     <main className="product-shell">
       <AppNav active="learn" />
-      <LearnClient lesson={{ id: item.id, title: item.title, segments: segments as any, assessments }} initialStage={initialStage as any} />
+      <LearnClient
+        lesson={{
+          id: item.id,
+          title: item.title,
+          segments: segments as any,
+          assessments,
+          hasPlayableAudio: Boolean(mediaRows?.length),
+        }}
+        initialStage={initialStage as any}
+      />
     </main>
   )
 }
