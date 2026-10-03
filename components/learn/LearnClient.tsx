@@ -82,7 +82,7 @@ export default function LearnClient({ lesson, initialStage = 'scene' }: { lesson
       {stage === 'scene' && <section className="card lesson">
         <p className="eyebrow">TODAY · FIRST CONTACT</p>
         <h1>{lesson.title}</h1>
-        <p className="lede">Don’t translate everything. Just listen for what repeats.</p>
+        <p className="lede">Don’t translate everything. Read the scene once and notice what repeats.</p>
         <div className="dialogue">
           {dialogue.map(s => <p key={s.id}>
             <b>{s.speaker?.character?.display_name ?? 'Narrator'}</b>
@@ -92,7 +92,7 @@ export default function LearnClient({ lesson, initialStage = 'scene' }: { lesson
         <button className="primary" disabled={pending} onClick={() => startTransition(async () => {
           try { await recordExposure(lesson.id); next('recognition') }
           catch { setFeedback('Your progress did not save. Try again.') }
-        })}>I heard it</button>
+        })}>Got it — quiz me</button>
         {feedback && <p className="feedback">{feedback}</p>}
       </section>}
 
@@ -145,9 +145,12 @@ export default function LearnClient({ lesson, initialStage = 'scene' }: { lesson
       {stage === 'done' && <section className="card lesson success">
         <p className="eyebrow">NICE. THAT WAS REAL SPANISH.</p>
         <h1>You retrieved, changed, and used the pattern.</h1>
-        <p className="lede">The system now has separate evidence for what you recognized versus what you actually produced.</p>
-        {recommendationReasons.length > 0 && <p className="muted">Next-step signals: {recommendationReasons.join(' · ')}</p>}
-        <button className="secondary" onClick={() => next('scene')}>Replay prototype</button>
+        <p className="lede">You recognized the pattern, pulled it back from memory, changed it, and used it yourself.</p>
+        <p className="muted">We’ll bring this language back at the right time so it gets easier to use without thinking.</p>
+        <div className="auth-actions">
+          <a className="primary" href="/today">Back to Today</a>
+          <button className="secondary" onClick={() => next('scene')}>Practice it again</button>
+        </div>
       </section>}
     </main>
   )
