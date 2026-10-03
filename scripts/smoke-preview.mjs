@@ -42,6 +42,12 @@ await expect('/signup', (response, body) =>
     : { ok: false, message: `HTTP ${response.status}, signup markers missing` }
 )
 
+await expect('/magic-login', (response, body) =>
+  response.ok && /sign-in link|without a password|email/i.test(body)
+    ? { ok: true, message: `HTTP ${response.status}, passwordless login surface rendered` }
+    : { ok: false, message: `HTTP ${response.status}, passwordless markers missing` }
+)
+
 await expect('/today', (response) => {
   const location = response.headers.get('location') ?? ''
   return [301, 302, 303, 307, 308].includes(response.status) && location.includes('/login')
