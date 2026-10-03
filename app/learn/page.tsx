@@ -27,34 +27,48 @@ export default async function LearnPage({ searchParams }: { searchParams: Search
     contentId = recommendation?.content_item_id ?? null
   }
 
-  let query = supabase
+  let contentQuery = supabase
     .from('content_items')
-    .select(`
-      id,
-      slug,
-      title,
-      content_type,
-      spoken_lesson_segments(
-        id,sequence_number,segment_type,text_es,text_en,
-        speaker:speakers(slug,character:characters(display_name))
-      ),
-      assessment_items(
-        id,slug,concept_id,prompt,item_type,evidence_type,options,
-        scoring_strategy,scoring_rules,hint_level,sequence_number,stage_label,support_text,success_feedback,failure_feedback
-      )
-    `)
+    .select('id,slug,title,content_type')
     .eq('status', 'published')
+    .in('rights_status', ['internal', 'licensed', 'cleared'])
 
-  query = contentId ? query.eq('id', contentId) : query.eq('slug', 'audio-lesson-001-quiero-tengo-que-voy-a')
-  const { data: item, error } = await query.single()
+  contentQuery = contentId
+    ? contentQuery.eq('id', contentId)
+    : contentQuery.eq('slug', 'audio-lesson-001-quiero-tengo-que-voy-a')
 
-  if (error || !item) throw new Error(error?.message ?? 'Recommended lesson not found')
+  const { data: item, error: itemError } = await contentQuery.single()
+  if (itemError || !item) throw new Error(itemError?.message ?? 'Recommended lesson not found')
 
-  const segments = [...(item.spoken_lesson_segments ?? [])]
-    .sort((a: any, b: any) => a.sequence_number - b.sequence_number)
-  const assessments = [...(item.assessment_items ?? [])]
-    .sort((a: any, b: any) => a.sequence_number - b.sequence_number) as AssessmentItem[]
+  const [{ data: segmentRows, error: segmentError }, { data: assessmentRows, error: assessmentError }] =
+    await Promise.all([
+      supabase
+        .from('spoken_lesson_segments')
+        .select(`
+          id,sequence_number,segment_type,text_es,text_en,
+          speaker:speakers(slug,character:characters(display_name))
+        `)
+        .eq('content_item_id', item.id)
+        .order('sequence_number', { ascending: true }),
+      supabase
+        .from('assessment_items')
+        .select(`
+          id,slug,concept_id,prompt,item_type,evidence_type,options,
+          scoring_strategy,scoring_rules,hint_level,sequence_number,
+          stage_label,support_text,success_feedback,failure_feedback
+        `)
+        .eq('content_item_id', item.id)
+        .eq('status', 'published')
+        .order('sequence_number', { ascending: true }),
+    ])
 
+  if (segmentError) throw new Error(segmentError.message)
+  if (assessmentError) throw new Error(assessmentError.message)
+
+  const segments = segmentRows ?? []
+  const assessments = (assessmentRows ?? []) as AssessmentItem[]
+
+  if (segments.length === 0) throw new Error('Published lesson is missing spoken segments')
   if (assessments.length < 4) throw new Error('Published lesson is missing required assessment steps')
 
   const { data: progress } = await supabase
@@ -63,6 +77,7 @@ export default async function LearnPage({ searchParams }: { searchParams: Search
     .eq('learner_id', userId)
     .eq('content_item_id', item.id)
     .maybeSingle()
+
   const initialStage = progress?.completed_at ? 'scene' : (progress?.current_stage ?? 'scene')
 
   return (
