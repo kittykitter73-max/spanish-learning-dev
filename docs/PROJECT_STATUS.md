@@ -66,3 +66,18 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 1. Configure Supabase Auth Site URL and allowed redirect URL(s) for `https://spanish-learning-dev-soqq.vercel.app`.
 2. Create the first real learner account and run signup → confirm → onboarding → Today → Lesson 001 → resume → evidence/mastery/recommendation E2E.
 3. Run authenticated tamper/isolation tests, then complete Content Block 02 QA before promotion to Staging.
+
+
+## Audio-first product direction
+- Product priority is now music + spoken episodic ("podcast-style") learning + app-native retrieval/speaking interactions.
+- The web experience is primarily a development, QA, account, and fallback shell rather than the final center of gravity.
+- `media_assets` is now the shared media layer for songs and spoken content.
+- Learner-facing copy is media-aware: the app must not claim the learner "heard" or "listened" unless a ready playable audio asset exists.
+- Internal recommendation codes remain internal; learner copy translates them into natural next-step language.
+
+## First real learner journey findings
+- Real learner signup/auth/onboarding/lesson completion succeeded end-to-end.
+- Fixed lesson-load bug caused by an invalid direct PostgREST relationship assumption between `content_items` and `spoken_lesson_segments`.
+- Fixed completion sequencing so completing content refreshes the next recommendation instead of leaving no open recommendation.
+- Passwordless email sign-in is available as a resilient fallback for development testing.
+- Lesson 002 remains in QA; do not publish merely to create more surface area.
