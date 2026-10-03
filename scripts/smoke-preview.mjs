@@ -36,6 +36,12 @@ await expect('/login', (response, body) =>
     : { ok: false, message: `HTTP ${response.status}, login markers missing` }
 )
 
+await expect('/signup', (response, body) =>
+  response.ok && /create account|start learning|email/i.test(body)
+    ? { ok: true, message: `HTTP ${response.status}, signup surface rendered` }
+    : { ok: false, message: `HTTP ${response.status}, signup markers missing` }
+)
+
 await expect('/today', (response) => {
   const location = response.headers.get('location') ?? ''
   return [301, 302, 303, 307, 308].includes(response.status) && location.includes('/login')
