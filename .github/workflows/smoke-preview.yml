@@ -1,25 +1,52 @@
-name: Smoke test deployed preview
+name: Smoke test deployed app
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       base_url:
-        description: "Preview URL, e.g. https://borao-preview.vercel.app"
-        required: true
+        description: "Optional deployed URL override"
+        required: false
         type: string
 
 permissions:
   contents: read
 
+concurrency:
+  group: deployed-smoke-main
+  cancel-in-progress: true
+
 jobs:
   smoke:
     runs-on: ubuntu-latest
     env:
-      BASE_URL: ${{ inputs.base_url }}
+      BASE_URL: ${{ inputs.base_url || 'https://spanish-learning-dev-soqq.vercel.app' }}
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Run preview smoke tests
+
+      - name: Wait for Vercel production alias
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Waiting for $BASE_URL/api/health"
+          for attempt in $(seq 1 36); do
+            code="$(curl -sS -o /tmp/health.json -w "%{http_code}" "$BASE_URL/api/health" || true)"
+            if [ "$code" = "200" ]; then
+              echo "Health endpoint is ready on attempt $attempt."
+              cat /tmp/health.json
+              exit 0
+            fi
+            echo "Attempt $attempt: HTTP $code"
+            sleep 10
+          done
+          echo "Deployment did not become healthy within 6 minutes."
+          cat /tmp/health.json 2>/dev/null || true
+          exit 1
+
+      - name: Run deployed smoke tests
         run: node scripts/smoke-preview.mjs
