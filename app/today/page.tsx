@@ -18,6 +18,15 @@ function pct(value: number | string | null | undefined) {
   return Math.round(Number(value ?? 0) * 100)
 }
 
+function learnerReason(reasons: string[] | null | undefined) {
+  const set = new Set(reasons ?? [])
+  if (set.has('due_review')) return 'A quick return now will make this easier to recall later.'
+  if (set.has('recent_error')) return 'One part is still a little sticky, so we’re bringing it back while it’s useful.'
+  if (set.has('production_gap')) return 'This is familiar already. The next step is making it easier to say yourself.'
+  if (set.has('new_target')) return 'You’re ready to add one new piece without losing the old ones.'
+  return null
+}
+
 export default async function TodayPage() {
   const supabase = await createClient()
   const { data: claimsData } = await supabase.auth.getClaims()
@@ -66,10 +75,8 @@ export default async function TodayPage() {
           <p className="mix-kicker">First Contact · Spoken pattern</p>
           <h2>{activeTitle}</h2>
           <p>Catch the pattern, retrieve it, switch the intention, then use it in your own life.</p>
-          {(recommendation as any)?.reason_codes?.length > 0 && (
-            <div className="reason-chips">
-              {(recommendation as any).reason_codes.slice(0, 3).map((reason: string) => <span key={reason}>{reason.replaceAll('_', ' ')}</span>)}
-            </div>
+          {learnerReason((recommendation as any)?.reason_codes) && (
+            <p className="support-copy">{learnerReason((recommendation as any)?.reason_codes)}</p>
           )}
           <Link className="primary" href={activeContentId ? `/learn?content=${activeContentId}` : '/learn'}>{isResume ? 'Continue where I left off' : 'Start today’s mix'}</Link>
         </article>
