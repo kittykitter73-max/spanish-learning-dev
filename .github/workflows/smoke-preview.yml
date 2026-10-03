@@ -22,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BASE_URL: ${{ inputs.base_url || 'https://spanish-learning-dev-soqq.vercel.app' }}
+      EXPECTED_SHA: ${{ github.sha }}
     steps:
       - uses: actions/checkout@v4
 
@@ -29,22 +30,26 @@ jobs:
         with:
           node-version: 22
 
-      - name: Wait for Vercel production alias
+      - name: Wait for the exact Vercel commit
         shell: bash
         run: |
           set -euo pipefail
-          echo "Waiting for $BASE_URL/api/health"
-          for attempt in $(seq 1 36); do
+          echo "Waiting for $BASE_URL/api/health to report commit $EXPECTED_SHA"
+          for attempt in $(seq 1 48); do
             code="$(curl -sS -o /tmp/health.json -w "%{http_code}" "$BASE_URL/api/health" || true)"
+            commit=""
             if [ "$code" = "200" ]; then
-              echo "Health endpoint is ready on attempt $attempt."
+              commit="$(node -e "try{const j=require('/tmp/health.json');process.stdout.write(j.commit||'')}catch{}")"
+            fi
+            if [ "$code" = "200" ] && [ "$commit" = "$EXPECTED_SHA" ]; then
+              echo "Exact deployment is ready on attempt $attempt."
               cat /tmp/health.json
               exit 0
             fi
-            echo "Attempt $attempt: HTTP $code"
+            echo "Attempt $attempt: HTTP $code, deployed commit=${commit:-unknown}"
             sleep 10
           done
-          echo "Deployment did not become healthy within 6 minutes."
+          echo "Expected commit did not become healthy within 8 minutes."
           cat /tmp/health.json 2>/dev/null || true
           exit 1
 
