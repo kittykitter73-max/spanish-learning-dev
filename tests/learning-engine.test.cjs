@@ -117,3 +117,12 @@ test('recommendation scoring rewards due/error relevance and penalizes duplicati
 
   assert.ok(strongCandidate > staleDuplicate)
 })
+
+const { safeInternalPath } = require('../.test-dist/lib/navigation.js')
+
+test('confirmation redirect accepts internal paths and rejects external or protocol-relative URLs', () => {
+  assert.equal(safeInternalPath('/onboarding?from=confirm'), '/onboarding?from=confirm')
+  assert.equal(safeInternalPath('https://evil.example/phish'), '/today')
+  assert.equal(safeInternalPath('//evil.example/phish'), '/today')
+  assert.equal(safeInternalPath('javascript:alert(1)'), '/today')
+})
