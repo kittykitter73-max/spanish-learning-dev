@@ -36,4 +36,18 @@ await expect('/login', (response, body) =>
     : { ok: false, message: `HTTP ${response.status}, login markers missing` }
 )
 
+await expect('/today', (response) => {
+  const location = response.headers.get('location') ?? ''
+  return [301, 302, 303, 307, 308].includes(response.status) && location.includes('/login')
+    ? { ok: true, message: `HTTP ${response.status}, unauthenticated user redirected to login` }
+    : { ok: false, message: `HTTP ${response.status}, location=${location || '(none)'}` }
+})
+
+await expect('/auth/callback', (response) => {
+  const location = response.headers.get('location') ?? ''
+  return [301, 302, 303, 307, 308].includes(response.status) && location.includes('/login?error=')
+    ? { ok: true, message: `HTTP ${response.status}, missing auth code fails safely` }
+    : { ok: false, message: `HTTP ${response.status}, location=${location || '(none)'}` }
+})
+
 if (process.exitCode) process.exit(process.exitCode)
