@@ -35,9 +35,9 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 ## Current blockers
 - No personal-team Vercel preview exists yet.
 - Supabase Auth preview redirect/site URL is not yet configured against a deployed origin.
-- Authenticated browser E2E has not yet been executed against a deployed preview.
+- Authenticated browser E2E has not yet been executed against a deployed preview; the development project currently has zero auth users, so the first real signup is the next test-enabling event.
 - Content Block 02 remains language/pedagogical QA-only.
-- Privileged RPC architecture still needs explicit Staging acceptance or migration behind a private server path.
+- Privileged RPC live audit is documented in `docs/STAGING_SECURITY_GATE.md`; current controls are strong enough to justify tamper-testing before any redesign. Staging acceptance still requires authenticated tamper tests.
 - GitHub currently reports the repository as public; it should be changed to Private before broader work continues.
 
 ## Next gate — Prototype → Staging
