@@ -2,10 +2,12 @@
 
 ## Build preflight
 - Node 22.x
-- `npm install` succeeds and creates `package-lock.json`
+- `npm ci` succeeds against the committed `package-lock.json`
+- `npm test`
 - `npm run typecheck`
 - `npm run build`
 - `/api/health` returns `{ "ok": true }`
+- Run the GitHub `Smoke test deployed preview` workflow against the preview URL
 
 ## Required environment variables
 - `NEXT_PUBLIC_SUPABASE_URL`
