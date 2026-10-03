@@ -1,0 +1,119 @@
+const test = require('node:test')
+const assert = require('node:assert/strict')
+
+const { scoreAssessment } = require('../.test-dist/lib/learning/assessment.js')
+const { evidenceStrength } = require('../.test-dist/lib/learning/evidence.js')
+const { recommendationScore } = require('../.test-dist/lib/learning/recommendation.js')
+
+function item(overrides = {}) {
+  return {
+    id: 'a1',
+    slug: 'test',
+    concept_id: 'c1',
+    prompt: 'Prompt',
+    item_type: 'typed_response',
+    evidence_type: 'guided_production',
+    options: [],
+    scoring_strategy: 'exact_text',
+    scoring_rules: {},
+    hint_level: 0,
+    sequence_number: 1,
+    ...overrides,
+  }
+}
+
+test('exact-text scoring normalizes case, spacing and Spanish punctuation', () => {
+  const assessment = item({
+    scoring_strategy: 'exact_text',
+    scoring_rules: { accepted_answers: ['Quiero ir'] },
+  })
+
+  assert.equal(scoreAssessment(assessment, ' ¿QUIERO   IR! ').success, true)
+})
+
+test('choice-key scoring rejects non-accepted keys', () => {
+  const assessment = item({
+    item_type: 'multiple_choice',
+    scoring_strategy: 'choice_key',
+    scoring_rules: { accepted_keys: ['b'] },
+  })
+
+  assert.equal(scoreAssessment(assessment, 'a').success, false)
+  assert.equal(scoreAssessment(assessment, 'B').success, true)
+})
+
+test('prefix + infinitive scoring requires a known infinitive after the prefix', () => {
+  const assessment = item({
+    scoring_strategy: 'prefix_known_infinitive',
+    scoring_rules: {
+      prefix: 'tengo que',
+      known_infinitives: ['ir', 'comer'],
+    },
+  })
+
+  assert.equal(scoreAssessment(assessment, 'Tengo que ir').success, true)
+  assert.equal(scoreAssessment(assessment, 'Tengo que bailar').success, false)
+  assert.equal(scoreAssessment(assessment, 'Quiero ir').success, false)
+})
+
+test('empty responses never pass', () => {
+  const assessment = item({
+    scoring_strategy: 'exact_text',
+    scoring_rules: { accepted_answers: ['quiero ir'] },
+  })
+
+  assert.equal(scoreAssessment(assessment, '   ').success, false)
+})
+
+test('exposure is weaker than recognition and unaided production', () => {
+  assert.ok(evidenceStrength('exposure') < evidenceStrength('recognition'))
+  assert.ok(evidenceStrength('recognition') < evidenceStrength('independent_production'))
+})
+
+test('hints reduce evidence strength', () => {
+  const unaided = evidenceStrength('guided_production')
+  const hinted = evidenceStrength('guided_production', { hintLevel: 2 })
+  assert.ok(hinted < unaided)
+})
+
+test('delayed self-generated novel-context evidence strengthens production but caps at one', () => {
+  const base = evidenceStrength('independent_production')
+  const strong = evidenceStrength('independent_production', {
+    delayed: true,
+    selfGenerated: true,
+    novelContext: true,
+  })
+
+  assert.ok(strong > base)
+  assert.ok(strong <= 1)
+})
+
+test('recommendation scoring rewards due/error relevance and penalizes duplication/frustration', () => {
+  const strongCandidate = recommendationScore({
+    due: 1,
+    prerequisiteGap: 0.5,
+    newTarget: 0.5,
+    errorRelevance: 1,
+    modalityDiversity: 0.5,
+    goalRelevance: 0.5,
+    preferenceFit: 0.5,
+    novelty: 0.5,
+    duplicatePenalty: 0,
+    frustrationPenalty: 0,
+  })
+
+  const staleDuplicate = recommendationScore({
+    due: 0,
+    prerequisiteGap: 0,
+    newTarget: 0.5,
+    errorRelevance: 0,
+    modalityDiversity: 0,
+    goalRelevance: 0.5,
+    preferenceFit: 1,
+    novelty: 0,
+    duplicatePenalty: 1,
+    frustrationPenalty: 1,
+  })
+
+  assert.ok(strongCandidate > staleDuplicate)
+})
