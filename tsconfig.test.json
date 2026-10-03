@@ -10,6 +10,7 @@
     "skipLibCheck": true
   },
   "include": [
-    "lib/learning/**/*.ts"
+    "lib/learning/**/*.ts",
+    "lib/navigation.ts"
   ]
 }
