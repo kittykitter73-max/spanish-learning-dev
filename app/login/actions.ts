@@ -49,3 +49,21 @@ export async function logout() {
   await supabase.auth.signOut()
   redirect('/login')
 }
+
+
+export async function sendMagicLink(formData: FormData) {
+  const email = String(formData.get('email') ?? '').trim()
+  const supabase = await createClient()
+  const origin = await requestOrigin()
+
+  const { error } = await supabase.auth.signInWithOtp({
+    email,
+    options: {
+      emailRedirectTo: `${origin}/auth/callback?next=/onboarding`,
+      shouldCreateUser: false,
+    },
+  })
+
+  if (error) redirect(`/magic-login?error=${encodeURIComponent(error.message)}`)
+  redirect('/magic-login?message=Check your email for a secure sign-in link.')
+}
