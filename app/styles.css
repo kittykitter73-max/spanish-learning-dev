@@ -350,6 +350,5 @@
     padding:18px;
   }
   .support-sheet-head{top:-18px;margin:-18px -18px 8px;padding:17px 18px 12px}
-  .player-controls .player-support-button{display:none}
-  .player-copy{cursor:pointer}
+  .player-controls .player-support-button{padding:8px 9px;font-size:10px}
 }
