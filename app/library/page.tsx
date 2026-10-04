@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import AppNav from '@/components/app/AppNav'
@@ -47,13 +48,13 @@ export default async function LibraryPage() {
 
           <div className="library-list">
             {(playlists ?? []).length > 0 ? playlists!.map(p => (
-              <div className="library-row" key={p.id}>
+              <Link className="library-row library-row-link" key={p.id} href={`/library/${p.id}`}>
                 <div>
                   <strong>{p.name}</strong>
                   <span>{p.playlist_type} · {p.playback_mode}</span>
                 </div>
                 <span>›</span>
-              </div>
+              </Link>
             )) : (
               <p className="muted">No playlists yet. Create the first one above.</p>
             )}
