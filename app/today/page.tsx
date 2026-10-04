@@ -55,7 +55,7 @@ export default async function TodayPage() {
 
   return (
     <main className="product-shell">
-      <AppNav active="today" />
+      <AppNav active="home" />
 
       <section className="today-hero">
         <div>
