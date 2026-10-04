@@ -22,6 +22,19 @@ type Track = QueueItem & {
   src: string
 }
 
+type SupportLine = {
+  sequence: number
+  speaker: string | null
+  es: string | null
+  en: string | null
+}
+
+type SupportPayload = {
+  kind: 'transcript' | 'lyrics' | 'none'
+  title: string
+  lines: SupportLine[]
+}
+
 type PlayerContextValue = {
   current: Track | null
   playing: boolean
@@ -61,6 +74,9 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
   const [error, setError] = useState<string | null>(null)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
+  const [supportOpen, setSupportOpen] = useState(false)
+  const [supportLoading, setSupportLoading] = useState(false)
+  const [support, setSupport] = useState<SupportPayload | null>(null)
 
   const loadAt = useCallback(async (items: QueueItem[], index: number) => {
     const request = items[index]
@@ -173,6 +189,29 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
     setCurrentTime(bounded)
   }, [])
 
+  const openSupport = useCallback(async () => {
+    if (!current?.contentItemId || !current.supportKind) return
+
+    setSupportOpen(true)
+    if (support?.title === current.title && support.kind === current.supportKind) return
+
+    setSupportLoading(true)
+    try {
+      const response = await fetch(
+        `/api/content/${encodeURIComponent(current.contentItemId)}/support`,
+        { cache: 'no-store' },
+      )
+      const payload = await response.json()
+      if (!response.ok) throw new Error(payload?.error || 'Support text could not be loaded.')
+      setSupport(payload as SupportPayload)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Support text could not be loaded.')
+      setSupportOpen(false)
+    } finally {
+      setSupportLoading(false)
+    }
+  }, [current, support])
+
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
@@ -224,6 +263,11 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
       audio.removeEventListener('ended', onEnded)
     }
   }, [loadAt])
+
+  useEffect(() => {
+    setSupportOpen(false)
+    setSupport(null)
+  }, [current?.id])
 
   useEffect(() => {
     if (!current || typeof navigator === 'undefined' || !('mediaSession' in navigator)) return
@@ -337,6 +381,15 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
           </div>
 
           <div className="player-controls">
+            {current.supportKind && current.contentItemId && (
+              <button
+                className="player-support-button"
+                type="button"
+                onClick={() => void openSupport()}
+              >
+                {current.supportKind === 'transcript' ? 'Transcript' : 'Lyrics'}
+              </button>
+            )}
             <button
               className="player-icon"
               onClick={() => void previous()}
@@ -363,6 +416,34 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
               ›
             </button>
           </div>
+        </aside>
+      )}
+
+      {supportOpen && current?.supportKind && (
+        <aside className="player-support-sheet" aria-label={current.supportKind === 'transcript' ? 'Transcript' : 'Lyrics'}>
+          <div className="support-sheet-head">
+            <div>
+              <span className="eyebrow">{current.supportKind.toUpperCase()}</span>
+              <strong>{current.title}</strong>
+            </div>
+            <button type="button" onClick={() => setSupportOpen(false)} aria-label="Close support text">Close</button>
+          </div>
+
+          {supportLoading ? (
+            <p className="muted">Loading…</p>
+          ) : support?.lines?.length ? (
+            <div className="support-lines">
+              {support.lines.map(line => (
+                <div className="support-line" key={line.sequence}>
+                  {line.speaker && <b>{line.speaker}</b>}
+                  {line.es && <p>{line.es}</p>}
+                  {line.en && <small>{line.en}</small>}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="muted">No support text is available for this audio yet.</p>
+          )}
         </aside>
       )}
 
