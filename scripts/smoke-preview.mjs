@@ -63,7 +63,7 @@ await expect('/manifest.webmanifest', (response, body) => {
     : { ok: false, message: `HTTP ${response.status}, invalid manifest` }
 })
 
-for (const path of ['/listen', '/play', '/speak', '/library']) {
+for (const path of ['/listen', '/play', '/speak', '/library', '/drive']) {
   await expect(path, (response) => {
     const location = response.headers.get('location') ?? ''
     return [301, 302, 303, 307, 308].includes(response.status) && location.includes('/login')
@@ -81,6 +81,18 @@ await expect('/api/media/00000000-0000-0000-0000-000000000000', (response, body)
 await expect('/api/media/00000000-0000-0000-0000-000000000000/exposure', (response, body) => {
   return response.status === 401 && /authentication required/i.test(body)
     ? { ok: true, message: `HTTP ${response.status}, listening exposure requires authentication` }
+    : { ok: false, message: `HTTP ${response.status}, body=${body.slice(0, 120)}` }
+})
+
+await expect('/api/media/00000000-0000-0000-0000-000000000000/progress', (response, body) => {
+  return response.status === 401 && /authentication required/i.test(body)
+    ? { ok: true, message: `HTTP ${response.status}, media progress requires authentication` }
+    : { ok: false, message: `HTTP ${response.status}, body=${body.slice(0, 120)}` }
+})
+
+await expect('/api/content/00000000-0000-0000-0000-000000000000/support', (response, body) => {
+  return response.status === 401 && /authentication required/i.test(body)
+    ? { ok: true, message: `HTTP ${response.status}, support text requires authentication` }
     : { ok: false, message: `HTTP ${response.status}, body=${body.slice(0, 120)}` }
 })
 
