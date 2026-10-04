@@ -35,15 +35,26 @@ export default async function PlaylistPage({
   const { data: media, error: mediaError } = contentIds.length
     ? await supabase
         .from('media_assets')
-        .select('id,content_item_id,media_kind,status')
+        .select('id,content_item_id,media_kind,status,storage_bucket,storage_path')
         .in('content_item_id', contentIds)
         .eq('status', 'ready')
     : { data: [], error: null }
 
   if (mediaError) throw new Error(mediaError.message)
 
+  const signedMedia = await Promise.all((media ?? []).map(async (asset: any) => {
+    const { data: signed } = await supabase.storage
+      .from(asset.storage_bucket)
+      .createSignedUrl(asset.storage_path, 60 * 60)
+
+    return {
+      ...asset,
+      playbackUrl: signed?.signedUrl ?? undefined,
+    }
+  }))
+
   const firstMediaByContent = new Map<string, any>()
-  for (const asset of media ?? []) {
+  for (const asset of signedMedia) {
     if (!firstMediaByContent.has(asset.content_item_id)) {
       firstMediaByContent.set(asset.content_item_id, asset)
     }
@@ -58,6 +69,7 @@ export default async function PlaylistPage({
       title: row.content_item?.title ?? 'Borao audio',
       subtitle: row.content_item?.content_type?.replaceAll('_', ' ') ?? 'audio',
       mediaKind: asset.media_kind,
+      playbackUrl: asset.playbackUrl,
       position: row.position,
     }]
   })
