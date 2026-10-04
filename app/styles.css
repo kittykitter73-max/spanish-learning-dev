@@ -282,3 +282,74 @@
   .home-shortcut{min-height:145px}
   .home-shortcut strong{font-size:27px}
 }
+
+
+/* Audio support drawer */
+.player-controls .player-support-button{
+  background:rgba(255,255,255,.12);
+  color:white;
+  padding:10px 12px;
+  font-size:11px;
+}
+.player-support-sheet{
+  position:fixed;
+  z-index:44;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:104px;
+  width:min(760px,calc(100vw - 32px));
+  max-height:min(62vh,620px);
+  overflow:auto;
+  background:rgba(255,249,239,.98);
+  border:1px solid rgba(255,255,255,.92);
+  border-radius:28px;
+  padding:22px;
+  box-shadow:0 24px 70px rgba(32,26,32,.24);
+  backdrop-filter:blur(18px);
+}
+.support-sheet-head{
+  position:sticky;
+  top:-22px;
+  z-index:2;
+  margin:-22px -22px 8px;
+  padding:20px 22px 14px;
+  background:rgba(255,249,239,.96);
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+  border-bottom:1px solid rgba(32,26,32,.08);
+}
+.support-sheet-head>div{display:grid;gap:5px}
+.support-sheet-head strong{font-size:22px}
+.support-sheet-head button{
+  border:0;
+  border-radius:999px;
+  background:rgba(32,26,32,.08);
+  color:var(--ink);
+  font:inherit;
+  font-size:11px;
+  font-weight:850;
+  padding:8px 11px;
+  cursor:pointer;
+}
+.support-lines{display:grid;gap:2px}
+.support-line{padding:15px 2px;border-bottom:1px solid rgba(32,26,32,.07)}
+.support-line b{display:block;color:#9d4e61;font-size:11px;letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px}
+.support-line p{font-size:18px;line-height:1.45;margin:0}
+.support-line small{display:block;color:var(--muted);font-size:13px;line-height:1.4;margin-top:4px}
+@media(max-width:620px){
+  .player-support-sheet{
+    left:10px;
+    right:10px;
+    bottom:calc(170px + env(safe-area-inset-bottom));
+    transform:none;
+    width:auto;
+    max-height:55vh;
+    border-radius:24px;
+    padding:18px;
+  }
+  .support-sheet-head{top:-18px;margin:-18px -18px 8px;padding:17px 18px 12px}
+  .player-controls .player-support-button{display:none}
+  .player-copy{cursor:pointer}
+}
