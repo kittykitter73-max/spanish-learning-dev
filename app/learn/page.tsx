@@ -92,7 +92,7 @@ export default async function LearnPage({ searchParams }: { searchParams: Search
 
   return (
     <main className="product-shell">
-      <AppNav active="learn" />
+      <AppNav active="home" />
       <LearnClient
         lesson={{
           id: item.id,
