@@ -19,7 +19,7 @@ export default function PlaylistQueue({ items }: { items: Item[] }) {
     title: item.title,
     subtitle: item.subtitle,
     contentItemId: item.contentItemId,
-    supportKind: item.subtitle === 'spoken lesson' ? 'transcript' : undefined,
+    supportKind: item.subtitle === 'spoken lesson' ? ('transcript' as const) : undefined,
     playbackUrl: item.playbackUrl,
   }))
 
