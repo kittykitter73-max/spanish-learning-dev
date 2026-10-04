@@ -1,7 +1,7 @@
 # Borao — Development Checkpoint
 
 **Stage:** Prototype  
-**Release:** v0.9 — deployed + smoke-verified staging candidate  
+**Release:** v0.10 — mobile app shell + audio-first foundation  
 **Environment:** GitHub `main` + live `spanish-learning-dev` Supabase + live Vercel project `spanish-learning-dev-soqq`  
 **Working brand:** Borao (replaceable)
 
@@ -12,7 +12,7 @@
 - Automated learning-engine regression tests cover scoring normalization, choice scoring, prefix/infinitive production scoring, empty responses, evidence weighting, hint penalties, strengthened production evidence, and recommendation ranking.
 - Email confirmation redirects are constrained to internal application paths; external/protocol-relative redirect attempts fall back safely.
 - Required public Supabase environment variables are validated explicitly before client creation.
-- Manual deployed-preview smoke workflow can verify health, root rendering, and login rendering against any preview URL.
+- Exact-commit deployed smoke workflow verifies health, auth surfaces, protected app routes, and install manifest.
 - Live Supabase schema has RLS and least-privilege table grants.
 - 100 governed Beginner 1 concepts exist in the live development database; 3 published, 97 draft.
 - Lesson 001 is published with 11 spoken segments and 4 assessments.
@@ -21,11 +21,11 @@
 - Signed-in Today reads real evidence/mastery/recommendation data.
 - Onboarding captures goal, preferred genres, usage modes, and English-support level.
 - Learner content progress supports lesson resume without inventing mastery evidence.
-- Completion closes open recommendations for completed content.
+- Completion refreshes the learner's next recommendation instead of leaving the journey stranded.
 - `/api/health` exists for deployment checks.
 
 ## Current product path
-`signup → confirm → onboarding → Today → recommended/resumed lesson → assessment → evidence → concept state → recommendation → completion`
+`signup → confirm → onboarding → Home → Listen / Play / Speak / Library → recommended content → assessment → evidence → concept state → recommendation → completion`
 
 ## Security posture
 Authenticated learners have direct table writes only where intentionally allowed: their own profile update and favorites. Evidence, mastery state, recommendations, billing/entitlements, and content progress are not directly client-writable.
@@ -46,26 +46,28 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - Current Vercel runtime error check reports no new errors on the healthy deployment.
 
 ## Current blockers
-- Supabase Auth Site URL / Redirect URL configuration still needs to be pointed at the deployed Vercel origin before the first real signup/confirmation test.
-- Authenticated browser E2E has not yet been executed against a deployed preview; the development project currently has zero auth users, so the first real signup is the next test-enabling event.
+- Resume-across-interruption has not yet been proven in the real browser flow.
+- Authenticated tamper / cross-user isolation tests remain outstanding before Staging promotion.
+- Clean replay of the full migration history on a fresh database remains outstanding.
 - Content Block 02 remains language/pedagogical QA-only.
-- Privileged RPC live audit is documented in `docs/STAGING_SECURITY_GATE.md`; current controls are strong enough to justify tamper-testing before any redesign. Staging acceptance still requires authenticated tamper tests.
+- No learner-safe audio asset is marked `ready` yet, so the real player/audio loop is not proven.
 - GitHub currently reports the repository as public; it should be changed to Private before broader work continues.
 
 ## Next gate — Prototype → Staging
 - Personal Vercel deployment outside Marked Matter. ✅
 - Exact-commit deployed smoke workflow passes. ✅
-- Real signup/email-confirm/onboarding browser test.
+- Real signup/email-confirm/onboarding browser test. ✅
+- First real learner completed Lesson 001 end-to-end. ✅
+- Evidence → concept state → recommendation E2E verification. ✅
 - Resume test across interrupted lesson.
-- Assessment-tampering test.
-- Evidence → concept state → recommendation E2E verification.
+- Assessment-tampering / cross-user isolation tests.
 - Clean replay of migrations on a fresh database.
 - Explicit decision on privileged write functions.
 
 ## Next 3 actions
-1. Configure Supabase Auth Site URL and allowed redirect URL(s) for `https://spanish-learning-dev-soqq.vercel.app`.
-2. Create the first real learner account and run signup → confirm → onboarding → Today → Lesson 001 → resume → evidence/mastery/recommendation E2E.
-3. Run authenticated tamper/isolation tests, then complete Content Block 02 QA before promotion to Staging.
+1. Attach one real learner-safe spoken or music asset and prove the player/queue loop.
+2. Run resume + authenticated tamper/isolation tests against the deployed app.
+3. Replay migrations on a fresh database, then make the Prototype → Staging decision.
 
 
 ## Audio-first product direction
@@ -81,3 +83,14 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - Fixed completion sequencing so completing content refreshes the next recommendation instead of leaving no open recommendation.
 - Passwordless email sign-in is available as a resilient fallback for development testing.
 - Lesson 002 remains in QA; do not publish merely to create more surface area.
+
+
+## Mobile app shell
+- The current Next.js app is now mobile-first and installable as a standalone PWA shell.
+- Primary navigation is `Home / Listen / Play / Speak / Library`.
+- Listen reads the real `media_assets` readiness state and does not fake playback when audio is absent.
+- Library can create real learner-owned playlists in Supabase.
+- Play uses the live recommendation/assessment bridge while dedicated game mechanics are built.
+- Speak surfaces production/transfer evidence and will become the voice-first interaction area.
+- Mobile bottom navigation and safe-area spacing are implemented.
+- Native iOS/Android remains deferred until background audio, offline downloads, lock-screen controls, and microphone-heavy use justify a separate native layer.
