@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import AppNav from '@/components/app/AppNav'
@@ -85,7 +86,7 @@ export default async function ListenPage() {
         <span>Music</span>
         <span>Episodes</span>
         <span>Mixes</span>
-        <span>Drive</span>
+        <Link href="/drive">Drive</Link>
       </section>
 
       {readyMedia.length > 0 ? (
