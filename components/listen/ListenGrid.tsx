@@ -9,6 +9,7 @@ type ListenItem = {
   title: string
   subtitle: string
   mediaKind: string
+  playbackUrl?: string
 }
 
 type PlaylistOption = {
@@ -30,6 +31,7 @@ export default function ListenGrid({
     id: item.id,
     title: item.title,
     subtitle: item.subtitle,
+    playbackUrl: item.playbackUrl,
   }))
   const favorites = new Set(favoriteContentIds)
 
