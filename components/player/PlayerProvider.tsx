@@ -11,6 +11,7 @@ import {
   type ReactNode,
 } from 'react'
 import {
+  exposureThresholdSeconds,
   formatPlaybackTime,
   nextQueueIndex,
   previousQueueIndex,
@@ -50,6 +51,7 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const queueRef = useRef<QueueItem[]>([])
   const indexRef = useRef(-1)
+  const exposureRecordedForRef = useRef<string | null>(null)
 
   const [current, setCurrent] = useState<Track | null>(null)
   const [queue, setQueue] = useState<QueueItem[]>([])
@@ -93,6 +95,8 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
       const audio = audioRef.current
       if (!audio) return
 
+      audio.dataset.assetId = request.id
+      exposureRecordedForRef.current = null
       audio.src = nextTrack.src
       audio.load()
 
@@ -170,7 +174,24 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
 
     const onPlay = () => setPlaying(true)
     const onPause = () => setPlaying(false)
-    const onTime = () => setCurrentTime(audio.currentTime || 0)
+    const onTime = () => {
+      const time = audio.currentTime || 0
+      setCurrentTime(time)
+
+      const assetId = audio.dataset.assetId
+      if (!assetId || exposureRecordedForRef.current === assetId) return
+
+      const threshold = exposureThresholdSeconds(audio.duration)
+      if (time < threshold) return
+
+      exposureRecordedForRef.current = assetId
+      void fetch(`/api/media/${encodeURIComponent(assetId)}/exposure`, {
+        method: 'POST',
+        cache: 'no-store',
+      }).catch(() => {
+        exposureRecordedForRef.current = null
+      })
+    }
     const onDuration = () => setDuration(Number.isFinite(audio.duration) ? audio.duration : 0)
     const onEnded = () => {
       setPlaying(false)
