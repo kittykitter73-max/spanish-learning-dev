@@ -17,7 +17,7 @@ export default async function ListenPage() {
   ] = await Promise.all([
     supabase
       .from('media_assets')
-      .select('id,media_kind,duration_ms,content_item_id,content_item:content_items(title,content_type)')
+      .select('id,media_kind,duration_ms,content_item_id,storage_bucket,storage_path,content_item:content_items(title,content_type)')
       .eq('status', 'ready')
       .order('created_at', { ascending: false }),
     supabase
@@ -39,8 +39,17 @@ export default async function ListenPage() {
       .eq('learner_id', userId),
   ])
 
-  const readyMedia = media ?? []
   const content = publishedContent ?? []
+  const readyMedia = await Promise.all((media ?? []).map(async (asset: any) => {
+    const { data: signed } = await supabase.storage
+      .from(asset.storage_bucket)
+      .createSignedUrl(asset.storage_path, 60 * 60)
+
+    return {
+      ...asset,
+      playbackUrl: signed?.signedUrl ?? undefined,
+    }
+  }))
 
   return (
     <main className="product-shell app-surface">
@@ -72,6 +81,7 @@ export default async function ListenPage() {
             title: asset.content_item?.title ?? 'Borao audio',
             subtitle: asset.content_item?.content_type?.replaceAll('_', ' ') ?? 'audio',
             mediaKind: asset.media_kind,
+            playbackUrl: asset.playbackUrl,
           }))}
         />
       ) : (
