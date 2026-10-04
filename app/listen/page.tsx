@@ -9,7 +9,12 @@ export default async function ListenPage() {
   const userId = claimsData?.claims?.sub
   if (!userId) redirect('/login')
 
-  const [{ data: media }, { data: publishedContent }] = await Promise.all([
+  const [
+    { data: media },
+    { data: publishedContent },
+    { data: playlists },
+    { data: favorites },
+  ] = await Promise.all([
     supabase
       .from('media_assets')
       .select('id,media_kind,duration_ms,content_item_id,content_item:content_items(title,content_type)')
@@ -21,6 +26,17 @@ export default async function ListenPage() {
       .eq('status', 'published')
       .in('rights_status', ['internal','licensed','cleared'])
       .order('published_at', { ascending: false }),
+    supabase
+      .from('playlists')
+      .select('id,name')
+      .eq('learner_id', userId)
+      .in('playlist_type', ['manual', 'smart'])
+      .eq('status', 'active')
+      .order('updated_at', { ascending: false }),
+    supabase
+      .from('favorites')
+      .select('content_item_id')
+      .eq('learner_id', userId),
   ])
 
   const readyMedia = media ?? []
@@ -48,8 +64,11 @@ export default async function ListenPage() {
 
       {readyMedia.length > 0 ? (
         <ListenGrid
+          playlists={playlists ?? []}
+          favoriteContentIds={(favorites ?? []).map(item => item.content_item_id)}
           items={readyMedia.map((asset: any) => ({
             id: asset.id,
+            contentItemId: asset.content_item_id,
             title: asset.content_item?.title ?? 'Borao audio',
             subtitle: asset.content_item?.content_type?.replaceAll('_', ' ') ?? 'audio',
             mediaKind: asset.media_kind,
