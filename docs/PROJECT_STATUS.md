@@ -1,7 +1,7 @@
 # Borao — Development Checkpoint
 
 **Stage:** Prototype  
-**Release:** v0.10 — mobile app shell + audio-first foundation  
+**Release:** v0.11 — audio queue, resume, playlists + Drive mode  
 **Environment:** GitHub `main` + live `spanish-learning-dev` Supabase + live Vercel project `spanish-learning-dev-soqq`  
 **Working brand:** Borao (replaceable)
 
@@ -50,7 +50,7 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - Authenticated tamper / cross-user isolation tests remain outstanding before Staging promotion.
 - Clean replay of the full migration history on a fresh database remains outstanding.
 - Content Block 02 remains language/pedagogical QA-only.
-- No learner-safe audio asset is marked `ready` yet, so the real player/audio loop is not proven end-to-end with actual sound.
+- No learner-safe audio asset is marked `ready` yet, so the player infrastructure is build-verified but the real sound loop is not yet proven with an approved file.
 - GitHub currently reports the repository as public; it should be changed to Private before broader work continues.
 
 ## Next gate — Prototype → Staging
@@ -103,3 +103,23 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - A persistent React audio player is mounted at the root layout so playback can survive navigation between app surfaces.
 - Listen cards call the signed-playback route; once the first approved media row/file exists, the player path is ready for real audio.
 - Deployed smoke coverage verifies the media signing endpoint rejects unauthenticated callers.
+
+
+## Audio app capabilities — v0.11
+- Persistent player now supports queue order, previous/next, auto-advance, seek/progress, duration display, and Media Session controls where the browser supports them.
+- Visible audio is pre-signed on the server so mobile browsers can start playback immediately from a user gesture; authenticated signed-URL fallback remains available.
+- Meaningful listening—not a Play tap—records low-strength exposure through the existing governed evidence RPC.
+- Learner audio position is stored separately from mastery and can resume interrupted listening.
+- Spoken episodes can expose an on-demand transcript/support drawer; Spanish remains primary and English support stays optional.
+- Listen supports favorites and adding playable content to learner-owned playlists.
+- Playlist detail pages resolve approved media into a playable shared queue.
+- Drive mode provides a low-distraction large-control listening surface and is protected by authentication.
+- Vercel project Node runtime is aligned to the repo's Node 22 requirement.
+- Player queue and exposure-threshold primitives are regression tested.
+- Deployed smoke coverage now includes protected app/audio-state routes and unauthenticated media boundaries.
+
+## Audio data boundaries
+- `learner_media_progress` owns playback position/completion only; it does not contribute mastery evidence.
+- `learner_evidence_events` remains the learning-evidence history.
+- `media_assets` remains the approved media registry.
+- `learning-media` remains a private Storage bucket protected by RLS and signed playback URLs.
