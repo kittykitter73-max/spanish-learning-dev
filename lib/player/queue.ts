@@ -2,6 +2,7 @@ export type QueueItem = {
   id: string
   title: string
   subtitle?: string
+  playbackUrl?: string
 }
 
 export function boundedIndex(length: number, index: number) {
