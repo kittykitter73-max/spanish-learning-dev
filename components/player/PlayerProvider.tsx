@@ -100,6 +100,10 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
         src = payload.url
       }
 
+      if (!src) {
+        throw new Error('Audio could not be loaded.')
+      }
+
       const nextTrack: Track = {
         ...request,
         src,
