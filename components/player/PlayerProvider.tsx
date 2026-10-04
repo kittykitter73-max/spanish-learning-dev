@@ -70,18 +70,23 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
     setError(null)
 
     try {
-      const response = await fetch(`/api/media/${encodeURIComponent(request.id)}`, {
-        cache: 'no-store',
-      })
+      let src = request.playbackUrl
 
-      const payload = await response.json()
-      if (!response.ok || !payload?.url) {
-        throw new Error(payload?.error || 'Audio could not be loaded.')
+      if (!src) {
+        const response = await fetch(`/api/media/${encodeURIComponent(request.id)}`, {
+          cache: 'no-store',
+        })
+
+        const payload = await response.json()
+        if (!response.ok || !payload?.url) {
+          throw new Error(payload?.error || 'Audio could not be loaded.')
+        }
+        src = payload.url
       }
 
       const nextTrack: Track = {
         ...request,
-        src: payload.url,
+        src,
       }
 
       queueRef.current = items
@@ -188,9 +193,13 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
       void fetch(`/api/media/${encodeURIComponent(assetId)}/exposure`, {
         method: 'POST',
         cache: 'no-store',
-      }).catch(() => {
-        exposureRecordedForRef.current = null
       })
+        .then(response => {
+          if (!response.ok) exposureRecordedForRef.current = null
+        })
+        .catch(() => {
+          exposureRecordedForRef.current = null
+        })
     }
     const onDuration = () => setDuration(Number.isFinite(audio.duration) ? audio.duration : 0)
     const onEnded = () => {
