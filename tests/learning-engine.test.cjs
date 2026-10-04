@@ -4,6 +4,12 @@ const assert = require('node:assert/strict')
 const { scoreAssessment } = require('../.test-dist/lib/learning/assessment.js')
 const { evidenceStrength } = require('../.test-dist/lib/learning/evidence.js')
 const { recommendationScore } = require('../.test-dist/lib/learning/recommendation.js')
+const {
+  boundedIndex,
+  nextQueueIndex,
+  previousQueueIndex,
+  formatPlaybackTime,
+} = require('../.test-dist/lib/player/queue.js')
 
 function item(overrides = {}) {
   return {
@@ -125,4 +131,21 @@ test('confirmation redirect accepts internal paths and rejects external or proto
   assert.equal(safeInternalPath('https://evil.example/phish'), '/today')
   assert.equal(safeInternalPath('//evil.example/phish'), '/today')
   assert.equal(safeInternalPath('javascript:alert(1)'), '/today')
+})
+
+
+test('player queue bounds and advances without wrapping unexpectedly', () => {
+  assert.equal(boundedIndex(3, -1), 0)
+  assert.equal(boundedIndex(3, 99), 2)
+  assert.equal(nextQueueIndex(3, 0), 1)
+  assert.equal(nextQueueIndex(3, 2), -1)
+  assert.equal(previousQueueIndex(3, 2), 1)
+  assert.equal(previousQueueIndex(3, 0), -1)
+})
+
+test('playback time formatting is stable for invalid and valid input', () => {
+  assert.equal(formatPlaybackTime(Number.NaN), '0:00')
+  assert.equal(formatPlaybackTime(-1), '0:00')
+  assert.equal(formatPlaybackTime(0), '0:00')
+  assert.equal(formatPlaybackTime(65.9), '1:05')
 })
