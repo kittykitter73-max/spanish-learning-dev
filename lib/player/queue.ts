@@ -28,3 +28,9 @@ export function formatPlaybackTime(seconds: number) {
   const remainder = whole % 60
   return `${minutes}:${String(remainder).padStart(2, '0')}`
 }
+
+
+export function exposureThresholdSeconds(duration: number) {
+  if (!Number.isFinite(duration) || duration <= 0) return 10
+  return Math.min(10, Math.max(3, duration * 0.25))
+}
