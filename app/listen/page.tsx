@@ -40,14 +40,31 @@ export default async function ListenPage() {
   ])
 
   const content = publishedContent ?? []
+  const mediaIds = (media ?? []).map((asset: any) => asset.id)
+  const { data: mediaProgress } = mediaIds.length
+    ? await supabase
+        .from('learner_media_progress')
+        .select('media_asset_id,position_ms,completed_at')
+        .eq('learner_id', userId)
+        .in('media_asset_id', mediaIds)
+    : { data: [] }
+
+  const progressByMedia = new Map(
+    (mediaProgress ?? []).map((row: any) => [row.media_asset_id, row])
+  )
+
   const readyMedia = await Promise.all((media ?? []).map(async (asset: any) => {
     const { data: signed } = await supabase.storage
       .from(asset.storage_bucket)
       .createSignedUrl(asset.storage_path, 60 * 60)
 
+    const progress = progressByMedia.get(asset.id)
     return {
       ...asset,
       playbackUrl: signed?.signedUrl ?? undefined,
+      resumeSeconds: progress && !progress.completed_at
+        ? Number(progress.position_ms ?? 0) / 1000
+        : 0,
     }
   }))
 
@@ -82,6 +99,7 @@ export default async function ListenPage() {
             subtitle: asset.content_item?.content_type?.replaceAll('_', ' ') ?? 'audio',
             mediaKind: asset.media_kind,
             playbackUrl: asset.playbackUrl,
+            resumeSeconds: asset.resumeSeconds,
           }))}
         />
       ) : (
