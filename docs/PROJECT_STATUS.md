@@ -50,7 +50,7 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - Authenticated tamper / cross-user isolation tests remain outstanding before Staging promotion.
 - Clean replay of the full migration history on a fresh database remains outstanding.
 - Content Block 02 remains language/pedagogical QA-only.
-- No learner-safe audio asset is marked `ready` yet, so the real player/audio loop is not proven.
+- No learner-safe audio asset is marked `ready` yet, so the real player/audio loop is not proven end-to-end with actual sound.
 - GitHub currently reports the repository as public; it should be changed to Private before broader work continues.
 
 ## Next gate — Prototype → Staging
@@ -94,3 +94,12 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - Speak surfaces production/transfer evidence and will become the voice-first interaction area.
 - Mobile bottom navigation and safe-area spacing are implemented.
 - Native iOS/Android remains deferred until background audio, offline downloads, lock-screen controls, and microphone-heavy use justify a separate native layer.
+
+
+## Playback security / player contract
+- Supabase Storage now has a private `learning-media` bucket.
+- Learners can only read storage objects that correspond to a `media_assets` row marked `ready` and attached to published, rights-cleared content.
+- The app exposes short-lived signed playback URLs through an authenticated server route.
+- A persistent React audio player is mounted at the root layout so playback can survive navigation between app surfaces.
+- Listen cards call the signed-playback route; once the first approved media row/file exists, the player path is ready for real audio.
+- Deployed smoke coverage verifies the media signing endpoint rejects unauthenticated callers.
