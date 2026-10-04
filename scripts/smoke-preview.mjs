@@ -72,6 +72,12 @@ for (const path of ['/listen', '/play', '/speak', '/library']) {
   })
 }
 
+await expect('/api/media/00000000-0000-0000-0000-000000000000', (response, body) => {
+  return response.status === 401 && /authentication required/i.test(body)
+    ? { ok: true, message: `HTTP ${response.status}, media signing requires authentication` }
+    : { ok: false, message: `HTTP ${response.status}, body=${body.slice(0, 120)}` }
+})
+
 await expect('/auth/callback', (response) => {
   const location = response.headers.get('location') ?? ''
   return [301, 302, 303, 307, 308].includes(response.status) && location.includes('/login?error=')
