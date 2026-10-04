@@ -9,6 +9,7 @@ const {
   nextQueueIndex,
   previousQueueIndex,
   formatPlaybackTime,
+  exposureThresholdSeconds,
 } = require('../.test-dist/lib/player/queue.js')
 
 function item(overrides = {}) {
@@ -148,4 +149,12 @@ test('playback time formatting is stable for invalid and valid input', () => {
   assert.equal(formatPlaybackTime(-1), '0:00')
   assert.equal(formatPlaybackTime(0), '0:00')
   assert.equal(formatPlaybackTime(65.9), '1:05')
+})
+
+
+test('listening exposure requires a meaningful slice instead of a play tap', () => {
+  assert.equal(exposureThresholdSeconds(Number.NaN), 10)
+  assert.equal(exposureThresholdSeconds(8), 3)
+  assert.equal(exposureThresholdSeconds(20), 5)
+  assert.equal(exposureThresholdSeconds(120), 10)
 })
