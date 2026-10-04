@@ -65,6 +65,7 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
   const queueRef = useRef<QueueItem[]>([])
   const indexRef = useRef(-1)
   const exposureRecordedForRef = useRef<string | null>(null)
+  const lastProgressSaveRef = useRef(0)
 
   const [current, setCurrent] = useState<Track | null>(null)
   const [queue, setQueue] = useState<QueueItem[]>([])
@@ -122,8 +123,14 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
 
       audio.dataset.assetId = request.id
       exposureRecordedForRef.current = null
+      lastProgressSaveRef.current = 0
       audio.src = nextTrack.src
       audio.load()
+
+      if (request.resumeSeconds && request.resumeSeconds > 2) {
+        audio.currentTime = request.resumeSeconds
+        setCurrentTime(request.resumeSeconds)
+      }
 
       try {
         await audio.play()
@@ -227,13 +234,24 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
       setCurrentTime(time)
 
       const assetId = audio.dataset.assetId
-      if (!assetId || exposureRecordedForRef.current === assetId) return
+      if (assetId && time - lastProgressSaveRef.current >= 10) {
+        lastProgressSaveRef.current = time
+        void fetch(`/api/media/${encodeURIComponent(assetId)}/progress`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ positionSeconds: time, completed: false }),
+          keepalive: true,
+        }).catch(() => {})
+      }
+
+      const exposureAssetId = audio.dataset.assetId
+      if (!exposureAssetId || exposureRecordedForRef.current === exposureAssetId) return
 
       const threshold = exposureThresholdSeconds(audio.duration)
       if (time < threshold) return
 
-      exposureRecordedForRef.current = assetId
-      void fetch(`/api/media/${encodeURIComponent(assetId)}/exposure`, {
+      exposureRecordedForRef.current = exposureAssetId
+      void fetch(`/api/media/${encodeURIComponent(exposureAssetId)}/exposure`, {
         method: 'POST',
         cache: 'no-store',
       })
@@ -247,6 +265,15 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
     const onDuration = () => setDuration(Number.isFinite(audio.duration) ? audio.duration : 0)
     const onEnded = () => {
       setPlaying(false)
+      const assetId = audio.dataset.assetId
+      if (assetId) {
+        void fetch(`/api/media/${encodeURIComponent(assetId)}/progress`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ positionSeconds: 0, completed: true }),
+          keepalive: true,
+        }).catch(() => {})
+      }
       const nextIndex = nextQueueIndex(queueRef.current.length, indexRef.current)
       if (nextIndex >= 0) void loadAt(queueRef.current, nextIndex)
     }
