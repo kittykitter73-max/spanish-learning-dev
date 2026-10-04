@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import AppNav from '@/components/app/AppNav'
+import ListenGrid from '@/components/listen/ListenGrid'
 
 export default async function ListenPage() {
   const supabase = await createClient()
@@ -46,16 +47,14 @@ export default async function ListenPage() {
       </section>
 
       {readyMedia.length > 0 ? (
-        <section className="media-grid">
-          {readyMedia.map((asset: any) => (
-            <article className="media-card" key={asset.id}>
-              <div className="media-art" aria-hidden="true"><span>▶</span></div>
-              <p className="media-type">{asset.media_kind.replaceAll('_', ' ')}</p>
-              <h2>{asset.content_item?.title ?? 'Borao audio'}</h2>
-              <p>{asset.content_item?.content_type?.replaceAll('_', ' ')}</p>
-            </article>
-          ))}
-        </section>
+        <ListenGrid
+          items={readyMedia.map((asset: any) => ({
+            id: asset.id,
+            title: asset.content_item?.title ?? 'Borao audio',
+            subtitle: asset.content_item?.content_type?.replaceAll('_', ' ') ?? 'audio',
+            mediaKind: asset.media_kind,
+          }))}
+        />
       ) : (
         <section className="card media-empty">
           <p className="eyebrow">PLAYER FOUNDATION READY</p>
@@ -72,13 +71,6 @@ export default async function ListenPage() {
         </section>
       )}
 
-      <section className="now-playing-placeholder">
-        <div>
-          <span className="tiny">NOW PLAYING</span>
-          <strong>Nothing queued yet</strong>
-        </div>
-        <button disabled aria-disabled="true">Play</button>
-      </section>
     </main>
   )
 }
