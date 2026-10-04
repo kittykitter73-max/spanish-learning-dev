@@ -2,6 +2,8 @@ export type QueueItem = {
   id: string
   title: string
   subtitle?: string
+  contentItemId?: string
+  supportKind?: 'transcript' | 'lyrics'
   playbackUrl?: string
 }
 
