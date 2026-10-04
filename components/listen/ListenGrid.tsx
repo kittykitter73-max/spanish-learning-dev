@@ -11,19 +11,20 @@ type ListenItem = {
 
 export default function ListenGrid({ items }: { items: ListenItem[] }) {
   const player = usePlayer()
+  const queue = items.map(item => ({
+    id: item.id,
+    title: item.title,
+    subtitle: item.subtitle,
+  }))
 
   return (
     <section className="media-grid">
-      {items.map(item => (
+      {items.map((item, index) => (
         <button
           className="media-card media-button"
           key={item.id}
           type="button"
-          onClick={() => player.play({
-            id: item.id,
-            title: item.title,
-            subtitle: item.subtitle,
-          })}
+          onClick={() => player.playQueue(queue, index)}
           disabled={player.loadingId === item.id}
         >
           <div className="media-art" aria-hidden="true">
