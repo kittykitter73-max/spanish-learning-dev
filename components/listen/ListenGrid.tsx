@@ -10,6 +10,7 @@ type ListenItem = {
   subtitle: string
   mediaKind: string
   playbackUrl?: string
+  resumeSeconds?: number
 }
 
 type PlaylistOption = {
@@ -34,6 +35,7 @@ export default function ListenGrid({
     contentItemId: item.contentItemId,
     supportKind: item.subtitle === 'spoken lesson' ? ('transcript' as const) : undefined,
     playbackUrl: item.playbackUrl,
+    resumeSeconds: item.resumeSeconds,
   }))
   const favorites = new Set(favoriteContentIds)
 
