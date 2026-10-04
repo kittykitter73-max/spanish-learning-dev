@@ -5,6 +5,7 @@ export type QueueItem = {
   contentItemId?: string
   supportKind?: 'transcript' | 'lyrics'
   playbackUrl?: string
+  resumeSeconds?: number
 }
 
 export function boundedIndex(length: number, index: number) {
