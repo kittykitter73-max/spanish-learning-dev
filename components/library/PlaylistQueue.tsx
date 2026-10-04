@@ -4,6 +4,7 @@ import { usePlayer } from '@/components/player/PlayerProvider'
 
 type Item = {
   id: string
+  contentItemId: string
   title: string
   subtitle: string
   mediaKind: string
@@ -17,6 +18,8 @@ export default function PlaylistQueue({ items }: { items: Item[] }) {
     id: item.id,
     title: item.title,
     subtitle: item.subtitle,
+    contentItemId: item.contentItemId,
+    supportKind: item.subtitle === 'spoken lesson' ? 'transcript' : undefined,
     playbackUrl: item.playbackUrl,
   }))
 
