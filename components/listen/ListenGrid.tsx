@@ -31,6 +31,8 @@ export default function ListenGrid({
     id: item.id,
     title: item.title,
     subtitle: item.subtitle,
+    contentItemId: item.contentItemId,
+    supportKind: item.subtitle === 'spoken lesson' ? 'transcript' : undefined,
     playbackUrl: item.playbackUrl,
   }))
   const favorites = new Set(favoriteContentIds)
