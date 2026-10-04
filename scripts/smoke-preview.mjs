@@ -55,6 +55,23 @@ await expect('/today', (response) => {
     : { ok: false, message: `HTTP ${response.status}, location=${location || '(none)'}` }
 })
 
+await expect('/manifest.webmanifest', (response, body) => {
+  let payload
+  try { payload = JSON.parse(body) } catch {}
+  return response.ok && payload?.name === 'Borao' && payload?.display === 'standalone'
+    ? { ok: true, message: `HTTP ${response.status}, install manifest rendered` }
+    : { ok: false, message: `HTTP ${response.status}, invalid manifest` }
+})
+
+for (const path of ['/listen', '/play', '/speak', '/library']) {
+  await expect(path, (response) => {
+    const location = response.headers.get('location') ?? ''
+    return [301, 302, 303, 307, 308].includes(response.status) && location.includes('/login')
+      ? { ok: true, message: `HTTP ${response.status}, protected app surface redirects to login` }
+      : { ok: false, message: `HTTP ${response.status}, location=${location || '(none)'}` }
+  })
+}
+
 await expect('/auth/callback', (response) => {
   const location = response.headers.get('location') ?? ''
   return [301, 302, 303, 307, 308].includes(response.status) && location.includes('/login?error=')
