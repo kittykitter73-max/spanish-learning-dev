@@ -4,8 +4,8 @@ if (!base) {
   process.exit(2)
 }
 
-async function expect(path, check) {
-  const response = await fetch(`${base}${path}`, { redirect: 'manual' })
+async function expect(path, check, options = {}) {
+  const response = await fetch(`${base}${path}`, { redirect: 'manual', ...options })
   const body = await response.text()
   const result = check(response, body)
   if (!result.ok) {
@@ -82,12 +82,16 @@ await expect('/api/media/00000000-0000-0000-0000-000000000000/exposure', (respon
   return response.status === 401 && /authentication required/i.test(body)
     ? { ok: true, message: `HTTP ${response.status}, listening exposure requires authentication` }
     : { ok: false, message: `HTTP ${response.status}, body=${body.slice(0, 120)}` }
-})
+}, { method: 'POST' })
 
 await expect('/api/media/00000000-0000-0000-0000-000000000000/progress', (response, body) => {
   return response.status === 401 && /authentication required/i.test(body)
     ? { ok: true, message: `HTTP ${response.status}, media progress requires authentication` }
     : { ok: false, message: `HTTP ${response.status}, body=${body.slice(0, 120)}` }
+}, {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ positionSeconds: 0, completed: false }),
 })
 
 await expect('/api/content/00000000-0000-0000-0000-000000000000/support', (response, body) => {
