@@ -66,6 +66,7 @@ export default async function PlaylistPage({
 
     return [{
       id: asset.id,
+      contentItemId: row.content_item_id,
       title: row.content_item?.title ?? 'Borao audio',
       subtitle: row.content_item?.content_type?.replaceAll('_', ' ') ?? 'audio',
       mediaKind: asset.media_kind,
