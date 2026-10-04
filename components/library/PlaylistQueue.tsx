@@ -7,6 +7,7 @@ type Item = {
   title: string
   subtitle: string
   mediaKind: string
+  playbackUrl?: string
   position: number
 }
 
@@ -16,6 +17,7 @@ export default function PlaylistQueue({ items }: { items: Item[] }) {
     id: item.id,
     title: item.title,
     subtitle: item.subtitle,
+    playbackUrl: item.playbackUrl,
   }))
 
   return (
