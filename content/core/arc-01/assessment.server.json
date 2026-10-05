@@ -1,0 +1,330 @@
+{
+  "package_version": "0.2",
+  "server_only": true,
+  "status": "draft_pending_native_review",
+  "not_a_database_migration": true,
+  "not_a_client_answer_payload": true,
+  "items": [
+    {
+      "item_id": "A1-CHECK-A-L01",
+      "concept_ids": [
+        "C001"
+      ],
+      "dimension": "listening_comprehension",
+      "prompt": "What is this person saying?",
+      "audio_text": "Quiero comer.",
+      "audio_asset_id": null,
+      "required_meaning": {
+        "intention": "want",
+        "action": "eat"
+      },
+      "accepted_meaning_examples": [
+        "I want to eat",
+        "They want to eat"
+      ],
+      "insufficient_or_incorrect_examples": [
+        "I need to eat",
+        "I am going to eat"
+      ],
+      "response_language": "English or equivalent Spanish paraphrase; score meaning not English wording",
+      "transcript_before_response": false,
+      "choices_before_response": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-A-L02",
+      "concept_ids": [
+        "C002"
+      ],
+      "dimension": "listening_comprehension",
+      "prompt": "What is this person saying?",
+      "audio_text": "Necesito dormir.",
+      "audio_asset_id": null,
+      "required_meaning": {
+        "intention": "need",
+        "action": "sleep"
+      },
+      "accepted_meaning_examples": [
+        "I need to sleep",
+        "They need to sleep"
+      ],
+      "insufficient_or_incorrect_examples": [
+        "I want to sleep",
+        "I can sleep"
+      ],
+      "response_language": "English or equivalent Spanish paraphrase; score meaning not English wording",
+      "transcript_before_response": false,
+      "choices_before_response": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-A-L03",
+      "concept_ids": [
+        "C004"
+      ],
+      "dimension": "listening_comprehension",
+      "prompt": "What is this person saying?",
+      "audio_text": "Tengo que salir.",
+      "audio_asset_id": null,
+      "required_meaning": {
+        "intention": "obligation",
+        "action": "leave/go out"
+      },
+      "accepted_meaning_examples": [
+        "I have to leave",
+        "I must go out"
+      ],
+      "insufficient_or_incorrect_examples": [
+        "I want to leave",
+        "I have something"
+      ],
+      "response_language": "English or equivalent Spanish paraphrase; score meaning not English wording",
+      "transcript_before_response": false,
+      "choices_before_response": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-A-L04",
+      "concept_ids": [
+        "C006"
+      ],
+      "dimension": "listening_comprehension",
+      "prompt": "What is this person saying?",
+      "audio_text": "Voy a ayudar.",
+      "audio_asset_id": null,
+      "required_meaning": {
+        "intention": "planned action",
+        "action": "help"
+      },
+      "accepted_meaning_examples": [
+        "I am going to help",
+        "They plan to help"
+      ],
+      "insufficient_or_incorrect_examples": [
+        "I want to help",
+        "I am going somewhere"
+      ],
+      "response_language": "English or equivalent Spanish paraphrase; score meaning not English wording",
+      "transcript_before_response": false,
+      "choices_before_response": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-A-L05",
+      "concept_ids": [
+        "C007"
+      ],
+      "dimension": "listening_comprehension",
+      "prompt": "What is this person saying?",
+      "audio_text": "Puedo esperar.",
+      "audio_asset_id": null,
+      "required_meaning": {
+        "intention": "ability/availability",
+        "action": "wait"
+      },
+      "accepted_meaning_examples": [
+        "I can wait",
+        "I am able to wait"
+      ],
+      "insufficient_or_incorrect_examples": [
+        "Yes",
+        "I want to wait"
+      ],
+      "response_language": "English or equivalent Spanish paraphrase; score meaning not English wording",
+      "transcript_before_response": false,
+      "choices_before_response": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-A-L06",
+      "concept_ids": [
+        "C008"
+      ],
+      "dimension": "listening_comprehension",
+      "prompt": "What is this person saying?",
+      "audio_text": "No puedo salir.",
+      "audio_asset_id": null,
+      "required_meaning": {
+        "intention": "inability/unavailability",
+        "action": "leave/go out"
+      },
+      "accepted_meaning_examples": [
+        "I cannot leave",
+        "They cannot go out"
+      ],
+      "insufficient_or_incorrect_examples": [
+        "No",
+        "I do not want to leave"
+      ],
+      "response_language": "English or equivalent Spanish paraphrase; score meaning not English wording",
+      "transcript_before_response": false,
+      "choices_before_response": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-A-M01",
+      "concept_ids": [
+        "C006",
+        "C090"
+      ],
+      "dimension": "manipulation",
+      "source": "Tengo que comer",
+      "prompt": "Change this to a plan.",
+      "model_after_response": "Voy a comer",
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-A-M02",
+      "concept_ids": [
+        "C008"
+      ],
+      "dimension": "manipulation",
+      "source": "Puedo ayudar",
+      "prompt": "Make this negative.",
+      "model_after_response": "No puedo ayudar",
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-A-M03",
+      "concept_ids": [
+        "C002",
+        "C090"
+      ],
+      "dimension": "manipulation",
+      "source": "Quiero salir",
+      "prompt": "Express a need instead.",
+      "model_after_response": "Necesito salir",
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-A-P01",
+      "concept_ids": [
+        "C001"
+      ],
+      "dimension": "elicited_production",
+      "prompt": "You want to sleep. Say it.",
+      "model_after_response": "Quiero dormir.",
+      "required_meaning": {
+        "intention": "want",
+        "action": "sleep"
+      },
+      "scoring_policy": "Separate communicative success and observed target use; accept appropriate variations. If paraphrase avoids target, task may succeed with target unobserved. No prefix-only grader.",
+      "capture": "voice by explicit consent, or written route labelled written production",
+      "lexical_cue_before_response": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-A-P02",
+      "concept_ids": [
+        "C002"
+      ],
+      "dimension": "elicited_production",
+      "prompt": "You need help. Say it.",
+      "model_after_response": "Necesito ayuda.",
+      "required_meaning": {
+        "intention": "need",
+        "action": "help"
+      },
+      "scoring_policy": "Separate communicative success and observed target use; accept appropriate variations. If paraphrase avoids target, task may succeed with target unobserved. No prefix-only grader.",
+      "capture": "voice by explicit consent, or written route labelled written production",
+      "lexical_cue_before_response": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-A-P03",
+      "concept_ids": [
+        "C004"
+      ],
+      "dimension": "elicited_production",
+      "prompt": "You must wait before leaving. Say the obligation.",
+      "model_after_response": "Tengo que esperar.",
+      "required_meaning": {
+        "intention": "obligation",
+        "action": "wait"
+      },
+      "scoring_policy": "Separate communicative success and observed target use; accept appropriate variations. If paraphrase avoids target, task may succeed with target unobserved. No prefix-only grader.",
+      "capture": "voice by explicit consent, or written route labelled written production",
+      "lexical_cue_before_response": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-A-P04",
+      "concept_ids": [
+        "C006"
+      ],
+      "dimension": "elicited_production",
+      "prompt": "You plan to eat later. Say the plan.",
+      "model_after_response": "Voy a comer después.",
+      "required_meaning": {
+        "intention": "planned action",
+        "action": "eat later"
+      },
+      "scoring_policy": "Separate communicative success and observed target use; accept appropriate variations. If paraphrase avoids target, task may succeed with target unobserved. No prefix-only grader.",
+      "capture": "voice by explicit consent, or written route labelled written production",
+      "lexical_cue_before_response": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-A-P05",
+      "concept_ids": [
+        "C007"
+      ],
+      "dimension": "elicited_production",
+      "prompt": "You are able to help. Offer that.",
+      "model_after_response": "Puedo ayudar.",
+      "required_meaning": {
+        "intention": "ability",
+        "action": "help"
+      },
+      "scoring_policy": "Separate communicative success and observed target use; accept appropriate variations. If paraphrase avoids target, task may succeed with target unobserved. No prefix-only grader.",
+      "capture": "voice by explicit consent, or written route labelled written production",
+      "lexical_cue_before_response": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-A-P06",
+      "concept_ids": [
+        "C008"
+      ],
+      "dimension": "elicited_production",
+      "prompt": "You cannot go out now. Explain that.",
+      "model_after_response": "No puedo salir ahora.",
+      "required_meaning": {
+        "intention": "inability",
+        "action": "go out now"
+      },
+      "scoring_policy": "Separate communicative success and observed target use; accept appropriate variations. If paraphrase avoids target, task may succeed with target unobserved. No prefix-only grader.",
+      "capture": "voice by explicit consent, or written route labelled written production",
+      "lexical_cue_before_response": false,
+      "status": "draft"
+    }
+  ],
+  "evidence_exclusions": [
+    "missing or failed playback cannot satisfy listening",
+    "transcript/choices/frame revealed before response changes evidence strength",
+    "low-confidence ASR is unscored/needs-review",
+    "no exact listening answer primes same-attempt production",
+    "duplicate response/replay does not create a fresh event",
+    "self-reported speaking without capture is practice, not verified production"
+  ],
+  "novelty_policy": {
+    "track": [
+      "item_id",
+      "item_family",
+      "audio_hash",
+      "answer_shown_at",
+      "model_played_at",
+      "attempt_id",
+      "context_id"
+    ],
+    "rule": "Reject claimed fresh evidence if the same answer was just exposed in that attempt. Equivalent answer from another item still primes it."
+  },
+  "readiness_policy_source": "docs/CORE_ARC_01_PRODUCTION_PACK.md section 7",
+  "readiness_thresholds_provisional": true,
+  "preferred_execution_order": [
+    "elicited_production",
+    "listening_comprehension",
+    "manipulation"
+  ],
+  "order_note": "Never assume stored JSON array order is the learner delivery order. Production first reduces priming; item-use history still filters the actual prompts and prior support."
+}
