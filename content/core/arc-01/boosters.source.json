@@ -1,0 +1,348 @@
+{
+  "package_version": "0.2",
+  "status": "draft_pending_native_review",
+  "content_source": "docs/CORE_ARC_01_PRODUCTION_PACK.md",
+  "estimated_target_duration_seconds": 120,
+  "durations_measured": false,
+  "boosters": [
+    {
+      "key": "A1-BOOST-01",
+      "targets": [
+        "C001",
+        "C006"
+      ],
+      "title": "Want or plan?",
+      "steps": [
+        {
+          "segment_id": "A1-BOOST-01-S01",
+          "speaker": "narrator",
+          "text": "A want and a plan can use the same action. Listen.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-01-S02",
+          "speaker": "spanish",
+          "text": "Quiero salir. Voy a salir.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-01-S03",
+          "speaker": "narrator",
+          "text": "I want to go out. I am going to go out.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-01-S04",
+          "speaker": "spanish",
+          "text": "Voy a comer.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-01-S05",
+          "speaker": "narrator",
+          "text": "What is this person saying?",
+          "response_window_seconds": 7,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-01-S06",
+          "speaker": "narrator",
+          "text": "They are going to eat. That's a plan.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-01-S07",
+          "speaker": "spanish",
+          "text": "Quiero dormir.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-01-S08",
+          "speaker": "narrator",
+          "text": "Keep sleeping as the action, but make it a plan.",
+          "response_window_seconds": 8,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-01-S09",
+          "speaker": "spanish",
+          "text": "Voy a dormir.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-01-S10",
+          "speaker": "narrator",
+          "text": "Now say one thing you want to do, then one thing you plan to do. Your answers can be fictional.",
+          "response_window_seconds": 12,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-01-S11",
+          "speaker": "narrator",
+          "text": "We'll check a fresh example next. You don't need to repeat the whole Arc.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        }
+      ],
+      "retest_policy": "Choose unused changed-context item AFTER the instructional Booster; never score the just-revealed model as fresh readiness. If uncertain or unsuccessful, offer support/stop rather than looping."
+    },
+    {
+      "key": "A1-BOOST-02",
+      "targets": [
+        "C003",
+        "C004",
+        "C090"
+      ],
+      "title": "Have or have to?",
+      "steps": [
+        {
+          "segment_id": "A1-BOOST-02-S01",
+          "speaker": "narrator",
+          "text": "Listen for the little word that changes having into an obligation.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-02-S02",
+          "speaker": "spanish",
+          "text": "Tengo tiempo. Tengo que esperar.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-02-S03",
+          "speaker": "narrator",
+          "text": "I have time. I have to wait.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-02-S04",
+          "speaker": "spanish",
+          "text": "Tengo que comer.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-02-S05",
+          "speaker": "narrator",
+          "text": "What is this person saying?",
+          "response_window_seconds": 7,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-02-S06",
+          "speaker": "narrator",
+          "text": "They have to eat. We aren't just naming something they have.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-02-S07",
+          "speaker": "narrator",
+          "text": "You have to go out. Say that in Spanish.",
+          "response_window_seconds": 8,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-02-S08",
+          "speaker": "spanish",
+          "text": "Tengo que salir.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-02-S09",
+          "speaker": "narrator",
+          "text": "Choose a different familiar action. Say you have to do it.",
+          "response_window_seconds": 10,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-02-S10",
+          "speaker": "narrator",
+          "text": "We'll check a fresh obligation next. The things you've already shown stay recorded.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        }
+      ],
+      "retest_policy": "Choose unused changed-context item AFTER the instructional Booster; never score the just-revealed model as fresh readiness. If uncertain or unsuccessful, offer support/stop rather than looping."
+    },
+    {
+      "key": "A1-BOOST-03",
+      "targets": [
+        "C007",
+        "C008",
+        "C091"
+      ],
+      "title": "Can or cannot?",
+      "steps": [
+        {
+          "segment_id": "A1-BOOST-03-S01",
+          "speaker": "narrator",
+          "text": "This is about what is possible, not what someone wants.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-03-S02",
+          "speaker": "spanish",
+          "text": "Puedo ayudar. No puedo ayudar.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-03-S03",
+          "speaker": "narrator",
+          "text": "I can help. I can't help.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-03-S04",
+          "speaker": "spanish",
+          "text": "No puedo esperar.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-03-S05",
+          "speaker": "narrator",
+          "text": "What is this person saying?",
+          "response_window_seconds": 7,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-03-S06",
+          "speaker": "narrator",
+          "text": "They cannot wait. That doesn't tell us whether they want to wait.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-03-S07",
+          "speaker": "spanish",
+          "text": "Puedo salir.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-03-S08",
+          "speaker": "narrator",
+          "text": "Keep going out as the action, but say that you cannot.",
+          "response_window_seconds": 8,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-03-S09",
+          "speaker": "spanish",
+          "text": "No puedo salir.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-03-S10",
+          "speaker": "narrator",
+          "text": "Choose something you can do. Say it. Then choose something you cannot do right now.",
+          "response_window_seconds": 12,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-03-S11",
+          "speaker": "narrator",
+          "text": "Next we'll use a new situation, without the answer in front of you.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        }
+      ],
+      "retest_policy": "Choose unused changed-context item AFTER the instructional Booster; never score the just-revealed model as fresh readiness. If uncertain or unsuccessful, offer support/stop rather than looping."
+    },
+    {
+      "key": "A1-BOOST-04",
+      "targets": [
+        "C090"
+      ],
+      "title": "Keep the action form",
+      "steps": [
+        {
+          "segment_id": "A1-BOOST-04-S01",
+          "speaker": "narrator",
+          "text": "Change the frame. Keep the action form. Listen to comer.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-04-S02",
+          "speaker": "spanish",
+          "text": "Quiero comer. Tengo que comer. Voy a comer.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-04-S03",
+          "speaker": "narrator",
+          "text": "The first part changes the intention. The action stays comer after these frames.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-04-S04",
+          "speaker": "narrator",
+          "text": "Say you want to sleep.",
+          "response_window_seconds": 7,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-04-S05",
+          "speaker": "spanish",
+          "text": "Quiero dormir.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-04-S06",
+          "speaker": "narrator",
+          "text": "Now make that a plan.",
+          "response_window_seconds": 8,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-04-S07",
+          "speaker": "spanish",
+          "text": "Voy a dormir.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-04-S08",
+          "speaker": "narrator",
+          "text": "You have to help. Say it.",
+          "response_window_seconds": 8,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-04-S09",
+          "speaker": "spanish",
+          "text": "Tengo que ayudar.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        },
+        {
+          "segment_id": "A1-BOOST-04-S10",
+          "speaker": "narrator",
+          "text": "We'll use a different action in the fresh check. A model you just repeated is useful practice, not yet proof of recall.",
+          "response_window_seconds": 0,
+          "audio_asset_id": null
+        }
+      ],
+      "retest_policy": "Choose unused changed-context item AFTER the instructional Booster; never score the just-revealed model as fresh readiness. If uncertain or unsuccessful, offer support/stop rather than looping."
+    }
+  ]
+}
