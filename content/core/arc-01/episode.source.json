@@ -1,0 +1,770 @@
+{
+  "package_id": "borao-core-arc-01",
+  "package_version": "0.2",
+  "status": "draft_pending_native_review",
+  "content_id": "A1-EP-01",
+  "concept_ids": [
+    "C001",
+    "C002",
+    "C004",
+    "C006",
+    "C007",
+    "C008"
+  ],
+  "curriculum_source": "docs/CORE_ARC_01_PRODUCTION_PACK.md",
+  "language_policy": {
+    "spanish": "Latin American performance target; variety requires reviewer validation",
+    "narrator": "English support; Spanish model clips recorded separately if needed"
+  },
+  "delivery_modes": {
+    "active": "segmented audio; optional captured responses; skip is allowed",
+    "free_listen": "scene-only edit; exposure only",
+    "drive": "scene-only exposure; no required response or microphone"
+  },
+  "segments": [
+    {
+      "segment_id": "A1-EP-01-A01",
+      "chapter": "A",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "Sofía is ready to go out. Mateo has to wait for a delivery. The afternoon is not going to plan. Listen."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A02",
+      "chapter": "A",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "sofia",
+          "text": "Quiero salir."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A03",
+      "chapter": "A",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "mateo",
+          "text": "Tengo que esperar."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A04",
+      "chapter": "A",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "sofia",
+          "text": "Está bien. Voy a esperar."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A05",
+      "chapter": "A",
+      "kind": "response_prompt",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "Who wants to go out: Sofía or Mateo?"
+        }
+      ],
+      "response_window_seconds": 5,
+      "optional_response": true,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A06",
+      "chapter": "A",
+      "kind": "feedback_or_model",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "Sofía. Quiero salir means I want to go out. Mateo says Tengo que esperar: I have to wait."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A07",
+      "chapter": "A",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "sofia",
+          "text": "Quiero comer."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A08",
+      "chapter": "A",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "mateo",
+          "text": "Voy a comer después."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A09",
+      "chapter": "A",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "He plans to eat later. He didn’t say he has to eat."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A10",
+      "chapter": "A",
+      "kind": "response_prompt",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "Tell Mateo you want to eat."
+        }
+      ],
+      "response_window_seconds": 7,
+      "optional_response": true,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A11",
+      "chapter": "A",
+      "kind": "feedback_or_model",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "One way: Quiero comer."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A12",
+      "chapter": "A",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "mateo",
+          "text": "Tengo tiempo. Pero tengo que esperar."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A13",
+      "chapter": "A",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "Tengo tiempo: I have time. Tengo que esperar: I have to wait. That que changes the job of the phrase."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A14",
+      "chapter": "A",
+      "kind": "response_prompt",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "Keep comer. Change Quiero comer into a plan: I’m going to eat."
+        }
+      ],
+      "response_window_seconds": 7,
+      "optional_response": true,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A15",
+      "chapter": "A",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "Voy a comer."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A16",
+      "chapter": "A",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "sofia",
+          "text": "Voy a salir después."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A17",
+      "chapter": "A",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "mateo",
+          "text": "Sí. Voy a esperar ahora."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A18",
+      "chapter": "A",
+      "kind": "response_prompt",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "Choose a real or fictional action. Say something you want to do, then something you plan to do. You can use the same action, but make the two intentions clear."
+        }
+      ],
+      "response_window_seconds": 12,
+      "optional_response": true,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A19",
+      "chapter": "A",
+      "kind": "feedback_or_model",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "For example: Quiero salir. Voy a salir después. Your answer can be different."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A20",
+      "chapter": "A",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "sofia",
+          "text": "Quiero salir."
+        },
+        {
+          "speaker": "mateo",
+          "text": "Tengo que esperar."
+        },
+        {
+          "speaker": "sofia",
+          "text": "Está bien. Voy a esperar."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-A21",
+      "chapter": "A",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "Next: what you need, what you can do, and what you can’t do right now."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B01",
+      "chapter": "B",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "Same afternoon. Sofía needs help. Mateo can help, but can’t go out yet. Ayuda means help; ayudar means to help."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B02",
+      "chapter": "B",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "sofia",
+          "text": "Necesito ayuda."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B03",
+      "chapter": "B",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "mateo",
+          "text": "Puedo ayudar."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B04",
+      "chapter": "B",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "sofia",
+          "text": "Gracias. Quiero salir ahora."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B05",
+      "chapter": "B",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "mateo",
+          "text": "No puedo salir ahora. Tengo que esperar."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B06",
+      "chapter": "B",
+      "kind": "response_prompt",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "Is Mateo saying he doesn’t want to go out, or that he can’t go out now?"
+        }
+      ],
+      "response_window_seconds": 5,
+      "optional_response": true,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B07",
+      "chapter": "B",
+      "kind": "feedback_or_model",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "He can’t go out now. No puedo does not mean I don’t want to."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B08",
+      "chapter": "B",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "sofia",
+          "text": "Está bien. Voy a esperar."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B09",
+      "chapter": "B",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "mateo",
+          "text": "Necesito comer."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B10",
+      "chapter": "B",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "sofia",
+          "text": "Puedo esperar."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B11",
+      "chapter": "B",
+      "kind": "response_prompt",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "You need to sleep. Say it."
+        }
+      ],
+      "response_window_seconds": 7,
+      "optional_response": true,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B12",
+      "chapter": "B",
+      "kind": "feedback_or_model",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "Necesito dormir."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B13",
+      "chapter": "B",
+      "kind": "response_prompt",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "Puedo salir. Keep salir, but say you cannot go out."
+        }
+      ],
+      "response_window_seconds": 7,
+      "optional_response": true,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B14",
+      "chapter": "B",
+      "kind": "feedback_or_model",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "No puedo salir."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B15",
+      "chapter": "B",
+      "kind": "response_prompt",
+      "spoken_parts": [
+        {
+          "speaker": "sofia",
+          "text": "Necesito ayuda."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": true,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B16",
+      "chapter": "B",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "You have time and are able to help. Answer Sofía in Spanish."
+        }
+      ],
+      "response_window_seconds": 8,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B17",
+      "chapter": "B",
+      "kind": "feedback_or_model",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "One answer: Puedo ayudar."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B18",
+      "chapter": "B",
+      "kind": "response_prompt",
+      "spoken_parts": [
+        {
+          "speaker": "mateo",
+          "text": "Voy a salir ahora."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": true,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B19",
+      "chapter": "B",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "Your situation changed: you can’t leave now because you have to wait. Tell Mateo both things."
+        }
+      ],
+      "response_window_seconds": 12,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B20",
+      "chapter": "B",
+      "kind": "feedback_or_model",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "For example: No puedo salir ahora. Tengo que esperar."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B21",
+      "chapter": "B",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "sofia",
+          "text": "Voy a esperar. Después, quiero comer."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B22",
+      "chapter": "B",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "mateo",
+          "text": "Sí. Puedo salir después."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    },
+    {
+      "segment_id": "A1-EP-01-B23",
+      "chapter": "B",
+      "kind": "spoken",
+      "spoken_parts": [
+        {
+          "speaker": "narrator",
+          "text": "A want, a need, an obligation, a plan, and what’s possible. Keep listening if you like; a Quick Check can see what you can use without these examples."
+        }
+      ],
+      "response_window_seconds": 0,
+      "optional_response": false,
+      "audio_asset_id": null,
+      "recording_status": "not_recorded"
+    }
+  ],
+  "safety": {
+    "asset_ready": false,
+    "rights_cleared": false,
+    "native_review_complete": false,
+    "automatic_mastery_from_playback": false
+  },
+  "prompt_links": {
+    "A05": {
+      "targets": [
+        "C001"
+      ],
+      "evidence": "choice_supported_listening",
+      "feedback": "A06"
+    },
+    "A10": {
+      "targets": [
+        "C001",
+        "C090"
+      ],
+      "evidence": "elicited_production",
+      "feedback": "A11"
+    },
+    "A14": {
+      "targets": [
+        "C006",
+        "C090"
+      ],
+      "evidence": "manipulation",
+      "feedback": "A15"
+    },
+    "A18": {
+      "targets": [
+        "C001",
+        "C006"
+      ],
+      "evidence": "elicited_production",
+      "feedback": "A19"
+    },
+    "B06": {
+      "targets": [
+        "C008"
+      ],
+      "evidence": "choice_supported_listening",
+      "feedback": "B07"
+    },
+    "B11": {
+      "targets": [
+        "C002",
+        "C090"
+      ],
+      "evidence": "elicited_production",
+      "feedback": "B12"
+    },
+    "B13": {
+      "targets": [
+        "C008"
+      ],
+      "evidence": "manipulation",
+      "feedback": "B14"
+    },
+    "B16": {
+      "targets": [
+        "C007"
+      ],
+      "evidence": "elicited_production",
+      "feedback": "B17"
+    },
+    "B19": {
+      "targets": [
+        "C008",
+        "C004"
+      ],
+      "evidence": "elicited_production",
+      "feedback": "B20"
+    }
+  }
+}
