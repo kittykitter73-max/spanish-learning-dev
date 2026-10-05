@@ -1,5 +1,5 @@
 # Borao Core Arc 01 Production Pack
-## Make Something Happen — version 0.1
+## Make Something Happen — version 0.2
 Status: authored draft for linguistic review and recording. Not published learning content. No audio has been generated or attached by this package.
 
 ## Authority and handoff
@@ -51,72 +51,70 @@ Pedagogical job: an earworm for three intention frames. Supporting words are not
 
 Lyrics — candidate for performance and native-speaker review:
 
-[Intro — close, playful]
-Quiero salir.
-Tengo que esperar.
-Voy a salir...
-Ahora sí.
-
-[Verse 1]
-Keys on the table, shoes by the door,
-Same little room but I want something more.
-Quiero salir, quiero bailar,
-One little spark and I’m ready to start.
-Tengo que esperar, just a little more,
-Hear that bass coming through the floor.
-
-[Pre-Chorus]
-Not just a wish, not only a line,
-Voy a salir — I’m making the time.
-Quiero bailar, I feel that beat,
-One more minute, then out to the street.
-
-[Chorus]
-Quiero salir, quiero bailar,
-Tengo que esperar, tengo que esperar.
-Voy a salir, voy a bailar,
-Ahora sí, ahora sí — let’s start.
-Quiero salir, quiero bailar,
-Tengo que esperar, just a little more.
-Voy a salir, voy a bailar,
-Ahora sí — I’m out that door.
-
-[Verse 2]
-No big speech, let the rhythm talk,
-Soft little smile with a confident walk.
-Quiero bailar, that’s what I want,
-Tengo que esperar, but not for long.
-Voy a salir, that’s what I’ll do,
-A little more Spanish coming through.
-
-[Bridge — strip drums, then rebuild]
-Quiero — I want it.
-Tengo que — got to.
-Voy a — I’m going to.
-Now watch me move.
+[Intro]
 Quiero salir.
 Tengo que esperar.
 Voy a salir.
 Ahora sí.
 
+[Verse 1]
+Phone face down, blue light off,
+Keys on the counter, let the day stop.
+Quiero salir, quiero bailar,
+Bass through the wall from somebody's car.
+Tengo que esperar, one minute more,
+You hear that knock? I'm at the door.
+
+[Pre-Chorus]
+Want it, feel it, make a little plan,
+Shoes in my hand till the night began.
+Quiero bailar, voy a bailar,
+Streetlights blinking, here we are.
+
+[Chorus]
+Quiero salir, quiero bailar,
+Tengo que esperar, tengo que esperar.
+Voy a salir, voy a bailar,
+Ahora sí, ahora sí.
+Quiero salir, quiero bailar,
+One minute more, then out that door.
+Voy a salir, voy a bailar,
+Ahora sí, ahora sí.
+
+[Verse 2]
+No long speech, just a look that says
+We don't need much for a night like this.
+Quiero salir, I know that feeling,
+Tengo que esperar, eyes on the ceiling.
+Voy a salir, I'm making a move,
+Your laugh in the hallway, I follow the groove.
+
+[Bridge]
+Quiero salir.
+Tengo que esperar.
+Voy a salir.
+Ahora sí.
+One little pause, then the whole night opens,
+No perfect plan, just a door in motion.
+
 [Final Chorus]
 Quiero salir, quiero bailar,
 Tengo que esperar, tengo que esperar.
 Voy a salir, voy a bailar,
-Ahora sí, ahora sí — let’s start.
+Ahora sí, ahora sí.
 Quiero salir, quiero bailar,
-Tengo que esperar, just a little more.
+One minute more, then out that door.
 Voy a salir, voy a bailar,
-Ahora sí — I’m out that door.
+Ahora sí, ahora sí.
 
 [Outro]
 Voy a salir.
 Ahora sí.
 
 Producer prompt — paste into the music-style field:
-Glossy bilingual dance-pop with rap-pop attitude, 104–110 BPM, punchy syncopated drums, warm sub-bass, crisp claps, tight percussion, neon synth stabs and a little late-night guitar texture. Playful confident female lead, intimate verses, melodic chant-hook chorus, tasteful spoken-sung pickups and short ad-libs. Establish the hook within ten seconds; keep the Spanish frames quiero salir, tengo que esperar and voy a salir clearly intelligible with natural word stress. Give each phrase breathing room; no rapid tongue-twister delivery. Compact verses, rising pre-chorus, bass-forward chorus, stripped bridge and a final energetic lift. Clean lyrics, contemporary radio-ready mix, bright but not childish. Avoid classroom chanting, nursery-song melodies, dramatic motivational narration, oversized choir, heavy vocal distortion and long instrumental intros.
+Glossy bilingual dance-pop with rap-pop attitude, 106 BPM, punchy syncopated drums, warm sub-bass, crisp claps, tight percussion, neon synth stabs and a little late-night guitar texture. Playful confident female lead, intimate rhythmic verses, melodic chant-hook chorus and tasteful short ad-libs. Establish the hook within ten seconds. Spanish frames quiero salir, tengo que esperar and voy a salir must be intelligible with natural stress; no tongue-twister delivery. Give each phrase breathing room. Compact verses, rising pre-chorus, bass-forward chorus, stripped bridge and energetic final lift. Clean lyrics, contemporary radio-ready mix, bright but not childish. Avoid classroom chanting, nursery-song melodies, motivational narration, oversized choir, heavy vocal distortion and long instrumental intros.
 
-Language notes: bailar is an additional supported lexicon entry, not an unlock target. “Tengo que — got to” is a hook gloss, not a complete grammar definition. “Voy a” is glossed as going to only when it introduces an action. Do not use a destination example to prove future-intention comprehension.
+Language notes: bailar is an additional supported lexicon entry, not an unlock target. “Voy a” is glossed as going to only when it introduces an action. Do not use a destination example to prove future-intention comprehension.
 Alternate treatments: (1) indie dance with live bass/guitar and an understated mixed-gender vocal; (2) atmospheric melodic R&B with half-time drums and a shorter hook. Preserve approved Spanish wording and concept coverage. Genre preference must not change the gate.
 Version family: original supported mix; later Spanish-heavy rewrite with a separate lyric map; instrumental/recall cut only after the original works. Do not fabricate a Spanish percentage: measure intelligible lyric tokens on the final rendition.
 Listening test: does the hook come back later, and can the learner use tengo que esperar in plain speech without the tune? The latter needs an actual response check.
@@ -127,7 +125,7 @@ A scene-only edit removes narrator questions and silent response gaps. The activ
 
 Chapter A — The door and the plan
 
-A01 Narrator: Sofía wants to go out. Mateo needs a little time. Listen for the difference between wanting, having to do something, and a plan.
+A01 Narrator: Sofía is ready to go out. Mateo has to wait for a delivery. The afternoon is not going to plan. Listen.
 A02 Sofía: Quiero salir.
 A03 Mateo: Tengo que esperar.
 A04 Sofía: Está bien. Voy a esperar.
@@ -212,17 +210,17 @@ Pronunciation: intelligibility matters; no accent/perfect-trill gate. Text trans
 
 ## 7. Quick Check — candidate bank A
 The learner can attempt this before instruction. Do not play the teaching episode or show the song immediately beforehand as a mandatory warm-up. Say: “Let’s see what’s already useful. We’ll only work on the pieces that need it.”
-Record speaker, asset/version, prompt novelty, response, support, evaluation uncertainty and technical status.
+Record speaker, asset/version, prompt novelty, response, support, evaluation uncertainty and technical status. In a fresh check, collect uncued production before playing matching listening lines or showing manipulation sources; then listening; then manipulation. Item-use history may substitute changed variants or prior valid evidence.
 
 Listening block, no transcript before response:
-L01 Audio Quiero comer. Ask: what does the speaker want to do? Key eat; C001.
-L02 Audio Necesito dormir. Ask: is this a need, a plan or an ability? Key need; C002. Choice-supported listening.
+L01 Audio Quiero comer. Neutral prompt: What is this person saying? Key: I want to eat; retain both intention and action. C001.
+L02 Audio Necesito dormir. Neutral prompt: What is this person saying? Key: I need to sleep. C002. No choices before the response.
 L03 Audio Tengo que salir. Ask for the meaning without choices. Key have to leave/go out; C004.
 L04 Audio Voy a ayudar. Ask for the meaning without choices. Key going to help/intends to help; C006.
-L05 Audio Puedo esperar. Ask: can this person wait? Key yes; C007.
-L06 Audio No puedo salir. Ask: can this person leave? Key no; C008.
+L05 Audio Puedo esperar. Neutral prompt: What is this person saying? Key: I can wait/am able to wait. C007. A bare yes is insufficient.
+L06 Audio No puedo salir. Neutral prompt: What is this person saying? Key: I cannot leave/go out. C008. A bare no is insufficient.
 Do not accept “wants to” for tengo que or “doesn’t want to” for no puedo. Each question proves only its sampled function. Vary item order and speaker; no repeating yes/no answer pattern.
-L02 choice support is explicitly lower-strength; if no other C002 listening evidence exists, follow with a fresh no-choice item Necesito ayuda and ask what they need.
+All listening items use the neutral meaning prompt. Optional recognition choices are a fallback only; log that support and obtain a fresh no-choice sample before secure readiness. Asking a leading question such as what does this person want hides the want/need contrast.
 If a clip fails, skip its learning score; offer retry or a clearly labeled text-mode practice equivalent. Text mode does not satisfy listening readiness.
 
 Manipulation:
@@ -257,9 +255,9 @@ Learner result wording:
 
 ## 8. Fresh retest and delayed bank B
 Fresh means a new utterance/action/speaker or meaningful context variation—not a reskin of the revealed answer. Keep retest assets separate from teaching assets.
-Listening candidates: Quiero ayudar; Necesito comer; Tengo que dormir; Voy a esperar; Puedo hablar; No puedo ayudar. Ensure every action is known before scoring. Ask open meanings; avoid showing the transcript.
-Production candidates: want to help; need to eat; must leave; plan to sleep; can wait; cannot help. Do not show the corresponding Spanish model until after response.
-Manipulation candidates: Quiero ayudar → Tengo que ayudar; Voy a esperar → Puedo esperar; No puedo hablar → Puedo hablar.
+Reserved listening candidates: Quiero hablar ahora; Necesito esperar; Tengo que ayudar; Voy a dormir después; Puedo comer ahora; No puedo comer ahora. Ensure every action is known before scoring. Ask open meanings; avoid showing the transcript. Never select a reserved item that the learner has just heard in teaching, a model answer or a Booster; use item-use history, not a label claiming novelty.
+Reserved production candidates: want to speak now; need to wait; must help; plan to sleep later; can eat now; cannot eat now. Do not show the corresponding Spanish model until after response. Do not pair a listening item with its identical production answer in the same attempt; that would prime the answer. Generate changed equivalents or rotate pools.
+Reserved manipulation candidates: Necesito hablar → Voy a hablar; Tengo que dormir → Quiero dormir; Puedo comer → No puedo comer. If the target output was just revealed elsewhere, mark the manipulation as immediate practice and obtain a fresh sample later.
 Delayed contexts: coordinate a meal instead of an outing; respond to a friend’s voice note; arrange help instead of personal plans. Use a different actor and ordinary speech.
 Schedule eligible fresh checks around the following day and about a week later, configurable to performance. Ask a few due items, not all six every time. Delay intervals are starting defaults, not experimentally guaranteed optimal values.
 Never certify the broad C089/C090 concepts solely from this narrow bank.
@@ -319,3 +317,10 @@ Third: finish chapter B and the held-out bank; load reviewed draft assets throug
 Fourth: run the real player → response → evidence → Booster/retest loop. Test through from a fresh learner state and from a returning learner with prior evidence.
 Fifth: pilot with the creator plus other adult beginners/returning learners. Compare later plain-speech use, not merely song replay counts.
 Continue to Arc 2 only after the first loop is usable. Preserve this file’s version and source snapshot when revising; the master curriculum is not silently rewritten by generated content.
+
+
+## 13. Content-thread handoff — v0.2
+Self-review found leading listening questions and a loosely held-out retest pool. Version 0.2 removes frame clues from the listening questions, requires meaning plus action, and adds item-use history and cross-task priming exclusions. This is an internal creator review, not independent/native-speaker approval.
+The song bridge now stays musical instead of explaining English grammar. Chapter A gets a concrete reason for waiting. New studio files contain segmented speech and server-only draft assessment criteria; no app implementation or publication is performed in this thread.
+Latest authoring source: this repository file. The earlier Production Pack v0.1 Google Doc is a historical snapshot; the companion Recording & Review v0.2 Doc carries this revision’s changes.
+Music generation was attempted but blocked by the connected account’s paid-plan requirement. No song audio exists from this attempt. A short speech audition was generated; it is private preview material, not proof of approved pronunciation or a complete episode.
