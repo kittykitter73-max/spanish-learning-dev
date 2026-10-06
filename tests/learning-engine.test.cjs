@@ -5,6 +5,11 @@ const { scoreAssessment } = require('../.test-dist/lib/learning/assessment.js')
 const { evidenceStrength } = require('../.test-dist/lib/learning/evidence.js')
 const { recommendationScore } = require('../.test-dist/lib/learning/recommendation.js')
 const {
+  isAccessSatisfied,
+  collectionAccessSummary,
+} = require('../.test-dist/lib/progression/access.js')
+
+const {
   boundedIndex,
   nextQueueIndex,
   previousQueueIndex,
@@ -157,4 +162,51 @@ test('listening exposure requires a meaningful slice instead of a play tap', () 
   assert.equal(exposureThresholdSeconds(8), 3)
   assert.equal(exposureThresholdSeconds(20), 5)
   assert.equal(exposureThresholdSeconds(120), 10)
+})
+
+
+test('progression access separates starter, readiness and explicit unlock rules', () => {
+  const context = {
+    unitStates: new Map([
+      ['u-ready', 'active'],
+      ['u-done', 'completed'],
+    ]),
+    pathStates: new Map([['p-done', 'completed']]),
+    directUnlockedContentIds: new Set(['content-manual']),
+    unlockedCollectionIds: new Set(['album-full']),
+    unlockedGameIds: new Set(['game-manual']),
+  }
+
+  assert.equal(isAccessSatisfied({ accessRule: 'immediate' }, context), true)
+  assert.equal(isAccessSatisfied({ accessRule: 'unit_ready', requiredUnitId: 'u-ready' }, context), true)
+  assert.equal(isAccessSatisfied({ accessRule: 'unit_complete', requiredUnitId: 'u-ready' }, context), false)
+  assert.equal(isAccessSatisfied({ accessRule: 'unit_complete', requiredUnitId: 'u-done' }, context), true)
+  assert.equal(isAccessSatisfied({ accessRule: 'path_complete', requiredPathId: 'p-done' }, context), true)
+  assert.equal(isAccessSatisfied({ accessRule: 'manual', contentItemId: 'content-manual' }, context), true)
+  assert.equal(isAccessSatisfied({ accessRule: 'manual', collectionId: 'album-full' }, context), true)
+  assert.equal(isAccessSatisfied({ accessRule: 'manual', gameId: 'game-manual' }, context), true)
+  assert.equal(isAccessSatisfied({ accessRule: 'manual', contentItemId: 'locked' }, context), false)
+})
+
+test('collection progress counts content access without implying mastery', () => {
+  const context = {
+    unitStates: new Map([['u1', 'completed']]),
+    pathStates: new Map(),
+    directUnlockedContentIds: new Set(),
+    unlockedCollectionIds: new Set(),
+    unlockedGameIds: new Set(),
+  }
+
+  const summary = collectionAccessSummary([
+    { accessRule: 'immediate' },
+    { accessRule: 'unit_complete', requiredUnitId: 'u1' },
+    { accessRule: 'manual' },
+  ], context)
+
+  assert.deepEqual(summary, {
+    total: 3,
+    unlocked: 2,
+    complete: false,
+    empty: false,
+  })
 })
