@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import AppNav from '@/components/app/AppNav'
+import UnlockReveal from '@/components/progression/UnlockReveal'
 
 function learnerReason(reasons: string[] | null | undefined) {
   const set = new Set(reasons ?? [])
@@ -23,6 +24,7 @@ export default async function TodayPage() {
     { data: recommendation },
     { data: inProgress },
     { data: corePath },
+    { data: unseenUnlock },
   ] = await Promise.all([
     supabase
       .from('learner_profiles')
@@ -49,6 +51,14 @@ export default async function TodayPage() {
       .eq('path_kind', 'core')
       .eq('status', 'published')
       .order('sort_order', { ascending: true })
+      .limit(1)
+      .maybeSingle(),
+    supabase
+      .from('learner_unlocks')
+      .select('id,unlock_kind,feature_key,content:content_items(title),collection:content_collections(title,slug),game:game_mechanics(title,slug)')
+      .eq('learner_id', userId)
+      .is('seen_at', null)
+      .order('unlocked_at', { ascending: false })
       .limit(1)
       .maybeSingle(),
   ])
@@ -96,6 +106,30 @@ export default async function TodayPage() {
     ? Math.round((completedUnitIds.size / coreUnits.length) * 100)
     : 0
 
+  const unlock = unseenUnlock as any
+  const unlockTitle =
+    unlock?.collection?.title
+    ?? unlock?.game?.title
+    ?? unlock?.content?.title
+    ?? unlock?.feature_key
+    ?? 'Something new'
+  const unlockHref =
+    unlock?.collection?.slug
+      ? `/library/collection/${unlock.collection.slug}`
+      : unlock?.game
+        ? '/play'
+        : unlock?.content
+          ? '/listen'
+          : undefined
+  const unlockSubtitle =
+    unlock?.unlock_kind === 'collection'
+      ? 'The full release is now part of your Library.'
+      : unlock?.unlock_kind === 'game'
+        ? 'A new way to practice just opened.'
+        : unlock?.unlock_kind === 'content'
+          ? 'A new track is ready to play.'
+          : 'Borao opened something new for you.'
+
   return (
     <main className="product-shell home-surface">
       <AppNav active="home" />
@@ -105,6 +139,16 @@ export default async function TodayPage() {
         <h1>{firstName ? `Hey, ${firstName}.` : 'Hey.'}</h1>
         <p>Keep the Spanish moving. Borao will handle what comes back and when.</p>
       </section>
+
+      {unlock?.id && (
+        <UnlockReveal
+          id={unlock.id}
+          kind={unlock.unlock_kind}
+          title={unlockTitle}
+          subtitle={unlockSubtitle}
+          href={unlockHref}
+        />
+      )}
 
       <section className="home-primary-grid">
         <article className="card continue-card">
