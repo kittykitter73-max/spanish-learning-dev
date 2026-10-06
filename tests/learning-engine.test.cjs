@@ -7,6 +7,7 @@ const { recommendationScore } = require('../.test-dist/lib/learning/recommendati
 const { evaluateCheckpointReadiness } = require('../.test-dist/lib/learning/readiness.js')
 const { selectCheckpointItems } = require('../.test-dist/lib/learning/checkpoint-selector.js')
 const { evidenceEventsToReadinessObservations } = require('../.test-dist/lib/learning/readiness-evidence.js')
+const { planReadyCheck } = require('../.test-dist/lib/learning/ready-check-planner.js')
 const {
   isAccessSatisfied,
   collectionAccessSummary,
@@ -474,4 +475,97 @@ test('technical listening failures stay technical instead of becoming Spanish fa
   assert.equal(observation.dimension, 'listening')
   assert.equal(observation.technicalIssue, true)
   assert.equal(observation.success, null)
+})
+
+
+test('Ready Check planner reuses valid evidence and selects only what remains missing', () => {
+  const requirements = [
+    {
+      key: 'C001-generated',
+      conceptId: 'C001',
+      dimension: 'generated_use',
+      minSuccesses: 1,
+      maxHintLevel: 0,
+      requireSelfGenerated: true,
+      requireFresh: true,
+    },
+    {
+      key: 'C001-listening',
+      conceptId: 'C001',
+      dimension: 'listening',
+      minSuccesses: 1,
+      maxHintLevel: 0,
+      requireFresh: true,
+    },
+  ]
+
+  const result = planReadyCheck({
+    requirements,
+    evidenceEvents: [{
+      concept_id: 'C001',
+      evidence_type: 'independent_production',
+      success: true,
+      hint_level: 0,
+      self_generated: true,
+      context_novelty: 'novel',
+      occurred_at: '2026-10-06T10:10:00Z',
+      metadata: { context_id: 'existing-production' },
+    }],
+    candidates: [
+      {
+        itemId: 'p-extra',
+        itemFamily: 'P-C001',
+        conceptIds: ['C001'],
+        dimension: 'elicited_production',
+        approvalStatus: 'approved',
+      },
+      {
+        itemId: 'l-needed',
+        itemFamily: 'L-C001',
+        conceptIds: ['C001'],
+        dimension: 'listening_comprehension',
+        approvalStatus: 'approved',
+        audioReady: true,
+      },
+    ],
+  })
+
+  assert.deepEqual(result.satisfiedRequirementKeys, ['C001-generated'])
+  assert.deepEqual(result.unresolvedRequirementKeys, ['C001-listening'])
+  assert.deepEqual(result.selectedItems.map(item => item.itemId), ['l-needed'])
+})
+
+test('Ready Check planner selects nothing when current evidence already establishes readiness', () => {
+  const result = planReadyCheck({
+    requirements: [{
+      key: 'C004-generated',
+      conceptId: 'C004',
+      dimension: 'generated_use',
+      minSuccesses: 1,
+      maxHintLevel: 0,
+      requireSelfGenerated: true,
+      requireFresh: true,
+    }],
+    evidenceEvents: [{
+      concept_id: 'C004',
+      evidence_type: 'independent_production',
+      success: true,
+      hint_level: 0,
+      self_generated: true,
+      context_novelty: 'novel',
+      occurred_at: '2026-10-06T10:11:00Z',
+      metadata: {},
+    }],
+    candidates: [{
+      itemId: 'p-unused',
+      itemFamily: 'P-C004',
+      conceptIds: ['C004'],
+      dimension: 'elicited_production',
+      approvalStatus: 'approved',
+    }],
+  })
+
+  assert.equal(result.currentStatus, 'ready')
+  assert.deepEqual(result.selectedItems, [])
+  assert.deepEqual(result.remainingAfterSelection, [])
 })
