@@ -4,6 +4,7 @@ const assert = require('node:assert/strict')
 const { scoreAssessment } = require('../.test-dist/lib/learning/assessment.js')
 const { evidenceStrength } = require('../.test-dist/lib/learning/evidence.js')
 const { recommendationScore } = require('../.test-dist/lib/learning/recommendation.js')
+const { evaluateCheckpointReadiness } = require('../.test-dist/lib/learning/readiness.js')
 const {
   isAccessSatisfied,
   collectionAccessSummary,
@@ -209,4 +210,99 @@ test('collection progress counts content access without implying mastery', () =>
     complete: false,
     empty: false,
   })
+})
+
+
+test('Ready Check requires fresh unaided evidence instead of counting supported practice', () => {
+  const requirements = [
+    {
+      key: 'C001-listening',
+      conceptId: 'C001',
+      dimension: 'listening',
+      minSuccesses: 1,
+      maxHintLevel: 0,
+      requireFresh: true,
+    },
+    {
+      key: 'C001-generated',
+      conceptId: 'C001',
+      dimension: 'generated_use',
+      minSuccesses: 1,
+      maxHintLevel: 0,
+      requireSelfGenerated: true,
+      requireFresh: true,
+    },
+  ]
+
+  const result = evaluateCheckpointReadiness(requirements, [
+    {
+      conceptId: 'C001',
+      dimension: 'listening',
+      success: true,
+      hintLevel: 1,
+      fresh: true,
+    },
+    {
+      conceptId: 'C001',
+      dimension: 'generated_use',
+      success: true,
+      hintLevel: 0,
+      selfGenerated: true,
+      fresh: false,
+    },
+  ])
+
+  assert.equal(result.status, 'needs_more_evidence')
+  assert.deepEqual(result.satisfiedKeys, [])
+  assert.deepEqual(result.unresolvedKeys.sort(), ['C001-generated', 'C001-listening'])
+})
+
+test('Ready Check can require distinct manipulation contexts', () => {
+  const requirement = [{
+    key: 'C090-manipulation',
+    conceptId: 'C090',
+    dimension: 'manipulation',
+    minSuccesses: 3,
+    maxHintLevel: 0,
+    requireSelfGenerated: true,
+    requireFresh: true,
+    distinctContextCount: 3,
+  }]
+
+  const repeated = evaluateCheckpointReadiness(requirement, [
+    { conceptId: 'C090', dimension: 'manipulation', success: true, selfGenerated: true, fresh: true, contextKey: 'quiero>voy-a' },
+    { conceptId: 'C090', dimension: 'manipulation', success: true, selfGenerated: true, fresh: true, contextKey: 'quiero>voy-a' },
+    { conceptId: 'C090', dimension: 'manipulation', success: true, selfGenerated: true, fresh: true, contextKey: 'puedo>no-puedo' },
+  ])
+
+  assert.equal(repeated.status, 'needs_more_evidence')
+
+  const varied = evaluateCheckpointReadiness(requirement, [
+    { conceptId: 'C090', dimension: 'manipulation', success: true, selfGenerated: true, fresh: true, contextKey: 'quiero>voy-a' },
+    { conceptId: 'C090', dimension: 'manipulation', success: true, selfGenerated: true, fresh: true, contextKey: 'puedo>no-puedo' },
+    { conceptId: 'C090', dimension: 'manipulation', success: true, selfGenerated: true, fresh: true, contextKey: 'quiero>necesito' },
+  ])
+
+  assert.equal(varied.status, 'ready')
+})
+
+test('technical failure is separated from Spanish failure', () => {
+  const requirements = [{
+    key: 'C004-listening',
+    conceptId: 'C004',
+    dimension: 'listening',
+    minSuccesses: 1,
+    maxHintLevel: 0,
+    requireFresh: true,
+  }]
+
+  const result = evaluateCheckpointReadiness(requirements, [{
+    conceptId: 'C004',
+    dimension: 'listening',
+    technicalIssue: true,
+    fresh: true,
+  }])
+
+  assert.equal(result.status, 'technical_issue')
+  assert.deepEqual(result.technicalIssueKeys, ['C004-listening'])
 })
