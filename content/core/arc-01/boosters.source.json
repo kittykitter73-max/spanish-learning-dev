@@ -1,5 +1,5 @@
 {
-  "package_version": "0.2",
+  "package_version": "0.3",
   "status": "draft_pending_native_review",
   "content_source": "docs/CORE_ARC_01_PRODUCTION_PACK.md",
   "estimated_target_duration_seconds": 120,
@@ -91,7 +91,8 @@
           "audio_asset_id": null
         }
       ],
-      "retest_policy": "Choose unused changed-context item AFTER the instructional Booster; never score the just-revealed model as fresh readiness. If uncertain or unsuccessful, offer support/stop rather than looping."
+      "retest_policy": "Choose unused changed-context item AFTER the instructional Booster; never score the just-revealed model as fresh readiness. If uncertain or unsuccessful, offer support/stop rather than looping.",
+      "stop_policy": "After two difficult attempts, offer a clear model and optional later return; no repeated fail loop. Technical, lexical and anxiety issues route to their own support."
     },
     {
       "key": "A1-BOOST-02",
@@ -173,7 +174,8 @@
           "audio_asset_id": null
         }
       ],
-      "retest_policy": "Choose unused changed-context item AFTER the instructional Booster; never score the just-revealed model as fresh readiness. If uncertain or unsuccessful, offer support/stop rather than looping."
+      "retest_policy": "Choose unused changed-context item AFTER the instructional Booster; never score the just-revealed model as fresh readiness. If uncertain or unsuccessful, offer support/stop rather than looping.",
+      "stop_policy": "After two difficult attempts, offer a clear model and optional later return; no repeated fail loop. Technical, lexical and anxiety issues route to their own support."
     },
     {
       "key": "A1-BOOST-03",
@@ -262,7 +264,8 @@
           "audio_asset_id": null
         }
       ],
-      "retest_policy": "Choose unused changed-context item AFTER the instructional Booster; never score the just-revealed model as fresh readiness. If uncertain or unsuccessful, offer support/stop rather than looping."
+      "retest_policy": "Choose unused changed-context item AFTER the instructional Booster; never score the just-revealed model as fresh readiness. If uncertain or unsuccessful, offer support/stop rather than looping.",
+      "stop_policy": "After two difficult attempts, offer a clear model and optional later return; no repeated fail loop. Technical, lexical and anxiety issues route to their own support."
     },
     {
       "key": "A1-BOOST-04",
@@ -342,7 +345,10 @@
           "audio_asset_id": null
         }
       ],
-      "retest_policy": "Choose unused changed-context item AFTER the instructional Booster; never score the just-revealed model as fresh readiness. If uncertain or unsuccessful, offer support/stop rather than looping."
+      "retest_policy": "Choose unused changed-context item AFTER the instructional Booster; never score the just-revealed model as fresh readiness. If uncertain or unsuccessful, offer support/stop rather than looping.",
+      "stop_policy": "After two difficult attempts, offer a clear model and optional later return; no repeated fail loop. Technical, lexical and anxiety issues route to their own support."
     }
-  ]
+  ],
+  "practice_not_immediate_retention": true,
+  "retest_policy": "New lexical/context output not shown in this attempt; item-use filter includes every model. Immediate successful fresh probe supports provisional readiness only; delayed success establishes retention."
 }

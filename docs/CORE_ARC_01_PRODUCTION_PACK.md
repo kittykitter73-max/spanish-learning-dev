@@ -1,9 +1,9 @@
 # Borao Core Arc 01 Production Pack
-## Make Something Happen — version 0.2
-Status: authored draft for linguistic review and recording. Not published learning content. No audio has been generated or attached by this package.
+## Make Something Happen — version 0.3
+Status: authored draft for linguistic review and recording. Not published learning content. Full song/episode/check audio is absent. A prior short voice audition exists but is unapproved and unattached; it does not validate this revision.
 
 ## Authority and handoff
-Companion to Borao Master Curriculum and Learning System v1.1. The master remains the curriculum design baseline; this file provides the first concrete content package. Reopen by its project/repository location rather than relying on a conversation.
+Companion to Borao Master Curriculum and Learning System v1.2. The master remains the curriculum design baseline; this file provides the first concrete content package. Reopen by its project/repository location rather than relying on a conversation.
 Repository source checkpoint: bdc723eaf9c41d14f65c77523a961da8afee9e36. Verified against docs/CORE_ARC_MAP.md, docs/LEARNER_EXPERIENCE_SYSTEM.md, and supabase/migrations/0007_seed_curriculum_100.sql at that revision. These establish source definitions, not proof of the present live database or deployed release.
 This package does not replace the existing Lesson 001 or change concept IDs, evidence history, publish status, database state, or app code. New content keys below are proposed authoring keys; resolve database IDs during implementation.
 
@@ -41,146 +41,151 @@ A1-CHECK-B: alternate/delayed bank with a fresh speaker and changed context.
 A1-BOOST-01 through 04: precise two-minute repair plans.
 A1-PLAIN-01: song targets recorded in ordinary speech, without melody.
 
-Default recommendation route: song → chapter A → optional Flip It → chapter B → speaking moment → Quick Check when useful. Learners may browse/replay freely, or attempt the check first. No required play count or completion screen substitutes for evidence.
+Default recommendation route: song → uninterrupted short story → optional game or practice companion → speaking moment → Quick Check when useful. Chapter markers support resume; they do not force an activity between scenes. Learners may browse/replay freely, or attempt the check first. No required play count or completion screen substitutes for evidence.
 Free Listen plays uninterrupted music and scene-only audio. Active mode enables response segments. Drive mode uses scene-only audio by default: no visual task, required response, scoring, microphone capture, or distracting cognitive challenge while driving. Optional practice is for a safe stationary setting.
-Estimated durations are commissioning targets, not measured asset lengths: song 2:30–3:10; chapter A 2:30–3:30; chapter B 2:00–3:00; games 1–2 minutes; Quick Check typically 4–7 minutes, shortened by already valid evidence. Timing must be measured after recording.
+Unmeasured commissioning estimates: song 2:30–3:10; complete story about 75–120 seconds; optional practice adds roughly 45–90 seconds; games 1–2 minutes; adaptive Quick Check about 3–6 minutes, split if more evidence is needed. Final runtime replaces all estimates.
 
-## 3. Song — Ahora sí
-Concept: a night-out track about wanting to go, having to wait, then actually making a plan. Glossy, bass-led dance/rap-pop with a playful female lead; general audience, clean lyrics, not a personal biography.
-Pedagogical job: an earworm for three intention frames. Supporting words are not secretly tested. Translation lives in optional support, not an English explanation after every line.
+## 3. Song — Ahora sí (rewritten)
+Targets: C001 quiero, C004 tengo que, C006 voy a, with familiar actions. Song playback remains exposure. The scene is friends trying to get out the door, late voice notes and matching jackets. Three phrase contours give want, obligation and plan separate musical identities; no grammar explanation interrupts the track. The bridge recalls the waiting moment after the outing, rather than changing the story back to waiting.
 
-Lyrics — candidate for performance and native-speaker review:
-
-[Intro]
+[Cold open — dry vocal, beat enters on sí]
 Quiero salir.
 Tengo que esperar.
 Voy a salir.
 Ahora sí.
 
-[Verse 1]
-Phone face down, blue light off,
-Keys on the counter, let the day stop.
-Quiero salir, quiero bailar,
-Bass through the wall from somebody's car.
-Tengo que esperar, one minute more,
-You hear that knock? I'm at the door.
+[Verse 1 — rhythmic, close]
+Left shoe on, right shoe missing,
+Your voice note says, “One minute.” Listen—
+Quiero salir, I’m by the door,
+Same three dots as the minute before.
+Tengo que esperar, fine, I can stay,
+But I’m stealing your jacket if you’re late.
 
-[Pre-Chorus]
-Want it, feel it, make a little plan,
-Shoes in my hand till the night began.
-Quiero bailar, voy a bailar,
-Streetlights blinking, here we are.
+[Pre-chorus — bass drops out]
+Keys hit the counter, I count to three,
+You come downstairs looking just like me.
+Same black jacket? Keep it. Alright.
+We’re both wearing trouble tonight.
 
-[Chorus]
+[Chorus — three different melodic shapes]
 Quiero salir, quiero bailar,
-Tengo que esperar, tengo que esperar.
+Tengo que esperar—ah, ah.
 Voy a salir, voy a bailar,
 Ahora sí, ahora sí.
 Quiero salir, quiero bailar,
-One minute more, then out that door.
+One more minute? That’s what you said.
+Voy a salir, voy a bailar,
+Ahora sí—get out of your head.
+
+[Verse 2 — beat strips to drums and bass]
+You take the stairs, I ride down slow,
+We hit the sidewalk, nowhere to go.
+Quiero bailar, no speech to make,
+You find the rhythm, I find the break.
+Voy a bailar, I’m choosing the floor,
+You miss the step, then we laugh some more.
+
+[Bridge — call and answer, no explanation]
+Quiero salir. (I’m at the door.)
+Tengo que esperar. (One minute more.)
+Voy a salir. (Your keys, your phone.)
+Ahora sí. (We’re finally gone.)
+
+[Final chorus — change the arrangement, not the targets]
+Quiero salir, quiero bailar,
+Tengo que esperar—ah, ah.
 Voy a salir, voy a bailar,
 Ahora sí, ahora sí.
+Quiero salir, quiero bailar,
+Same black jacket, different moves.
+Voy a salir, voy a bailar,
+Ahora sí—I’m going with you.
 
-[Verse 2]
-No long speech, just a look that says
-We don't need much for a night like this.
-Quiero salir, I know that feeling,
-Tengo que esperar, eyes on the ceiling.
-Voy a salir, I'm making a move,
-Your laugh in the hallway, I follow the groove.
-
-[Bridge]
-Quiero salir.
-Tengo que esperar.
+[Outro — short]
 Voy a salir.
 Ahora sí.
-One little pause, then the whole night opens,
-No perfect plan, just a door in motion.
 
-[Final Chorus]
-Quiero salir, quiero bailar,
-Tengo que esperar, tengo que esperar.
-Voy a salir, voy a bailar,
-Ahora sí, ahora sí.
-Quiero salir, quiero bailar,
-One minute more, then out that door.
-Voy a salir, voy a bailar,
-Ahora sí, ahora sí.
+Producer prompts — both 700–900 characters, no artist imitation:
 
-[Outro]
-Voy a salir.
-Ahora sí.
+1. Bass-forward bilingual rap-pop at 104 BPM with a confident playful female lead, dry intimate verses, elastic rhythmic phrasing and a melodic hook. Open on the first Spanish line; drums arrive within five seconds. Use warm heavy sub-bass, clipped syncopated drums, crisp claps, sparse synth stabs and one sly guitar figure. Give quiero salir, tengo que esperar and voy a salir distinct melodic shapes and natural Spanish stress; keep the infinitives clear. The scene is two friends trying to leave, late voice notes and matching jackets: affectionate teasing, no inspirational speech. Lift the chorus with a wider bass groove, strip verse two, then a short call-and-response bridge and final chorus with new ad-libs. Clean, charismatic, club-ready; no nursery melody, classroom recitation, sung translations, oversized choir, long intro or obscured consonants.
 
-Producer prompt — paste into the music-style field:
-Glossy bilingual dance-pop with rap-pop attitude, 106 BPM, punchy syncopated drums, warm sub-bass, crisp claps, tight percussion, neon synth stabs and a little late-night guitar texture. Playful confident female lead, intimate rhythmic verses, melodic chant-hook chorus and tasteful short ad-libs. Establish the hook within ten seconds. Spanish frames quiero salir, tengo que esperar and voy a salir must be intelligible with natural stress; no tongue-twister delivery. Give each phrase breathing room. Compact verses, rising pre-chorus, bass-forward chorus, stripped bridge and energetic final lift. Clean lyrics, contemporary radio-ready mix, bright but not childish. Avoid classroom chanting, nursery-song melodies, motivational narration, oversized choir, heavy vocal distortion and long instrumental intros.
+2. Atmospheric alternative R&B at 92 BPM with warm low end, a loose half-time pocket, rim clicks, brushed electronic percussion, hazy electric piano and a muted guitar motif. Charismatic female lead, close conversational verses, lightly layered melodic chorus; playful tension rather than sleepy spa music. Begin with quiero salir and a dry vocal before bass enters. Preserve the exact Spanish lyrics with natural stress, clear vowels and breathing room around tengo que esperar and voy a salir. Let the waiting scene feel intimate and funny. Keep English verses rhythmic, not over-sung. Build through a brief pre-chorus, give the hook an immediate melodic identity, drop to voice and bass for the bridge, then return with a fuller final chorus. Clean polished mix, compact ending; no grammar narration, nursery chant, excessive melisma, heavy vocal distortion or long ambient opening.
 
-Language notes: bailar is an additional supported lexicon entry, not an unlock target. “Voy a” is glossed as going to only when it introduces an action. Do not use a destination example to prove future-intention comprehension.
-Alternate treatments: (1) indie dance with live bass/guitar and an understated mixed-gender vocal; (2) atmospheric melodic R&B with half-time drums and a shorter hook. Preserve approved Spanish wording and concept coverage. Genre preference must not change the gate.
-Version family: original supported mix; later Spanish-heavy rewrite with a separate lyric map; instrumental/recall cut only after the original works. Do not fabricate a Spanish percentage: measure intelligible lyric tokens on the final rendition.
-Listening test: does the hook come back later, and can the learner use tengo que esperar in plain speech without the tune? The latter needs an actual response check.
+Exact line/concept map: content/core/arc-01/song.source.json. Timecodes and Spanish density remain unmeasured until audio exists. English is artistic scaffolding, not a translated answer key. Bailar is supported vocabulary, not an added gate. No recording has passed performance or pronunciation review.
 
-## 4. Spoken episode — El plan cambió
-Cast: Sofía, decisive but flexible; Mateo, friendly and easily distracted; narrator, warm and brief. No caricatured accent or exaggerated slow pronunciation. Use ordinary conversational recordings plus a separately recorded clear version. First reveal scene stakes in English, then let Spanish carry the exchange.
-A scene-only edit removes narrator questions and silent response gaps. The active edit uses the exact segments below. Bracketed directions are not spoken. A model answer is revealed only after a response/skip. English support can be omitted for learners with demonstrated comprehension.
+## 4. Spoken story — El plan cambió (rewritten)
+Listen edit: all 24 dialogue turns below, uninterrupted, with an opening keys/door cue, delivery bell between chapters and unpacking/plate sounds in B. No English narrator is required for premise or resolution. Sofía is decisive and dryly funny; Mateo wants his surprise meal at home to succeed and has over-ordered. Perform affectionately without cartoon accents or exaggerated slow syllables.
 
-Chapter A — The door and the plan
+Authoring estimate: about 75–120 seconds before optional practice; final timing is measured, never padded to meet the old 5–6 minute teaching template. A separately recorded clear version can help comprehension without mechanical slowdown.
 
-A01 Narrator: Sofía is ready to go out. Mateo has to wait for a delivery. The afternoon is not going to plan. Listen.
-A02 Sofía: Quiero salir.
-A03 Mateo: Tengo que esperar.
-A04 Sofía: Está bien. Voy a esperar.
-A05 [Active prompt] Narrator: Who wants to go out: Sofía or Mateo? [Pause five seconds; tap or optional voice.]
-A06 Narrator: Sofía. Quiero salir means I want to go out. Mateo says Tengo que esperar: I have to wait.
-A07 Sofía: Quiero comer.
-A08 Mateo: Voy a comer después.
-A09 Narrator: He plans to eat later. He didn’t say he has to eat.
-A10 [Active recall] Narrator: Tell Mateo you want to eat. [Pause seven seconds.]
-A11 Narrator: One way: Quiero comer.
-A12 Mateo: Tengo tiempo. Pero tengo que esperar.
-A13 Narrator: Tengo tiempo: I have time. Tengo que esperar: I have to wait. That que changes the job of the phrase.
-A14 [Active manipulation] Narrator: Keep comer. Change Quiero comer into a plan: I’m going to eat. [Pause seven seconds.]
-A15 Narrator: Voy a comer.
-A16 Sofía: Voy a salir después.
-A17 Mateo: Sí. Voy a esperar ahora.
-A18 [Active open response] Narrator: Choose a real or fictional action. Say something you want to do, then something you plan to do. You can use the same action, but make the two intentions clear. [Pause twelve seconds.]
-A19 Narrator: For example: Quiero salir. Voy a salir después. Your answer can be different.
-A20 [Scene reprise without narrator] Sofía: Quiero salir. Mateo: Tengo que esperar. Sofía: Está bien. Voy a esperar.
-A21 Narrator: Next: what you need, what you can do, and what you can’t do right now.
+### Chapter A
 
-Chapter B — A workable plan
+A01 Sofia: Mateo, quiero salir.
 
-B01 Narrator: Same afternoon. Sofía needs help. Mateo can help, but can’t go out yet. Ayuda means help; ayudar means to help.
-B02 Sofía: Necesito ayuda.
-B03 Mateo: Puedo ayudar.
-B04 Sofía: Gracias. Quiero salir ahora.
-B05 Mateo: No puedo salir ahora. Tengo que esperar.
-B06 [Active listening] Narrator: Is Mateo saying he doesn’t want to go out, or that he can’t go out now? [Pause five seconds.]
-B07 Narrator: He can’t go out now. No puedo does not mean I don’t want to.
-B08 Sofía: Está bien. Voy a esperar.
-B09 Mateo: Necesito comer.
-B10 Sofía: Puedo esperar.
-B11 [Active recall] Narrator: You need to sleep. Say it. [Pause seven seconds.]
-B12 Narrator: Necesito dormir.
-B13 [Active manipulation] Narrator: Puedo salir. Keep salir, but say you cannot go out. [Pause seven seconds.]
-B14 Narrator: No puedo salir.
-B15 [Active scene reply] Sofía: Necesito ayuda.
-B16 Narrator: You have time and are able to help. Answer Sofía in Spanish. [Pause eight seconds.]
-B17 Narrator: One answer: Puedo ayudar.
-B18 [Optional transfer practice] Mateo: Voy a salir ahora.
-B19 Narrator: Your situation changed: you can’t leave now because you have to wait. Tell Mateo both things. [Pause twelve seconds.]
-B20 Narrator: For example: No puedo salir ahora. Tengo que esperar.
-B21 Sofía: Voy a esperar. Después, quiero comer.
-B22 Mateo: Sí. Puedo salir después.
-B23 Narrator: A want, a need, an obligation, a plan, and what’s possible. Keep listening if you like; a Quick Check can see what you can use without these examples.
+A02 Mateo: Un minuto. Tengo que esperar la comida.
 
-Production direction: let the scene breathe, but do not pad pauses when the learner has already responded. Scene-only version is entertainment/exposure, not assessed production. If no recording/evaluation was captured, log optional spoken-along work as practice only. A response after A11 or B12 has been revealed is supported rehearsal, not uncued retrieval.
-Audio QC: do not merge the sung and spoken pronunciation models. Confirm intelligible tengo que and voy a at normal conversational timing with different speakers.
+A03 Sofia: ¿La comida? Quiero comer afuera.
+
+A04 Mateo: Sí, pero ya viene.
+
+P01 Sofia: ¿Y el restaurante?
+
+A06 Mateo: Hoy, aquí.
+
+A07 Sofia: ¿Aquí?
+
+A08 Mateo: Tengo música.
+
+A09 Sofia: Bueno. Voy a esperar. Un minuto.
+
+### Chapter B
+
+B01 Mateo: Ahora sí.
+
+B02 Sofia: ¿Todo eso es para dos?
+
+B03 Mateo: Necesito ayuda.
+
+B04 Sofia: Puedo ayudar. Pero no puedo comer todo eso.
+
+B05 Mateo: No. Quiero comer hoy y mañana.
+
+B06 Sofia: Mañana voy a comer afuera.
+
+B07 Mateo: Está bien. Voy a poner la música.
+
+B08 Sofia: Y yo voy a abrir esto.
+
+B09 Sofia: ¿Sin platos?
+
+B10 Mateo: Tengo platos.
+
+B11 Sofia: ¿Y la mesa?
+
+B12 Mateo: Aquí, en el piso.
+
+B13 Sofia: Cinco estrellas. En el piso.
+
+B14 Mateo: ¿Quieres salir?
+
+B15 Sofia: Ahora no. Quiero comer.
+
+### Optional Practice companion
+P01 after A: Tell Mateo what you want to do. Fictional answer allowed; about ten seconds. Example after response/skip: Quiero salir.
+P02 after A, separately optional: Keep comer as the action; say you plan to do it. Example after response/skip: Voy a comer. This is controlled practice, not novel production.
+P03 after B: Explain what you can do and one thing you cannot do. About fifteen seconds, adjustable. Example after response/skip: Puedo ayudar. No puedo salir ahora.
+Offer at most these three boundary prompts; never force them into Listen or Drive. Previously heard models lower evidential strength. The story and companion have distinct delivery metadata in episode.source.json; no naïve concatenation of all stored segments is a valid player route.
+
+Optional English setup: Sofía wants a restaurant outing; Mateo is waiting for food he ordered for them. Essential Spanish story words such as comida, afuera, restaurante, platos, mesa and piso have optional meaning support. They are exposure/support only and absent from narrow scored checks unless taught first. The final quieres is an Arc 2 preview, not an Arc 1 gate. A learner can enjoy partial story comprehension without being assessed on every decorative word.
+
+Native review priorities: character register, natural reading of ya viene, feasibility of the floor-picnic joke and prosody of the last two turns. No actual native approval is asserted.
 
 ## 5. Games — actual item banks
 Flip It rule: change the meaning frame, preserve the action, no word bank by default. Spanish source text is allowed here because the evidence is manipulation, not listening. Display prompt language and support mode honestly.
 F01 Quiero comer → make it a plan. Key: Voy a comer. Concepts C001/C006/C090.
 F02 Voy a salir → make it an obligation. Key: Tengo que salir. C006/C004/C090.
-F03 Tengo que esperar → express a want instead. Key: Quiero esperar. C004/C001/C090.
+F03 Tengo que comer → express a want instead. Key: Quiero comer. Use a meal context rather than an unexplained desire to wait. C004/C001/C090.
 F04 Quiero dormir → express a need. Key: Necesito dormir. C001/C002/C090.
 F05 Puedo ayudar → make it negative. Key: No puedo ayudar. C007/C008; narrow C091 observation.
 F06 No puedo salir → make it positive. Key: Puedo salir. C008/C007.
@@ -244,11 +249,11 @@ Readiness proposal, explicitly provisional:
 Each of six communicative frames needs at least one valid transcript-free listening success and one uncued meaning-appropriate generated use, either from this check or recent eligible evidence. A choice-only success needs a changed no-choice follow-up before being treated as secure listening.
 C090 needs correct finite-frame + infinitive structure in at least three distinct relevant constructions across responses. M01–M03 need meaningful changed-form success; preserve earlier passed evidence and recheck only a weak operation. C089 is observed only for the actual first-person frames used, never marked comprehensively mastered.
 For an uncertain answer, collect a second fresh example rather than making the first ambiguity a failure. Hinted/revealed answers are practice. Keep willingness to record separate from ability; a written route can demonstrate productive language, but label spoken production unobserved.
-Unlock Arc 2 provisionally when these narrow readiness conditions are met. Retention is pending until delayed fresh checks; do not claim retained mastery from one session. No 8/10 total, album completion condition, or global fluency certificate.
+For an independent Arc can-do, also require one held-out practical adjustment with eligible evidence; allow provisional Arc 2 access while delayed retention remains pending. The structured policy is in assessment.server.json. Retention is pending until delayed fresh checks; do not claim retained mastery from one session. No 8/10 total, album completion condition, or global fluency certificate.
 If other dimensions are strong but one is weak, preserve successes and recommend a Booster. Exact policies must be calibrated against human review in the pilot.
 
 Learner result wording:
-“All six patterns are usable here. Your next Arc is ready; we’ll bring these back later.”
+“You used these patterns in this check. Your next Core chapter is ready; we’ll bring them back later.”
 “You understand the plan. Let’s make tengo que easier to say without help.”
 “You said what you meant. We still need a listening check in a new voice.”
 “Audio didn’t come through. That’s a playback issue, not your Spanish.”
@@ -293,7 +298,7 @@ For a hearing/technical problem, do not automatically prescribe grammar practice
 Use proposed content keys as stable authoring references; database content_item UUIDs are assigned/resolved separately. Map each item to the existing concept IDs and link it to the resolved Arc 1 learning_unit in Core. Do not invent a seeded Arc row: migration 0022 defines tables, while the inspected Arc map supplies planning membership.
 Roles match existing unit_content_items: anchor_music, spoken_episode, game, speaking, checkpoint and reinforcement. Boosters can be practice/reinforcement content, not a new competing curriculum.
 Required metadata additions are proposals until implemented: package_version, approval_status, source_revision, primary_targets, supported_targets, assessed_dimensions, lexical_prerequisites, support_mode, script_segments, asset_ids, prompt_pool and rights_provenance.
-A proposed scene segment record: authoring_key A1-EP-01-A14; segment_kind prompt; expected_action change intention; assessed_targets C006/C090; evidence manipulation; answer_revealed false before response; audio_asset unresolved; response_capture optional.
+A proposed scene segment record: authoring_key A1-EP-01-P02; segment_kind prompt; expected_action change intention; assessed_targets C006/C090; evidence manipulation; answer_revealed false before response; audio_asset unresolved; response_capture optional.
 Do not claim the existing spoken_lesson_segments or assessment definitions accept these fields without an adapter. Inspect schema and evaluator implementation before loading. Open answers require semantic/target-aware review; prefix matching alone is insufficient.
 Capture all six target dimensions separately. Songs/episodes record exposure only when actual playback qualifies. Resume/queue position is engagement state, not mastery. Existing exposure ranking weights must not override the master’s zero assessed-mastery contribution.
 Keep answer keys and grading authority server-side. Client provides response and supported-event metadata, never correctness or unlock claims. Add an evaluator/version record to any derived decision.
@@ -311,16 +316,14 @@ Release gate: authored → pedagogically reviewed → linguistically reviewed �
 First implementation slice can use chapter A and the three anchor frames, but must label itself a partial Arc 1 pilot. It cannot claim the full six-function Arc is complete until chapter B and the full check exist.
 
 ## 12. Next production actions
-First: approve/revise the song hook and episode dialogue; obtain linguistic review.
-Second: generate two song treatments and record chapter A plus plain-speech clips. Listen before recording the rest.
-Third: finish chapter B and the held-out bank; load reviewed draft assets through the existing media pipeline.
+First: obtain external linguistic and teaching review of the v0.3 lyrics, complete story and answer keys.
+Second: generate two song treatments and record the complete short story plus plain-speech clips. Listen before selecting a treatment.
+Third: record separate check voices and held-out clips; load only reviewed assets through the existing media pipeline.
 Fourth: run the real player → response → evidence → Booster/retest loop. Test through from a fresh learner state and from a returning learner with prior evidence.
 Fifth: pilot with the creator plus other adult beginners/returning learners. Compare later plain-speech use, not merely song replay counts.
 Continue to Arc 2 only after the first loop is usable. Preserve this file’s version and source snapshot when revising; the master curriculum is not silently rewritten by generated content.
 
 
-## 13. Content-thread handoff — v0.2
-Self-review found leading listening questions and a loosely held-out retest pool. Version 0.2 removes frame clues from the listening questions, requires meaning plus action, and adds item-use history and cross-task priming exclusions. This is an internal creator review, not independent/native-speaker approval.
-The song bridge now stays musical instead of explaining English grammar. Chapter A gets a concrete reason for waiting. New studio files contain segmented speech and server-only draft assessment criteria; no app implementation or publication is performed in this thread.
-Latest authoring source: this repository file. The earlier Production Pack v0.1 Google Doc is a historical snapshot; the companion Recording & Review v0.2 Doc carries this revision’s changes.
-Music generation was attempted but blocked by the connected account’s paid-plan requirement. No song audio exists from this attempt. A short speech audition was generated; it is private preview material, not proof of approved pronunciation or a complete episode.
+## 13. Revision and handoff — v0.3
+Six internal passes revised the whole curriculum and this pack. The story now has a complete conflict/choice/payoff; 24 character turns replace the narrator-dominated teaching scene, with three optional practice prompts. The song replaces generic imagery with a specific social scene and two genre briefs. The expanded assessment source has 30 elicited/listening/manipulation candidates plus two held-out mission specifications. Item pools are not proof of novelty; cross-activity priming is explicitly filtered. Booster success remains provisional until a delayed check.
+Read docs/BORAO_MASTER_CURRICULUM.md v1.2 and docs/CURRICULUM_REVIEW_LOG_v1_2.md. The earlier v0.1/v0.2 Google Docs are historical snapshots. Full audio, native/teacher review, evaluator calibration and pilot evidence remain pending. Do not publish these sources or change app-ready status on the strength of this internal review.

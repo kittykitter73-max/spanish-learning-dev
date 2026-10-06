@@ -1,0 +1,906 @@
+{
+  "status": "authoring_spec_not_database_migration",
+  "seed_count": 100,
+  "concepts": [
+    {
+      "concept_id": "C001",
+      "seed_label": "quiero...",
+      "authoring_home_arc": 1,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C002",
+      "seed_label": "necesito...",
+      "authoring_home_arc": 1,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C003",
+      "seed_label": "tengo...",
+      "authoring_home_arc": 9,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C004",
+      "seed_label": "tengo que...",
+      "authoring_home_arc": 1,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C005",
+      "seed_label": "voy...",
+      "authoring_home_arc": 6,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C006",
+      "seed_label": "voy a...",
+      "authoring_home_arc": 1,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C007",
+      "seed_label": "puedo...",
+      "authoring_home_arc": 1,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C008",
+      "seed_label": "no puedo...",
+      "authoring_home_arc": 1,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C009",
+      "seed_label": "no sé...",
+      "authoring_home_arc": 4,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C010",
+      "seed_label": "sé...",
+      "authoring_home_arc": 4,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C011",
+      "seed_label": "me gusta...",
+      "authoring_home_arc": 9,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C012",
+      "seed_label": "no me gusta...",
+      "authoring_home_arc": 9,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C013",
+      "seed_label": "hay...",
+      "authoring_home_arc": 6,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C014",
+      "seed_label": "está...",
+      "authoring_home_arc": 6,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C015",
+      "seed_label": "estoy...",
+      "authoring_home_arc": 6,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C016",
+      "seed_label": "es...",
+      "authoring_home_arc": 9,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C017",
+      "seed_label": "dime...",
+      "authoring_home_arc": 2,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C018",
+      "seed_label": "dame...",
+      "authoring_home_arc": 2,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C019",
+      "seed_label": "vamos...",
+      "authoring_home_arc": 2,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C020",
+      "seed_label": "¿puedes...?",
+      "authoring_home_arc": 2,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C021",
+      "seed_label": "¿quieres...?",
+      "authoring_home_arc": 2,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C022",
+      "seed_label": "¿necesitas...?",
+      "authoring_home_arc": 2,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C023",
+      "seed_label": "¿tienes...?",
+      "authoring_home_arc": 2,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C024",
+      "seed_label": "está bien",
+      "authoring_home_arc": 2,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C025",
+      "seed_label": "qué",
+      "authoring_home_arc": 3,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C026",
+      "seed_label": "quién",
+      "authoring_home_arc": 3,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C027",
+      "seed_label": "dónde",
+      "authoring_home_arc": 3,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C028",
+      "seed_label": "cuándo",
+      "authoring_home_arc": 3,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C029",
+      "seed_label": "por qué",
+      "authoring_home_arc": 3,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C030",
+      "seed_label": "cómo",
+      "authoring_home_arc": 3,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C031",
+      "seed_label": "cuál",
+      "authoring_home_arc": 3,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C032",
+      "seed_label": "cuánto",
+      "authoring_home_arc": 3,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C033",
+      "seed_label": "otra vez",
+      "authoring_home_arc": 4,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C034",
+      "seed_label": "más despacio",
+      "authoring_home_arc": 4,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C035",
+      "seed_label": "no entiendo",
+      "authoring_home_arc": 4,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C036",
+      "seed_label": "entiendo",
+      "authoring_home_arc": 4,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C037",
+      "seed_label": "¿qué significa...?",
+      "authoring_home_arc": 4,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C038",
+      "seed_label": "¿cómo se dice...?",
+      "authoring_home_arc": 4,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C039",
+      "seed_label": "¿puedes repetir?",
+      "authoring_home_arc": 4,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C040",
+      "seed_label": "sí / no",
+      "authoring_home_arc": 4,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C041",
+      "seed_label": "por favor",
+      "authoring_home_arc": 2,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C042",
+      "seed_label": "gracias",
+      "authoring_home_arc": 2,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C043",
+      "seed_label": "perdón",
+      "authoring_home_arc": 2,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C044",
+      "seed_label": "ahora",
+      "authoring_home_arc": 5,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C045",
+      "seed_label": "después",
+      "authoring_home_arc": 5,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C046",
+      "seed_label": "antes",
+      "authoring_home_arc": 5,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C047",
+      "seed_label": "hoy",
+      "authoring_home_arc": 5,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C048",
+      "seed_label": "mañana",
+      "authoring_home_arc": 5,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C049",
+      "seed_label": "ayer",
+      "authoring_home_arc": 5,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C050",
+      "seed_label": "todavía",
+      "authoring_home_arc": 5,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C051",
+      "seed_label": "ya",
+      "authoring_home_arc": 5,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C052",
+      "seed_label": "aquí",
+      "authoring_home_arc": 6,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C053",
+      "seed_label": "ahí",
+      "authoring_home_arc": 6,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C054",
+      "seed_label": "allí",
+      "authoring_home_arc": 6,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C055",
+      "seed_label": "cerca",
+      "authoring_home_arc": 6,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C056",
+      "seed_label": "lejos",
+      "authoring_home_arc": 6,
+      "evidence_role": "functional_chunk_or_sense",
+      "scope": "Assess the declared function in context; production only where the Arc mission calls for it.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C057",
+      "seed_label": "ir",
+      "authoring_home_arc": 6,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C058",
+      "seed_label": "venir",
+      "authoring_home_arc": 6,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C059",
+      "seed_label": "hacer",
+      "authoring_home_arc": 7,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C060",
+      "seed_label": "tener",
+      "authoring_home_arc": 9,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C061",
+      "seed_label": "querer",
+      "authoring_home_arc": 1,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C062",
+      "seed_label": "poder",
+      "authoring_home_arc": 1,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C063",
+      "seed_label": "necesitar",
+      "authoring_home_arc": 1,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C064",
+      "seed_label": "estar",
+      "authoring_home_arc": 9,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C065",
+      "seed_label": "ser",
+      "authoring_home_arc": 9,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C066",
+      "seed_label": "saber",
+      "authoring_home_arc": 4,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C067",
+      "seed_label": "entender",
+      "authoring_home_arc": 4,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C068",
+      "seed_label": "hablar",
+      "authoring_home_arc": 7,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C069",
+      "seed_label": "decir",
+      "authoring_home_arc": 8,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C070",
+      "seed_label": "dar",
+      "authoring_home_arc": 8,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C071",
+      "seed_label": "ver",
+      "authoring_home_arc": 7,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C072",
+      "seed_label": "poner",
+      "authoring_home_arc": 8,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C073",
+      "seed_label": "llevar",
+      "authoring_home_arc": 8,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C074",
+      "seed_label": "traer",
+      "authoring_home_arc": 8,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C075",
+      "seed_label": "comer",
+      "authoring_home_arc": 1,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C076",
+      "seed_label": "beber",
+      "authoring_home_arc": 7,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C077",
+      "seed_label": "dormir",
+      "authoring_home_arc": 1,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C078",
+      "seed_label": "jugar",
+      "authoring_home_arc": 7,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C079",
+      "seed_label": "abrir",
+      "authoring_home_arc": 7,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C080",
+      "seed_label": "cerrar",
+      "authoring_home_arc": 7,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C081",
+      "seed_label": "esperar",
+      "authoring_home_arc": 7,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C082",
+      "seed_label": "ayudar",
+      "authoring_home_arc": 8,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C083",
+      "seed_label": "buscar",
+      "authoring_home_arc": 8,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C084",
+      "seed_label": "encontrar",
+      "authoring_home_arc": 8,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C085",
+      "seed_label": "limpiar",
+      "authoring_home_arc": 7,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C086",
+      "seed_label": "salir",
+      "authoring_home_arc": 6,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C087",
+      "seed_label": "entrar",
+      "authoring_home_arc": 6,
+      "evidence_role": "lexical_scaffold_with_scoped_form_observations",
+      "scope": "Use the forms and senses required by the Arc mission; no full lemma/paradigm gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C088",
+      "seed_label": "present tense regular patterns",
+      "authoring_home_arc": 7,
+      "evidence_role": "scoped_construction_support",
+      "scope": "Record only sampled patterns, people and meanings; broad grammar label is not a comprehensive gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C089",
+      "seed_label": "high-frequency irregular present forms",
+      "authoring_home_arc": 10,
+      "evidence_role": "scoped_construction_support",
+      "scope": "Record only sampled patterns, people and meanings; broad grammar label is not a comprehensive gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C090",
+      "seed_label": "infinitive chaining",
+      "authoring_home_arc": 1,
+      "evidence_role": "scoped_construction_support",
+      "scope": "Record only sampled patterns, people and meanings; broad grammar label is not a comprehensive gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C091",
+      "seed_label": "basic negation",
+      "authoring_home_arc": 7,
+      "evidence_role": "scoped_construction_support",
+      "scope": "Record only sampled patterns, people and meanings; broad grammar label is not a comprehensive gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C092",
+      "seed_label": "question formation + intonation",
+      "authoring_home_arc": 3,
+      "evidence_role": "scoped_construction_support",
+      "scope": "Record only sampled patterns, people and meanings; broad grammar label is not a comprehensive gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C093",
+      "seed_label": "noun phrase gender/number agreement",
+      "authoring_home_arc": 9,
+      "evidence_role": "scoped_construction_support",
+      "scope": "Record only sampled patterns, people and meanings; broad grammar label is not a comprehensive gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C094",
+      "seed_label": "hay vs estar",
+      "authoring_home_arc": 6,
+      "evidence_role": "scoped_construction_support",
+      "scope": "Record only sampled patterns, people and meanings; broad grammar label is not a comprehensive gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C095",
+      "seed_label": "ser vs estar introduction",
+      "authoring_home_arc": 9,
+      "evidence_role": "scoped_construction_support",
+      "scope": "Record only sampled patterns, people and meanings; broad grammar label is not a comprehensive gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C096",
+      "seed_label": "Spanish five-vowel clarity",
+      "authoring_home_arc": 10,
+      "evidence_role": "receptive_or_intelligibility_support",
+      "scope": "Demonstrate intelligibility or interpret a reviewed familiar contrast; no native-accent or perfect-trill gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C097",
+      "seed_label": "word stress awareness",
+      "authoring_home_arc": 10,
+      "evidence_role": "receptive_or_intelligibility_support",
+      "scope": "Demonstrate intelligibility or interpret a reviewed familiar contrast; no native-accent or perfect-trill gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C098",
+      "seed_label": "question intonation",
+      "authoring_home_arc": 3,
+      "evidence_role": "receptive_or_intelligibility_support",
+      "scope": "Demonstrate intelligibility or interpret a reviewed familiar contrast; no native-accent or perfect-trill gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C099",
+      "seed_label": "connected-speech chunking",
+      "authoring_home_arc": 4,
+      "evidence_role": "receptive_or_intelligibility_support",
+      "scope": "Demonstrate intelligibility or interpret a reviewed familiar contrast; no native-accent or perfect-trill gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    },
+    {
+      "concept_id": "C100",
+      "seed_label": "r / rr and ll / y awareness",
+      "authoring_home_arc": 10,
+      "evidence_role": "receptive_or_intelligibility_support",
+      "scope": "Demonstrate intelligibility or interpret a reviewed familiar contrast; no native-accent or perfect-trill gate.",
+      "curriculum_version": "1.2",
+      "database_membership_verified": false
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# Borao Core Arc Map v0.1
+# Borao Core Arc Map v0.2 — complete authoring coverage
 
 Core is a finite foundation. The learner should feel a clear sense of momentum toward unlocking elective modules.
 
@@ -265,3 +265,24 @@ Completion should require:
 Do not require every one of the 100 concepts to reach the same confidence threshold. Some are active production targets; some are noticing/listening support concepts.
 
 Passing Core unlocks elective modules while Core concepts continue resurfacing through smart mixes and module content.
+
+
+## v1.2 scope correction and complete coverage
+The former written map omitted twelve seed concepts. The following assignments close the authoring gap; they do not mutate database rows. The structured register content/curriculum/core-coverage.v1.2.json assigns all 100 seed concepts, including supported lexical/construction roles. A home is accountability for teaching and review, not exclusive content membership. Other Arcs may recycle it.
+
+| Previously omitted ID | Home Arc | Scoped teaching job |
+|---|---|---|
+| C005 voy | 6 | Destination/movement; contrast with voy a + action |
+| C010 sé | 4 | Know versus understand; no sé/entiendo contrast |
+| C024 está bien | 2 | Accept or confirm a shared plan in context |
+| C060 tener | 9 | Possession and familiar states; obligation already observed separately |
+| C061 querer | 1 | Lemma support for known quiero; later person forms in Arc 2 |
+| C062 poder | 1 | Lemma support for ability frames; permission sense introduced separately |
+| C063 necesitar | 1 | Known need frames; later person variants in Arc 2 |
+| C066 saber | 4 | Useful known chunks, not a full irregular paradigm |
+| C067 entender | 4 | Comprehension/repair chunks; scoped person variants |
+| C068 hablar | 7 | Familiar speaking action in daily-life frames |
+| C069 decir | 8 | Information requests with dime; fuller forms later |
+| C071 ver | 7 | Familiar seeing action; new senses require separate evidence |
+
+Arc 5 does not require narration of yesterday using an untaught past tense: ayer is receptive timing at Core, with narrative past in later pathways. Arc 3 question words are taught in small functional sets, not eight at once. Arc 8 teaches dame/dime with context and politeness alternatives, not universal commands for service staff. Arc 10 integrates familiar language in new voices; it does not demand every conjugation, r trill, regional reduction or all senses of broad grammar IDs. Repair is available from first contact, even before the fuller Arc 4 check.

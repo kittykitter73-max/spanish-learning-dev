@@ -1,5 +1,5 @@
 {
-  "package_version": "0.2",
+  "package_version": "0.3",
   "server_only": true,
   "status": "draft_pending_native_review",
   "not_a_database_migration": true,
@@ -29,7 +29,12 @@
       "response_language": "English or equivalent Spanish paraphrase; score meaning not English wording",
       "transcript_before_response": false,
       "choices_before_response": false,
-      "status": "draft"
+      "status": "draft",
+      "pool": "A",
+      "item_family": "L-C001",
+      "context_id": "arc01-check-a",
+      "human_review_complete": false,
+      "speaker_id": "check_voice_a_pending"
     },
     {
       "item_id": "A1-CHECK-A-L02",
@@ -55,7 +60,12 @@
       "response_language": "English or equivalent Spanish paraphrase; score meaning not English wording",
       "transcript_before_response": false,
       "choices_before_response": false,
-      "status": "draft"
+      "status": "draft",
+      "pool": "A",
+      "item_family": "L-C002",
+      "context_id": "arc01-check-a",
+      "human_review_complete": false,
+      "speaker_id": "check_voice_a_pending"
     },
     {
       "item_id": "A1-CHECK-A-L03",
@@ -81,7 +91,12 @@
       "response_language": "English or equivalent Spanish paraphrase; score meaning not English wording",
       "transcript_before_response": false,
       "choices_before_response": false,
-      "status": "draft"
+      "status": "draft",
+      "pool": "A",
+      "item_family": "L-C004",
+      "context_id": "arc01-check-a",
+      "human_review_complete": false,
+      "speaker_id": "check_voice_a_pending"
     },
     {
       "item_id": "A1-CHECK-A-L04",
@@ -107,7 +122,12 @@
       "response_language": "English or equivalent Spanish paraphrase; score meaning not English wording",
       "transcript_before_response": false,
       "choices_before_response": false,
-      "status": "draft"
+      "status": "draft",
+      "pool": "A",
+      "item_family": "L-C006",
+      "context_id": "arc01-check-a",
+      "human_review_complete": false,
+      "speaker_id": "check_voice_a_pending"
     },
     {
       "item_id": "A1-CHECK-A-L05",
@@ -133,7 +153,12 @@
       "response_language": "English or equivalent Spanish paraphrase; score meaning not English wording",
       "transcript_before_response": false,
       "choices_before_response": false,
-      "status": "draft"
+      "status": "draft",
+      "pool": "A",
+      "item_family": "L-C007",
+      "context_id": "arc01-check-a",
+      "human_review_complete": false,
+      "speaker_id": "check_voice_a_pending"
     },
     {
       "item_id": "A1-CHECK-A-L06",
@@ -159,7 +184,12 @@
       "response_language": "English or equivalent Spanish paraphrase; score meaning not English wording",
       "transcript_before_response": false,
       "choices_before_response": false,
-      "status": "draft"
+      "status": "draft",
+      "pool": "A",
+      "item_family": "L-C008",
+      "context_id": "arc01-check-a",
+      "human_review_complete": false,
+      "speaker_id": "check_voice_a_pending"
     },
     {
       "item_id": "A1-CHECK-A-M01",
@@ -171,7 +201,11 @@
       "source": "Tengo que comer",
       "prompt": "Change this to a plan.",
       "model_after_response": "Voy a comer",
-      "status": "draft"
+      "status": "draft",
+      "pool": "A",
+      "item_family": "M-C006",
+      "context_id": "arc01-check-a",
+      "human_review_complete": false
     },
     {
       "item_id": "A1-CHECK-A-M02",
@@ -182,7 +216,11 @@
       "source": "Puedo ayudar",
       "prompt": "Make this negative.",
       "model_after_response": "No puedo ayudar",
-      "status": "draft"
+      "status": "draft",
+      "pool": "A",
+      "item_family": "M-C008",
+      "context_id": "arc01-check-a",
+      "human_review_complete": false
     },
     {
       "item_id": "A1-CHECK-A-M03",
@@ -194,7 +232,11 @@
       "source": "Quiero salir",
       "prompt": "Express a need instead.",
       "model_after_response": "Necesito salir",
-      "status": "draft"
+      "status": "draft",
+      "pool": "A",
+      "item_family": "M-C002",
+      "context_id": "arc01-check-a",
+      "human_review_complete": false
     },
     {
       "item_id": "A1-CHECK-A-P01",
@@ -211,7 +253,12 @@
       "scoring_policy": "Separate communicative success and observed target use; accept appropriate variations. If paraphrase avoids target, task may succeed with target unobserved. No prefix-only grader.",
       "capture": "voice by explicit consent, or written route labelled written production",
       "lexical_cue_before_response": false,
-      "status": "draft"
+      "status": "draft",
+      "pool": "A",
+      "item_family": "P-C001",
+      "context_id": "arc01-check-a",
+      "human_review_complete": false,
+      "score_scope": "uncued elicited production; not spontaneous transfer"
     },
     {
       "item_id": "A1-CHECK-A-P02",
@@ -228,7 +275,12 @@
       "scoring_policy": "Separate communicative success and observed target use; accept appropriate variations. If paraphrase avoids target, task may succeed with target unobserved. No prefix-only grader.",
       "capture": "voice by explicit consent, or written route labelled written production",
       "lexical_cue_before_response": false,
-      "status": "draft"
+      "status": "draft",
+      "pool": "A",
+      "item_family": "P-C002",
+      "context_id": "arc01-check-a",
+      "human_review_complete": false,
+      "score_scope": "uncued elicited production; not spontaneous transfer"
     },
     {
       "item_id": "A1-CHECK-A-P03",
@@ -245,7 +297,12 @@
       "scoring_policy": "Separate communicative success and observed target use; accept appropriate variations. If paraphrase avoids target, task may succeed with target unobserved. No prefix-only grader.",
       "capture": "voice by explicit consent, or written route labelled written production",
       "lexical_cue_before_response": false,
-      "status": "draft"
+      "status": "draft",
+      "pool": "A",
+      "item_family": "P-C004",
+      "context_id": "arc01-check-a",
+      "human_review_complete": false,
+      "score_scope": "uncued elicited production; not spontaneous transfer"
     },
     {
       "item_id": "A1-CHECK-A-P04",
@@ -262,7 +319,12 @@
       "scoring_policy": "Separate communicative success and observed target use; accept appropriate variations. If paraphrase avoids target, task may succeed with target unobserved. No prefix-only grader.",
       "capture": "voice by explicit consent, or written route labelled written production",
       "lexical_cue_before_response": false,
-      "status": "draft"
+      "status": "draft",
+      "pool": "A",
+      "item_family": "P-C006",
+      "context_id": "arc01-check-a",
+      "human_review_complete": false,
+      "score_scope": "uncued elicited production; not spontaneous transfer"
     },
     {
       "item_id": "A1-CHECK-A-P05",
@@ -279,7 +341,12 @@
       "scoring_policy": "Separate communicative success and observed target use; accept appropriate variations. If paraphrase avoids target, task may succeed with target unobserved. No prefix-only grader.",
       "capture": "voice by explicit consent, or written route labelled written production",
       "lexical_cue_before_response": false,
-      "status": "draft"
+      "status": "draft",
+      "pool": "A",
+      "item_family": "P-C007",
+      "context_id": "arc01-check-a",
+      "human_review_complete": false,
+      "score_scope": "uncued elicited production; not spontaneous transfer"
     },
     {
       "item_id": "A1-CHECK-A-P06",
@@ -296,6 +363,305 @@
       "scoring_policy": "Separate communicative success and observed target use; accept appropriate variations. If paraphrase avoids target, task may succeed with target unobserved. No prefix-only grader.",
       "capture": "voice by explicit consent, or written route labelled written production",
       "lexical_cue_before_response": false,
+      "status": "draft",
+      "pool": "A",
+      "item_family": "P-C008",
+      "context_id": "arc01-check-a",
+      "human_review_complete": false,
+      "score_scope": "uncued elicited production; not spontaneous transfer"
+    },
+    {
+      "item_id": "A1-CHECK-B-L01",
+      "pool": "B",
+      "item_family": "L-C001",
+      "context_id": "arc01-check-b",
+      "concept_ids": [
+        "C001"
+      ],
+      "dimension": "listening_comprehension",
+      "prompt": "What is this person saying?",
+      "audio_text": "Quiero hablar ahora.",
+      "audio_asset_id": null,
+      "speaker_id": "check_voice_b_pending",
+      "required_meaning": {
+        "intention": "want",
+        "action": "speak now"
+      },
+      "transcript_before_response": false,
+      "choices_before_response": false,
+      "human_review_complete": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-B-P01",
+      "pool": "B",
+      "item_family": "P-C001",
+      "context_id": "arc01-check-b",
+      "concept_ids": [
+        "C001"
+      ],
+      "dimension": "elicited_production",
+      "prompt": "You want to speak now. Say it.",
+      "model_after_response": "Quiero hablar ahora.",
+      "required_meaning": {
+        "intention": "want",
+        "action": "speak now"
+      },
+      "human_review_complete": false,
+      "score_scope": "uncued elicited production; not spontaneous transfer",
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-B-L02",
+      "pool": "B",
+      "item_family": "L-C002",
+      "context_id": "arc01-check-b",
+      "concept_ids": [
+        "C002"
+      ],
+      "dimension": "listening_comprehension",
+      "prompt": "What is this person saying?",
+      "audio_text": "Necesito esperar.",
+      "audio_asset_id": null,
+      "speaker_id": "check_voice_b_pending",
+      "required_meaning": {
+        "intention": "need",
+        "action": "wait"
+      },
+      "transcript_before_response": false,
+      "choices_before_response": false,
+      "human_review_complete": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-B-P02",
+      "pool": "B",
+      "item_family": "P-C002",
+      "context_id": "arc01-check-b",
+      "concept_ids": [
+        "C002"
+      ],
+      "dimension": "elicited_production",
+      "prompt": "You need to wait. Explain that.",
+      "model_after_response": "Necesito esperar.",
+      "required_meaning": {
+        "intention": "need",
+        "action": "wait"
+      },
+      "human_review_complete": false,
+      "score_scope": "uncued elicited production; not spontaneous transfer",
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-B-L03",
+      "pool": "B",
+      "item_family": "L-C004",
+      "context_id": "arc01-check-b",
+      "concept_ids": [
+        "C004"
+      ],
+      "dimension": "listening_comprehension",
+      "prompt": "What is this person saying?",
+      "audio_text": "Tengo que ayudar.",
+      "audio_asset_id": null,
+      "speaker_id": "check_voice_b_pending",
+      "required_meaning": {
+        "intention": "obligation",
+        "action": "help"
+      },
+      "transcript_before_response": false,
+      "choices_before_response": false,
+      "human_review_complete": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-B-P03",
+      "pool": "B",
+      "item_family": "P-C004",
+      "context_id": "arc01-check-b",
+      "concept_ids": [
+        "C004"
+      ],
+      "dimension": "elicited_production",
+      "prompt": "Helping is required. Explain that obligation.",
+      "model_after_response": "Tengo que ayudar.",
+      "required_meaning": {
+        "intention": "obligation",
+        "action": "help"
+      },
+      "human_review_complete": false,
+      "score_scope": "uncued elicited production; not spontaneous transfer",
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-B-L04",
+      "pool": "B",
+      "item_family": "L-C006",
+      "context_id": "arc01-check-b",
+      "concept_ids": [
+        "C006"
+      ],
+      "dimension": "listening_comprehension",
+      "prompt": "What is this person saying?",
+      "audio_text": "Voy a dormir después.",
+      "audio_asset_id": null,
+      "speaker_id": "check_voice_b_pending",
+      "required_meaning": {
+        "intention": "planned action",
+        "action": "sleep later"
+      },
+      "transcript_before_response": false,
+      "choices_before_response": false,
+      "human_review_complete": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-B-P04",
+      "pool": "B",
+      "item_family": "P-C006",
+      "context_id": "arc01-check-b",
+      "concept_ids": [
+        "C006"
+      ],
+      "dimension": "elicited_production",
+      "prompt": "You have decided to sleep later. Say your plan.",
+      "model_after_response": "Voy a dormir después.",
+      "required_meaning": {
+        "intention": "planned action",
+        "action": "sleep later"
+      },
+      "human_review_complete": false,
+      "score_scope": "uncued elicited production; not spontaneous transfer",
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-B-L05",
+      "pool": "B",
+      "item_family": "L-C007",
+      "context_id": "arc01-check-b",
+      "concept_ids": [
+        "C007"
+      ],
+      "dimension": "listening_comprehension",
+      "prompt": "What is this person saying?",
+      "audio_text": "Puedo comer ahora.",
+      "audio_asset_id": null,
+      "speaker_id": "check_voice_b_pending",
+      "required_meaning": {
+        "intention": "ability/availability",
+        "action": "eat now"
+      },
+      "transcript_before_response": false,
+      "choices_before_response": false,
+      "human_review_complete": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-B-P05",
+      "pool": "B",
+      "item_family": "P-C007",
+      "context_id": "arc01-check-b",
+      "concept_ids": [
+        "C007"
+      ],
+      "dimension": "elicited_production",
+      "prompt": "You are able to eat now. Explain that.",
+      "model_after_response": "Puedo comer ahora.",
+      "required_meaning": {
+        "intention": "ability/availability",
+        "action": "eat now"
+      },
+      "human_review_complete": false,
+      "score_scope": "uncued elicited production; not spontaneous transfer",
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-B-L06",
+      "pool": "B",
+      "item_family": "L-C008",
+      "context_id": "arc01-check-b",
+      "concept_ids": [
+        "C008"
+      ],
+      "dimension": "listening_comprehension",
+      "prompt": "What is this person saying?",
+      "audio_text": "No puedo comer ahora.",
+      "audio_asset_id": null,
+      "speaker_id": "check_voice_b_pending",
+      "required_meaning": {
+        "intention": "inability/unavailability",
+        "action": "eat now"
+      },
+      "transcript_before_response": false,
+      "choices_before_response": false,
+      "human_review_complete": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-B-P06",
+      "pool": "B",
+      "item_family": "P-C008",
+      "context_id": "arc01-check-b",
+      "concept_ids": [
+        "C008"
+      ],
+      "dimension": "elicited_production",
+      "prompt": "You cannot eat now. Explain that constraint.",
+      "model_after_response": "No puedo comer ahora.",
+      "required_meaning": {
+        "intention": "inability/unavailability",
+        "action": "eat now"
+      },
+      "human_review_complete": false,
+      "score_scope": "uncued elicited production; not spontaneous transfer",
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-B-M01",
+      "pool": "B",
+      "item_family": "M-C006",
+      "context_id": "arc01-check-b",
+      "concept_ids": [
+        "C006",
+        "C090"
+      ],
+      "dimension": "manipulation",
+      "source": "Necesito hablar.",
+      "prompt": "Keep the action; make it a plan.",
+      "model_after_response": "Voy a hablar.",
+      "human_review_complete": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-B-M02",
+      "pool": "B",
+      "item_family": "M-C001",
+      "context_id": "arc01-check-b",
+      "concept_ids": [
+        "C001",
+        "C090"
+      ],
+      "dimension": "manipulation",
+      "source": "Tengo que dormir.",
+      "prompt": "Keep the action; express a want.",
+      "model_after_response": "Quiero dormir.",
+      "human_review_complete": false,
+      "status": "draft"
+    },
+    {
+      "item_id": "A1-CHECK-B-M03",
+      "pool": "B",
+      "item_family": "M-C008",
+      "context_id": "arc01-check-b",
+      "concept_ids": [
+        "C008",
+        "C091"
+      ],
+      "dimension": "manipulation",
+      "source": "Puedo comer.",
+      "prompt": "Make the ability statement negative.",
+      "model_after_response": "No puedo comer.",
+      "human_review_complete": false,
       "status": "draft"
     }
   ],
@@ -317,7 +683,7 @@
       "attempt_id",
       "context_id"
     ],
-    "rule": "Reject claimed fresh evidence if the same answer was just exposed in that attempt. Equivalent answer from another item still primes it."
+    "rule": "A or B is a pool label, not proof of novelty. Track semantic target output, models, audio and episode/booster use across activities. Exclude same-attempt primed answers; select unused lexical/context variants or defer. B listening and B production with identical answers must never be delivered together as fresh checks."
   },
   "readiness_policy_source": "docs/CORE_ARC_01_PRODUCTION_PACK.md section 7",
   "readiness_thresholds_provisional": true,
@@ -326,5 +692,91 @@
     "listening_comprehension",
     "manipulation"
   ],
-  "order_note": "Never assume stored JSON array order is the learner delivery order. Production first reduces priming; item-use history still filters the actual prompts and prior support."
+  "order_note": "Never assume stored JSON array order is the learner delivery order. Production first reduces priming; item-use history still filters the actual prompts and prior support.",
+  "mission_pools": [
+    {
+      "mission_id": "A1-TRANSFER-MEAL",
+      "learner_context": "A friend is organizing a meal. You decide when to eat. An unexpected earlier invitation arrives. Respond usefully; fictional answers are welcome.",
+      "interlocutor_turns": [
+        {
+          "text": "Voy a comer ahora.",
+          "audio_asset_id": null
+        },
+        {
+          "text": "No puedo esperar.",
+          "audio_asset_id": null
+        }
+      ],
+      "actions": [
+        "convey an intention",
+        "understand changed availability",
+        "respond with a viable next action"
+      ],
+      "accepted_task_alternatives": [
+        "eat now",
+        "eat later separately",
+        "decline and explain",
+        "ask for clarification"
+      ],
+      "target_evidence": "Only constructions actually observed; no requirement to recite all six.",
+      "speaker_id": "transfer_voice_pending",
+      "human_review_complete": false
+    },
+    {
+      "mission_id": "A1-TRANSFER-HELP",
+      "learner_context": "A friend needs help now. Decide whether you are available, then handle a change in timing.",
+      "interlocutor_turns": [
+        {
+          "text": "Necesito ayuda ahora.",
+          "audio_asset_id": null
+        },
+        {
+          "text": "Voy a salir después.",
+          "audio_asset_id": null
+        }
+      ],
+      "actions": [
+        "interpret the need",
+        "offer help or explain inability",
+        "adjust the response to timing"
+      ],
+      "accepted_task_alternatives": [
+        "offer available help",
+        "decline with a constraint",
+        "propose later help",
+        "ask for clarification"
+      ],
+      "target_evidence": "Only observed frames; task success may use other valid language.",
+      "speaker_id": "transfer_voice_pending",
+      "human_review_complete": false
+    }
+  ],
+  "sampling_policy": {
+    "mode": "adaptive_missing_functions",
+    "max_initial_probe_count": 6,
+    "continue": "Reuse valid recent evidence and select unresolved functions. If more evidence is needed, offer a second short check, preserving progress.",
+    "duration_estimate_minutes": [
+      3,
+      6
+    ],
+    "duration_measured": false,
+    "uncertain": "A changed probe or human review; do not convert scorer uncertainty into language failure."
+  },
+  "readiness_policy": {
+    "policy_version": "arc01-v0.3-provisional",
+    "critical_frames": [
+      "C001",
+      "C002",
+      "C004",
+      "C006",
+      "C007",
+      "C008"
+    ],
+    "each_frame": "One eligible transcript-free meaning success and one uncued generated use is an initial routing minimum, subject to ambiguity checks; not established statistical reliability.",
+    "construction_scope": "Correct known frame+infinitive across at least three relevant frames. C089 broad irregular and C090 broad chaining remain scoped observations.",
+    "transfer": "At least one held-out communicative adjustment for an independent Arc can-do; elicited A/B prompts alone do not establish transfer.",
+    "retention": "Immediate unlock is provisional; later fresh new-voice/context evidence is required for a retained label.",
+    "written_route": "Written generation can satisfy written readiness and continued access; spoken production remains unobserved.",
+    "technical_errors": "unscored; no negative learner inference"
+  }
 }

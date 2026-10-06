@@ -1,0 +1,331 @@
+{
+  "package_version": "0.3",
+  "content_id": "A1-MUSIC-01",
+  "title": "Ahora sí",
+  "status": "internally_revised_pending_native_and_audio_review",
+  "primary_targets": [
+    "C001",
+    "C004",
+    "C006"
+  ],
+  "supported_lexicon": [
+    "salir",
+    "esperar",
+    "bailar",
+    "ahora sí"
+  ],
+  "lyrics": "[Cold open — dry vocal, beat enters on sí]\nQuiero salir.\nTengo que esperar.\nVoy a salir.\nAhora sí.\n\n[Verse 1 — rhythmic, close]\nLeft shoe on, right shoe missing,\nYour voice note says, “One minute.” Listen—\nQuiero salir, I’m by the door,\nSame three dots as the minute before.\nTengo que esperar, fine, I can stay,\nBut I’m stealing your jacket if you’re late.\n\n[Pre-chorus — bass drops out]\nKeys hit the counter, I count to three,\nYou come downstairs looking just like me.\nSame black jacket? Keep it. Alright.\nWe’re both wearing trouble tonight.\n\n[Chorus — three different melodic shapes]\nQuiero salir, quiero bailar,\nTengo que esperar—ah, ah.\nVoy a salir, voy a bailar,\nAhora sí, ahora sí.\nQuiero salir, quiero bailar,\nOne more minute? That’s what you said.\nVoy a salir, voy a bailar,\nAhora sí—get out of your head.\n\n[Verse 2 — beat strips to drums and bass]\nYou take the stairs, I ride down slow,\nWe hit the sidewalk, nowhere to go.\nQuiero bailar, no speech to make,\nYou find the rhythm, I find the break.\nVoy a bailar, I’m choosing the floor,\nYou miss the step, then we laugh some more.\n\n[Bridge — call and answer, no explanation]\nQuiero salir. (I’m at the door.)\nTengo que esperar. (One minute more.)\nVoy a salir. (Your keys, your phone.)\nAhora sí. (We’re finally gone.)\n\n[Final chorus — change the arrangement, not the targets]\nQuiero salir, quiero bailar,\nTengo que esperar—ah, ah.\nVoy a salir, voy a bailar,\nAhora sí, ahora sí.\nQuiero salir, quiero bailar,\nSame black jacket, different moves.\nVoy a salir, voy a bailar,\nAhora sí—I’m going with you.\n\n[Outro — short]\nVoy a salir.\nAhora sí.\n",
+  "producer_prompts": [
+    {
+      "lane": "rap-pop",
+      "characters": 859,
+      "prompt": "Bass-forward bilingual rap-pop at 104 BPM with a confident playful female lead, dry intimate verses, elastic rhythmic phrasing and a melodic hook. Open on the first Spanish line; drums arrive within five seconds. Use warm heavy sub-bass, clipped syncopated drums, crisp claps, sparse synth stabs and one sly guitar figure. Give quiero salir, tengo que esperar and voy a salir distinct melodic shapes and natural Spanish stress; keep the infinitives clear. The scene is two friends trying to leave, late voice notes and matching jackets: affectionate teasing, no inspirational speech. Lift the chorus with a wider bass groove, strip verse two, then a short call-and-response bridge and final chorus with new ad-libs. Clean, charismatic, club-ready; no nursery melody, classroom recitation, sung translations, oversized choir, long intro or obscured consonants."
+    },
+    {
+      "lane": "alternative R&B",
+      "characters": 882,
+      "prompt": "Atmospheric alternative R&B at 92 BPM with warm low end, a loose half-time pocket, rim clicks, brushed electronic percussion, hazy electric piano and a muted guitar motif. Charismatic female lead, close conversational verses, lightly layered melodic chorus; playful tension rather than sleepy spa music. Begin with quiero salir and a dry vocal before bass enters. Preserve the exact Spanish lyrics with natural stress, clear vowels and breathing room around tengo que esperar and voy a salir. Let the waiting scene feel intimate and funny. Keep English verses rhythmic, not over-sung. Build through a brief pre-chorus, give the hook an immediate melodic identity, drop to voice and bass for the bridge, then return with a fuller final chorus. Clean polished mix, compact ending; no grammar narration, nursery chant, excessive melisma, heavy vocal distortion or long ambient opening."
+    }
+  ],
+  "line_map": [
+    {
+      "line_id": "L002",
+      "text": "Quiero salir.",
+      "concept_ids": [
+        "C001"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L003",
+      "text": "Tengo que esperar.",
+      "concept_ids": [
+        "C004"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L004",
+      "text": "Voy a salir.",
+      "concept_ids": [
+        "C006"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L005",
+      "text": "Ahora sí.",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L008",
+      "text": "Left shoe on, right shoe missing,",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L009",
+      "text": "Your voice note says, “One minute.” Listen—",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L010",
+      "text": "Quiero salir, I’m by the door,",
+      "concept_ids": [
+        "C001"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L011",
+      "text": "Same three dots as the minute before.",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L012",
+      "text": "Tengo que esperar, fine, I can stay,",
+      "concept_ids": [
+        "C004"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L013",
+      "text": "But I’m stealing your jacket if you’re late.",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L016",
+      "text": "Keys hit the counter, I count to three,",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L017",
+      "text": "You come downstairs looking just like me.",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L018",
+      "text": "Same black jacket? Keep it. Alright.",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L019",
+      "text": "We’re both wearing trouble tonight.",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L022",
+      "text": "Quiero salir, quiero bailar,",
+      "concept_ids": [
+        "C001"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L023",
+      "text": "Tengo que esperar—ah, ah.",
+      "concept_ids": [
+        "C004"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L024",
+      "text": "Voy a salir, voy a bailar,",
+      "concept_ids": [
+        "C006"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L025",
+      "text": "Ahora sí, ahora sí.",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L026",
+      "text": "Quiero salir, quiero bailar,",
+      "concept_ids": [
+        "C001"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L027",
+      "text": "One more minute? That’s what you said.",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L028",
+      "text": "Voy a salir, voy a bailar,",
+      "concept_ids": [
+        "C006"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L029",
+      "text": "Ahora sí—get out of your head.",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L032",
+      "text": "You take the stairs, I ride down slow,",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L033",
+      "text": "We hit the sidewalk, nowhere to go.",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L034",
+      "text": "Quiero bailar, no speech to make,",
+      "concept_ids": [
+        "C001"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L035",
+      "text": "You find the rhythm, I find the break.",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L036",
+      "text": "Voy a bailar, I’m choosing the floor,",
+      "concept_ids": [
+        "C006"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L037",
+      "text": "You miss the step, then we laugh some more.",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L040",
+      "text": "Quiero salir. (I’m at the door.)",
+      "concept_ids": [
+        "C001"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L041",
+      "text": "Tengo que esperar. (One minute more.)",
+      "concept_ids": [
+        "C004"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L042",
+      "text": "Voy a salir. (Your keys, your phone.)",
+      "concept_ids": [
+        "C006"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L043",
+      "text": "Ahora sí. (We’re finally gone.)",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L046",
+      "text": "Quiero salir, quiero bailar,",
+      "concept_ids": [
+        "C001"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L047",
+      "text": "Tengo que esperar—ah, ah.",
+      "concept_ids": [
+        "C004"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L048",
+      "text": "Voy a salir, voy a bailar,",
+      "concept_ids": [
+        "C006"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L049",
+      "text": "Ahora sí, ahora sí.",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L050",
+      "text": "Quiero salir, quiero bailar,",
+      "concept_ids": [
+        "C001"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L051",
+      "text": "Same black jacket, different moves.",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L052",
+      "text": "Voy a salir, voy a bailar,",
+      "concept_ids": [
+        "C006"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L053",
+      "text": "Ahora sí—I’m going with you.",
+      "concept_ids": [],
+      "timecode": null
+    },
+    {
+      "line_id": "L056",
+      "text": "Voy a salir.",
+      "concept_ids": [
+        "C006"
+      ],
+      "timecode": null
+    },
+    {
+      "line_id": "L057",
+      "text": "Ahora sí.",
+      "concept_ids": [],
+      "timecode": null
+    }
+  ],
+  "audio_asset_id": null,
+  "audio_review_complete": false,
+  "native_review_complete": false,
+  "spanish_density_measured": false,
+  "rights_cleared": false
+}

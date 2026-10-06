@@ -1,0 +1,1782 @@
+{
+  "curriculum_version": "1.2",
+  "status": "internally_revised_pending_external_validation",
+  "units": [
+    {
+      "unit_id": "S0U1",
+      "critical_scope": "C1,C2,C4",
+      "revision": "Do not require every time-of-day greeting in one check; politeness C3 is recycled support.",
+      "held_out_scenario": "Neighbor says buenos días and leaves sooner than expected. Return the greeting and close; accept a short suitable farewell.",
+      "targets": [
+        {
+          "authoring_id": "S0U1C1",
+          "focus": "S0U1C1 greeting chunks",
+          "model": "Hola, ¿qué tal?",
+          "variants": "Buenos días; buenas tardes; buenas noches",
+          "confusion": "Do not translate qué tal word by word."
+        },
+        {
+          "authoring_id": "S0U1C2",
+          "focus": "S0U1C2 social response",
+          "model": "Bien, gracias. ¿Y tú?",
+          "variants": "Muy bien; más o menos; ¿y usted?",
+          "confusion": "A response plus return question sustains interaction."
+        },
+        {
+          "authoring_id": "S0U1C3",
+          "focus": "S0U1C3 politeness and repair of an interruption",
+          "model": "Perdón. Gracias.",
+          "variants": "Por favor; de nada; disculpe",
+          "confusion": "Perdón and permiso have overlapping but distinct contexts."
+        },
+        {
+          "authoring_id": "S0U1C4",
+          "focus": "S0U1C4 farewell",
+          "model": "Nos vemos mañana.",
+          "variants": "Hasta luego; adiós; nos vemos",
+          "confusion": "Mañana here means tomorrow; do not infer all uses of mañana."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S0U2",
+      "critical_scope": "C1,C2,C4",
+      "revision": "Origin question C3 is receptive first; no country-list quiz or compulsory personal disclosure.",
+      "held_out_scenario": "New speaker mishears your name; correct it, identify yourself and explain limited Spanish. Fictional identity is allowed.",
+      "targets": [
+        {
+          "authoring_id": "S0U2C1",
+          "focus": "S0U2C1 name frame",
+          "model": "Me llamo Ana.",
+          "variants": "¿Cómo te llamas?; ¿cómo se llama usted?",
+          "confusion": "Do not omit me in this chunk."
+        },
+        {
+          "authoring_id": "S0U2C2",
+          "focus": "S0U2C2 identity with ser",
+          "model": "Soy de Florida.",
+          "variants": "Soy Ana; soy estudiante",
+          "confusion": "Do not generalize ser as only permanent."
+        },
+        {
+          "authoring_id": "S0U2C3",
+          "focus": "S0U2C3 origin question",
+          "model": "¿De dónde eres?",
+          "variants": "¿De dónde es usted?; soy de México",
+          "confusion": "de belongs to the origin frame."
+        },
+        {
+          "authoring_id": "S0U2C4",
+          "focus": "S0U2C4 learner identity",
+          "model": "Hablo un poco de español.",
+          "variants": "Estoy aprendiendo español; un poco",
+          "confusion": "Do not require fluent grammar for a useful self-description."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S0U3",
+      "critical_scope": "C1,C2,C3",
+      "revision": "Introduce one repair strategy immediately before Arc 1. Add meaning/expression requests C4 separately; asking for repetition alone does not prove comprehension.",
+      "held_out_scenario": "A familiar action is spoken too quickly. Ask for useful support, hear the repair and act on it.",
+      "targets": [
+        {
+          "authoring_id": "S0U3C1",
+          "focus": "S0U3C1 comprehension repair",
+          "model": "No entiendo.",
+          "variants": "No entiendo bien; entiendo un poco",
+          "confusion": "No entiendo is about comprehension, not no escucho."
+        },
+        {
+          "authoring_id": "S0U3C2",
+          "focus": "S0U3C2 repetition request",
+          "model": "¿Puedes repetir, por favor?",
+          "variants": "Otra vez, por favor; ¿puede repetir?",
+          "confusion": "A request for repetition is different from pretending to understand."
+        },
+        {
+          "authoring_id": "S0U3C3",
+          "focus": "S0U3C3 pace request",
+          "model": "Más despacio, por favor.",
+          "variants": "Un poco más despacio",
+          "confusion": "Más is comparative here; avoid teaching despacio as slowly in every construction."
+        },
+        {
+          "authoring_id": "S0U3C4",
+          "focus": "S0U3C4 meaning request",
+          "model": "¿Qué significa listo?",
+          "variants": "¿Cómo se dice ready en español?",
+          "confusion": "Meaning and how-to-say questions solve different problems."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S0U4",
+      "critical_scope": "C1,C2,C3",
+      "revision": "Use a visible referent and controlled viewpoint. C4 pointing is support; hay/ahí is a stress/meaning contrast, not a spelling quiz.",
+      "held_out_scenario": "A needed item exists, but is in a different place than expected. Ask and locate it from the new answer.",
+      "targets": [
+        {
+          "authoring_id": "S0U4C1",
+          "focus": "S0U4C1 existence",
+          "model": "Hay agua.",
+          "variants": "¿Hay agua?; no hay agua",
+          "confusion": "hay is invariant here; not the location of a known object."
+        },
+        {
+          "authoring_id": "S0U4C2",
+          "focus": "S0U4C2 location of a known thing",
+          "model": "¿Dónde está el baño?",
+          "variants": "Está aquí; ¿dónde está mi teléfono?",
+          "confusion": "Do not use es for this object-location task."
+        },
+        {
+          "authoring_id": "S0U4C3",
+          "focus": "S0U4C3 deictic location",
+          "model": "Está aquí.",
+          "variants": "Ahí; allí; allá as receptive variant",
+          "confusion": "These depend on speaker perspective and regional usage."
+        },
+        {
+          "authoring_id": "S0U4C4",
+          "focus": "S0U4C4 attention and pointing",
+          "model": "Mira, está ahí.",
+          "variants": "Esto; eso; aquí está",
+          "confusion": "esto and eso stand alone; do not append a noun to esto."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S0U5",
+      "critical_scope": "C1,C2",
+      "revision": "Receptive/intelligibility target; accent imitation and perfect r are never gates. C3/C4 remain contextual listening support.",
+      "held_out_scenario": "A new voice says a familiar name or place with changed stress. Identify the intended referent and repeat intelligibly.",
+      "targets": [
+        {
+          "authoring_id": "S0U5C1",
+          "focus": "S0U5C1 stable vowels",
+          "model": "Casa, mesa, vino, poco, uno.",
+          "variants": "/a e i o u/ in familiar words",
+          "confusion": "Avoid English-style vowel glides; labels are optional."
+        },
+        {
+          "authoring_id": "S0U5C2",
+          "focus": "S0U5C2 word stress noticing",
+          "model": "Teléfono; café.",
+          "variants": "Casa; también",
+          "confusion": "Do not give every syllable equal stress."
+        },
+        {
+          "authoring_id": "S0U5C3",
+          "focus": "S0U5C3 question versus statement",
+          "model": "¿Está aquí? Está aquí.",
+          "variants": "¿Hay agua? Hay agua.",
+          "confusion": "Not all questions must rise; use recordings, not a universal pitch rule."
+        },
+        {
+          "authoring_id": "S0U5C4",
+          "focus": "S0U5C4 small listening anchors",
+          "model": "Sí, no, aquí, ahora.",
+          "variants": "No hay; no entiendo",
+          "confusion": "A heard keyword does not prove whole-sentence understanding."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S0U6",
+      "critical_scope": "C1,C2,C4",
+      "revision": "Linked turns matter; C3 connectors help but an unnecessary pero is not demanded.",
+      "held_out_scenario": "A neighbor corrects the room number. Confirm the corrected location, repair if necessary and close.",
+      "targets": [
+        {
+          "authoring_id": "S0U6C1",
+          "focus": "S0U6C1 confirmation",
+          "model": "¿Aquí? Sí, aquí.",
+          "variants": "¿Entendí bien?; correcto",
+          "confusion": "Confirmation is a tool; do not reward guessing from the last word."
+        },
+        {
+          "authoring_id": "S0U6C2",
+          "focus": "S0U6C2 not knowing",
+          "model": "No sé.",
+          "variants": "No sé dónde está",
+          "confusion": "No sé and no entiendo are different."
+        },
+        {
+          "authoring_id": "S0U6C3",
+          "focus": "S0U6C3 discourse link",
+          "model": "Sí, pero no entiendo.",
+          "variants": "Y; pero",
+          "confusion": "pero contrasts ideas, not merely a pause filler."
+        },
+        {
+          "authoring_id": "S0U6C4",
+          "focus": "S0U6C4 turn handoff",
+          "model": "¿Y tú?",
+          "variants": "¿Y usted?; un momento, por favor",
+          "confusion": "Pronouns may be useful for contrast even though often omitted elsewhere."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S1U1",
+      "critical_scope": "C1,C2,C3,C4 in two encounters",
+      "revision": "Start with want/action; add need later. Quiero agua is not a universal service-politeness model; offer por favor and later request variants.",
+      "held_out_scenario": "At home you ask for water; later you explain an action you want or need. A choice changes.",
+      "targets": [
+        {
+          "authoring_id": "S1U1C1",
+          "focus": "S1U1C1 want with a noun",
+          "model": "Quiero agua.",
+          "variants": "Quiero un café; no quiero eso",
+          "confusion": "Count nouns often need an article; agua can be a mass noun."
+        },
+        {
+          "authoring_id": "S1U1C2",
+          "focus": "S1U1C2 want with an infinitive",
+          "model": "Quiero comer.",
+          "variants": "Quiero ir; quiero hablar",
+          "confusion": "Second verb stays infinitive when the subject is shared."
+        },
+        {
+          "authoring_id": "S1U1C3",
+          "focus": "S1U1C3 direct need",
+          "model": "Necesito ayuda.",
+          "variants": "Necesito tiempo; no necesito eso",
+          "confusion": "Need and want differ in meaning and tone."
+        },
+        {
+          "authoring_id": "S1U1C4",
+          "focus": "S1U1C4 need with an infinitive",
+          "model": "Necesito salir.",
+          "variants": "Necesito llamar; necesito descansar",
+          "confusion": "Do not conjugate both verbs."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S1U2",
+      "critical_scope": "C1,C2",
+      "revision": "C3 states and C4 age/person questions are separate encounters. No tengo que is absence of obligation, not prohibition.",
+      "held_out_scenario": "A friend offers a visit; you have time but an obligation first. Clarify whether attendance is required.",
+      "targets": [
+        {
+          "authoring_id": "S1U2C1",
+          "focus": "S1U2C1 possession or availability",
+          "model": "Tengo tiempo.",
+          "variants": "Tengo dinero; no tengo agua",
+          "confusion": "tengo is not a general equivalent of am."
+        },
+        {
+          "authoring_id": "S1U2C2",
+          "focus": "S1U2C2 obligation",
+          "model": "Tengo que llamar.",
+          "variants": "No tengo que ir; tienes que esperar",
+          "confusion": "No tengo que means not required, not prohibited."
+        },
+        {
+          "authoring_id": "S1U2C3",
+          "focus": "S1U2C3 tener states",
+          "model": "Tengo hambre.",
+          "variants": "Tengo sed; tengo frío; tengo sueño",
+          "confusion": "Do not use literal estar hambre."
+        },
+        {
+          "authoring_id": "S1U2C4",
+          "focus": "S1U2C4 have question",
+          "model": "¿Tienes tiempo?",
+          "variants": "¿Tiene tiempo?; tengo veinte años",
+          "confusion": "Age uses tener; numbers are taught through meaningful quantities."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S1U3",
+      "critical_scope": "C1,C2,C3",
+      "revision": "Teach destination versus intended action in separate scenes. C4 time is supported; do not require tense terminology.",
+      "held_out_scenario": "A meeting place changes. Say destination, next action and a joint suggestion.",
+      "targets": [
+        {
+          "authoring_id": "S1U3C1",
+          "focus": "S1U3C1 destination",
+          "model": "Voy a casa.",
+          "variants": "Voy al mercado; vengo de casa",
+          "confusion": "a marks destination; distinguish movement from location."
+        },
+        {
+          "authoring_id": "S1U3C2",
+          "focus": "S1U3C2 planned action",
+          "model": "Voy a llamar.",
+          "variants": "Voy a comer; no voy a salir",
+          "confusion": "voy a plus infinitive is not merely physical movement."
+        },
+        {
+          "authoring_id": "S1U3C3",
+          "focus": "S1U3C3 invitation to act together",
+          "model": "Vamos a comer.",
+          "variants": "Vamos; ¿vamos?; vamos al parque",
+          "confusion": "vamos can be a suggestion or statement; context matters."
+        },
+        {
+          "authoring_id": "S1U3C4",
+          "focus": "S1U3C4 basic sequencing",
+          "model": "Ahora voy; después llamo.",
+          "variants": "Ahora; después; luego",
+          "confusion": "Keep present plans distinct from past stories."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S1U4",
+      "critical_scope": "C1,C2,C3",
+      "revision": "Ability, circumstance and permission are distinct senses. C4 saber contrast is a later bridge, not a six-frame Arc 1 gate.",
+      "held_out_scenario": "Someone asks for help; you can do one action but not another. Ask permission when the situation calls for it.",
+      "targets": [
+        {
+          "authoring_id": "S1U4C1",
+          "focus": "S1U4C1 ability frame",
+          "model": "Puedo ayudar.",
+          "variants": "No puedo ir; puedo hacerlo as supported chunk",
+          "confusion": "No puedo may express inability or situational impossibility."
+        },
+        {
+          "authoring_id": "S1U4C2",
+          "focus": "S1U4C2 ability question",
+          "model": "¿Puedes venir?",
+          "variants": "¿Puede venir?; ¿pueden venir?",
+          "confusion": "Person ending changes who is addressed."
+        },
+        {
+          "authoring_id": "S1U4C3",
+          "focus": "S1U4C3 permission request",
+          "model": "¿Puedo entrar?",
+          "variants": "¿Puedo usar esto?",
+          "confusion": "Permission meaning comes from the situation."
+        },
+        {
+          "authoring_id": "S1U4C4",
+          "focus": "S1U4C4 knowledge versus ability",
+          "model": "No sé, pero puedo preguntar.",
+          "variants": "Sé dónde está; puedo buscar",
+          "confusion": "Do not treat saber and poder as interchangeable."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S1U5",
+      "critical_scope": "C1,C2,C3",
+      "revision": "C4 demonstratives need visible referents. Do not score noun gender from a vague image; no compulsory taste disclosure.",
+      "held_out_scenario": "Two drinks or activities are offered; state a preference and find out the other person’s.",
+      "targets": [
+        {
+          "authoring_id": "S1U5C1",
+          "focus": "S1U5C1 liking a noun or action",
+          "model": "Me gusta el café.",
+          "variants": "Me gusta bailar; no me gusta esperar",
+          "confusion": "gusta agrees with what is liked, not the experiencer."
+        },
+        {
+          "authoring_id": "S1U5C2",
+          "focus": "S1U5C2 other person's liking",
+          "model": "¿Te gusta?",
+          "variants": "¿Le gusta a usted?",
+          "confusion": "te and le here name the experiencer."
+        },
+        {
+          "authoring_id": "S1U5C3",
+          "focus": "S1U5C3 preference",
+          "model": "Prefiero agua.",
+          "variants": "Prefiero comer aquí; ¿qué prefieres?",
+          "confusion": "Stem change is noticed within useful forms."
+        },
+        {
+          "authoring_id": "S1U5C4",
+          "focus": "S1U5C4 choice and alternative",
+          "model": "¿Agua o café?",
+          "variants": "Este o ese; quiero este",
+          "confusion": "Teach o as alternative; gender of demonstratives needs the referent."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S1U6",
+      "critical_scope": "C1,C2,C3,C4 across two encounters",
+      "revision": "Expand the question bank with quién, cuál and cuánto through the Core register. A correct question word without responding to the answer is incomplete interaction.",
+      "held_out_scenario": "You are missing where and when a friend is going. Ask, listen and revise the plan.",
+      "targets": [
+        {
+          "authoring_id": "S1U6C1",
+          "focus": "S1U6C1 what and how",
+          "model": "¿Qué quieres? ¿Cómo estás?",
+          "variants": "¿Qué necesitas?; ¿cómo se dice?",
+          "confusion": "qué and cómo are not freely interchangeable."
+        },
+        {
+          "authoring_id": "S1U6C2",
+          "focus": "S1U6C2 when",
+          "model": "¿Cuándo vas?",
+          "variants": "Hoy; mañana; más tarde",
+          "confusion": "¿Cuándo? asks time; ¿cuánto? asks quantity."
+        },
+        {
+          "authoring_id": "S1U6C3",
+          "focus": "S1U6C3 reason",
+          "model": "¿Por qué no puedes?",
+          "variants": "Porque tengo que trabajar",
+          "confusion": "por qué question and porque answer are distinct written forms."
+        },
+        {
+          "authoring_id": "S1U6C4",
+          "focus": "S1U6C4 where and destination",
+          "model": "¿Dónde estás? ¿Adónde vas?",
+          "variants": "¿A dónde vas?; voy a casa",
+          "confusion": "Location and destination differ even when speakers use dónde colloquially."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S2U1",
+      "critical_scope": "C1,C2,C3",
+      "revision": "Add event-location contrast later. C4 articles are supporting accuracy; do not teach permanent/temporary as a universal rule.",
+      "held_out_scenario": "A new visitor asks which person is your friend and where they are now. Describe and locate them.",
+      "targets": [
+        {
+          "authoring_id": "S2U1C1",
+          "focus": "S2U1C1 identity and characterization",
+          "model": "Es mi hermana. Es amable.",
+          "variants": "Soy médico; son estudiantes",
+          "confusion": "ser is not simply permanent; roles and identities can change."
+        },
+        {
+          "authoring_id": "S2U1C2",
+          "focus": "S2U1C2 state and location",
+          "model": "Está cansada. Está en casa.",
+          "variants": "Estoy bien; estamos aquí",
+          "confusion": "estar is not simply temporary."
+        },
+        {
+          "authoring_id": "S2U1C3",
+          "focus": "S2U1C3 agreement",
+          "model": "La casa es pequeña.",
+          "variants": "El cuarto es pequeño; casas pequeñas",
+          "confusion": "Gender is grammatical, not always biological."
+        },
+        {
+          "authoring_id": "S2U1C4",
+          "focus": "S2U1C4 articles and number",
+          "model": "Un libro; unos libros.",
+          "variants": "La mesa; las mesas; el agua fría",
+          "confusion": "el agua does not make agua masculine; later restore agreement."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S2U2",
+      "critical_scope": "C1,C2,C3",
+      "revision": "C4 relative que is a supported chunk first. Personal a enters familiar person examples early, with fuller treatment S5U2.",
+      "held_out_scenario": "A photo or fictional contact list contains two possible referents for su. Clarify whose item it is.",
+      "targets": [
+        {
+          "authoring_id": "S2U2C1",
+          "focus": "S2U2C1 possessive determiners",
+          "model": "Mi hermana vive aquí.",
+          "variants": "Tu casa; sus amigos; nuestra casa",
+          "confusion": "su can be ambiguous; clarify whose."
+        },
+        {
+          "authoring_id": "S2U2C2",
+          "focus": "S2U2C2 relationship and age",
+          "model": "Tengo una hija. Tiene dos años.",
+          "variants": "Mi pareja; mi amigo; mi familia",
+          "confusion": "Do not assume marriage, children or gender in personalized prompts."
+        },
+        {
+          "authoring_id": "S2U2C3",
+          "focus": "S2U2C3 who questions",
+          "model": "¿Quién es?",
+          "variants": "¿Quiénes son?; ¿con quién vas?",
+          "confusion": "Number and preposition matter."
+        },
+        {
+          "authoring_id": "S2U2C4",
+          "focus": "S2U2C4 relative link",
+          "model": "La persona que vive aquí es mi amiga.",
+          "variants": "El lugar que me gusta",
+          "confusion": "Early que links a noun to information; full relatives come later."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S2U3",
+      "critical_scope": "C1,C2,C4",
+      "revision": "C3 encantar/interesar/doler is a split extension, not one interchangeable emotion rule. Health vocabulary is optional.",
+      "held_out_scenario": "A friend likes two activities, you like only one. Agree or disagree with the actual positive/negative antecedent.",
+      "targets": [
+        {
+          "authoring_id": "S2U3C1",
+          "focus": "S2U3C1 feeling state",
+          "model": "Estoy contenta.",
+          "variants": "Estoy triste; estoy nervioso; me siento bien",
+          "confusion": "Accept appropriate gender forms; do not force disclosure."
+        },
+        {
+          "authoring_id": "S2U3C2",
+          "focus": "S2U3C2 plural likes",
+          "model": "Me gustan estas canciones.",
+          "variants": "Me gusta esta canción; te gustan",
+          "confusion": "Agreement follows the liked noun."
+        },
+        {
+          "authoring_id": "S2U3C3",
+          "focus": "S2U3C3 other gustar-type meanings",
+          "model": "Me encanta bailar.",
+          "variants": "Me interesa eso; me duele la cabeza",
+          "confusion": "These meanings differ; do not teach a single emotional translation."
+        },
+        {
+          "authoring_id": "S2U3C4",
+          "focus": "S2U3C4 shared reaction",
+          "model": "A mí también. A mí tampoco.",
+          "variants": "Yo también; yo tampoco with suitable prior clause",
+          "confusion": "Match the response construction and positive or negative antecedent."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S2U4",
+      "critical_scope": "C1,C2,C3",
+      "revision": "C4 reflexives are a separate chunk encounter. Teach useful stem changes juego/duermo in context; no full paradigm before communication.",
+      "held_out_scenario": "A morning routine changes today. Distinguish usual action from today’s plan and ask about someone else.",
+      "targets": [
+        {
+          "authoring_id": "S2U4C1",
+          "focus": "S2U4C1 regular present patterns",
+          "model": "Trabajo aquí. Comes temprano. Vivimos cerca.",
+          "variants": "Trabajas; come; viven",
+          "confusion": "Practice ar, er and ir in useful forms; avoid conjugating an infinitive after quiero."
+        },
+        {
+          "authoring_id": "S2U4C2",
+          "focus": "S2U4C2 high-value irregular present",
+          "model": "Hago café y salgo temprano.",
+          "variants": "Tengo; voy; sé; estoy",
+          "confusion": "Irregular first-person forms need their own examples."
+        },
+        {
+          "authoring_id": "S2U4C3",
+          "focus": "S2U4C3 frequency",
+          "model": "Siempre desayuno aquí.",
+          "variants": "A veces; nunca; casi siempre; todos los días",
+          "confusion": "Position varies; never means nunca, not no nunca as a universal formula."
+        },
+        {
+          "authoring_id": "S2U4C4",
+          "focus": "S2U4C4 routine reflexive chunks",
+          "model": "Me levanto a las siete.",
+          "variants": "Me acuesto tarde; te levantas",
+          "confusion": "Reflexive pronouns agree with the subject; not every verb takes me."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S2U5",
+      "critical_scope": "C1,C2,C3,C4 in two encounters",
+      "revision": "Numbers are separately supported. Clock time, date, availability and change are not introduced together on one screen.",
+      "held_out_scenario": "A voice note reschedules a meeting from three to one. Confirm day and appointment time.",
+      "targets": [
+        {
+          "authoring_id": "S2U5C1",
+          "focus": "S2U5C1 clock time",
+          "model": "Son las tres. Es la una.",
+          "variants": "A las tres; a la una; ¿qué hora es?",
+          "confusion": "Time now versus appointment time use different frames."
+        },
+        {
+          "authoring_id": "S2U5C2",
+          "focus": "S2U5C2 day and date",
+          "model": "El lunes voy a llamar.",
+          "variants": "Hoy es lunes; el cinco de mayo",
+          "confusion": "Days are lowercase; el lunes and los lunes differ."
+        },
+        {
+          "authoring_id": "S2U5C3",
+          "focus": "S2U5C3 availability",
+          "model": "¿Te viene bien a las cuatro?",
+          "variants": "Estoy libre; no puedo a esa hora",
+          "confusion": "Teach viene bien as a chunk before full analysis."
+        },
+        {
+          "authoring_id": "S2U5C4",
+          "focus": "S2U5C4 rescheduling",
+          "model": "Mejor mañana, porque hoy no puedo.",
+          "variants": "Antes; después de comer; más tarde",
+          "confusion": "de links después to an infinitive or noun."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S2U6",
+      "critical_scope": "C1,C3,C4",
+      "revision": "Six linked turns are a task target, not a fluency certificate. C2 opinion frames are optional when no opinion is needed.",
+      "held_out_scenario": "Follow up on information the partner actually gives, then handle a changed availability.",
+      "targets": [
+        {
+          "authoring_id": "S2U6C1",
+          "focus": "S2U6C1 follow-up",
+          "model": "¿Y después qué haces?",
+          "variants": "¿Y por qué?; ¿con quién?",
+          "confusion": "A follow-up must respond to actual prior information."
+        },
+        {
+          "authoring_id": "S2U6C2",
+          "focus": "S2U6C2 short opinion",
+          "model": "Creo que es buena idea.",
+          "variants": "Para mí; me parece bien",
+          "confusion": "Belief and certainty are not identical."
+        },
+        {
+          "authoring_id": "S2U6C3",
+          "focus": "S2U6C3 reason and result",
+          "model": "No voy porque trabajo. Entonces vamos mañana.",
+          "variants": "Porque; entonces; por eso",
+          "confusion": "Cause and consequence have different functions."
+        },
+        {
+          "authoring_id": "S2U6C4",
+          "focus": "S2U6C4 hold a turn and clarify",
+          "model": "A ver, quiero decir otra cosa.",
+          "variants": "Bueno; un momento; ¿me explico?",
+          "confusion": "Fillers aid interaction; do not require them in every sentence."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S3U1",
+      "critical_scope": "C1,C2,C3,C4 across encounters",
+      "revision": "Use region-tagged service requests; distinguish task success from precise form. No assumptions about tipping, prices or payment access.",
+      "held_out_scenario": "One menu item is unavailable. Choose an alternative, preserve a requested modification and confirm payment.",
+      "targets": [
+        {
+          "authoring_id": "S3U1C1",
+          "focus": "S3U1C1 quantity and count",
+          "model": "Dos cafés y una botella de agua.",
+          "variants": "Un poco de; mucho; suficiente",
+          "confusion": "Mucho agrees with a noun but not when modifying a verb."
+        },
+        {
+          "authoring_id": "S3U1C2",
+          "focus": "S3U1C2 service request",
+          "model": "¿Me da un café, por favor?",
+          "variants": "Quisiera un café; ¿me puede dar?",
+          "confusion": "Direct quiero can be grammatical yet differ in politeness; model choices."
+        },
+        {
+          "authoring_id": "S3U1C3",
+          "focus": "S3U1C3 modification",
+          "model": "Sin azúcar, por favor.",
+          "variants": "Con leche; para llevar; para aquí",
+          "confusion": "Modifiers must refer to the intended item."
+        },
+        {
+          "authoring_id": "S3U1C4",
+          "focus": "S3U1C4 payment",
+          "model": "¿Cuánto es? ¿Puedo pagar con tarjeta?",
+          "variants": "La cuenta, por favor; en efectivo",
+          "confusion": "Prices are context-specific; do not assume currency or tipping norm."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S3U2",
+      "critical_scope": "C1,C3,C4",
+      "revision": "C2 irregular comparison begins mejor/peor; mayor/menor is extension. State all visual labels so the puzzle cannot be solved without Spanish.",
+      "held_out_scenario": "A cheaper item is the wrong size. Ask and justify a different choice within a budget.",
+      "targets": [
+        {
+          "authoring_id": "S3U2C1",
+          "focus": "S3U2C1 comparison",
+          "model": "Este es más barato que ese.",
+          "variants": "Menos caro que; tan grande como",
+          "confusion": "más and tan take different comparison frames."
+        },
+        {
+          "authoring_id": "S3U2C2",
+          "focus": "S3U2C2 irregular comparison",
+          "model": "Este es mejor.",
+          "variants": "Peor; mayor; menor in appropriate contexts",
+          "confusion": "más bueno has specific uses; assess the intended neutral comparison."
+        },
+        {
+          "authoring_id": "S3U2C3",
+          "focus": "S3U2C3 amount and size questions",
+          "model": "¿Cuánto cuesta? ¿Qué talla es?",
+          "variants": "¿Cuántos necesita?; más grande",
+          "confusion": "Do not test obscure sizing vocabulary as grammar knowledge."
+        },
+        {
+          "authoring_id": "S3U2C4",
+          "focus": "S3U2C4 demonstratives with nouns",
+          "model": "Quiero esa camisa.",
+          "variants": "Este libro; esos zapatos; aquella tienda",
+          "confusion": "esto stands alone; este modifies a masculine noun."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S3U3",
+      "critical_scope": "C1,C2,C4",
+      "revision": "C3 transport words are local variants; change voice without also introducing unknown vocabulary in the scored clip.",
+      "held_out_scenario": "Your intended stop is unavailable. Understand a familiar direction and confirm a replacement route.",
+      "targets": [
+        {
+          "authoring_id": "S3U3C1",
+          "focus": "S3U3C1 spatial relations",
+          "model": "Está al lado de la farmacia.",
+          "variants": "Cerca de; lejos de; enfrente de; entre",
+          "confusion": "Relations are anchored to a reference point."
+        },
+        {
+          "authoring_id": "S3U3C2",
+          "focus": "S3U3C2 direction chunks",
+          "model": "Sigue derecho y gira a la izquierda.",
+          "variants": "A la derecha; cruza la calle",
+          "confusion": "Recognize commands as useful chunks before full morphology."
+        },
+        {
+          "authoring_id": "S3U3C3",
+          "focus": "S3U3C3 transport",
+          "model": "Voy en autobús.",
+          "variants": "A pie; en carro; me bajo aquí",
+          "confusion": "Carro, coche and auto are region-tagged alternatives."
+        },
+        {
+          "authoring_id": "S3U3C4",
+          "focus": "S3U3C4 route question",
+          "model": "¿Cómo llego al mercado?",
+          "variants": "¿Dónde me bajo?; ¿este va al centro?",
+          "confusion": "llegar differs from ir; preserve the task's destination."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S3U4",
+      "critical_scope": "C1,C2,C3",
+      "revision": "C4 sequence is supported. Negative commands begin as chunks; imperative morphology is not all-or-nothing. Explain tone and relationship.",
+      "held_out_scenario": "A household task changes: close one door, leave another open. Ask or give a context-appropriate instruction.",
+      "targets": [
+        {
+          "authoring_id": "S3U4C1",
+          "focus": "S3U4C1 polite request with puedes",
+          "model": "¿Puedes cerrar la puerta?",
+          "variants": "¿Puede traer agua?; por favor",
+          "confusion": "Tone and relationship influence interpretation."
+        },
+        {
+          "authoring_id": "S3U4C2",
+          "focus": "S3U4C2 affirmative command",
+          "model": "Cierra la puerta. Ven aquí.",
+          "variants": "Abre; espera; pon; haz; dime; dame",
+          "confusion": "A command is not automatically rude; teach context."
+        },
+        {
+          "authoring_id": "S3U4C3",
+          "focus": "S3U4C3 negative command",
+          "model": "No abras la puerta.",
+          "variants": "No vengas; no lo hagas",
+          "confusion": "Do not put no before an affirmative command and assume its form is correct."
+        },
+        {
+          "authoring_id": "S3U4C4",
+          "focus": "S3U4C4 sequence and checking",
+          "model": "Primero abre esto; luego espera.",
+          "variants": "Al final; ¿así?; ¿está bien?",
+          "confusion": "Sequencing is communicative, not simply an ordered verb list."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S3U5",
+      "critical_scope": "C1,C2,C4",
+      "revision": "C3 discomfort uses fictional concerns; no diagnosis, triage or professional interpreter claim. Arrival details need audio confirmation.",
+      "held_out_scenario": "A routine appointment time is unavailable. Explain the problem and confirm another time and name.",
+      "targets": [
+        {
+          "authoring_id": "S3U5C1",
+          "focus": "S3U5C1 arrangement frame",
+          "model": "Quiero hacer una cita.",
+          "variants": "¿Hay lugar mañana?; necesito cambiar la hora",
+          "confusion": "Cita can mean appointment or date; context disambiguates."
+        },
+        {
+          "authoring_id": "S3U5C2",
+          "focus": "S3U5C2 problem statement",
+          "model": "No funciona.",
+          "variants": "Está roto; perdí mi teléfono as a supported past chunk",
+          "confusion": "Do not require past-tense analysis to use an urgent memorized chunk."
+        },
+        {
+          "authoring_id": "S3U5C3",
+          "focus": "S3U5C3 help and discomfort",
+          "model": "Necesito ayuda. Me duele aquí.",
+          "variants": "No me siento bien; ¿puede llamar a alguien?",
+          "confusion": "This is communication practice, not medical advice or triage."
+        },
+        {
+          "authoring_id": "S3U5C4",
+          "focus": "S3U5C4 confirm details",
+          "model": "Entonces, el martes a las dos, ¿verdad?",
+          "variants": "¿A nombre de quién?; a nombre de Ana",
+          "confusion": "Confirm both date and time; a keyword answer is insufficient."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S3U6",
+      "critical_scope": "C1,C3,C4",
+      "revision": "C2 por senses are extensions one sense at a time. Different purpose/route/cause meanings do not inherit one score.",
+      "held_out_scenario": "An errand cannot happen until a shared task is finished. Propose an alternative and explain why.",
+      "targets": [
+        {
+          "authoring_id": "S3U6C1",
+          "focus": "S3U6C1 purpose with para",
+          "model": "Voy al mercado para comprar comida.",
+          "variants": "Esto es para ti; para mañana",
+          "confusion": "para has several functions; do not teach a single translation."
+        },
+        {
+          "authoring_id": "S3U6C2",
+          "focus": "S3U6C2 cause and route with por",
+          "model": "Voy por aquí porque es más rápido.",
+          "variants": "Gracias por ayudar; por la mañana",
+          "confusion": "por and para are not interchangeable; other uses return later."
+        },
+        {
+          "authoring_id": "S3U6C3",
+          "focus": "S3U6C3 impersonal obligation",
+          "model": "Hay que esperar.",
+          "variants": "Hay que llamar; tenemos que salir",
+          "confusion": "hay que does not identify a personal subject."
+        },
+        {
+          "authoring_id": "S3U6C4",
+          "focus": "S3U6C4 contingency in the present",
+          "model": "Si no puedes, voy yo.",
+          "variants": "Si hay tiempo, vamos",
+          "confusion": "Use present indicative for this real condition; not si tendría."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S4U1",
+      "critical_scope": "C1,C2,C4",
+      "revision": "C3 irregular past is several encounters. Choose high-utility forms first; preserve present/past overlap as a contextual issue.",
+      "held_out_scenario": "Tell a recent errand; a listener asks where and what happened next. Answer without replaying a memorized paragraph.",
+      "targets": [
+        {
+          "authoring_id": "S4U1C1",
+          "focus": "S4U1C1 regular completed past",
+          "model": "Ayer trabajé y después comí.",
+          "variants": "Hablaste; compró; salimos; vivieron",
+          "confusion": "Present and preterite overlap for forms such as salimos; context matters."
+        },
+        {
+          "authoring_id": "S4U1C2",
+          "focus": "S4U1C2 ir and ser in the past",
+          "model": "Fui al mercado. Fue divertido.",
+          "variants": "Fuimos; fueron; ¿cómo fue?",
+          "confusion": "Same past forms have different meanings from context."
+        },
+        {
+          "authoring_id": "S4U1C3",
+          "focus": "S4U1C3 common irregular past",
+          "model": "Hice café y tuve tiempo.",
+          "variants": "Dije; pude; estuve; vino; puso",
+          "confusion": "Do not extrapolate one irregular stem to all verbs."
+        },
+        {
+          "authoring_id": "S4U1C4",
+          "focus": "S4U1C4 event sequence",
+          "model": "Primero llegué; después llamé.",
+          "variants": "Ayer; anoche; el otro día; al final",
+          "confusion": "Keep completed event order clear without requiring every ending."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S4U2",
+      "critical_scope": "C1,C2,C3",
+      "revision": "C4 age/time supports background. A correct English used-to gloss alone does not establish imperfect aspect.",
+      "held_out_scenario": "Describe a former routine and compare it with now, using fictional history if preferred.",
+      "targets": [
+        {
+          "authoring_id": "S4U2C1",
+          "focus": "S4U2C1 habitual past",
+          "model": "Antes trabajaba aquí.",
+          "variants": "Comía; vivía; todos los días",
+          "confusion": "Imperfect does not always mean used to."
+        },
+        {
+          "authoring_id": "S4U2C2",
+          "focus": "S4U2C2 background identity or state",
+          "model": "Era pequeño y estaba cansado.",
+          "variants": "Éramos; estaban; hacía calor",
+          "confusion": "ser and estar remain meaningful contrasts in the past."
+        },
+        {
+          "authoring_id": "S4U2C3",
+          "focus": "S4U2C3 past ir habit",
+          "model": "Íbamos al parque los domingos.",
+          "variants": "Iba; iban",
+          "confusion": "Do not confuse iba with fui solely by English gloss."
+        },
+        {
+          "authoring_id": "S4U2C4",
+          "focus": "S4U2C4 background time and age",
+          "model": "Tenía diez años.",
+          "variants": "Eran las tres; cuando era niña",
+          "confusion": "Age and time frames require relevant past forms."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S4U3",
+      "critical_scope": "C1,C3,C4",
+      "revision": "C2 progressive may be appropriate but is not compulsory if an imperfect expresses the meaning. Avoid trigger-word scoring.",
+      "held_out_scenario": "Explain an interruption with a changed event and duration. Listener asks what was already happening.",
+      "targets": [
+        {
+          "authoring_id": "S4U3C1",
+          "focus": "S4U3C1 event against background",
+          "model": "Dormía cuando sonó el teléfono.",
+          "variants": "Estaba cocinando cuando llegó",
+          "confusion": "Tense choice expresses viewpoint, not a list of trigger words."
+        },
+        {
+          "authoring_id": "S4U3C2",
+          "focus": "S4U3C2 ongoing action",
+          "model": "Estaba trabajando.",
+          "variants": "Estoy comiendo; estaba esperando",
+          "confusion": "estar plus gerund is not a replacement for every present or imperfect."
+        },
+        {
+          "authoring_id": "S4U3C3",
+          "focus": "S4U3C3 when and while",
+          "model": "Cuando llegó, yo cocinaba.",
+          "variants": "Mientras esperaba, llamé",
+          "confusion": "Both verbs' meanings and viewpoints matter."
+        },
+        {
+          "authoring_id": "S4U3C4",
+          "focus": "S4U3C4 duration and bounded event",
+          "model": "Esperé diez minutos.",
+          "variants": "Viví allí dos años; esperaba cada tarde",
+          "confusion": "A long duration can still use preterite."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S4U4",
+      "critical_scope": "C1,C2,C3",
+      "revision": "C4 continuing duration is a separate bridge. Accept region-appropriate perfect/preterite choices and identify the assessed temporal meaning.",
+      "held_out_scenario": "Explain an experience, a dated event and a pending task to a new speaker.",
+      "targets": [
+        {
+          "authoring_id": "S4U4C1",
+          "focus": "S4U4C1 experience or current relevance",
+          "model": "He visitado México.",
+          "variants": "Nunca he probado eso; ¿has ido?",
+          "confusion": "Perfect versus preterite usage varies regionally; avoid a universal today rule."
+        },
+        {
+          "authoring_id": "S4U4C2",
+          "focus": "S4U4C2 completed time contrast",
+          "model": "Fui a México el año pasado.",
+          "variants": "Ya comí; hoy hablé con Ana",
+          "confusion": "Latin American varieties may use preterite where other varieties prefer perfect."
+        },
+        {
+          "authoring_id": "S4U4C3",
+          "focus": "S4U4C3 already and not yet",
+          "model": "Ya terminé. Todavía no termino.",
+          "variants": "Aún no; todavía estoy aquí",
+          "confusion": "ya has multiple discourse meanings; this unit assesses completion."
+        },
+        {
+          "authoring_id": "S4U4C4",
+          "focus": "S4U4C4 duration continuing now",
+          "model": "Vivo aquí desde mayo.",
+          "variants": "Hace dos años que vivo aquí; llevo dos años aquí",
+          "confusion": "desde names a starting point; hace expresses elapsed time in this frame."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S4U5",
+      "critical_scope": "C1,C2,C4",
+      "revision": "C3 reciprocal events are a separate encounter. Do not score emotional agreement or force disclosure about relationships.",
+      "held_out_scenario": "A fictional disagreement has two viewpoints; explain a reaction and acknowledge the other view.",
+      "targets": [
+        {
+          "authoring_id": "S4U5C1",
+          "focus": "S4U5C1 past feelings",
+          "model": "Me sentí mejor después.",
+          "variants": "Estaba nerviosa; me dio alegría",
+          "confusion": "Different frames convey different viewpoints; avoid literal feeling translations."
+        },
+        {
+          "authoring_id": "S4U5C2",
+          "focus": "S4U5C2 reason and concession",
+          "model": "Me gustó, aunque fue difícil.",
+          "variants": "Pero; porque; sin embargo",
+          "confusion": "aunque with indicative here reports an accepted fact."
+        },
+        {
+          "authoring_id": "S4U5C3",
+          "focus": "S4U5C3 interpersonal event",
+          "model": "Hablé con mi amiga y nos vimos.",
+          "variants": "Nos conocimos; quedamos en llamar",
+          "confusion": "Reciprocal nos is introduced through known subjects."
+        },
+        {
+          "authoring_id": "S4U5C4",
+          "focus": "S4U5C4 opinion with justification",
+          "model": "Creo que fue buena idea porque ayudó.",
+          "variants": "Me parece que; en mi opinión",
+          "confusion": "Assess a reason, not agreement with the narrator."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S4U6",
+      "critical_scope": "C1,C2,C3,C4",
+      "revision": "Two minutes is a task estimate. Coherence and response relevance outrank filling time with memorized speech.",
+      "held_out_scenario": "Tell an account, correct a mistaken day and answer an unexpected follow-up about cause.",
+      "targets": [
+        {
+          "authoring_id": "S4U6C1",
+          "focus": "S4U6C1 story orientation",
+          "model": "El sábado estaba en casa cuando llegó Ana.",
+          "variants": "Hace un año; una vez",
+          "confusion": "Anchor people, time and place for a listener."
+        },
+        {
+          "authoring_id": "S4U6C2",
+          "focus": "S4U6C2 causal connection",
+          "model": "Llegué tarde, así que llamé.",
+          "variants": "Por eso; entonces; como estaba cansado",
+          "confusion": "Cause and consequence need coherent event order."
+        },
+        {
+          "authoring_id": "S4U6C3",
+          "focus": "S4U6C3 story repair",
+          "model": "Me equivoqué: fue el viernes.",
+          "variants": "Quiero decir; mejor dicho",
+          "confusion": "Self-correction counts as successful communication when meaning is restored."
+        },
+        {
+          "authoring_id": "S4U6C4",
+          "focus": "S4U6C4 listener check",
+          "model": "¿Y qué pasó después?",
+          "variants": "¿Cómo te sentiste?; ¿por qué lo hiciste?",
+          "confusion": "Answer the question actually asked; do not replay the whole memorized story."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S5U1",
+      "critical_scope": "C1,C2",
+      "revision": "C3 gerund and C4 attached commands are split extensions. Accept both valid clitic placements; accent spelling is written evidence.",
+      "held_out_scenario": "Two familiar items have different owners. Refer to the correct item and clarify after a listener’s question.",
+      "targets": [
+        {
+          "authoring_id": "S5U1C1",
+          "focus": "S5U1C1 direct object replacement",
+          "model": "Lo necesito. La compré.",
+          "variants": "Los tengo; las quiero",
+          "confusion": "Gender and number follow the referent; lo also has non-noun uses later."
+        },
+        {
+          "authoring_id": "S5U1C2",
+          "focus": "S5U1C2 placement with an infinitive",
+          "model": "Quiero verlo.",
+          "variants": "Lo quiero ver; voy a comprarla",
+          "confusion": "Both placements can be acceptable; do not mark one wrong."
+        },
+        {
+          "authoring_id": "S5U1C3",
+          "focus": "S5U1C3 placement with gerund",
+          "model": "Estoy buscándolo.",
+          "variants": "Lo estoy buscando",
+          "confusion": "Written accent may change; spoken and orthographic evidence remain separate."
+        },
+        {
+          "authoring_id": "S5U1C4",
+          "focus": "S5U1C4 command attachment",
+          "model": "Dámelo.",
+          "variants": "Ábrela; no lo abras",
+          "confusion": "Affirmative commands attach clitics; negative commands put them before."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S5U2",
+      "critical_scope": "C1,C2,C3",
+      "revision": "C4 personal a is first noticed earlier; now extend it systematically. Do not award comprehensive pronoun knowledge from one se lo.",
+      "held_out_scenario": "Two people need different items; explain who gets what and repair an ambiguous se lo.",
+      "targets": [
+        {
+          "authoring_id": "S5U2C1",
+          "focus": "S5U2C1 recipient object",
+          "model": "Le doy el libro a Ana.",
+          "variants": "Les digo la hora; te mando un mensaje",
+          "confusion": "le is not simply him; it can refer to her or formal you."
+        },
+        {
+          "authoring_id": "S5U2C2",
+          "focus": "S5U2C2 two objects",
+          "model": "Se lo doy a Ana.",
+          "variants": "Te lo mando; me lo dijo",
+          "confusion": "le or les changes to se before lo, la, los or las."
+        },
+        {
+          "authoring_id": "S5U2C3",
+          "focus": "S5U2C3 clarify referents",
+          "model": "Se lo di a ella.",
+          "variants": "A él; a usted; a ellos",
+          "confusion": "Use clarification when pronouns alone are ambiguous."
+        },
+        {
+          "authoring_id": "S5U2C4",
+          "focus": "S5U2C4 personal a",
+          "model": "Veo a Ana.",
+          "variants": "Busco a mi hermana; veo la casa",
+          "confusion": "Teach through person references; do not put a before every direct object."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S5U3",
+      "critical_scope": "C2,C3",
+      "revision": "C1 reflexive/reciprocal and C4 change-of-state are separate sense encounters. Se is not one construction or one global mastery record.",
+      "held_out_scenario": "Explain a misplaced object and understand a new service notice.",
+      "targets": [
+        {
+          "authoring_id": "S5U3C1",
+          "focus": "S5U3C1 reflexive versus reciprocal",
+          "model": "Me visto. Nos vemos mañana.",
+          "variants": "Se lava; se ayudan",
+          "confusion": "se has multiple functions; these are not one reflexive rule."
+        },
+        {
+          "authoring_id": "S5U3C2",
+          "focus": "S5U3C2 unplanned event frame",
+          "model": "Se me cayó el teléfono.",
+          "variants": "Se me olvidó; se nos perdió",
+          "confusion": "Common unintentional-event framing does not excuse or erase responsibility."
+        },
+        {
+          "authoring_id": "S5U3C3",
+          "focus": "S5U3C3 impersonal or passive-like notice",
+          "model": "Se habla español. Se venden libros.",
+          "variants": "Se puede pagar aquí",
+          "confusion": "Distinguish the patterns at recognition level before full analysis."
+        },
+        {
+          "authoring_id": "S5U3C4",
+          "focus": "S5U3C4 change or become chunks",
+          "model": "Se puso nervioso.",
+          "variants": "Me quedé en casa; se quedó dormido",
+          "confusion": "Do not teach every become meaning as ponerse."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S5U4",
+      "critical_scope": "C1,C2,C3",
+      "revision": "C4 past perfect is a separate temporal encounter. Do not require it to prove clause/reference listening.",
+      "held_out_scenario": "A speaker gives two reasons and a qualification. Summarize accurately and ask a relevant follow-up.",
+      "targets": [
+        {
+          "authoring_id": "S5U4C1",
+          "focus": "S5U4C1 relative person and place",
+          "model": "La persona que llamó vive donde trabajo.",
+          "variants": "El lugar donde nos vimos",
+          "confusion": "Do not force donde after a person."
+        },
+        {
+          "authoring_id": "S5U4C2",
+          "focus": "S5U4C2 what as lo que",
+          "model": "No entiendo lo que dices.",
+          "variants": "Lo que necesito es tiempo",
+          "confusion": "lo que means the thing or information that; not a masculine object noun."
+        },
+        {
+          "authoring_id": "S5U4C3",
+          "focus": "S5U4C3 contrast and concession",
+          "model": "Aunque estaba cansado, fui.",
+          "variants": "Sin embargo; aun así",
+          "confusion": "Following a concession differs from spotting a familiar connector."
+        },
+        {
+          "authoring_id": "S5U4C4",
+          "focus": "S5U4C4 earlier past",
+          "model": "Ya había salido cuando llamaste.",
+          "variants": "Había comido; no lo había visto",
+          "confusion": "Past perfect locates an event before another past point."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S5U5",
+      "critical_scope": "C1,C2,C4",
+      "revision": "C3 probability is an extension; debe estar and debe de estar can express conjecture. Meaning and register, not mechanical de presence, determine acceptance.",
+      "held_out_scenario": "A plan changes; make a polite request and explain an ongoing commitment.",
+      "targets": [
+        {
+          "authoring_id": "S5U5C1",
+          "focus": "S5U5C1 simple future",
+          "model": "Mañana te llamaré.",
+          "variants": "Será; tendremos; podré",
+          "confusion": "Also hear the common voy a alternative; register and intention differ."
+        },
+        {
+          "authoring_id": "S5U5C2",
+          "focus": "S5U5C2 polite conditional",
+          "model": "¿Podrías ayudarme?",
+          "variants": "Me gustaría ir; quisiera as a familiar request chunk",
+          "confusion": "Conditional courtesy does not require a hypothetical if clause."
+        },
+        {
+          "authoring_id": "S5U5C3",
+          "focus": "S5U5C3 probability chunk",
+          "model": "Debe de estar en casa.",
+          "variants": "Quizá está aquí; estará en casa as recognition extension",
+          "confusion": "Do not conflate every deber use with probability."
+        },
+        {
+          "authoring_id": "S5U5C4",
+          "focus": "S5U5C4 ongoing duration",
+          "model": "Sigo aprendiendo.",
+          "variants": "Todavía estudio; llevo dos meses practicando",
+          "confusion": "Different frames relate duration and continuation."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S5U6",
+      "critical_scope": "C1,C2,C3",
+      "revision": "C4 regional variation is receptive first. Changing accent and unknown lexicon together confounds assessment.",
+      "held_out_scenario": "Two unfamiliar voices describe a familiar plan; respond to a correction and reaction.",
+      "targets": [
+        {
+          "authoring_id": "S5U6C1",
+          "focus": "S5U6C1 reformulation",
+          "model": "O sea, vamos mañana.",
+          "variants": "Es decir; quiero decir",
+          "confusion": "Do not confuse a reformulation marker with new factual content."
+        },
+        {
+          "authoring_id": "S5U6C2",
+          "focus": "S5U6C2 discourse ya",
+          "model": "Ya veo. Ya voy.",
+          "variants": "Ya está; ya as completion recycling",
+          "confusion": "Context determines meaning; not every ya means already."
+        },
+        {
+          "authoring_id": "S5U6C3",
+          "focus": "S5U6C3 natural reactions",
+          "model": "Qué bueno. No me digas.",
+          "variants": "¿En serio?; claro; puede ser",
+          "confusion": "Tone can reverse or modify a literal reading."
+        },
+        {
+          "authoring_id": "S5U6C4",
+          "focus": "S5U6C4 accent and register variation",
+          "model": "¿Tú quieres venir? / ¿Vos querés venir?",
+          "variants": "Usted; ustedes; region-tagged vocabulary",
+          "confusion": "Recognition of a variant does not require using it; no accent is defective."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S6U1",
+      "critical_scope": "C1,C2",
+      "revision": "C3/C4 evaluation and request softenings are separate encounters; useful subordinate forms can be chunks before full paradigms.",
+      "held_out_scenario": "You will act yourself, then need someone else to act. Express both without a supplied clause frame.",
+      "targets": [
+        {
+          "authoring_id": "S6U1C1",
+          "focus": "S6U1C1 same versus different subject",
+          "model": "Quiero ir. Quiero que vengas.",
+          "variants": "Necesito salir; necesito que me ayudes",
+          "confusion": "que plus a second subject is not an infinitive chain."
+        },
+        {
+          "authoring_id": "S6U1C2",
+          "focus": "S6U1C2 present subjunctive in a wish",
+          "model": "Espero que estés bien.",
+          "variants": "Quiero que sea fácil; espero que puedas",
+          "confusion": "Teach useful forms and meaning before demanding all forms."
+        },
+        {
+          "authoring_id": "S6U1C3",
+          "focus": "S6U1C3 impersonal evaluation",
+          "model": "Es importante que llegues a tiempo.",
+          "variants": "Es mejor que esperemos",
+          "confusion": "No second clause is needed in es importante descansar."
+        },
+        {
+          "authoring_id": "S6U1C4",
+          "focus": "S6U1C4 request softening",
+          "model": "Te pido que me avises.",
+          "variants": "Prefiero que lo hagamos mañana",
+          "confusion": "Register varies; a subjunctive alone does not guarantee politeness."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S6U2",
+      "critical_scope": "C1,C2,C3",
+      "revision": "C4 negative commands recycle known chunks. Do not apply a universal uncertainty=subjunctive rule.",
+      "held_out_scenario": "A plan includes one confirmed fact and one uncertain possibility. Explain the distinction and a reaction.",
+      "targets": [
+        {
+          "authoring_id": "S6U2C1",
+          "focus": "S6U2C1 belief contrast",
+          "model": "Creo que viene. No creo que venga.",
+          "variants": "Pienso que; no pienso que",
+          "confusion": "Polarity is a useful contrast, not an exhaustive mood rule."
+        },
+        {
+          "authoring_id": "S6U2C2",
+          "focus": "S6U2C2 possibility frame",
+          "model": "Puede que llueva.",
+          "variants": "Es posible que venga; tal vez viene or venga by stance",
+          "confusion": "Some adverbs allow more than one mood depending on stance."
+        },
+        {
+          "authoring_id": "S6U2C3",
+          "focus": "S6U2C3 reaction",
+          "model": "Me alegra que estés aquí.",
+          "variants": "Me sorprende que no puedas",
+          "confusion": "Subjective reaction and factual reporting differ."
+        },
+        {
+          "authoring_id": "S6U2C4",
+          "focus": "S6U2C4 subjunctive negated command revisit",
+          "model": "No lo hagas todavía.",
+          "variants": "No vengas; no se preocupe",
+          "confusion": "Connect to Stage 3 command chunks; do not treat this as wholly new."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S6U3",
+      "critical_scope": "C1,C2,C3,C4 across encounters",
+      "revision": "Politeness is context-sensitive. Advice strength and listener autonomy count; agreement is never compulsory.",
+      "held_out_scenario": "Two options trade speed for cost. Suggest, disagree tactfully and reach or decline a joint plan.",
+      "targets": [
+        {
+          "authoring_id": "S6U3C1",
+          "focus": "S6U3C1 advice alternatives",
+          "model": "Podrías llamar primero.",
+          "variants": "Deberías descansar; te recomiendo que preguntes",
+          "confusion": "Advice strength depends on wording and relationship."
+        },
+        {
+          "authoring_id": "S6U3C2",
+          "focus": "S6U3C2 tactful disagreement",
+          "model": "Entiendo, pero prefiero otra opción.",
+          "variants": "No estoy de acuerdo porque; tienes razón en eso",
+          "confusion": "Partial agreement is different from surrendering the whole point."
+        },
+        {
+          "authoring_id": "S6U3C3",
+          "focus": "S6U3C3 trade-off",
+          "model": "Es más rápido, pero cuesta más.",
+          "variants": "Por un lado; por otro lado",
+          "confusion": "Explain both consequences, not just a connector pair."
+        },
+        {
+          "authoring_id": "S6U3C4",
+          "focus": "S6U3C4 joint proposal",
+          "model": "¿Y si vamos mañana?",
+          "variants": "Podemos hacerlo así; ¿qué te parece si...?",
+          "confusion": "Present if suggestion is not the counterfactual structure."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S6U4",
+      "critical_scope": "C1,C2,C3",
+      "revision": "C4 unreal past is optional stretch and cannot block the basic hypothetical outcome. Accept reviewed -ra/-se forms.",
+      "held_out_scenario": "A budget changes; explain a present hypothetical choice and contrast it with a real condition.",
+      "targets": [
+        {
+          "authoring_id": "S6U4C1",
+          "focus": "S6U4C1 real versus hypothetical condition",
+          "model": "Si tengo tiempo, voy. Si tuviera tiempo, iría.",
+          "variants": "Si pudiera, lo haría",
+          "confusion": "Do not put conditional directly after si in this standard counterfactual pattern."
+        },
+        {
+          "authoring_id": "S6U4C2",
+          "focus": "S6U4C2 imperfect subjunctive useful forms",
+          "model": "Si fuera más fácil, lo intentaría.",
+          "variants": "Tuviera; pudiera; supiera; fuese as recognition variant",
+          "confusion": "This is not an imperfect indicative form."
+        },
+        {
+          "authoring_id": "S6U4C3",
+          "focus": "S6U4C3 conditional consequence",
+          "model": "Yo elegiría esta opción.",
+          "variants": "Haría; tendría; podría; sería",
+          "confusion": "Intelligible reasons matter alongside form accuracy."
+        },
+        {
+          "authoring_id": "S6U4C4",
+          "focus": "S6U4C4 past unreal extension",
+          "model": "Si hubiera sabido, habría llamado.",
+          "variants": "Hubiese; hubiera llamado in appropriate accepted variants",
+          "confusion": "This is a stretch target; allow B1 learners to remain with present hypotheticals."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S6U5",
+      "critical_scope": "C1,C2,C4",
+      "revision": "C3 known/sought referent is a separate advanced encounter. Score stance and intended referent, not busco as an automatic mood trigger.",
+      "held_out_scenario": "Explain purpose, a future time condition and a boundary under changed timing.",
+      "targets": [
+        {
+          "authoring_id": "S6U5C1",
+          "focus": "S6U5C1 purpose by subject",
+          "model": "Salgo para comprar comida. Te llamo para que vengas.",
+          "variants": "Para que podamos hablar",
+          "confusion": "Same-subject and different-subject purpose frames differ."
+        },
+        {
+          "authoring_id": "S6U5C2",
+          "focus": "S6U5C2 future time clause",
+          "model": "Cuando llegues, me llamas.",
+          "variants": "En cuanto llegue; antes de que salgas",
+          "confusion": "Future reference can call for subjunctive in the time clause, not future tense everywhere."
+        },
+        {
+          "authoring_id": "S6U5C3",
+          "focus": "S6U5C3 known versus sought referent",
+          "model": "Busco a alguien que habla español. Busco a alguien que hable español.",
+          "variants": "Un lugar que tiene / tenga patio",
+          "confusion": "Mood reflects how the referent is presented, not merely whether busco appears."
+        },
+        {
+          "authoring_id": "S6U5C4",
+          "focus": "S6U5C4 boundary and condition",
+          "model": "Voy, con tal de que terminemos temprano.",
+          "variants": "Aunque llueva, voy; siempre que",
+          "confusion": "Concession with subjunctive can leave truth open or treat it as irrelevant."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S6U6",
+      "critical_scope": "C1,C2,C3,C4 across encounters",
+      "revision": "No required ideological position or jargon. Five minutes is approximate; the language must show qualification and responsive reasoning.",
+      "held_out_scenario": "Discuss a practical choice, respond to new evidence and repair an overstrong interpretation.",
+      "targets": [
+        {
+          "authoring_id": "S6U6C1",
+          "focus": "S6U6C1 qualified stance",
+          "model": "Hasta donde sé, funciona.",
+          "variants": "No estoy segura; por lo que entiendo",
+          "confusion": "Express certainty proportional to evidence."
+        },
+        {
+          "authoring_id": "S6U6C2",
+          "focus": "S6U6C2 reasoned recommendation",
+          "model": "Recomiendo esta opción porque cuesta menos.",
+          "variants": "Lo mejor sería que probáramos primero",
+          "confusion": "Different acceptable structures can express the same stance."
+        },
+        {
+          "authoring_id": "S6U6C3",
+          "focus": "S6U6C3 conditioned agreement",
+          "model": "Estoy de acuerdo si cambiamos la hora.",
+          "variants": "De acuerdo, siempre que podamos terminar",
+          "confusion": "Do not assess ideological agreement; assess the conditional commitment."
+        },
+        {
+          "authoring_id": "S6U6C4",
+          "focus": "S6U6C4 repair of nuance",
+          "model": "No digo que sea malo; digo que no me sirve.",
+          "variants": "No exactamente; lo que quiero decir",
+          "confusion": "A learner should be able to repair an overstrong interpretation."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S7U1",
+      "critical_scope": "C1,C2,C3,C4 across encounters",
+      "revision": "Backshift depends on perspective and temporal meaning. Do not reward dramatic fillers without narrative coherence.",
+      "held_out_scenario": "Tell an unfamiliar anecdote, distinguish your view from reported speech and summarize after an interruption.",
+      "targets": [
+        {
+          "authoring_id": "S7U1C1",
+          "focus": "S7U1C1 narrative emphasis",
+          "model": "Lo más raro fue que nadie llamó.",
+          "variants": "Resulta que; al final",
+          "confusion": "Do not imitate dramatic filler at the expense of clarity."
+        },
+        {
+          "authoring_id": "S7U1C2",
+          "focus": "S7U1C2 reported speech",
+          "model": "Me dijo que estaba cansada.",
+          "variants": "Dijo que venía; me preguntó si podía",
+          "confusion": "Perspective and time reference matter; tense backshift is not mechanical in every context."
+        },
+        {
+          "authoring_id": "S7U1C3",
+          "focus": "S7U1C3 perspective and detail",
+          "model": "Según ella, todo salió bien.",
+          "variants": "Desde mi punto de vista; mientras tanto",
+          "confusion": "Separate narrator fact from someone else's report."
+        },
+        {
+          "authoring_id": "S7U1C4",
+          "focus": "S7U1C4 summarize the point",
+          "model": "En pocas palabras, perdimos el autobús.",
+          "variants": "Lo importante es que llegamos",
+          "confusion": "Summary selects meaning rather than repeats every event."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S7U2",
+      "critical_scope": "C1,C3,C4",
+      "revision": "C2 mood variants require region/stance review. One clip cannot prove a universal interpretation; ambiguity allows clarification.",
+      "held_out_scenario": "The same phrase is delivered sincerely or teasingly. Check intent rather than guessing a cultural stereotype.",
+      "targets": [
+        {
+          "authoring_id": "S7U2C1",
+          "focus": "S7U2C1 check tone or intent",
+          "model": "¿Lo dices en serio?",
+          "variants": "¿Es una broma?; ¿qué quieres decir?",
+          "confusion": "Do not infer intent from words alone."
+        },
+        {
+          "authoring_id": "S7U2C2",
+          "focus": "S7U2C2 soften and hedge",
+          "model": "No sé si sea la mejor opción.",
+          "variants": "No sé si es la mejor opción; quizá podríamos",
+          "confusion": "Accept regional and stance-sensitive mood variation."
+        },
+        {
+          "authoring_id": "S7U2C3",
+          "focus": "S7U2C3 indirect invitation or refusal",
+          "model": "Me encantaría, pero no puedo.",
+          "variants": "A ver si podemos; lo vemos luego",
+          "confusion": "These can imply different commitments; ask rather than stereotype."
+        },
+        {
+          "authoring_id": "S7U2C4",
+          "focus": "S7U2C4 repair a social misread",
+          "model": "Perdón, entendí otra cosa.",
+          "variants": "No quería decir eso",
+          "confusion": "Politeness norms vary by person and region."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S7U3",
+      "critical_scope": "C1,C2,C3,C4 across encounters",
+      "revision": "Authentic-length does not mean unscreened audio. Rights, lexical reach and transcript accuracy must be reviewed.",
+      "held_out_scenario": "Summarize a new short interview, separate fact and inference and leave a nonessential unknown word unresolved.",
+      "targets": [
+        {
+          "authoring_id": "S7U3C1",
+          "focus": "S7U3C1 main point and support",
+          "model": "La idea principal es que necesitamos tiempo.",
+          "variants": "Por ejemplo; según el autor",
+          "confusion": "A correct keyword list is not a coherent summary."
+        },
+        {
+          "authoring_id": "S7U3C2",
+          "focus": "S7U3C2 inference with evidence",
+          "model": "Parece que está molesto porque cambió de tono.",
+          "variants": "Da a entender que",
+          "confusion": "Mark inference as inference."
+        },
+        {
+          "authoring_id": "S7U3C3",
+          "focus": "S7U3C3 quotation versus summary",
+          "model": "Ella dijo eso, pero yo entendí otra cosa.",
+          "variants": "En otras palabras; mencionó que",
+          "confusion": "Preserve the speaker's meaning and uncertainty."
+        },
+        {
+          "authoring_id": "S7U3C4",
+          "focus": "S7U3C4 unknown-word strategy",
+          "model": "No conozco esa palabra, pero entiendo la idea.",
+          "variants": "Por el contexto; ¿se refiere a...?",
+          "confusion": "Permit unresolved details while checking essential meaning."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S7U4",
+      "critical_scope": "C1,C2,C3,C4 across encounters",
+      "revision": "Reward responsive reasoning in Spanish, not agreeing with an assessor. Avoid unfamiliar domain knowledge deciding the score.",
+      "held_out_scenario": "Defend a practical proposal, fairly restate a counterargument and revise after new information.",
+      "targets": [
+        {
+          "authoring_id": "S7U4C1",
+          "focus": "S7U4C1 structured position",
+          "model": "Mi propuesta es cambiar la hora por dos razones.",
+          "variants": "Primero; además; por último",
+          "confusion": "Structure should serve substance, not formulaic recital."
+        },
+        {
+          "authoring_id": "S7U4C2",
+          "focus": "S7U4C2 counterargument",
+          "model": "Es cierto que cuesta más, pero dura más.",
+          "variants": "Aunque entiendo tu punto",
+          "confusion": "Represent the other person's point accurately."
+        },
+        {
+          "authoring_id": "S7U4C3",
+          "focus": "S7U4C3 ask for evidence",
+          "model": "¿En qué te basas?",
+          "variants": "¿Tienes un ejemplo?; ¿cómo lo sabes?",
+          "confusion": "Tone changes whether a question sounds curious or confrontational."
+        },
+        {
+          "authoring_id": "S7U4C4",
+          "focus": "S7U4C4 revise a claim",
+          "model": "Tienes razón en eso; cambiaría mi propuesta.",
+          "variants": "No había considerado esa parte",
+          "confusion": "Revision is communicative success, not loss of points."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S7U5",
+      "critical_scope": "C1,C2,C4",
+      "revision": "C3 sound reduction is receptive only. Use several speakers per region; no accent or country is a single uniform profile.",
+      "held_out_scenario": "Understand two reviewed regional versions and choose a consistent address/register lane in a new exchange.",
+      "targets": [
+        {
+          "authoring_id": "S7U5C1",
+          "focus": "S7U5C1 address forms",
+          "model": "¿Tú puedes? / ¿Vos podés? / ¿Usted puede?",
+          "variants": "Ustedes pueden; vos sos; vos tenés",
+          "confusion": "Voseo is not limited to Argentina; usage varies locally."
+        },
+        {
+          "authoring_id": "S7U5C2",
+          "focus": "S7U5C2 regional vocabulary",
+          "model": "Carro, coche, auto.",
+          "variants": "Celular; teléfono; region-tagged local terms",
+          "confusion": "Do not claim every regional word is universal or restricted to one country."
+        },
+        {
+          "authoring_id": "S7U5C3",
+          "focus": "S7U5C3 regional sound recognition",
+          "model": "Identify known words in naturally reduced speech.",
+          "variants": "S aspiration or deletion in labeled clips; yeísmo variants",
+          "confusion": "Recognition target only; do not caricature speakers or demand imitation."
+        },
+        {
+          "authoring_id": "S7U5C4",
+          "focus": "S7U5C4 register choice",
+          "model": "¿Podría ayudarme? / ¿Me ayudas?",
+          "variants": "Written message versus casual voice note",
+          "confusion": "Choose by relationship and situation, not a universal formal country stereotype."
+        }
+      ],
+      "human_review_complete": false
+    },
+    {
+      "unit_id": "S7U6",
+      "critical_scope": "C1,C2,C3",
+      "revision": "C4 continuing plan is reflective, not a graded language gate. Fifteen minutes and all eight stages do not confer B2 or native-like fluency.",
+      "held_out_scenario": "Negotiate changing constraints, explain a short notice and repair a missing word with an unfamiliar interlocutor.",
+      "targets": [
+        {
+          "authoring_id": "S7U6C1",
+          "focus": "S7U6C1 extended interaction",
+          "model": "Negotiate a plan with changing constraints.",
+          "variants": "Ask, clarify, respond, revise and close",
+          "confusion": "A rehearsed script does not establish spontaneous ability."
+        },
+        {
+          "authoring_id": "S7U6C2",
+          "focus": "S7U6C2 mediation and explanation",
+          "model": "Explain a short notice to another person in simple Spanish.",
+          "variants": "Summarize a plan; clarify an instruction",
+          "confusion": "Do not require professional translation or medical interpretation."
+        },
+        {
+          "authoring_id": "S7U6C3",
+          "focus": "S7U6C3 self-directed repair",
+          "model": "Rephrase a missing word and keep going.",
+          "variants": "Describe it; ask what it is called",
+          "confusion": "Reward effective repair without pretending the missing vocabulary is known."
+        },
+        {
+          "authoring_id": "S7U6C4",
+          "focus": "S7U6C4 continuing learning plan",
+          "model": "Identify a topic and listening gap to work on next.",
+          "variants": "Media, community exchange, domain vocabulary",
+          "confusion": "Completion opens maintenance and growth; it does not imply native-like fluency."
+        }
+      ],
+      "human_review_complete": false
+    }
+  ]
+}
