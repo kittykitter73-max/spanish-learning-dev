@@ -1,7 +1,7 @@
 # Borao — Development Checkpoint
 
 **Stage:** Prototype  
-**Release:** v0.12 — progression, record shelf + gated rewards  
+**Release:** v0.13 — curriculum reconciliation + Ready Check foundation  
 **Environment:** GitHub `main` + live `spanish-learning-dev` Supabase + live Vercel project `spanish-learning-dev-soqq`  
 **Working brand:** Borao (replaceable)
 
@@ -47,9 +47,9 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 
 ## Current blockers
 - Resume-across-interruption has not yet been proven in the real browser flow.
-- Authenticated tamper / cross-user isolation tests remain outstanding before Staging promotion.
+- Static database security-boundary assertions now pass; true cross-user isolation still requires a second disposable auth account before Staging promotion.
 - Clean replay of the full migration history on a fresh database remains outstanding.
-- Content Block 02 remains language/pedagogical QA-only.
+- Curriculum v1.2 and Arc 01 v0.3 remain internally revised drafts pending external teacher/native review and approved audio.
 - No learner-safe audio asset is marked `ready` yet, so the player infrastructure is build-verified but the real sound loop is not yet proven with an approved file.
 - GitHub currently reports the repository as public; it should be changed to Private before broader work continues.
 
@@ -65,9 +65,9 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - Explicit decision on privileged write functions.
 
 ## Next 3 actions
-1. Attach the first approved Arc 01 song/episode assets and map them into the new collection/unlock model; prove starter-track and locked-track behavior with real audio.
-2. Run resume + authenticated tamper/isolation tests against the deployed app, including locked-media access attempts.
-3. Replay migrations on a fresh database, then make the Prototype → Staging decision.
+1. Finish the server-side Ready Check adapter against approved item/audio records; keep the v0.3 draft bank unpublishable until external review.
+2. Attach the first approved Arc 01 song/episode assets and prove real playback, listening evidence, resume, and adaptive check flow.
+3. Create a second disposable learner for cross-user isolation, replay migrations on a fresh database, then make the Prototype → Staging decision.
 
 
 ## Audio-first product direction
@@ -149,3 +149,26 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - This thread owns app UX, progression presentation, player/library/game surfaces, access enforcement, tests, deployment, and release quality.
 - Curriculum/content authoring remains upstream in the curriculum thread.
 - App code consumes the Master Curriculum and `docs/CORE_ARC_01_PRODUCTION_PACK.md` as read-only product inputs and flags upstream gaps rather than rewriting them here.
+
+
+## Curriculum reconciliation + Ready Check — v0.13
+- The live development database now has one QA-only Core path with ten learner-facing chapters aligned to curriculum v1.2.
+- All existing C001–C100 concepts are assigned exactly once to a Core chapter through `unit_concepts`; existing concept IDs and learner evidence were preserved.
+- Core/chapter structure is QA-only and is not learner-published merely because the internal curriculum revision exists.
+- The stale UX timing contract is reconciled to Master Curriculum v1.2 / Arc 01 v0.3: one coherent 24-turn story, optional active-practice prompts, adaptive Ready Check, no artificial Chapter A/B split.
+- Learner-visible assessment payloads no longer include `scoring_strategy` or `scoring_rules`; answer keys remain server-side.
+- Static security-boundary assertions cover evidence/mastery/recommendation writes, unlock retargeting, assessment keys, and Ready Check evaluator tables.
+- Arc 01 has a QA-only `Ready Check` definition with 14 explicit evidence requirements: paired listening + generated use for six critical frames, three-context manipulation evidence for C090, and one held-out practical adjustment.
+- Ready Check result storage, internal evaluator snapshots, and item-use novelty history are separated so learners can eventually see their own result summary without seeing hidden scoring criteria.
+- A deterministic readiness evaluator distinguishes `ready`, `needs_more_evidence`, and `technical_issue`; technical failures are not language failures.
+- An approval-gated adaptive selector chooses the smallest useful fresh probe set, prioritizes production before matching listening, respects prior reveals/priming, and caps the initial probe set.
+- The selector refuses draft/QA content, so the current internally revised Arc 01 item bank cannot accidentally become a live assessment.
+- New Ready Check foreign keys have covering indexes; existing unused-index notices remain informational and are not being removed prematurely.
+
+## Remaining v0.13 release blockers
+- No externally approved learner audio is marked `ready`; the real sound → prompt → evidence loop is still unproven.
+- Arc 01 scripts/item bank require external teacher/native review and final audio/rights checks before publication.
+- The Ready Check persistence/evaluator/selector exist, but the production server adapter that records item uses, scores approved items, and writes attempt results is not yet connected.
+- True cross-user RLS isolation still requires a second disposable auth learner.
+- Interrupted lesson/audio resume should be re-proven in the real browser after the current changes.
+- Full migration history still needs a clean replay on a fresh database before Staging.
