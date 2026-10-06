@@ -2,7 +2,7 @@
 
 import { useMemo, useState, useTransition } from 'react'
 import { recordExposure, submitAssessment, saveLessonProgress } from '@/app/learn/actions'
-import type { AssessmentItem } from '@/lib/learning/assessment'
+import type { LearnerAssessmentItem } from '@/lib/learning/assessment'
 
 type Stage = 'scene' | 'recognition' | 'retrieve' | 'manipulate' | 'produce' | 'done'
 
@@ -19,7 +19,7 @@ type Lesson = {
   id: string
   title: string
   segments: Segment[]
-  assessments: AssessmentItem[]
+  assessments: LearnerAssessmentItem[]
   hasPlayableAudio: boolean
 }
 
