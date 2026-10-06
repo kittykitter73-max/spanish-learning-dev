@@ -6,6 +6,7 @@ const { evidenceStrength } = require('../.test-dist/lib/learning/evidence.js')
 const { recommendationScore } = require('../.test-dist/lib/learning/recommendation.js')
 const { evaluateCheckpointReadiness } = require('../.test-dist/lib/learning/readiness.js')
 const { selectCheckpointItems } = require('../.test-dist/lib/learning/checkpoint-selector.js')
+const { evidenceEventsToReadinessObservations } = require('../.test-dist/lib/learning/readiness-evidence.js')
 const {
   isAccessSatisfied,
   collectionAccessSummary,
@@ -409,4 +410,68 @@ test('Ready Check selector excludes previously revealed semantic answers', () =>
   })
 
   assert.deepEqual(result.selected.map(item => item.itemId), ['p-plan-b'])
+})
+
+
+test('Ready Check evidence adapter ignores exposure/recognition and preserves stronger dimensions', () => {
+  const observations = evidenceEventsToReadinessObservations([
+    {
+      concept_id: 'C001',
+      evidence_type: 'exposure',
+      success: true,
+      hint_level: 0,
+      self_generated: false,
+      context_novelty: 'novel',
+      occurred_at: '2026-10-06T10:00:00Z',
+      metadata: {},
+    },
+    {
+      concept_id: 'C001',
+      evidence_type: 'independent_production',
+      success: true,
+      hint_level: 0,
+      self_generated: true,
+      context_novelty: 'novel',
+      occurred_at: '2026-10-06T10:01:00Z',
+      metadata: { context_id: 'fresh-plan' },
+    },
+  ])
+
+  assert.equal(observations.length, 1)
+  assert.equal(observations[0].dimension, 'generated_use')
+  assert.equal(observations[0].fresh, true)
+  assert.equal(observations[0].selfGenerated, true)
+  assert.equal(observations[0].contextKey, 'fresh-plan')
+})
+
+test('revealed models invalidate freshness even when the context is novel', () => {
+  const [observation] = evidenceEventsToReadinessObservations([{
+    concept_id: 'C006',
+    evidence_type: 'guided_production',
+    success: true,
+    hint_level: 0,
+    self_generated: true,
+    context_novelty: 'novel',
+    occurred_at: '2026-10-06T10:02:00Z',
+    metadata: { model_played_before_response: true },
+  }])
+
+  assert.equal(observation.fresh, false)
+})
+
+test('technical listening failures stay technical instead of becoming Spanish failures', () => {
+  const [observation] = evidenceEventsToReadinessObservations([{
+    concept_id: 'C004',
+    evidence_type: 'listening_comprehension',
+    success: null,
+    hint_level: 0,
+    self_generated: false,
+    context_novelty: 'novel',
+    occurred_at: '2026-10-06T10:03:00Z',
+    metadata: { playback_failed: true, context_id: 'voice-b' },
+  }])
+
+  assert.equal(observation.dimension, 'listening')
+  assert.equal(observation.technicalIssue, true)
+  assert.equal(observation.success, null)
 })
