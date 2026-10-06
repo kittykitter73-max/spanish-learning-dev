@@ -1498,8 +1498,22 @@ Album 01 retains the eight-track project contract, with optional recall Track 09
 | 05 Atmospheric Reinforcement | No required new grammar; recycle first four tracks | S0U3 and S1U1–S1U4 | Unfamiliar plain-spoken version and delayed meaning check; replay alone remains exposure |
 | 06 Household Mission | S3U4C1 and familiar command chunks from S3U4C2 | ir/venir, location, want/need | Interpret a task and request help; early command exposure does not certify command morphology |
 | 07 Grammar Remix | Person/polarity contrast from S2U4 and S1 frames | quieres, tienes, puedes, vamos | Change one feature without a word bank; then produce a personal answer |
-| 08 Spanish Heavy Reprise | Familiar Album 01 targets with reduced English | All earlier album language | Check new voice and new scene without transcript, restoring support if comprehension drops |
+| 08 Latin Signature / Spanish Heavy Reprise | Familiar Album 01 targets with reduced English | All earlier album language | Check new voice and new scene without transcript, restoring support if comprehension drops |
 | 09 Optional Recall Version | Selected core targets with strategic gaps | All earlier material | Recall a phrase then use it outside the lyric; correct lyric completion alone is not spontaneous transfer |
+
+### Required Latin signature track on every album
+
+Every album includes at least one original track grounded in a specific Latin musical tradition. This is a required album role within the planned track count, not an automatic extra or bonus track. Genre personalization may vary other songs but must preserve at least one such track in each album edition.
+
+“Authentic” is a production and review ambition, not a claim automatically earned by Spanish lyrics, a percussion preset, an AI prompt or a singer's nationality. Choose a named tradition and coherent regional production reference, then review groove, instrumentation, arrangement, vocal phrasing, idiom and register with practitioners/listeners familiar with that tradition. Do not treat Latin music as one sound or combine cultural markers indiscriminately.
+
+The song is Spanish-first, with natural phrases and a story or feeling that stands on its own. Avoid inserted English grammar explanations and rhyme-forced syntax. Early albums can use simple language and familiar hooks while allowing supported exposure-only words. Optional translations and companion teaching remain outside the song. One to three primary constructions are enough; assess them later in plain speech. Listening still produces exposure, not mastery.
+
+Album 01: reserve Track 08, the Spanish-heavy reprise, for the first Latin signature track. Initial commissioning direction is a contemporary cumbia treatment that recycles familiar wants/plans and an outing or shared-evening scene. This is a candidate direction, not an approved rendition or a universal representation of cumbia; choose its specific production lane during commissioning. Keep the other seven tracks available for the broader genre mix.
+
+Later albums rotate traditions rather than requiring the same sound every time. Candidate lanes include bachata, salsa, bolero, reggaeton and additional cumbia treatments. Select the lane that best serves the lyric and album; identify the specific tradition in the brief. Final genre assignments follow listening and cultural/musical review, not a fixed stereotype about a learner or country.
+
+Each album's release record names its signature track, genre/tradition, production references, language targets, exact lyric map and review status. The requirement remains unfulfilled until the actual audio passes language, musical and rights review. Never mark an album complete merely because this role has a written brief.
 
 A song has one main musical hook and normally one to three primary constructions, with a small set of secondary lexical targets. Track 04's four question functions should be assessed across multiple brief activities, not one overloaded screen. Songs may contain decorative unknown language if it is contextually interpretable and not essential to an assessed task. Mark it exposed-only; do not conceal the true learner difficulty with a nominal target count.
 
@@ -1817,3 +1831,5 @@ Version 1.0 established the eight-stage sequence, 48 unit cards, 192 unit target
 Version 1.1 incorporates the supplied Borao architecture: ten Core Arcs, elective mini-Arcs, Quick Checks, targeted Boosters, test-through access, the Home Listen Play Speak Library navigation, owned playback, and post-Core Build Your Mix. It clarifies that stages and unit cards are internal authoring coverage, not compulsory learner levels, and preserves implemented concept IDs pending a crosswalk.
 
 Version 1.2 completes a six-pass internal revision across every unit card, all 24 strands and ten Core Arcs. It assigns all 100 seeded concepts an authoring home; separates story from optional practice; adds scoped critical functions and held-out scenarios to all 48 units; removes conflicting universal score thresholds; improves learner accommodations, pronunciation/register policy and commissioning priorities; and incorporates the v0.3 Arc 1 rewrite. Review findings and remaining external gates live in docs/CURRICULUM_REVIEW_LOG_v1_2.md. The archived v1.1 Google Doc is historical; this repository master is current. These revisions are not human validation, accreditation or demonstrated efficacy.
+
+Music-policy amendment to v1.2: each album must include at least one Latin signature track within its existing track count. Album 01 Track 08 is reserved for this role; Spanish-first lyrics, specific tradition and actual musical/cultural review are required. This does not alter concept IDs or readiness policy.
