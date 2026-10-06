@@ -1,7 +1,7 @@
 # Borao UX Timing & Content Format Contract
 
 Status: UX/app interpretation of the current curriculum sources.
-Authority: Read alongside Borao Master Curriculum v1.1, docs/CORE_ARC_01_PRODUCTION_PACK.md v0.2, docs/CURRICULUM_CONTENT_INDEX.md, docs/LEARNER_EXPERIENCE_SYSTEM.md, and docs/AUDIO_FIRST_PRODUCT_ARCHITECTURE.md.
+Authority: Read alongside Borao Master Curriculum v1.2, docs/CORE_ARC_01_PRODUCTION_PACK.md v0.3, docs/CONTENT_HANDOFF_v1_2.md, docs/CURRICULUM_CONTENT_INDEX.md, docs/LEARNER_EXPERIENCE_SYSTEM.md, and docs/AUDIO_FIRST_PRODUCT_ARCHITECTURE.md.
 This document does not rewrite curriculum or author content. It defines how approved curriculum/content should appear to learners.
 
 ## 1. What the learner should see
@@ -37,38 +37,39 @@ User-facing Core language should be functional:
 
 ## 2. Arc 01 timing
 
-Curriculum commissioning targets:
-- Song: 2:30–3:10
-- Spoken Chapter A: 2:30–3:30
+Current v1.2/v0.3 commissioning targets:
+- Song: 2:30–3:10 planned, not measured until final production
+- Spoken episode story edit: approximately 75–120 seconds before optional practice; current source is unmeasured
+- Active episode: the same 24-turn story with up to three optional practice prompts inserted at approved breakpoints
 - Optional game burst: 1–2 min
-- Spoken Chapter B: 2:00–3:00
-- Quick Check: typically 4–7 min, shortened when recent valid evidence already exists
-- Booster: about 2 min
-- Entry phrase preview for true beginners: about 60 sec
-- Speaking mission: curriculum-defined task; UX target should remain compact, generally about 2–3 min unless evidence collection requires more
+- Ready Check: normally about 3–6 min; a second short check may be needed when one pass cannot establish paired evidence across all six critical frames
+- Booster / Quick tune-up: about 2 min
+- Entry phrase preview for true beginners: about 60 sec when needed
+- Speaking mission: generally about 2–3 min unless evidence collection requires more
 
-A full first-pass Arc 01 route is therefore roughly 13–22 minutes before any optional replay, depending on skipped items, prior evidence, and whether the optional game is used.
-
-Do not display this as a single 20-minute lesson.
+Do not present a fixed total Arc duration until the real audio and adaptive check lengths are measured.
 
 Recommended learner-facing encounters:
 
-### Encounter A — about 5–7 min
-- Now Playing / Arc entry
-- full song
-- Chapter A
-- stop point with a natural Continue Later option
+### Encounter A — listen first
+- Arc entry / anchor song
+- uninterrupted story episode
+- natural Continue Later point
+- no mandatory quiz inserted into the song or passive story
 
-### Encounter B — about 5–8 min
-- optional Flip It, if useful
-- Chapter B
-- speaking mission
-- show Quick Check availability when evidence supports it
+### Encounter B — active use
+- optional episode Practice mode using only the approved prompt breakpoints
+- one useful game burst when the evidence job warrants it
+- compact speaking mission
+- Ready Check becomes available when enough prerequisite exposure/practice exists, but returning learners may test first
 
-### Encounter C — about 4–7 min
-- adaptive Quick Check
-- targeted result
-- Arc readiness or 2-minute Booster
+### Encounter C — Ready Check
+- smallest fresh set needed to resolve missing evidence
+- uncued production before matching model/reveal where practical
+- transcript-free listening with fresh audio
+- manipulation only where needed
+- short held-out practical adjustment if still necessary
+- targeted result, with a second short check or approximately two-minute Booster rather than a long exam
 
 A motivated learner may continue through all encounters in one sitting. The app should never force artificial day boundaries.
 
@@ -121,7 +122,7 @@ The collection does not own mastery.
 ### Spoken episode
 Arc 01 should appear as one episode: “El plan cambió.”
 
-Use chapter markers inside the episode rather than making Chapter A and Chapter B feel like unrelated lessons.
+The v0.3 source is one coherent 24-turn story. Do not expose the old Chapter A / Chapter B split. Practice mode may insert the three approved optional prompts at their authored breakpoints; stored source-array order is not playback order.
 
 Suggested user presentation:
 - episode title;
