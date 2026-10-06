@@ -167,6 +167,9 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - Learners may safely start one open attempt for their own published checkpoint using only learner_id + checkpoint_id; they cannot choose status/result fields, update results, or start QA-only checkpoints.
 - A live publication-guard regression confirms the current Arc 01 QA checkpoint cannot be started by the authenticated learner.
 - A repeatable RLS isolation simulation confirms a different authenticated JWT subject cannot see or mutate the existing learner's evidence, mastery, recommendations, progress, media progress, or playlists.
+- Home now supports constrained published Core lazy-enrollment: an onboarded learner may create only their own active Core path state and first published Core unit state.
+- Learners still cannot update/delete path or unit progression state; later Arc advancement remains engine-owned.
+- Live publication-guard regression confirms the current QA-only Core path and Arc 1 cannot be self-enrolled before publication.
 - The selector refuses draft/QA content, so the current internally revised Arc 01 item bank cannot accidentally become a live assessment.
 - New Ready Check foreign keys have covering indexes; existing unused-index notices remain informational and are not being removed prematurely.
 
