@@ -1,7 +1,7 @@
 # Borao — Development Checkpoint
 
 **Stage:** Prototype  
-**Release:** v0.14 — Ready Check runtime adapter + elective Modules shell  
+**Release:** v0.15 — persistent Ready Check attempts + evaluation/retest shell  
 **Environment:** GitHub `main` + live `spanish-learning-dev` Supabase + live Vercel project `spanish-learning-dev-soqq`  
 **Working brand:** Borao (replaceable)
 
@@ -65,7 +65,7 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - Explicit decision on privileged write functions.
 
 ## Next 3 actions
-1. Add the response/persistence layer that freezes a selected Ready Check probe set per attempt and evaluates only approved reviewed items.
+1. Attach the first externally approved Arc 01 Ready Check item/audio set, register those approved items in the hidden runtime registry, and run the new v0.15 attempt loop end-to-end.
 2. Attach the first approved Arc 01 song/episode assets and prove real playback, listening evidence, resume, and adaptive check flow.
 3. Create a second disposable learner for cross-user isolation, replay migrations on a fresh database, then make the Prototype → Staging decision.
 
@@ -193,3 +193,17 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - Smoke coverage includes the Modules auth boundary and Ready Check planning auth boundary.
 - Latest unit tests, TypeScript typecheck, production build, exact-commit deployed smoke test, and Vercel deployment all pass.
 - Current production deployment reports no new runtime errors.
+
+
+## Persistent Ready Check attempt lifecycle — v0.15
+- Added hidden runtime-item, frozen attempt-item, and response persistence tables.
+- Starting an attempt freezes the selected reviewed probes for that attempt; later curriculum/content changes cannot mutate an in-progress check.
+- Learner responses are scored only against hidden server-owned evaluator snapshots. The client never submits success, evidence strength, result status, or answer keys.
+- Scored responses create governed learner evidence through the same evidence pipeline that updates concept state.
+- Finalization distinguishes `ready`, `booster_recommended`, and `technical_issue`; technical uncertainty is not converted into learner failure.
+- Finalized attempts store an internal evaluator snapshot plus a learner-safe Booster plan.
+- Retests are separate attempts linked to the parent attempt, preserving history instead of overwriting the first result.
+- Added the authenticated mobile Ready Check route at `/check/[slug]` with start/resume, one-prompt-at-a-time response capture, signed listening-audio preparation, result, Booster, and retest states.
+- The live development database has migration `ready_check_attempt_lifecycle_v015` applied.
+- Security advisor review confirms the new hidden tables have no learner table grants. The intentionally authenticated `SECURITY DEFINER` RPC boundary remains a documented Prototype risk to formally accept or move behind a private server credential before Staging.
+- Current Arc 01 assessment items remain draft/unreviewed and no learner-safe Ready Check audio is ready. Therefore v0.15 is structurally complete but intentionally cannot run a real learner attempt until upstream review/approval supplies eligible items; the app must continue to show an unavailable/technical state rather than fake a check.
