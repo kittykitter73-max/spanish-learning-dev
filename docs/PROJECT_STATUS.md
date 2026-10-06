@@ -1,7 +1,7 @@
 # Borao — Development Checkpoint
 
 **Stage:** Prototype  
-**Release:** v0.11 — audio queue, resume, playlists + Drive mode  
+**Release:** v0.12 — progression, record shelf + gated rewards  
 **Environment:** GitHub `main` + live `spanish-learning-dev` Supabase + live Vercel project `spanish-learning-dev-soqq`  
 **Working brand:** Borao (replaceable)
 
@@ -28,7 +28,7 @@
 `signup → confirm → onboarding → Home → Listen / Play / Speak / Library → recommended content → assessment → evidence → concept state → recommendation → completion`
 
 ## Security posture
-Authenticated learners have direct table writes only where intentionally allowed: their own profile update and favorites. Evidence, mastery state, recommendations, billing/entitlements, and content progress are not directly client-writable.
+Authenticated learners have direct table writes only where intentionally allowed: their own profile update, favorites, playlists/playlist items, media-resume state, and the `seen_at` acknowledgement column on their own unlock rows. They cannot insert unlocks or retarget an existing unlock. Evidence, mastery state, recommendations, billing/entitlements, and governed content progress remain outside arbitrary client control.
 
 Three Supabase advisor warnings remain for intentionally authenticated `SECURITY DEFINER` RPCs: exposure recording, assessment submission, and content-progress save. Each validates `auth.uid()` and eligible published content before writing. Before Staging, either formally test/accept this API boundary or move privileged writes behind a private server-only service path.
 
@@ -65,8 +65,8 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - Explicit decision on privileged write functions.
 
 ## Next 3 actions
-1. Attach one real learner-safe spoken or music asset and prove the player/queue loop.
-2. Run resume + authenticated tamper/isolation tests against the deployed app.
+1. Attach the first approved Arc 01 song/episode assets and map them into the new collection/unlock model; prove starter-track and locked-track behavior with real audio.
+2. Run resume + authenticated tamper/isolation tests against the deployed app, including locked-media access attempts.
 3. Replay migrations on a fresh database, then make the Prototype → Staging decision.
 
 
@@ -123,3 +123,29 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - `learner_evidence_events` remains the learning-evidence history.
 - `media_assets` remains the approved media registry.
 - `learning-media` remains a private Storage bucket protected by RLS and signed playback URLs.
+
+
+## Progression & rewards — v0.12
+- Canon now includes `docs/UX_TIMING_AND_CONTENT_FORMAT_CONTRACT.md` and `docs/PROGRESSION_REWARDS_AND_UNLOCKS.md`.
+- Motivation model is music-native: content/game/capability unlocks, not XP, coins, hearts, streak punishment, or leaderboards.
+- `content_collections` represents albums and spoken series without making collections the source of mastery.
+- `collection_items` supports starter, core, bonus, alternate, and preview content with explicit access rules.
+- `game_mechanics` + `game_unlock_rules` support progressive Play-surface reveals.
+- `learner_unlocks` records durable content/collection/game/feature rewards separately from mastery.
+- Library now has a Record Shelf surface and generic album/series detail route with locked/unlocked track states.
+- Home can surface one restrained unseen unlock moment at a time.
+- Play reads progressive game-unlock state when approved game definitions exist.
+- Progression helpers are regression-tested separately from learning/mastery logic.
+
+## Progression security boundary
+- Album/game unlocks do not create learning evidence.
+- Unlock rows cannot be inserted directly by learners.
+- Learners may update only `learner_unlocks.seen_at`; they cannot alter the rewarded content/game/collection target.
+- Ready media belonging to a published collection is gated by the same access rules at both `media_assets` RLS and private Storage RLS.
+- Starter content can use `immediate`; later tracks can use unit/path readiness rules or explicit reward grants.
+- Existing published content that is not assigned to a collection remains accessible so the current prototype flow is not broken.
+
+## UX thread boundary
+- This thread owns app UX, progression presentation, player/library/game surfaces, access enforcement, tests, deployment, and release quality.
+- Curriculum/content authoring remains upstream in the curriculum thread.
+- App code consumes the Master Curriculum and `docs/CORE_ARC_01_PRODUCTION_PACK.md` as read-only product inputs and flags upstream gaps rather than rewriting them here.
