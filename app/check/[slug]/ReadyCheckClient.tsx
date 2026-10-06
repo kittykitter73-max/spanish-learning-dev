@@ -49,6 +49,8 @@ export default function ReadyCheckClient(props: {
   const [responses, setResponses] = useState<Record<string, string>>({})
   const [currentIndex, setCurrentIndex] = useState(0)
   const [error, setError] = useState<string | null>(null)
+  const [audioUrls, setAudioUrls] = useState<Record<string, string>>({})
+  const [audioLoading, setAudioLoading] = useState<string | null>(null)
   const [isPending, startTransition] = useTransition()
 
   useEffect(() => {
@@ -113,6 +115,22 @@ export default function ReadyCheckClient(props: {
         setError(err instanceof Error ? err.message : 'Could not save that response.')
       }
     })
+  }
+
+  async function prepareAudio(itemKey: string, assetId: string) {
+    setError(null)
+    setAudioLoading(itemKey)
+    try {
+      const response = await fetch(`/api/media/${assetId}`)
+      if (!response.ok) throw new Error('Listening audio is not available right now.')
+      const data = await response.json()
+      if (!data?.url) throw new Error('Listening audio is not available right now.')
+      setAudioUrls(prev => ({ ...prev, [itemKey]: data.url }))
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not prepare listening audio.')
+    } finally {
+      setAudioLoading(null)
+    }
   }
 
   function retest() {
@@ -226,7 +244,20 @@ export default function ReadyCheckClient(props: {
       <h2>{payload.prompt ?? 'Respond when you are ready.'}</h2>
 
       {payload.audioAssetId && (
-        <audio controls preload="none" src={`/api/media/${payload.audioAssetId}`} />
+        <div className="ready-check-audio">
+          {audioUrls[current.itemKey] ? (
+            <audio controls preload="metadata" src={audioUrls[current.itemKey]} />
+          ) : (
+            <button
+              className="secondary"
+              type="button"
+              onClick={() => prepareAudio(current.itemKey, payload.audioAssetId!)}
+              disabled={audioLoading === current.itemKey}
+            >
+              {audioLoading === current.itemKey ? 'Preparing audio…' : 'Play listening prompt'}
+            </button>
+          )}
+        </div>
       )}
 
       <textarea
