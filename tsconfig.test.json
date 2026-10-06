@@ -14,5 +14,8 @@
     "lib/player/**/*.ts",
     "lib/progression/**/*.ts",
     "lib/navigation.ts"
+  ],
+  "exclude": [
+    "lib/learning/ready-check-server.ts"
   ]
 }
