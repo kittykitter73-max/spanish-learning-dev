@@ -506,3 +506,55 @@
   .collection-art{max-width:72vw}
   .collection-hero h1{font-size:58px}
 }
+
+
+/* Progression reward reveal */
+.unlock-reveal{
+  display:grid;
+  grid-template-columns:72px minmax(0,1fr) auto;
+  gap:16px;
+  align-items:center;
+  margin:0 0 18px;
+  padding:16px 18px;
+  border-radius:24px;
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.72),rgba(255,230,209,.76));
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 16px 40px rgba(32,26,32,.08);
+}
+.unlock-disc{
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(circle at 35% 30%,rgba(255,255,255,.55),transparent 20%),
+    linear-gradient(145deg,var(--coral),var(--pink),var(--sun));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);
+}
+.unlock-disc span{font-size:26px;color:white;font-weight:900}
+.unlock-reveal-copy{min-width:0}
+.unlock-reveal-copy p{margin:0 0 4px;font-size:9px;letter-spacing:.14em;font-weight:900;color:#92505b}
+.unlock-reveal-copy h2{margin:0;font-size:29px;line-height:1;letter-spacing:-.03em}
+.unlock-reveal-copy>span{display:block;margin-top:6px;color:var(--muted);font-size:13px;line-height:1.35}
+.unlock-reveal-actions{display:flex;align-items:center;gap:7px}
+.unlock-reveal-actions a,
+.unlock-reveal-actions button{
+  border:0;
+  border-radius:999px;
+  padding:9px 12px;
+  font:inherit;
+  font-size:11px;
+  font-weight:900;
+  cursor:pointer;
+  text-decoration:none;
+}
+.unlock-reveal-actions a{background:var(--ink);color:white}
+.unlock-reveal-actions button{background:rgba(32,26,32,.07);color:var(--ink)}
+@media(max-width:620px){
+  .unlock-reveal{grid-template-columns:54px minmax(0,1fr);padding:14px}
+  .unlock-disc{width:52px;height:52px}
+  .unlock-reveal-actions{grid-column:2}
+  .unlock-reveal-copy h2{font-size:24px}
+}
