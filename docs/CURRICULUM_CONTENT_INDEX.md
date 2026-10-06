@@ -18,6 +18,9 @@ Read docs/CONTENT_HANDOFF_v1_2.md before dependent app work. Coordination is thr
 - content/curriculum/units.v1.2.json: all 48 cards and 192 authoring targets with specific revision notes and new transfer scenarios.
 These registers are not migrations. Database memberships and the expanded-target semantic legacy crosswalk still require reconciliation.
 
+## Album music requirement
+Every album includes at least one Latin signature track within its planned track count, preserved across personalized editions. Spanish-first lyrics and a specific musical tradition are required; actual language/musical review determines release quality. Album 01 Track 08 is reserved for the role, with a contemporary cumbia direction proposed. See the master’s Required Latin signature track section.
+
 ## Arc 01 — Make Something Happen
 - docs/CORE_ARC_01_PRODUCTION_PACK.md: current complete authored pack, rewritten lyrics/story, games, speaking, checks and Boosters.
 - docs/CORE_ARC_01_RECORDING_REVIEW.md: current actor/assembly/review instructions.
