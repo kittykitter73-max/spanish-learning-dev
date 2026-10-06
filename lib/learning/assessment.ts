@@ -58,3 +58,19 @@ export function scoreAssessment(item: AssessmentItem, rawResponse: string) {
     normalizedResponse: response,
   }
 }
+
+
+export type LearnerAssessmentItem = Pick<
+  AssessmentItem,
+  | 'id'
+  | 'prompt'
+  | 'item_type'
+  | 'evidence_type'
+  | 'options'
+  | 'hint_level'
+  | 'sequence_number'
+  | 'stage_label'
+  | 'support_text'
+  | 'success_feedback'
+  | 'failure_feedback'
+>
