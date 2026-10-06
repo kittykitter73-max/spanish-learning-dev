@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import LearnClient from '@/components/learn/LearnClient'
 import AppNav from '@/components/app/AppNav'
-import type { AssessmentItem } from '@/lib/learning/assessment'
+import type { LearnerAssessmentItem } from '@/lib/learning/assessment'
 
 type SearchParams = Promise<{ content?: string }>
 
@@ -56,9 +56,9 @@ export default async function LearnPage({ searchParams }: { searchParams: Search
       supabase
         .from('assessment_items')
         .select(`
-          id,slug,concept_id,prompt,item_type,evidence_type,options,
-          scoring_strategy,scoring_rules,hint_level,sequence_number,
-          stage_label,support_text,success_feedback,failure_feedback
+          id,prompt,item_type,evidence_type,options,
+          hint_level,sequence_number,stage_label,support_text,
+          success_feedback,failure_feedback
         `)
         .eq('content_item_id', item.id)
         .eq('status', 'published')
@@ -76,7 +76,7 @@ export default async function LearnPage({ searchParams }: { searchParams: Search
   if (mediaError) throw new Error(mediaError.message)
 
   const segments = segmentRows ?? []
-  const assessments = (assessmentRows ?? []) as AssessmentItem[]
+  const assessments = (assessmentRows ?? []) as LearnerAssessmentItem[]
 
   if (segments.length === 0) throw new Error('Published lesson is missing spoken segments')
   if (assessments.length < 4) throw new Error('Published lesson is missing required assessment steps')
