@@ -47,7 +47,7 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 
 ## Current blockers
 - Resume-across-interruption has not yet been proven in the real browser flow.
-- Static database security-boundary assertions now pass; true cross-user isolation still requires a second disposable auth account before Staging promotion.
+- Static database security-boundary assertions pass, and a simulated second authenticated JWT cannot read or mutate the real learner's private rows. A second real browser account is still required for full Auth + cookie + RLS E2E before Staging.
 - Clean replay of the full migration history on a fresh database remains outstanding.
 - Curriculum v1.2 and Arc 01 v0.3 remain internally revised drafts pending external teacher/native review and approved audio.
 - No learner-safe audio asset is marked `ready` yet, so the player infrastructure is build-verified but the real sound loop is not yet proven with an approved file.
@@ -162,13 +162,18 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - Ready Check result storage, internal evaluator snapshots, and item-use novelty history are separated so learners can eventually see their own result summary without seeing hidden scoring criteria.
 - A deterministic readiness evaluator distinguishes `ready`, `needs_more_evidence`, and `technical_issue`; technical failures are not language failures.
 - An approval-gated adaptive selector chooses the smallest useful fresh probe set, prioritizes production before matching listening, respects prior reveals/priming, and caps the initial probe set.
+- Ready Check evidence can now reuse valid prior learner evidence instead of retesting everything; exposure/recognition alone do not satisfy stronger readiness dimensions.
+- The combined Ready Check planner turns existing evidence + unresolved requirements + approved candidates into the smallest next probe set, and selects nothing when readiness is already established.
+- Learners may safely start one open attempt for their own published checkpoint using only learner_id + checkpoint_id; they cannot choose status/result fields, update results, or start QA-only checkpoints.
+- A live publication-guard regression confirms the current Arc 01 QA checkpoint cannot be started by the authenticated learner.
+- A repeatable RLS isolation simulation confirms a different authenticated JWT subject cannot see or mutate the existing learner's evidence, mastery, recommendations, progress, media progress, or playlists.
 - The selector refuses draft/QA content, so the current internally revised Arc 01 item bank cannot accidentally become a live assessment.
 - New Ready Check foreign keys have covering indexes; existing unused-index notices remain informational and are not being removed prematurely.
 
 ## Remaining v0.13 release blockers
 - No externally approved learner audio is marked `ready`; the real sound → prompt → evidence loop is still unproven.
 - Arc 01 scripts/item bank require external teacher/native review and final audio/rights checks before publication.
-- The Ready Check persistence/evaluator/selector exist, but the production server adapter that records item uses, scores approved items, and writes attempt results is not yet connected.
+- The Ready Check persistence/evaluator/planner and safe attempt-start boundary exist, but the production server adapter that records approved item uses, scores responses, and writes server-owned attempt results is not yet connected.
 - True cross-user RLS isolation still requires a second disposable auth learner.
 - Interrupted lesson/audio resume should be re-proven in the real browser after the current changes.
 - Full migration history still needs a clean replay on a fresh database before Staging.
