@@ -109,6 +109,15 @@ export default async function LibraryPage() {
         </div>
       </section>
 
+      <section className="library-module-callout">
+        <div>
+          <p className="eyebrow">AFTER CORE</p>
+          <h2>Choose your Spanish.</h2>
+          <p>Travel, social life, work, family, slang, regions and other focused paths live in Modules once the shared foundation is ready.</p>
+        </div>
+        <Link className="secondary" href="/modules">Explore modules</Link>
+      </section>
+
       <section className="record-shelf-section">
         <div className="section-heading-row">
           <div>
