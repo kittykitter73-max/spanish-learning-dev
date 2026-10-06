@@ -72,6 +72,12 @@ for (const path of ['/listen', '/play', '/speak', '/library', '/drive']) {
   })
 }
 
+await expect('/api/checkpoints/core-01-ready-check/plan', (response, body) => {
+  return response.status === 401 && /authentication required/i.test(body)
+    ? { ok: true, message: `HTTP ${response.status}, checkpoint planning requires authentication` }
+    : { ok: false, message: `HTTP ${response.status}, body=${body.slice(0, 120)}` }
+})
+
 await expect('/api/media/00000000-0000-0000-0000-000000000000', (response, body) => {
   return response.status === 401 && /authentication required/i.test(body)
     ? { ok: true, message: `HTTP ${response.status}, media signing requires authentication` }
