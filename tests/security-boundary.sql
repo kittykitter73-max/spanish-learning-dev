@@ -47,4 +47,14 @@ begin
   if not has_table_privilege('authenticated','public.learner_media_progress','INSERT,SELECT,UPDATE,DELETE') then
     raise exception 'media progress CRUD grant missing';
   end if;
+
+  if has_column_privilege('authenticated','public.assessment_items','scoring_strategy','SELECT')
+     or has_column_privilege('authenticated','public.assessment_items','scoring_rules','SELECT') then
+    raise exception 'assessment scoring keys must remain server-only';
+  end if;
+
+  if not has_column_privilege('authenticated','public.assessment_items','prompt','SELECT')
+     or not has_column_privilege('authenticated','public.assessment_items','options','SELECT') then
+    raise exception 'learner-visible assessment columns should remain readable';
+  end if;
 end $$;
