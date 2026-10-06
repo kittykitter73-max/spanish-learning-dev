@@ -69,7 +69,7 @@ export default async function TodayPage() {
   let unitStates: Array<{ unit_id: string; status: string }> = []
 
   if (corePath?.id) {
-    const [{ data: units }, { data: states }] = await Promise.all([
+    const [{ data: units }, { data: states }, { data: pathState }] = await Promise.all([
       supabase
         .from('learning_units')
         .select('id,title,sequence_number')
@@ -80,10 +80,56 @@ export default async function TodayPage() {
         .from('learner_unit_state')
         .select('unit_id,status')
         .eq('learner_id', userId),
+      supabase
+        .from('learner_path_state')
+        .select('path_id,status')
+        .eq('learner_id', userId)
+        .eq('path_id', corePath.id)
+        .maybeSingle(),
     ])
 
     coreUnits = units ?? []
     unitStates = states ?? []
+
+    if (!pathState) {
+      const { error: pathStartError } = await supabase
+        .from('learner_path_state')
+        .insert({
+          learner_id: userId,
+          path_id: corePath.id,
+          status: 'active',
+        })
+
+      if (pathStartError && pathStartError.code !== '23505') {
+        throw new Error(pathStartError.message)
+      }
+    }
+
+    const firstUnit = coreUnits[0]
+    const hasFirstUnitState = firstUnit
+      ? unitStates.some(state => state.unit_id === firstUnit.id)
+      : true
+
+    if (firstUnit && !hasFirstUnitState) {
+      const { error: unitStartError } = await supabase
+        .from('learner_unit_state')
+        .insert({
+          learner_id: userId,
+          unit_id: firstUnit.id,
+          status: 'active',
+        })
+
+      if (unitStartError && unitStartError.code !== '23505') {
+        throw new Error(unitStartError.message)
+      }
+
+      if (!unitStartError || unitStartError.code === '23505') {
+        unitStates = [
+          ...unitStates,
+          { unit_id: firstUnit.id, status: 'active' },
+        ]
+      }
+    }
   }
 
   const completedUnitIds = new Set(
