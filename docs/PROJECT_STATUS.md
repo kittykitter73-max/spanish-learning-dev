@@ -1,7 +1,7 @@
 # Borao — Development Checkpoint
 
 **Stage:** Prototype  
-**Release:** v0.13 — curriculum reconciliation + Ready Check foundation  
+**Release:** v0.14 — Ready Check runtime adapter + elective Modules shell  
 **Environment:** GitHub `main` + live `spanish-learning-dev` Supabase + live Vercel project `spanish-learning-dev-soqq`  
 **Working brand:** Borao (replaceable)
 
@@ -65,7 +65,7 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - Explicit decision on privileged write functions.
 
 ## Next 3 actions
-1. Finish the server-side Ready Check adapter against approved item/audio records; keep the v0.3 draft bank unpublishable until external review.
+1. Add the response/persistence layer that freezes a selected Ready Check probe set per attempt and evaluates only approved reviewed items.
 2. Attach the first approved Arc 01 song/episode assets and prove real playback, listening evidence, resume, and adaptive check flow.
 3. Create a second disposable learner for cross-user isolation, replay migrations on a fresh database, then make the Prototype → Staging decision.
 
@@ -180,3 +180,16 @@ Three Supabase advisor warnings remain for intentionally authenticated `SECURITY
 - True cross-user RLS isolation still requires a second disposable auth learner.
 - Interrupted lesson/audio resume should be re-proven in the real browser after the current changes.
 - Full migration history still needs a clean replay on a fresh database before Staging.
+
+
+## Ready Check runtime + elective Modules — v0.14
+- Added a server-only Ready Check runtime adapter that consumes the approved item package, reuses prior learner evidence, checks real media readiness, and returns only learner-safe prompts.
+- Draft or unreviewed Arc 01 check items remain invisible; listening probes are selectable only when their approved audio asset is actually `ready`.
+- Added an authenticated `/api/checkpoints/[slug]/plan` endpoint that exposes no answer keys or hidden evaluator payloads.
+- The runtime refuses unavailable chapter/checkpoint states rather than silently treating missing infrastructure as learner failure.
+- Added the mobile `/modules` surface for post-Core elective paths.
+- Modules stay locked until Core completion and automatically populate from published elective `learning_paths`.
+- Library now links into Modules without hard-coding future elective curriculum.
+- Smoke coverage includes the Modules auth boundary and Ready Check planning auth boundary.
+- Latest unit tests, TypeScript typecheck, production build, exact-commit deployed smoke test, and Vercel deployment all pass.
+- Current production deployment reports no new runtime errors.
