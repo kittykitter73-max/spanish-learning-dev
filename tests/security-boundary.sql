@@ -70,8 +70,20 @@ begin
     raise exception 'checkpoint novelty history must remain server-only';
   end if;
 
-  if has_table_privilege('authenticated','public.checkpoint_attempts','INSERT,UPDATE,DELETE') then
-    raise exception 'learners must not write checkpoint result rows directly';
+  if has_table_privilege('authenticated','public.checkpoint_attempts','UPDATE,DELETE') then
+    raise exception 'learners must not mutate or delete checkpoint result rows directly';
+  end if;
+
+  if has_column_privilege('authenticated','public.checkpoint_attempts','status','INSERT')
+     or has_column_privilege('authenticated','public.checkpoint_attempts','learner_result_code','INSERT')
+     or has_column_privilege('authenticated','public.checkpoint_attempts','learner_message','INSERT')
+     or has_column_privilege('authenticated','public.checkpoint_attempts','completed_at','INSERT') then
+    raise exception 'learners must not choose checkpoint result/status fields when starting attempts';
+  end if;
+
+  if not has_column_privilege('authenticated','public.checkpoint_attempts','learner_id','INSERT')
+     or not has_column_privilege('authenticated','public.checkpoint_attempts','checkpoint_id','INSERT') then
+    raise exception 'learners should be able to start their own published checkpoint attempt';
   end if;
 
   if not has_table_privilege('authenticated','public.checkpoint_attempts','SELECT') then
