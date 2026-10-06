@@ -5,6 +5,7 @@ const { scoreAssessment } = require('../.test-dist/lib/learning/assessment.js')
 const { evidenceStrength } = require('../.test-dist/lib/learning/evidence.js')
 const { recommendationScore } = require('../.test-dist/lib/learning/recommendation.js')
 const { evaluateCheckpointReadiness } = require('../.test-dist/lib/learning/readiness.js')
+const { selectCheckpointItems } = require('../.test-dist/lib/learning/checkpoint-selector.js')
 const {
   isAccessSatisfied,
   collectionAccessSummary,
@@ -305,4 +306,107 @@ test('technical failure is separated from Spanish failure', () => {
 
   assert.equal(result.status, 'technical_issue')
   assert.deepEqual(result.technicalIssueKeys, ['C004-listening'])
+})
+
+
+test('Ready Check selector refuses draft content even when it matches a missing requirement', () => {
+  const result = selectCheckpointItems({
+    requirements: [{ key: 'C001-generated', conceptId: 'C001', dimension: 'generated_use' }],
+    candidates: [{
+      itemId: 'draft-p1',
+      itemFamily: 'P-C001',
+      conceptIds: ['C001'],
+      dimension: 'elicited_production',
+      approvalStatus: 'draft',
+    }],
+  })
+
+  assert.deepEqual(result.selected, [])
+  assert.deepEqual(result.unresolvedRequirementKeys, ['C001-generated'])
+})
+
+test('Ready Check selector prefers production before listening and caps the first probe set', () => {
+  const requirements = [
+    { key: 'C001-listening', conceptId: 'C001', dimension: 'listening' },
+    { key: 'C001-generated', conceptId: 'C001', dimension: 'generated_use' },
+    { key: 'C002-listening', conceptId: 'C002', dimension: 'listening' },
+    { key: 'C002-generated', conceptId: 'C002', dimension: 'generated_use' },
+  ]
+
+  const candidates = [
+    {
+      itemId: 'l1', itemFamily: 'L-C001', conceptIds: ['C001'],
+      dimension: 'listening_comprehension', approvalStatus: 'approved', audioReady: true,
+    },
+    {
+      itemId: 'p1', itemFamily: 'P-C001', conceptIds: ['C001'],
+      dimension: 'elicited_production', approvalStatus: 'approved',
+    },
+    {
+      itemId: 'l2', itemFamily: 'L-C002', conceptIds: ['C002'],
+      dimension: 'listening_comprehension', approvalStatus: 'approved', audioReady: true,
+    },
+    {
+      itemId: 'p2', itemFamily: 'P-C002', conceptIds: ['C002'],
+      dimension: 'elicited_production', approvalStatus: 'approved',
+    },
+  ]
+
+  const result = selectCheckpointItems({ requirements, candidates, maxItems: 3 })
+  assert.deepEqual(result.selected.map(item => item.itemId), ['p1', 'p2', 'l1'])
+  assert.equal(result.selected.length, 3)
+  assert.deepEqual(result.unresolvedRequirementKeys, ['C002-listening'])
+})
+
+test('Ready Check selector will not pair identical listening and production answers in one attempt', () => {
+  const requirements = [
+    { key: 'C001-generated', conceptId: 'C001', dimension: 'generated_use' },
+    { key: 'C001-listening', conceptId: 'C001', dimension: 'listening' },
+  ]
+
+  const candidates = [
+    {
+      itemId: 'p1', itemFamily: 'P-C001', conceptIds: ['C001'],
+      dimension: 'elicited_production', approvalStatus: 'approved',
+      semanticAnswerKey: 'quiero-comer',
+    },
+    {
+      itemId: 'l1', itemFamily: 'L-C001', conceptIds: ['C001'],
+      dimension: 'listening_comprehension', approvalStatus: 'approved',
+      audioReady: true, semanticAnswerKey: 'quiero-comer',
+    },
+    {
+      itemId: 'l2', itemFamily: 'L-C001-alt', conceptIds: ['C001'],
+      dimension: 'listening_comprehension', approvalStatus: 'approved',
+      audioReady: true, semanticAnswerKey: 'quiero-hablar',
+    },
+  ]
+
+  const result = selectCheckpointItems({ requirements, candidates })
+  assert.deepEqual(result.selected.map(item => item.itemId), ['p1', 'l2'])
+})
+
+test('Ready Check selector excludes previously revealed semantic answers', () => {
+  const result = selectCheckpointItems({
+    requirements: [{ key: 'C006-generated', conceptId: 'C006', dimension: 'generated_use' }],
+    candidates: [
+      {
+        itemId: 'p-plan-a', itemFamily: 'P-C006', conceptIds: ['C006'],
+        dimension: 'elicited_production', approvalStatus: 'approved',
+        semanticAnswerKey: 'voy-a-ayudar',
+      },
+      {
+        itemId: 'p-plan-b', itemFamily: 'P-C006-alt', conceptIds: ['C006'],
+        dimension: 'elicited_production', approvalStatus: 'approved',
+        semanticAnswerKey: 'voy-a-dormir',
+      },
+    ],
+    priorUses: [{
+      itemId: 'model-plan',
+      semanticAnswerKey: 'voy-a-ayudar',
+      answerRevealed: true,
+    }],
+  })
+
+  assert.deepEqual(result.selected.map(item => item.itemId), ['p-plan-b'])
 })
