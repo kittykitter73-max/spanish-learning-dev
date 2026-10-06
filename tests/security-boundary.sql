@@ -57,4 +57,24 @@ begin
      or not has_column_privilege('authenticated','public.assessment_items','options','SELECT') then
     raise exception 'learner-visible assessment columns should remain readable';
   end if;
+
+  if has_table_privilege('authenticated','public.checkpoint_requirements','SELECT,INSERT,UPDATE,DELETE') then
+    raise exception 'checkpoint requirements must remain server-only';
+  end if;
+
+  if has_table_privilege('authenticated','public.checkpoint_attempt_evaluations','SELECT,INSERT,UPDATE,DELETE') then
+    raise exception 'checkpoint evaluator snapshots must remain server-only';
+  end if;
+
+  if has_table_privilege('authenticated','public.checkpoint_item_uses','SELECT,INSERT,UPDATE,DELETE') then
+    raise exception 'checkpoint novelty history must remain server-only';
+  end if;
+
+  if has_table_privilege('authenticated','public.checkpoint_attempts','INSERT,UPDATE,DELETE') then
+    raise exception 'learners must not write checkpoint result rows directly';
+  end if;
+
+  if not has_table_privilege('authenticated','public.checkpoint_attempts','SELECT') then
+    raise exception 'learners should be able to read their own checkpoint summaries through RLS';
+  end if;
 end $$;
