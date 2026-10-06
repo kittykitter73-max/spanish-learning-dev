@@ -12,6 +12,7 @@
   "include": [
     "lib/learning/**/*.ts",
     "lib/player/**/*.ts",
+    "lib/progression/**/*.ts",
     "lib/navigation.ts"
   ]
 }
