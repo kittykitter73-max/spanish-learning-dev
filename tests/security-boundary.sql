@@ -20,8 +20,34 @@ begin
     raise exception 'authenticated must not write learner_content_progress directly';
   end if;
 
-  if has_table_privilege('authenticated','public.learner_unit_state','INSERT,UPDATE,DELETE') then
-    raise exception 'authenticated must not write learner_unit_state directly';
+  if has_table_privilege('authenticated','public.learner_unit_state','UPDATE,DELETE') then
+    raise exception 'authenticated must not mutate or delete learner_unit_state directly';
+  end if;
+
+  if has_table_privilege('authenticated','public.learner_path_state','UPDATE,DELETE') then
+    raise exception 'authenticated must not mutate or delete learner_path_state directly';
+  end if;
+
+  if not has_column_privilege('authenticated','public.learner_unit_state','learner_id','INSERT')
+     or not has_column_privilege('authenticated','public.learner_unit_state','unit_id','INSERT')
+     or not has_column_privilege('authenticated','public.learner_unit_state','status','INSERT') then
+    raise exception 'safe first-Core unit enrollment columns should remain insertable';
+  end if;
+
+  if has_column_privilege('authenticated','public.learner_unit_state','completed_at','INSERT')
+     or has_column_privilege('authenticated','public.learner_unit_state','updated_at','INSERT') then
+    raise exception 'learners must not choose unit completion/system fields on enrollment';
+  end if;
+
+  if not has_column_privilege('authenticated','public.learner_path_state','learner_id','INSERT')
+     or not has_column_privilege('authenticated','public.learner_path_state','path_id','INSERT')
+     or not has_column_privilege('authenticated','public.learner_path_state','status','INSERT') then
+    raise exception 'safe Core path enrollment columns should remain insertable';
+  end if;
+
+  if has_column_privilege('authenticated','public.learner_path_state','completed_at','INSERT')
+     or has_column_privilege('authenticated','public.learner_path_state','updated_at','INSERT') then
+    raise exception 'learners must not choose path completion/system fields on enrollment';
   end if;
 
   if has_table_privilege('authenticated','public.learner_unlocks','INSERT,DELETE') then
