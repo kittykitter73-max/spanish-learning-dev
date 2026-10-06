@@ -59,7 +59,7 @@ export default function DriveMode() {
           <button type="button" onClick={() => void player.next()} aria-label="Next">›</button>
         </div>
 
-        <p className="drive-note">Voice prompts and hands-free responses plug into this surface next. No typing here.</p>
+        <p className="drive-note">Drive mode stays listen-only while you’re moving. Practice and scored responses wait until you’re safely stopped.</p>
       </section>
     </main>
   )
