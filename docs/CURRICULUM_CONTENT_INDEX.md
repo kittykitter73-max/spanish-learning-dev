@@ -21,6 +21,9 @@ These registers are not migrations. Database memberships and the expanded-target
 ## Album music requirement
 Every album includes at least one Latin signature track within its planned track count, preserved across personalized editions. Spanish-first lyrics and a specific musical tradition are required; actual language/musical review determines release quality. Album 01 Track 08 is reserved for the role, with a contemporary cumbia direction proposed. See the master’s Required Latin signature track section.
 
+## Song understanding and genre swaps
+All eight Album 01 songs require complete companions for their exact lyrics/audio version, including natural meaning, idioms, spoken models and optional sing-along support. Tracks 01–04 receive deeper guided song discussions; Tracks 05–07 are default genre-swappable slots with the same curricular jobs; Track 08 keeps the Latin signature role. Swapped songs get their own line/meaning/timing map. Companions are optional and singing does not establish transferable mastery. See the master’s Whole-song understanding section; app presentation remains UX/app implementation work.
+
 ## Arc 01 — Make Something Happen
 - docs/CORE_ARC_01_PRODUCTION_PACK.md: current complete authored pack, rewritten lyrics/story, games, speaking, checks and Boosters.
 - docs/CORE_ARC_01_RECORDING_REVIEW.md: current actor/assembly/review instructions.
