@@ -1501,6 +1501,38 @@ Album 01 retains the eight-track project contract, with optional recall Track 09
 | 08 Latin Signature / Spanish Heavy Reprise | Familiar Album 01 targets with reduced English | All earlier album language | Check new voice and new scene without transcript, restoring support if comprehension drops |
 | 09 Optional Recall Version | Selected core targets with strategic gaps | All earlier material | Recall a phrase then use it outside the lyric; correct lyric completion alone is not spontaneous transfer |
 
+### Whole-song understanding, sing-along and genre swaps
+
+Every released album song receives a complete companion for the exact lyric/audio version the learner hears. No track is left unexplained merely because it is optional, a reprise or genre-personalized. The companion covers the whole song, including verses, bridges, ad-libs and idiomatic Spanish, not just assessed hook phrases. Understanding support is available immediately; singing and completing a breakdown are optional, and neither substitutes for a plain-speech Arc check.
+
+Album 01 allocation:
+
+| Slots | Count | Shared or swappable | Breakdown depth |
+|---|---|---|---|
+| Tracks 01–04: anchor, movement, want/need/can, questions | 4 | Shared anchor songs/lyrics in the default album; arrangements may vary | Full lyric companion plus a substantial guided song breakdown |
+| Tracks 05–07: reinforcement, household mission, pattern remix | 3 | Genre-swappable song slots with the same declared learning jobs | Full version-specific lyric companion plus a concise walkthrough; deeper help on demand |
+| Track 08: Latin signature / Spanish-heavy reprise | 1 | Shared signature role and default track; a different edition still needs an approved Latin signature song | Full lyric companion, story/idiom notes and optional chorus practice |
+
+Thus eight of eight songs are fully explainable, four have deeper curriculum-integrated song discussions, and three default slots can swap for genre preference. This is the starting eight-track album contract, not a research-established optimum. Later album lengths may change; preserve complete companions, several shared anchors and at least one Latin signature song. Optional Track 09 reuses the source song's explanation but has its own gap/timing map.
+
+For each full companion provide:
+- the exact verified words, aligned with the final audio by line and section;
+- a natural meaning/translation for every Spanish line and a short account of the whole story or emotional situation; clarify the English/Spanish connection in mixed songs;
+- idiom, slang, ellipsis, register or figurative meaning where a literal translation would mislead;
+- tap-to-replay sections and a clearly spoken Spanish model, so sung rhythm is not mistaken for everyday pronunciation;
+- optional echo/chorus practice, normal-speed sing-along and a later reduced-support lyric view;
+- optional explanations for decorative/exposure-only language without making every lyric word a new required learning target.
+
+A deeper anchor breakdown is a separate spoken companion discussing what the characters/singer mean, then walking through chorus and verses in manageable sections. It must actually quote or reference that approved song's lines and explain their meaning; a generic grammar episode does not count. End with a small optional response that uses a useful phrase outside the lyric. Split long walkthroughs into chapters; do not stop the song after every line or force the learner to finish them before replaying the album.
+
+Example for Track 01: explain why the singer wants to leave, why waiting is necessary and when the plan changes; unpack quiero salir / tengo que esperar / voy a salir and ahora sí in the actual lyrical context. Explain the rest of the approved Spanish lyrics too. Then replay the chorus for optional singing and offer a plain-spoken changed-action response. Lyric completion is cued recall; echoed singing is supported practice; a new uncued response has its own evidence classification.
+
+Genre swaps keep curriculum coverage stable, not lyrics artificially identical. A rock and trap song occupying the same slot may have different verses, metaphors and hooks. Each receives its own meaning notes, line mapping, spoken models and timing. Reuse explanations only for truly identical lines/constructions. Bind companions to content_id, lyric_version and audio_version so a swap cannot show another song's words. A rendition with changed audible lyrics needs a corresponding reviewed update. An instrumental remix with unchanged lyrics may share meanings but still needs timing verification.
+
+A swapped household/pattern song must preserve its role's targets, support level and bridge activities; important new language cannot disappear from instruction simply because the learner picked another genre. Activities and Arc checks reference canonical concepts and their own ordinary-speech prompts rather than a specific track number, singer, rhyme or remembered lyric order. Swapping songs preserves existing concept evidence; it does not automatically mark a new lyric as understood.
+
+Before a song is released, verify complete lyric/meaning coverage against the actual audio and review translations, figurative meanings, clear models and sync. Full understanding is a supported learner goal, not an assertion that all lyric vocabulary has been mastered. App presentation of companions is implementation work for the UX/app thread; this policy does not claim that synced lyrics or breakdown playback are already built.
+
 ### Required Latin signature track on every album
 
 Every album includes at least one original track grounded in a specific Latin musical tradition. This is a required album role within the planned track count, not an automatic extra or bonus track. Genre personalization may vary other songs but must preserve at least one such track in each album edition.
@@ -1833,3 +1865,5 @@ Version 1.1 incorporates the supplied Borao architecture: ten Core Arcs, electiv
 Version 1.2 completes a six-pass internal revision across every unit card, all 24 strands and ten Core Arcs. It assigns all 100 seeded concepts an authoring home; separates story from optional practice; adds scoped critical functions and held-out scenarios to all 48 units; removes conflicting universal score thresholds; improves learner accommodations, pronunciation/register policy and commissioning priorities; and incorporates the v0.3 Arc 1 rewrite. Review findings and remaining external gates live in docs/CURRICULUM_REVIEW_LOG_v1_2.md. The archived v1.1 Google Doc is historical; this repository master is current. These revisions are not human validation, accreditation or demonstrated efficacy.
 
 Music-policy amendment to v1.2: each album must include at least one Latin signature track within its existing track count. Album 01 Track 08 is reserved for this role; Spanish-first lyrics, specific tradition and actual musical/cultural review are required. This does not alter concept IDs or readiness policy.
+
+Song-understanding amendment to v1.2: all eight Album 01 songs require complete version-specific lyric/meaning companions; Tracks 01–04 receive deeper guided breakdowns, Tracks 05–07 are default genre-swap slots with preserved learning jobs, and Track 08 retains the Latin signature role. Whole-song understanding and optional singing do not replace Arc evidence.
