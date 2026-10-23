@@ -23,14 +23,14 @@ export default function StudioWorkbench({ catalog, catalogError }: { catalog: Ca
   const problems = assessSongPackage(song)
   const updateDraft = (changes: Partial<SongPackage>) => {
     setSong(prev => {
-      const next = nextDraftVersion(prev)
+      const next = prev.reviews.length || prev.founderApprovedVersion !== undefined || prev.status === 'approved' ? nextDraftVersion(prev) : prev
       return { ...next, ...changes }
     })
     setFeedback('Saved in this browser session only. Review approvals were reset after the edit.')
   }
   const recordReview = (dimension: ReviewDimension, verdict: 'pass'|'revise') => {
     const review: StudioReview = { dimension, verdict, reasonCodes: verdict === 'revise' ? ['REVIEWER_REVISION'] : [], notes: feedback.trim() || (verdict === 'pass' ? 'Prototype reviewer sign-off' : 'Revision requested'), reviewedVersion: song.version }
-    setSong(prev => ({ ...prev, status: verdict === 'revise' ? 'needs_revision' : 'creative_review',
+    setSong(prev => ({ ...prev, status: verdict === 'revise' ? 'needs_revision' : 'creative_review', founderApprovedVersion: undefined,
       reviews: [...prev.reviews.filter(r => !(r.dimension === dimension && r.reviewedVersion === prev.version)), review] }))
     setFeedback('')
   }
