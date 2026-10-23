@@ -42,3 +42,11 @@ Stage: Prototype | Next gate: authenticated draft -> review -> founder approval 
 
 ## Repository boundary
 This is the personal Borao development repository (`kittykitter73-max/spanish-learning-dev`), NOT the Marked Matter organization or LCOA clinical systems.
+
+## Studio UI scaffold (2026-10-23)
+- Internal-only `/studio` server route requires authenticated user + allowlisted UUID via `BORAO_STUDIO_ADMIN_USER_IDS` (comma-separated auth user UUIDs). Missing variable fails closed with 404. Never use email-domain or browser-only checks.
+- Reads up to 30 existing `content_items` for a read-only catalog (subject to current Supabase RLS).
+- Browser-only demo workbench supports lyric drafts, hooks, music prompts, and manually recorded review decisions. Edits reset review state and all founder signoffs.
+- **No draft persistence, no automated reviewers, no publishing, and no app-sent approval write.** All current review buttons are placeholders operated by a human. Refresh clears the local draft.
+- Before any real agent pipeline: provision explicitly approved studio roles with governed RLS/RPCs, persisted versioned song jobs and immutable reviews, and curriculum IDs validated server-side against the canonical schema. Remove prototype local approvals or clearly distinguish them from authoritative approvals.
+- QA gate: run `npm run typecheck`, `npm test`, and `npm run build` in an environment with dependencies; test unauthorized `/studio` access and both allowed/disallowed sessions. Confirm missing allowlist results in 404.
