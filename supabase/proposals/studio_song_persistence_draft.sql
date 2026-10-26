@@ -8,7 +8,7 @@ create table if not exists public.studio_song_jobs (
   created_by uuid not null references auth.users(id),
   title text not null check (length(trim(title)) between 1 and 160),
   objective text not null check (length(trim(objective)) > 0),
-  concept_ids text[] not null default '{}',
+  -- Concepts are modeled through a validated join table below.
   status text not null default 'drafting'
     check (status in ('queued','drafting','language_review','pedagogy_review',
                      'creative_review','needs_revision','awaiting_founder','approved')),
@@ -19,6 +19,14 @@ create table if not exists public.studio_song_jobs (
   constraint approved_version_is_current
     check (approved_version is null or
       (status = 'approved' and approved_version = current_version))
+);
+
+create table if not exists public.studio_song_job_concepts (
+  job_id uuid not null references public.studio_song_jobs(id) on delete cascade,
+  concept_id text not null references public.concepts(id),
+  role text not null default 'active_target'
+    check (role in ('active_target','recycled','exposure_only')),
+  primary key (job_id, concept_id)
 );
 
 create table if not exists public.studio_song_versions (
@@ -50,20 +58,27 @@ create index if not exists studio_jobs_status_idx on public.studio_song_jobs(sta
 create index if not exists studio_reviews_job_version_idx on public.studio_song_reviews(job_id,version);
 
 alter table public.studio_song_jobs enable row level security;
+alter table public.studio_song_job_concepts enable row level security;
 alter table public.studio_song_versions enable row level security;
 alter table public.studio_song_reviews enable row level security;
 
 -- Deliberately read-only from the client until audited server-side RPCs exist.
 -- No insert/update/delete grants to browser roles at this stage.
 revoke all on public.studio_song_jobs from anon, authenticated;
+revoke all on public.studio_song_job_concepts from anon, authenticated;
 revoke all on public.studio_song_versions from anon, authenticated;
 revoke all on public.studio_song_reviews from anon, authenticated;
 
 grant select on public.studio_song_jobs to authenticated;
+grant select on public.studio_song_job_concepts to authenticated;
 grant select on public.studio_song_versions to authenticated;
 grant select on public.studio_song_reviews to authenticated;
 
 create policy studio_admin_read_jobs on public.studio_song_jobs
+  for select to authenticated
+  using ((select auth.jwt() -> 'app_metadata' ->> 'borao_studio_role') = 'admin');
+
+create policy studio_admin_read_job_concepts on public.studio_song_job_concepts
   for select to authenticated
   using ((select auth.jwt() -> 'app_metadata' ->> 'borao_studio_role') = 'admin');
 
@@ -76,7 +91,8 @@ create policy studio_admin_read_reviews on public.studio_song_reviews
   using ((select auth.jwt() -> 'app_metadata' ->> 'borao_studio_role') = 'admin');
 
 -- Before enabling any writes:
--- 1. Check existing content schema and canonical curriculum ID type.
+-- 1. Verified: public.concepts.id is text; content_concepts models concept roles.
+--    Add server-side validation of approved/published curriculum target status.
 -- 2. Enforce concept foreign keys / validation, not free text alone.
 -- 3. Add server-side, auditable atomic transitions with expected-version checks;
 --    publication must remain separate and require explicit founder approval.
