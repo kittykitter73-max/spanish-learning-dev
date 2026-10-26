@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { createClient } from '@/lib/supabase/client'
 import { assessSongPackage, nextDraftVersion, type SongPackage, type ReviewDimension, type StudioReview } from '@/lib/studio/pipeline'
 import './studio.css'
 
@@ -20,8 +21,51 @@ const labels: Record<ReviewDimension, string> = {
 export default function StudioWorkbench({ catalog, catalogError, concepts, conceptError }: { catalog: CatalogItem[]; catalogError: string | null; concepts: CurriculumConcept[]; conceptError: string | null }) {
   const [song, setSong] = useState<SongPackage>(initial)
   const [feedback, setFeedback] = useState('')
+  const [persisted, setPersisted] = useState<{ id: string; version: number } | null>(null)
+  const [saving, setSaving] = useState(false)
+  const [saveMessage, setSaveMessage] = useState('')
   const [view, setView] = useState<'draft'|'review'|'catalog'>('draft')
   const problems = assessSongPackage(song)
+  const saveDraft = async () => {
+    if (saving) return
+    setSaving(true)
+    setSaveMessage('')
+    const supabase = createClient()
+    const payload = {
+      p_title: song.objective.slice(0, 160),
+      p_objective: song.objective,
+      p_concept_ids: song.conceptIds,
+      p_lyrics: song.lyrics,
+      p_hooks: song.hooks,
+      p_music_prompt: song.musicPrompt,
+      p_exercises: song.exercises,
+    }
+    try {
+      const result = persisted
+        ? await supabase.rpc('studio_revise_song', {
+            ...payload, p_job_id: persisted.id, p_expected_version: persisted.version,
+          })
+        : await supabase.rpc('studio_create_song', payload)
+      if (result.error) {
+        setSaveMessage(result.error.message.includes('studio_version_conflict')
+          ? 'Version conflict: this draft has changed elsewhere. Reload the latest version before saving again.'
+          : 'Save failed: ' + result.error.message)
+        return
+      }
+      const record = Array.isArray(result.data) ? result.data[0] : null
+      if (!record?.job_id || typeof record.version !== 'number') {
+        setSaveMessage('The server returned an unexpected save result.')
+        return
+      }
+      setPersisted({ id: record.job_id, version: record.version })
+      setSong(prev => ({ ...prev, id: record.job_id, version: record.version, status: 'drafting', reviews: [], founderApprovedVersion: undefined }))
+      setSaveMessage('Draft saved to Borao Studio as version ' + record.version + '.')
+    } catch {
+      setSaveMessage('Unable to save the draft. Check connectivity and try again.')
+    } finally {
+      setSaving(false)
+    }
+  }
   const toggleConcept = (id: string) => {
     const conceptIds = song.conceptIds.includes(id) ? song.conceptIds.filter(x => x !== id) : [...song.conceptIds, id]
     updateDraft({ conceptIds, exercises: song.exercises.map(e => ({...e, expectedConceptIds: conceptIds})) })
@@ -77,7 +121,9 @@ export default function StudioWorkbench({ catalog, catalogError, concepts, conce
           </div>
           <label>Music production prompt <small>({song.musicPrompt.length}/900 characters)</small><textarea rows={4} maxLength={950} value={song.musicPrompt} onChange={e => updateDraft({musicPrompt:e.target.value})}/></label>
           <div className="studio-info">One production exercise is preloaded. Before release, exercises must be tied to the exact curriculum concepts and independently reviewed.</div>
-          <button className="studio-primary" onClick={() => setView('review')}>Go to quality review →</button>
+          <button className="studio-primary" onClick={saveDraft} disabled={saving || !song.conceptIds.length || !song.objective.trim() || song.musicPrompt.length > 900}>{saving ? 'Saving…' : persisted ? 'Save revised version' : 'Save first draft'}</button>
+          {saveMessage && <p role="status" className="studio-muted">{saveMessage}</p>}
+          <button onClick={() => setView('review')}>Go to quality review →</button>
         </div>}
         {view === 'review' && <div className="studio-panel">
           <h2>Quality before quantity.</h2>
