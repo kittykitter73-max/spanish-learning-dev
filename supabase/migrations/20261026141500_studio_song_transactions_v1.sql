@@ -64,10 +64,10 @@ create policy studio_audit_admin_read on public.studio_song_audit for select to 
 
 -- Guard history against even accidental privileged UPDATE/DELETE operations.
 create function public.studio_history_immutable() returns trigger
-language plpgsql set search_path = '' as $
+language plpgsql set search_path = '' as $body$
 begin
  raise exception 'studio_history_is_immutable' using errcode='42501';
-end $;
+end $body$;
 create trigger studio_versions_immutable before update or delete
  on public.studio_song_versions for each row execute function public.studio_history_immutable();
 create trigger studio_audit_immutable before update or delete
