@@ -62,6 +62,18 @@ create policy studio_versions_admin_read on public.studio_song_versions for sele
 create policy studio_audit_admin_read on public.studio_song_audit for select to authenticated
  using ((select auth.jwt()->'app_metadata'->>'borao_studio_role')='admin');
 
+-- Guard history against even accidental privileged UPDATE/DELETE operations.
+create function public.studio_history_immutable() returns trigger
+language plpgsql set search_path = '' as $
+begin
+ raise exception 'studio_history_is_immutable' using errcode='42501';
+end $;
+create trigger studio_versions_immutable before update or delete
+ on public.studio_song_versions for each row execute function public.studio_history_immutable();
+create trigger studio_audit_immutable before update or delete
+ on public.studio_song_audit for each row execute function public.studio_history_immutable();
+revoke all on function public.studio_history_immutable() from public,anon,authenticated;
+
 -- Prevent mutation even by accidentally over-granted clients. RPC owner may write.
 create function public.studio_create_song(
  p_title text, p_objective text, p_concept_ids text[],
