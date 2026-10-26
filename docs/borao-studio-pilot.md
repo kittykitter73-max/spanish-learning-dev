@@ -71,3 +71,12 @@ This is the personal Borao development repository (`kittykitter73-max/spanish-le
 - Unpublished concepts need a separate, governed curriculum editorial review workflow. Do not broaden public concept visibility for convenience.
 - This is not persisted: drafts remain in memory, manual review buttons are not AI reviewers, and no new Studio schema has been applied.
 - Next: secure service-side draft/version RPCs, authorization and negative tests, and staging verification before any database migration or deployment.
+
+## Database implementation checkpoint — 2026-10-26
+- `studio_song_transactions_v1` was successfully applied to the dedicated Borao development Supabase project `gleeflbezorzonulikcj`.
+- All four Studio tables exist with row-level security enabled. Introspection confirmed anonymous EXECUTE denied on `studio_create_song` and `studio_revise_song`; authenticated EXECUTE granted, with an in-function trusted JWT app_metadata admin check. History trigger is not callable by anon/authenticated.
+- The database currently has **0 Studio jobs**. No user content was published.
+- Create operation inserts the job, concept associations, initial version and audit record in one transaction. Revise serializes via `FOR UPDATE`, requires `expected_version`, creates an immutable version and audit record, and increments current_version.
+- **Unverified:** live authenticated admin create/revise; stale concurrent write; anonymous/learner PostgREST denial; unauthorized JWT negative case; event immutability test; app build and browser UI. Do not claim these tests passed.
+- **Next gate:** provision a designated Studio admin in trusted app_metadata with an audited admin action; run transaction and negative-role tests with test identities; then wire app editor save/revise to RPCs, show conflict UI, and remove local-only approval claims.
+- The old SQL file `supabase/proposals/studio_song_transactions_v1.sql` is obsolete and should not be applied; the migration file is canonical.
