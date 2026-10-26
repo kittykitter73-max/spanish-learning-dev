@@ -64,3 +64,10 @@ This is the personal Borao development repository (`kittykitter73-max/spanish-le
 - Canonical curriculum key is `public.concepts.id TEXT`; content mapping uses `public.content_concepts(content_item_id,concept_id,role)`. The Studio draft proposal now includes `studio_song_job_concepts` with a foreign key to canonical concepts and a role constraint, rather than trusting arbitrary text arrays.
 - Current `/studio` UI remains ephemeral and uses local manual review actions; do not imply saved approvals. Existing creator allowlist and proposed trusted claim still need a unified authorization design.
 - Next gate: inspect actual authorization policies and migration conventions; build versioned server transactions and negative authorization tests against a disposable development branch, then migrate dev after review. No database mutation was made during this verification.
+
+## Curriculum selector — October 26, 2026
+- Verified read-only: 100 concepts in `public.concepts`; 3 `published`, 97 `draft`. Existing public read policy only exposes published concepts to the normal authenticated browser client.
+- `/studio` now fetches published concepts alongside the read-only catalog; prototype UI selects actual IDs and maps them to its practice exercise.
+- Unpublished concepts need a separate, governed curriculum editorial review workflow. Do not broaden public concept visibility for convenience.
+- This is not persisted: drafts remain in memory, manual review buttons are not AI reviewers, and no new Studio schema has been applied.
+- Next: secure service-side draft/version RPCs, authorization and negative tests, and staging verification before any database migration or deployment.
