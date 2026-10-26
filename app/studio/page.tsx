@@ -15,11 +15,18 @@ export default async function StudioPage() {
   // Fail closed when not configured. Do not permit ordinary learners to see drafts.
   if (!allowed.includes(userId)) notFound()
 
-  const { data: catalog, error } = await supabase
-    .from('content_items')
-    .select('id,title,content_type,status')
-    .order('created_at', { ascending: false })
-    .limit(30)
+  const [{ data: catalog, error }, { data: concepts, error: conceptError }] = await Promise.all([
+    supabase.from('content_items')
+      .select('id,title,content_type,status')
+      .eq('status', 'published')
+      .order('created_at', { ascending: false })
+      .limit(30),
+    supabase.from('concepts')
+      .select('id,canonical_spanish,canonical_english,communicative_function,status')
+      .eq('status', 'published')
+      .order('id', { ascending: true })
+      .limit(150),
+  ])
 
   return (
     <main className="studio-shell">
@@ -32,7 +39,7 @@ export default async function StudioPage() {
         </div>
         <span className="studio-pill">Local prototype · Nothing published</span>
       </header>
-      <StudioWorkbench catalog={error ? [] : (catalog ?? [])} catalogError={error?.message ?? null} />
+      <StudioWorkbench catalog={error ? [] : (catalog ?? [])} catalogError={error?.message ?? null} concepts={conceptError ? [] : (concepts ?? [])} conceptError={conceptError?.message ?? null} />
     </main>
   )
 }
