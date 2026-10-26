@@ -58,3 +58,9 @@ This is the personal Borao development repository (`kittykitter73-max/spanish-le
 - SQL is **draft/unapplied**, not tested against running DB. Supabase project `spanish-learning-dev` reported INACTIVE on October 26.
 - Before adoption, compare to actual schema, replace arbitrary concept IDs with validated curriculum links, define authorized RPC state transitions, ensure signed-off approval trail, verify RLS against negative test accounts, and align the route's allowlist with the governed role.
 - GitHub work is on branch `feature/borao-studio-pilot`. Do not merge or deploy without tests.
+
+## Live development schema verification — October 26, 2026
+- Project `spanish-learning-dev` now reports `ACTIVE_HEALTHY`; read-only SQL confirmed **100 concepts** and **2 content items**. Existing Studio tables: **0** (not deployed).
+- Canonical curriculum key is `public.concepts.id TEXT`; content mapping uses `public.content_concepts(content_item_id,concept_id,role)`. The Studio draft proposal now includes `studio_song_job_concepts` with a foreign key to canonical concepts and a role constraint, rather than trusting arbitrary text arrays.
+- Current `/studio` UI remains ephemeral and uses local manual review actions; do not imply saved approvals. Existing creator allowlist and proposed trusted claim still need a unified authorization design.
+- Next gate: inspect actual authorization policies and migration conventions; build versioned server transactions and negative authorization tests against a disposable development branch, then migrate dev after review. No database mutation was made during this verification.
