@@ -50,3 +50,11 @@ This is the personal Borao development repository (`kittykitter73-max/spanish-le
 - **No draft persistence, no automated reviewers, no publishing, and no app-sent approval write.** All current review buttons are placeholders operated by a human. Refresh clears the local draft.
 - Before any real agent pipeline: provision explicitly approved studio roles with governed RLS/RPCs, persisted versioned song jobs and immutable reviews, and curriculum IDs validated server-side against the canonical schema. Remove prototype local approvals or clearly distinguish them from authoritative approvals.
 - QA gate: run `npm run typecheck`, `npm test`, and `npm run build` in an environment with dependencies; test unauthorized `/studio` access and both allowed/disallowed sessions. Confirm missing allowlist results in 404.
+
+## Persistence proposal — October 26, 2026
+- Added `supabase/proposals/studio_song_persistence_draft.sql`, **not** a deployable migration.
+- Tables proposed: `studio_song_jobs`, immutable-intent `studio_song_versions`, and `studio_song_reviews`.
+- Proposed row access: SELECT only for authenticated accounts with a trusted `app_metadata.borao_studio_role=admin` claim; no browser write grants. This role is **not provisioned**, and current `/studio` also requires `BORAO_STUDIO_ADMIN_USER_IDS`.
+- SQL is **draft/unapplied**, not tested against running DB. Supabase project `spanish-learning-dev` reported INACTIVE on October 26.
+- Before adoption, compare to actual schema, replace arbitrary concept IDs with validated curriculum links, define authorized RPC state transitions, ensure signed-off approval trail, verify RLS against negative test accounts, and align the route's allowlist with the governed role.
+- GitHub work is on branch `feature/borao-studio-pilot`. Do not merge or deploy without tests.
