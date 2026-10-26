@@ -80,3 +80,10 @@ This is the personal Borao development repository (`kittykitter73-max/spanish-le
 - **Unverified:** live authenticated admin create/revise; stale concurrent write; anonymous/learner PostgREST denial; unauthorized JWT negative case; event immutability test; app build and browser UI. Do not claim these tests passed.
 - **Next gate:** provision a designated Studio admin in trusted app_metadata with an audited admin action; run transaction and negative-role tests with test identities; then wire app editor save/revise to RPCs, show conflict UI, and remove local-only approval claims.
 - The old SQL file `supabase/proposals/studio_song_transactions_v1.sql` is obsolete and should not be applied; the migration file is canonical.
+
+## Studio save integration — October 26, 2026
+- Client Studio editor now invokes `studio_create_song` on first save, then `studio_revise_song` with a saved expected_version for subsequent saves.
+- The API remains restricted to trusted `app_metadata.borao_studio_role=admin`. The route's existing `BORAO_STUDIO_ADMIN_USER_IDS` allowlist is separate; both gates must pass. Provision the trusted role via authorized admin workflow before an editor save will succeed.
+- Save reports version-conflict distinctly, and updates the committed version after an RPC success. Local approval/reviews are placeholders, **not** persisted or published.
+- **Unverified:** npm/typecheck, test admin write, stale-version conflict, listener role access, route browser workflow, persisted reload. Do not promote PR before these checks.
+- Next: add load/resume existing draft with server-side auth, guard concurrent in-flight edits, separate edit-version from saved-version, add negative authorization tests and CI.
