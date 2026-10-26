@@ -4,6 +4,7 @@ import { assessSongPackage, nextDraftVersion, type SongPackage, type ReviewDimen
 import './studio.css'
 
 type CatalogItem = { id: string; title: string; content_type: string; status: string }
+type CurriculumConcept = { id: string; canonical_spanish: string; canonical_english: string | null; communicative_function: string | null; status: string }
 const initial: SongPackage = {
   id: 'arc-1-song-candidate', version: 1, status: 'drafting',
   conceptIds: [], objective: 'Ask for what you want in an everyday conversation',
@@ -16,11 +17,15 @@ const labels: Record<ReviewDimension, string> = {
   language: 'Spanish & naturalness', pedagogy: 'Learning & retrieval', creative: 'Hook & replay value'
 }
 
-export default function StudioWorkbench({ catalog, catalogError }: { catalog: CatalogItem[]; catalogError: string | null }) {
+export default function StudioWorkbench({ catalog, catalogError, concepts, conceptError }: { catalog: CatalogItem[]; catalogError: string | null; concepts: CurriculumConcept[]; conceptError: string | null }) {
   const [song, setSong] = useState<SongPackage>(initial)
   const [feedback, setFeedback] = useState('')
   const [view, setView] = useState<'draft'|'review'|'catalog'>('draft')
   const problems = assessSongPackage(song)
+  const toggleConcept = (id: string) => {
+    const conceptIds = song.conceptIds.includes(id) ? song.conceptIds.filter(x => x !== id) : [...song.conceptIds, id]
+    updateDraft({ conceptIds, exercises: song.exercises.map(e => ({...e, expectedConceptIds: conceptIds})) })
+  }
   const updateDraft = (changes: Partial<SongPackage>) => {
     setSong(prev => {
       const next = prev.reviews.length || prev.founderApprovedVersion !== undefined || prev.status === 'approved' ? nextDraftVersion(prev) : prev
@@ -55,9 +60,17 @@ export default function StudioWorkbench({ catalog, catalogError }: { catalog: Ca
         </div>
         {view === 'draft' && <div className="studio-panel">
           <h2>The next track starts here.</h2>
-          <p className="studio-muted">Build around a real-world speaking goal, not a random vocabulary list. Enter real concept IDs from Borao's curriculum when available.</p>
+          <p className="studio-muted">Build around a real-world speaking goal, not a random vocabulary list. Choose from the published curriculum concepts below. The learning system remains authoritative.</p>
           <label>Communication goal<input value={song.objective} onChange={e => updateDraft({ objective: e.target.value })}/></label>
-          <label>Curriculum concept IDs (comma-separated)<input placeholder="Canonical concept IDs" value={song.conceptIds.join(', ')} onChange={e => updateDraft({conceptIds:e.target.value.split(',').map(x=>x.trim()).filter(Boolean)})}/></label>
+          <fieldset className="studio-concepts"><legend>Target curriculum concepts ({song.conceptIds.length} selected)</legend>
+            {conceptError ? <p role="alert">Concept catalog unavailable: {conceptError}</p> : concepts.length === 0 ? <p>No published concepts available to select.</p> :
+              <div className="studio-concept-list">{concepts.map(concept =>
+                <label key={concept.id} className="studio-concept-choice">
+                  <input type="checkbox" checked={song.conceptIds.includes(concept.id)} onChange={() => toggleConcept(concept.id)}/>
+                  <span><strong>{concept.canonical_spanish}</strong><small>{concept.canonical_english ?? concept.communicative_function ?? concept.id}</small></span>
+                </label>
+              )}</div>}
+          </fieldset>
           <label>Original song lyrics<textarea rows={9} placeholder="Verse, hook, and bridge..." value={song.lyrics} onChange={e => updateDraft({lyrics:e.target.value})}/></label>
           <div className="studio-two">
             {[0,1].map(i => <label key={i}>Alternate hook {i + 1}<textarea rows={3} value={song.hooks[i]} onChange={e => updateDraft({hooks:song.hooks.map((h,j)=>i===j?e.target.value:h)})}/></label>)}
