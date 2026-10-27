@@ -42,3 +42,10 @@
 .studio-saved-list button:focus-visible{outline:3px solid #8d537c;outline-offset:2px}
 .studio-saved-list span{font-size:11px;color:#745b69}
 @media(max-width:650px){.studio-saved-list button{flex-direction:column;gap:4px}}
+
+.studio-learning-pack{margin-top:24px;display:grid;gap:12px}
+.studio-learning-pack h3{margin:0 0 3px}
+.studio-exercise{padding:14px;border:1px solid #e9dde2;border-radius:14px;background:#fffcfb;display:grid;gap:10px}
+.studio-exercise label{display:grid;gap:6px}
+.studio-exercise select{width:100%;min-height:38px;padding:7px;border:1px solid #d9cbd2;border-radius:8px;background:#fff}
+.studio-exercise button{justify-self:start}
