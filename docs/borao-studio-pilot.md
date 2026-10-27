@@ -109,3 +109,12 @@ This is the personal Borao development repository (`kittykitter73-max/spanish-le
 - Added `lib/studio/orchestration.ts` with provider-neutral adapter contract, idempotency key shape and disabled-by-default generation gate. **No background worker, durable queue, paid model call or audio generation is implemented.**
 - Review/approval UI remains prototype-local and must not be misrepresented as persisted; next work is real UI wiring after safe migration validation.
 - This increment has not been run through TypeScript compilation, unit tests or browser UAT. No deploy or publication occurred.
+
+## Review activation and UI wiring — October 27, 2026
+- Applied migration `studio_reviews_and_approvals_v1` to Borao dev Supabase. Two new version-scoped immutable review/approval tables plus RPCs exist. Confirmed anon EXECUTE false and authenticated EXECUTE true on both functions; each function checks trusted JWT `app_metadata` for elevated role. No job rows currently exist to exercise accepted review workflows.
+- Strengthened migration before applying: each creator is barred from reviewing their own song; each reviewer can review only one dimension per version; a revision request requires a new draft version; distinct reviewer passes and an independent founder are required.
+- Editor now calls `studio_record_review`/`studio_approve_song`, reloads persisted decisions, and reports RPC errors. Approval does not publish.
+- **Unresolved role integration:** current Studio route uses `BORAO_STUDIO_ADMIN_USER_IDS`; job and version RLS presently allow `borao_studio_role=admin` only. Separate `reviewer` and `founder` identities cannot yet access job/version through that UI without appropriate approved role mapping. Do not loosen policy or grant admin privileges to reviewers as a workaround.
+- **Unverified:** actual independent reviewer user sessions, three-pass lifecycle, denied/stale revision tests, UI build/browser operation, negative RLS tests and founder approval; migration success is not evidence these passed.
+- Proposed `supabase/proposals/studio_generation_queue_v1.sql` models a durable off-by-default queue, retry leases, idempotency and usage accounting. This proposal is **not deployed** and no worker/provider adapters are running.
+- Next critical gate: implement least-privilege viewer role policy and route authorization for reviewer/founder personas, then provision approved test identities and execute negative authorization/multi-review tests. Keep provider calls disabled.
