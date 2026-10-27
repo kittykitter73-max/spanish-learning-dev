@@ -102,3 +102,10 @@ This is the personal Borao development repository (`kittykitter73-max/spanish-le
 - Additional unit tests added to `tests/studio-pipeline.test.cjs` for missing dialogue, missing transfer and invalid mapping.
 - **Not verified:** compile, node unit tests, authenticated browser UAT, human/native audio review. A GitHub lookup returned no PR-triggered workflow run for the tested commit, which is not proof of passing.
 - Real QA reviewer independence, signed founder approval, and app-persisted approved/published transitions remain out of scope. No audio generator or learner publishing enabled.
+
+## Four-lane production expansion — October 27, 2026
+- Saved-job dashboard now checks current persisted version for missing lyrics, alternative hooks, production prompt, dialogue, listening and transfer activities. Labels explicitly distinguish content completeness from independently verified QA.
+- Proposed additive migration `20261027160000_studio_reviews_and_approvals.sql` introduces immutable reviewer decisions and founder approval tied to exact version, with separate founder-only approval RPC. **Not applied**; authorization, function policy, race conditions and lifecycle/negative tests required first.
+- Added `lib/studio/orchestration.ts` with provider-neutral adapter contract, idempotency key shape and disabled-by-default generation gate. **No background worker, durable queue, paid model call or audio generation is implemented.**
+- Review/approval UI remains prototype-local and must not be misrepresented as persisted; next work is real UI wiring after safe migration validation.
+- This increment has not been run through TypeScript compilation, unit tests or browser UAT. No deploy or publication occurred.
