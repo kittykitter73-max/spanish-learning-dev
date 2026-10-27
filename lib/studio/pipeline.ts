@@ -29,7 +29,7 @@ export interface SongPackage {
   hooks: string[]
   musicPrompt: string
   exercises: Array<{
-    kind: 'listening' | 'recall' | 'production' | 'transfer'
+    kind: 'dialogue' | 'listening' | 'recall' | 'production' | 'transfer'
     prompt: string
     expectedConceptIds: string[]
   }>
@@ -48,6 +48,9 @@ export function assessSongPackage(song: SongPackage): string[] {
   if (!song.lyrics.trim()) problems.push('MISSING_LYRICS')
   if (!song.hooks.length || song.hooks.some(h => !h.trim())) problems.push('MISSING_HOOKS')
   if (!song.musicPrompt.trim() || song.musicPrompt.length > 900) problems.push('INVALID_MUSIC_PROMPT')
+  if (!song.exercises.some(e => e.kind === 'dialogue' && e.prompt.trim())) problems.push('MISSING_SPOKEN_COMPANION')
+  if (!song.exercises.some(e => e.kind === 'listening' && e.prompt.trim())) problems.push('MISSING_LISTENING_ACTIVITY')
+  if (!song.exercises.some(e => e.kind === 'transfer' && e.prompt.trim())) problems.push('MISSING_UNAIDED_TRANSFER')
   if (!song.exercises.some(e => e.kind === 'recall' || e.kind === 'production' || e.kind === 'transfer')) {
     problems.push('NO_ACTIVE_RETRIEVAL')
   }
