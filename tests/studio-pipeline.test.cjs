@@ -6,7 +6,9 @@ const base = () => ({
   id: 'arc1-want', version: 1, status: 'approved', conceptIds: ['quiero'],
   objective: 'Ask for something naturally', lyrics: 'Quiero café', hooks: ['Quiero café'],
   musicPrompt: 'Bright, rhythmic Latin pop', exercises: [
-    { kind: 'production', prompt: 'Ask for coffee', expectedConceptIds: ['quiero'] },
+    { kind: 'dialogue', prompt: 'Ana: Quiero café. Leo: Vale.', expectedConceptIds: ['quiero'] },
+    { kind: 'listening', prompt: 'Listen and identify desire.', expectedConceptIds: ['quiero'] },
+    { kind: 'transfer', prompt: 'Without lyrics, express a new desire in a café.', expectedConceptIds: ['quiero'] },
   ],
   reviews: ['language', 'pedagogy', 'creative'].map(dimension => ({
     dimension, verdict: 'pass', reasonCodes: [], notes: 'Passed', reviewedVersion: 1,
@@ -47,4 +49,22 @@ test('music prompt budget enforced', () => {
   const song = base()
   song.musicPrompt = 'x'.repeat(901)
   assert.ok(assessSongPackage(song).includes('INVALID_MUSIC_PROMPT'))
+})
+
+test('spoken companion is mandatory for the complete production package', () => {
+  const song = base()
+  song.exercises = song.exercises.filter(e => e.kind !== 'dialogue')
+  assert.ok(assessSongPackage(song).includes('MISSING_SPOKEN_COMPANION'))
+  assert.equal(canPublish(song), false)
+})
+test('listening exposure cannot replace transfer', () => {
+  const song = base()
+  song.exercises = song.exercises.filter(e => e.kind !== 'transfer')
+  assert.ok(assessSongPackage(song).includes('MISSING_UNAIDED_TRANSFER'))
+  assert.equal(canPublish(song), false)
+})
+test('each exercise must map only to production target concepts', () => {
+  const song = base()
+  song.exercises[0].expectedConceptIds = ['not_in_curriculum_targets']
+  assert.ok(assessSongPackage(song).includes('INVALID_EXERCISE_MAPPING'))
 })
