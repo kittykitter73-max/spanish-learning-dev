@@ -40,6 +40,8 @@ export default function StudioWorkbench({ catalog, catalogError, concepts, conce
   const [loadingJob, setLoadingJob] = useState(false)
   const [dirty, setDirty] = useState(false)
   const [feedback, setFeedback] = useState('')
+  const [reviewBusy, setReviewBusy] = useState(false)
+  const [reviewNotice, setReviewNotice] = useState('')
   const [persisted, setPersisted] = useState<{ id: string; version: number } | null>(null)
   const [saving, setSaving] = useState(false)
   const [saveMessage, setSaveMessage] = useState('')
@@ -104,7 +106,8 @@ export default function StudioWorkbench({ catalog, catalogError, concepts, conce
     editCounter.current += 1
     setDirty(false)
     setView('draft')
-    setSaveMessage('Opened saved version ' + record.version + '. Reviews are not yet loaded.')
+    setSaveMessage('Opened saved version ' + record.version + '.')
+    void refreshReviews(job.id, record.version)
   }
   const saveDraft = async () => {
     if (saving || loadingJob) return
@@ -165,16 +168,57 @@ export default function StudioWorkbench({ catalog, catalogError, concepts, conce
     })
     setFeedback('Unsaved changes. Any previous local review approvals were reset.')
   }
-  const recordReview = (dimension: ReviewDimension, verdict: 'pass'|'revise') => {
-    const review: StudioReview = { dimension, verdict, reasonCodes: verdict === 'revise' ? ['REVIEWER_REVISION'] : [], notes: feedback.trim() || (verdict === 'pass' ? 'Prototype reviewer sign-off' : 'Revision requested'), reviewedVersion: song.version }
-    setSong(prev => ({ ...prev, status: verdict === 'revise' ? 'needs_revision' : 'creative_review', founderApprovedVersion: undefined,
-      reviews: [...prev.reviews.filter(r => !(r.dimension === dimension && r.reviewedVersion === prev.version)), review] }))
+  const recordReview = async (dimension: ReviewDimension, verdict: 'pass'|'revise') => {
+    if (!persisted || dirty || reviewBusy) {
+      setReviewNotice('Save the latest draft to the database before recording a review.')
+      return
+    }
+    const notes = feedback.trim()
+    if (notes.length < 3) { setReviewNotice('Add reviewer notes (at least 3 characters).'); return }
+    setReviewBusy(true)
+    const result = await createClient().rpc('studio_record_review', {
+      p_job_id: persisted.id, p_expected_version: persisted.version,
+      p_dimension: dimension, p_verdict: verdict, p_notes: notes,
+    })
+    setReviewBusy(false)
+    if (result.error) { setReviewNotice('Review not saved: ' + result.error.message); return }
+    setReviewNotice('Review recorded for version ' + persisted.version + '.')
     setFeedback('')
+    await refreshReviews(persisted.id, persisted.version)
   }
-  const approve = () => {
-    if (problems.length) return
-    setSong(prev => ({ ...prev, status: 'approved', founderApprovedVersion: prev.version }))
-    setFeedback('Prototype approval recorded locally. No database record or publication was created.')
+  const refreshReviews = async (jobId: string, version: number) => {
+    const client = createClient()
+    const [reviewResult, approvalResult, jobResult] = await Promise.all([
+      client.from('studio_song_reviews').select('dimension,verdict,notes,version').eq('job_id',jobId).eq('version',version),
+      client.from('studio_song_approvals').select('version').eq('job_id',jobId).eq('version',version).maybeSingle(),
+      client.from('studio_song_jobs').select('status').eq('id',jobId).single(),
+    ])
+    if (reviewResult.error || approvalResult.error || jobResult.error) {
+      setReviewNotice('Review refresh failed; verify this version before continuing.')
+      return
+    }
+    const reviews: StudioReview[] = (reviewResult.data ?? []).map(r=>({
+      dimension: r.dimension as ReviewDimension, verdict: r.verdict as 'pass'|'revise',
+      reasonCodes: [], notes: r.notes, reviewedVersion: r.version,
+    }))
+    setSong(prev=>prev.id===jobId && prev.version===version
+      ? {...prev, reviews, status: (jobResult.data?.status ?? 'drafting') as SongPackage['status'],
+         founderApprovedVersion: approvalResult.data?.version}
+      : prev)
+  }
+  const approve = async () => {
+    if (!persisted || dirty || problems.length || reviewBusy) {
+      setReviewNotice('Save and complete three current independent reviewer passes before approval.')
+      return
+    }
+    setReviewBusy(true)
+    const result = await createClient().rpc('studio_approve_song', {
+      p_job_id: persisted.id, p_expected_version: persisted.version,
+    })
+    setReviewBusy(false)
+    if (result.error) { setReviewNotice('Approval rejected: ' + result.error.message); return }
+    setReviewNotice('Founder approval saved for version '+persisted.version+'. Nothing was published.')
+    await refreshReviews(persisted.id,persisted.version)
   }
   return (
     <div className="studio-content">
@@ -246,16 +290,17 @@ export default function StudioWorkbench({ catalog, catalogError, concepts, conce
           <button onClick={() => setView('review')}>Go to quality review →</button>
         </div>}
         {view === 'review' && <div className="studio-panel">
+          {reviewNotice && <p role="status" className="studio-info">{reviewNotice}</p>}
           <h2>Quality before quantity.</h2>
-          <p className="studio-muted">The three reviewer controls below are manual placeholders. They are not automated AI or native-speaker certifications.</p>
+          <p className="studio-muted">Reviews now submit to the database and are bound to the saved version. Each dimension requires a distinct human reviewer. A creator cannot sign off on their own draft.</p>
           <div className="studio-reviews">
             {dimensions.map(d => {
               const review = song.reviews.find(r=>r.dimension===d && r.reviewedVersion===song.version)
               return <div className="studio-review" key={d}>
                 <div><strong>{labels[d]}</strong><span>{review ? review.verdict : 'Needs review'}</span></div>
                 <div className="studio-actions">
-                  <button onClick={() => recordReview(d,'pass')}>Mark pass</button>
-                  <button onClick={() => recordReview(d,'revise')}>Request revision</button>
+                  <button disabled={reviewBusy || dirty || !persisted} onClick={() => void recordReview(d,'pass')}>Mark pass</button>
+                  <button disabled={reviewBusy || dirty || !persisted} onClick={() => void recordReview(d,'revise')}>Request revision</button>
                 </div>
               </div>
             })}
@@ -263,8 +308,8 @@ export default function StudioWorkbench({ catalog, catalogError, concepts, conce
           <label>Reviewer notes<textarea rows={3} placeholder="Explain any changes or reasons..." value={feedback} onChange={e=>setFeedback(e.target.value)}/></label>
           <h3>Release readiness</h3>
           {problems.length ? <ul className="studio-issues">{problems.map(p => <li key={p}>{p.replaceAll('_',' ').toLowerCase()}</li>)}</ul> : <p className="studio-good">All prototype quality-gate checks passed.</p>}
-          <button className="studio-primary" disabled={problems.length > 0 || song.status==='approved'} onClick={approve}>Approve this version (local preview)</button>
-          <p className="studio-muted">Approval cannot publish content. Live permissions, verification and audit logging are not connected yet.</p>
+          <button className="studio-primary" disabled={problems.length > 0 || song.status==='approved'} onClick={() => void approve()}>Approve this version (founder only)</button>
+          <p className="studio-muted">Approval is persisted but does not publish content. A distinct founder account and independent reviewers are required.</p>
         </div>}
         {view === 'catalog' && <div className="studio-panel">
           <h2>Saved Studio jobs</h2>
