@@ -41,17 +41,22 @@ create trigger studio_approvals_immutable before update or delete on public.stud
 create function public.studio_record_review(
  p_job_id uuid,p_expected_version integer,p_dimension text,p_verdict text,p_notes text
 ) returns void language plpgsql security definer set search_path = '' as $body$
-declare v_current integer; v_role text := coalesce(auth.jwt()->'app_metadata'->>'borao_studio_role','');
+declare v_current integer; v_status text; v_creator uuid; v_role text := coalesce(auth.jwt()->'app_metadata'->>'borao_studio_role','');
 begin
  if auth.uid() is null or v_role not in ('reviewer','admin','founder') then
   raise exception 'studio_access_denied' using errcode='42501'; end if;
  if p_dimension not in ('language','pedagogy','creative') or p_verdict not in ('pass','revise')
   or p_notes is null or length(btrim(p_notes)) not between 3 and 4000 then
   raise exception 'invalid_review' using errcode='22023'; end if;
- select current_version into v_current from public.studio_song_jobs where id=p_job_id for update;
+ select current_version,status,created_by into v_current,v_status,v_creator from public.studio_song_jobs where id=p_job_id for update;
  if not found then raise exception 'studio_not_found' using errcode='P0002'; end if;
  if v_current <> p_expected_version or p_expected_version is null then
   raise exception 'studio_version_conflict' using errcode='40001'; end if;
+ if v_status not in ('drafting','needs_revision') or (v_status='needs_revision' and p_verdict='pass') then
+  raise exception 'new_revision_required' using errcode='23514';end if;
+ if v_creator=auth.uid() then raise exception 'independent_review_required' using errcode='42501';end if;
+ if exists(select 1 from public.studio_song_reviews where job_id=p_job_id and version=v_current and reviewer_id=auth.uid()) then
+  raise exception 'one_dimension_per_reviewer' using errcode='23505';end if;
  if exists(select 1 from public.studio_song_approvals where job_id=p_job_id and version=v_current) then
   raise exception 'already_approved' using errcode='23514'; end if;
  insert into public.studio_song_reviews(job_id,version,dimension,verdict,reviewer_id,notes)
@@ -72,8 +77,11 @@ begin
  if not found then raise exception 'studio_not_found' using errcode='P0002'; end if;
  if p_expected_version is null or p_expected_version<>v_current then
   raise exception 'studio_version_conflict' using errcode='40001'; end if;
+ if exists(select 1 from public.studio_song_jobs where id=p_job_id and created_by=auth.uid()) then
+  raise exception 'independent_founder_required' using errcode='42501';end if;
  if v_status<>'awaiting_founder' or
    (select count(*) from public.studio_song_reviews where job_id=p_job_id and version=v_current and verdict='pass')<>3
+ or (select count(distinct reviewer_id) from public.studio_song_reviews where job_id=p_job_id and version=v_current and verdict='pass')<>3
  then raise exception 'studio_not_ready' using errcode='23514';end if;
  insert into public.studio_song_approvals(job_id,version,founder_id)
  values(p_job_id,v_current,auth.uid());
