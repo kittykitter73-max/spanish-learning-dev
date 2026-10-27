@@ -118,3 +118,10 @@ This is the personal Borao development repository (`kittykitter73-max/spanish-le
 - **Unverified:** actual independent reviewer user sessions, three-pass lifecycle, denied/stale revision tests, UI build/browser operation, negative RLS tests and founder approval; migration success is not evidence these passed.
 - Proposed `supabase/proposals/studio_generation_queue_v1.sql` models a durable off-by-default queue, retry leases, idempotency and usage accounting. This proposal is **not deployed** and no worker/provider adapters are running.
 - Next critical gate: implement least-privilege viewer role policy and route authorization for reviewer/founder personas, then provision approved test identities and execute negative authorization/multi-review tests. Keep provider calls disabled.
+
+## Solo-founder edit access — October 27, 2026
+- Applied `studio_founder_edit_access` to the separate Borao development Supabase. Founder and admin JWT `app_metadata.borao_studio_role` may now call create/revise; reviewer can read but cannot create/revise. Browser Studio route still requires the explicit server-side `BORAO_STUDIO_ADMIN_USER_IDS` allowlist.
+- Read-only DB privilege introspection confirmed that `anon` cannot execute create, revise, review, or approve; `authenticated` is granted EXECUTE but each SECURITY DEFINER function must enforce its trusted role check. This is a structural check, **not an authenticated-role end-to-end test**.
+- No auth user had their app_metadata changed by this migration. The real founder account needs an authorized app_metadata role assignment and fresh JWT before founder features can be exercised.
+- Separate reviewer identities remain required for independent sign-off. The sole founder can draft and self-evaluate editorially but cannot claim formal independent QA. An approved release is not a publishing action. Do not bypass that distinction to force a green dashboard.
+- Outstanding: build/typecheck, browser QA, current-user role provisioning, founder create/revise with actual JWT, reviewer forbidden-write check, independent-review three-account test, version conflict test. No generation calls and no learner publication.
