@@ -9,6 +9,7 @@ export default async function StudioPage() {
   const supabase = await createClient()
   const { data: claimsData } = await supabase.auth.getClaims()
   const userId = claimsData?.claims?.sub
+  const studioRole = (claimsData?.claims?.app_metadata as { borao_studio_role?: string } | undefined)?.borao_studio_role ?? 'none'
   if (!userId) redirect('/login')
   const allowed = (process.env.BORAO_STUDIO_ADMIN_USER_IDS ?? '')
     .split(',').map(value => value.trim()).filter(Boolean)
@@ -37,9 +38,9 @@ export default async function StudioPage() {
           <h1>Borao Studio<span className="studio-star">✳</span></h1>
           <p className="studio-subtitle">Create the next song with purpose. Check the learning. Keep the magic.</p>
         </div>
-        <span className="studio-pill">Local prototype · Nothing published</span>
+        <span className="studio-pill">Studio pilot · Nothing published</span>
       </header>
-      <StudioWorkbench catalog={error ? [] : (catalog ?? [])} catalogError={error?.message ?? null} concepts={conceptError ? [] : (concepts ?? [])} conceptError={conceptError?.message ?? null} />
+      <StudioWorkbench studioRole={studioRole} catalog={error ? [] : (catalog ?? [])} catalogError={error?.message ?? null} concepts={conceptError ? [] : (concepts ?? [])} conceptError={conceptError?.message ?? null} />
     </main>
   )
 }
