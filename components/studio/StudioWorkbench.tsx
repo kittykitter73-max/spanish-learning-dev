@@ -75,7 +75,7 @@ export default function StudioWorkbench({ catalog, catalogError, concepts, conce
     setSaveMessage('Opened saved version ' + record.version + '. Reviews are not yet loaded.')
   }
   const saveDraft = async () => {
-    if (saving) return
+    if (saving || loadingJob) return
     setSaving(true)
     const startingEdit = editCounter.current
     setSaveMessage('')
@@ -150,7 +150,7 @@ export default function StudioWorkbench({ catalog, catalogError, concepts, conce
         <div className="studio-side-title">PRODUCTION</div>
         <button className={view === 'draft' ? 'studio-side-active' : ''} onClick={() => setView('draft')}>01 <span>Song editor</span></button>
         <button className={view === 'review' ? 'studio-side-active' : ''} onClick={() => setView('review')}>02 <span>Quality review</span></button>
-        <button className={view === 'catalog' ? 'studio-side-active' : ''} onClick={() => setView('catalog')}>03 <span>Existing content</span></button>
+        <button className={view === 'catalog' ? 'studio-side-active' : ''} onClick={() => setView('catalog')}>03 <span>Saved jobs & catalog</span></button>
         <div className="studio-side-note">Drafts can be saved and reopened if your account has Studio admin authorization. Reviews here are local previews; publication remains disabled.</div>
       </aside>
       <section className="studio-main">
