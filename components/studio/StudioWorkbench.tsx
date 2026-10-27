@@ -7,12 +7,23 @@ import './studio.css'
 type CatalogItem = { id: string; title: string; content_type: string; status: string }
 type SavedJob = { id: string; title: string; objective: string; current_version: number; status: string; updated_at: string }
 type SavedVersion = { job_id: string; version: number; lyrics: string; hooks: string[]; music_prompt: string; exercises: SongPackage['exercises'] }
+type StudioExercise = SongPackage['exercises'][number]
+const exerciseTypes: StudioExercise['kind'][] = ['dialogue','listening','recall','production','transfer']
+const exerciseLabels: Record<StudioExercise['kind'],string> = {
+  dialogue: 'Spoken companion dialogue', listening: 'Listening comprehension',
+  recall: 'Unprompted recall', production: 'Speaking practice', transfer: 'Novel situation transfer'
+}
 type CurriculumConcept = { id: string; canonical_spanish: string; canonical_english: string | null; communicative_function: string | null; status: string }
 const initial: SongPackage = {
   id: 'arc-1-song-candidate', version: 1, status: 'drafting',
   conceptIds: [], objective: 'Ask for what you want in an everyday conversation',
   lyrics: '', hooks: ['', ''], musicPrompt: '',
-  exercises: [{ kind: 'production', prompt: 'Without reading the lyrics, ask for something you want in Spanish.', expectedConceptIds: [] }],
+  exercises: [
+    { kind: 'dialogue', prompt: '', expectedConceptIds: [] },
+    { kind: 'listening', prompt: '', expectedConceptIds: [] },
+    { kind: 'recall', prompt: '', expectedConceptIds: [] },
+    { kind: 'transfer', prompt: '', expectedConceptIds: [] },
+  ],
   reviews: []
 }
 const dimensions: ReviewDimension[] = ['language', 'pedagogy', 'creative']
@@ -185,7 +196,30 @@ export default function StudioWorkbench({ catalog, catalogError, concepts, conce
             {[0,1].map(i => <label key={i}>Alternate hook {i + 1}<textarea rows={3} value={song.hooks[i]} onChange={e => updateDraft({hooks:song.hooks.map((h,j)=>i===j?e.target.value:h)})}/></label>)}
           </div>
           <label>Music production prompt <small>({song.musicPrompt.length}/900 characters)</small><textarea rows={4} maxLength={950} value={song.musicPrompt} onChange={e => updateDraft({musicPrompt:e.target.value})}/></label>
-          <div className="studio-info">One production exercise is preloaded. Before release, exercises must be tied to the exact curriculum concepts and independently reviewed.</div>
+          <div className="studio-info">Build the whole learning package around the selected concepts. The spoken dialogue is a script, not validated audio. The final transfer challenge must work without lyrics or a word bank.</div>
+          <div className="studio-learning-pack">
+            <h3>Companion learning content</h3>
+            {song.exercises.map((exercise, i) => <div className="studio-exercise" key={i}>
+              <label>{exerciseLabels[exercise.kind]}
+                <select value={exercise.kind} onChange={e => {
+                  const kind = e.target.value as StudioExercise['kind']
+                  updateDraft({ exercises: song.exercises.map((item, j) => j === i ? { ...item, kind } : item) })
+                }}>
+                  {exerciseTypes.map(kind => <option value={kind} key={kind}>{exerciseLabels[kind]}</option>)}
+                </select>
+              </label>
+              <label>{exercise.kind === 'dialogue' ? 'Conversation script' : 'Exercise and learner instructions'}
+                <textarea rows={exercise.kind === 'dialogue' ? 7 : 3}
+                  placeholder={exercise.kind === 'dialogue' ? 'Vale: ¿Ya bajas?\nNico: Ya voy...' : 'Enter the exact learner-facing task...'}
+                  value={exercise.prompt}
+                  onChange={e => updateDraft({ exercises: song.exercises.map((item,j) => j === i ? { ...item,prompt:e.target.value } : item) })}/>
+              </label>
+              <button type="button" onClick={() => updateDraft({ exercises: song.exercises.filter((_,j) => j!==i) })}>Remove activity</button>
+            </div>)}
+            <button type="button" onClick={() => updateDraft({ exercises: [...song.exercises, {
+              kind: 'production', prompt: '', expectedConceptIds: [...song.conceptIds]
+            }] })}>+ Add activity</button>
+          </div>
           <button className="studio-primary" onClick={saveDraft} disabled={saving || loadingJob || !song.conceptIds.length || !song.objective.trim() || song.musicPrompt.length > 900}>{saving ? 'Saving…' : persisted ? 'Save revised version' : 'Save first draft'}</button>
           {saveMessage && <p role="status" className="studio-muted">{saveMessage}</p>}
           <button onClick={() => setView('review')}>Go to quality review →</button>
