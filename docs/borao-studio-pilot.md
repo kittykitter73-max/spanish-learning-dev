@@ -87,3 +87,11 @@ This is the personal Borao development repository (`kittykitter73-max/spanish-le
 - Save reports version-conflict distinctly, and updates the committed version after an RPC success. Local approval/reviews are placeholders, **not** persisted or published.
 - **Unverified:** npm/typecheck, test admin write, stale-version conflict, listener role access, route browser workflow, persisted reload. Do not promote PR before these checks.
 - Next: add load/resume existing draft with server-side auth, guard concurrent in-flight edits, separate edit-version from saved-version, add negative authorization tests and CI.
+
+## Persisted draft reopening increment — October 27, 2026
+- Studio client can fetch up to 40 recent jobs from `studio_song_jobs`, open the latest `studio_song_versions` and linked canonical `studio_song_job_concepts`, and resume revision with the server's exact saved version.
+- Unsaved changes show an explicit state and require confirmation before opening a different job or starting a new one; in-flight edits remain marked unsaved after a successful save.
+- This uses the existing read-RLS/admin claim and create/revise RPCs; no schema migration, learner content mutation, paid generation, or publishing was performed in this increment.
+- **Important limitation:** review buttons and founder approval are still local UI demonstrations and are NOT database-backed, independently reviewed, or publishable. A newly reopened job intentionally resets local review state.
+- **Still to verify:** TypeScript compilation, end-to-end signed-in browser load/save/revise, denied-role behavior, two-editor stale-write conflict, role provisioning, and save-during-edit race with a real session. This change is **committed but not proven deployed**.
+- Next slice: versioned companion spoken scripts and linked exercise content with curriculum QA gates; server-governed review/approval records, then authorization/CI acceptance.
