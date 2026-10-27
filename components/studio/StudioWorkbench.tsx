@@ -31,7 +31,7 @@ const labels: Record<ReviewDimension, string> = {
   language: 'Spanish & naturalness', pedagogy: 'Learning & retrieval', creative: 'Hook & replay value'
 }
 
-export default function StudioWorkbench({ catalog, catalogError, concepts, conceptError }: { catalog: CatalogItem[]; catalogError: string | null; concepts: CurriculumConcept[]; conceptError: string | null }) {
+export default function StudioWorkbench({ studioRole, catalog, catalogError, concepts, conceptError }: { studioRole: string; catalog: CatalogItem[]; catalogError: string | null; concepts: CurriculumConcept[]; conceptError: string | null }) {
   const [song, setSong] = useState<SongPackage>(initial)
   const editCounter = useRef(0)
   const [savedJobs, setSavedJobs] = useState<SavedJob[]>([])
@@ -169,6 +169,10 @@ export default function StudioWorkbench({ catalog, catalogError, concepts, conce
     setFeedback('Unsaved changes. Any previous local review approvals were reset.')
   }
   const recordReview = async (dimension: ReviewDimension, verdict: 'pass'|'revise') => {
+    if (studioRole === 'founder' && persisted) {
+      setReviewNotice('Solo founder mode: self-reviews cannot count as independent approval. Record editorial notes; independent checks require separate authorized reviewers.')
+      return
+    }
     if (!persisted || dirty || reviewBusy) {
       setReviewNotice('Save the latest draft to the database before recording a review.')
       return
@@ -292,6 +296,7 @@ export default function StudioWorkbench({ catalog, catalogError, concepts, conce
         {view === 'review' && <div className="studio-panel">
           {reviewNotice && <p role="status" className="studio-info">{reviewNotice}</p>}
           <h2>Quality before quantity.</h2>
+          {studioRole === 'founder' && <p className="studio-info">Solo founder pilot: you can draft, but cannot self-certify three independent reviews. Approval stays blocked until separate qualified reviewers assess the exact version.</p>}
           <p className="studio-muted">Reviews now submit to the database and are bound to the saved version. Each dimension requires a distinct human reviewer. A creator cannot sign off on their own draft.</p>
           <div className="studio-reviews">
             {dimensions.map(d => {
@@ -299,7 +304,7 @@ export default function StudioWorkbench({ catalog, catalogError, concepts, conce
               return <div className="studio-review" key={d}>
                 <div><strong>{labels[d]}</strong><span>{review ? review.verdict : 'Needs review'}</span></div>
                 <div className="studio-actions">
-                  <button disabled={reviewBusy || dirty || !persisted} onClick={() => void recordReview(d,'pass')}>Mark pass</button>
+                  <button disabled={reviewBusy || dirty || !persisted || studioRole === 'founder'} onClick={() => void recordReview(d,'pass')}>Mark pass</button>
                   <button disabled={reviewBusy || dirty || !persisted} onClick={() => void recordReview(d,'revise')}>Request revision</button>
                 </div>
               </div>
