@@ -35,6 +35,7 @@ export default function StudioWorkbench({ catalog, catalogError, concepts, conce
   const [song, setSong] = useState<SongPackage>(initial)
   const editCounter = useRef(0)
   const [savedJobs, setSavedJobs] = useState<SavedJob[]>([])
+  const [jobSummaries, setJobSummaries] = useState<Record<string,string[]>>({})
   const [loadingJobs, setLoadingJobs] = useState(false)
   const [loadingJob, setLoadingJob] = useState(false)
   const [dirty, setDirty] = useState(false)
@@ -51,7 +52,27 @@ export default function StudioWorkbench({ catalog, catalogError, concepts, conce
       .order('updated_at', { ascending: false }).limit(40)
     setLoadingJobs(false)
     if (error) setSaveMessage('Could not load saved jobs: ' + error.message)
-    else setSavedJobs((data ?? []) as SavedJob[])
+    else {
+      const jobs = (data ?? []) as SavedJob[]
+      setSavedJobs(jobs)
+      const client = createClient()
+      const versions = await Promise.all(jobs.map(j => client.from('studio_song_versions').select('lyrics,hooks,music_prompt,exercises').eq('job_id',j.id).eq('version',j.current_version).maybeSingle()))
+      const summaries: Record<string,string[]> = {}
+      jobs.forEach((j,i) => {
+        const v = versions[i]?.data
+        if (!v) { summaries[j.id]=['Version unavailable or access denied']; return }
+        const ex = Array.isArray(v.exercises) ? v.exercises as SongPackage['exercises'] : []
+        const gaps = []
+        if (!String(v.lyrics??'').trim()) gaps.push('Lyrics missing')
+        if (!Array.isArray(v.hooks) || v.hooks.length<2) gaps.push('Alternative hooks missing')
+        if (!String(v.music_prompt??'').trim()) gaps.push('Production direction missing')
+        if (!ex.some(x=>x.kind==='dialogue' && x.prompt?.trim())) gaps.push('Dialogue missing')
+        if (!ex.some(x=>x.kind==='listening' && x.prompt?.trim())) gaps.push('Listening task missing')
+        if (!ex.some(x=>x.kind==='transfer' && x.prompt?.trim())) gaps.push('Transfer task missing')
+        summaries[j.id]=gaps
+      })
+      setJobSummaries(summaries)
+    }
   }
   const openJob = async (job: SavedJob) => {
     if (saving || loadingJob) return
@@ -251,7 +272,7 @@ export default function StudioWorkbench({ catalog, catalogError, concepts, conce
           <button disabled={loadingJobs} onClick={loadJobs}>{loadingJobs ? 'Loading…' : 'Refresh saved jobs'}</button>
           <div className="studio-saved-list">{savedJobs.length ? savedJobs.map(job =>
             <button key={job.id} disabled={loadingJob || saving} onClick={() => openJob(job)}>
-              <strong>{job.title}</strong><span>v{job.current_version} · {job.status} · {new Date(job.updated_at).toLocaleDateString()}</span>
+              <strong>{job.title}</strong><span>v{job.current_version} · {job.status} · {new Date(job.updated_at).toLocaleDateString()} · {(jobSummaries[job.id]??[]).length ? (jobSummaries[job.id]??[]).join(', ') : 'Content checklist complete (reviews not verified)'}</span>
             </button>) : <p className="studio-muted">Click Refresh saved jobs to view persisted drafts.</p>}</div>
           <h2>Existing Borao catalog</h2>
           <p className="studio-muted">Read-only snapshot of the actual content_items table. These are not yet Studio agent jobs.</p>
