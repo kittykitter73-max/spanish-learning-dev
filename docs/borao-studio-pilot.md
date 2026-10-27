@@ -95,3 +95,10 @@ This is the personal Borao development repository (`kittykitter73-max/spanish-le
 - **Important limitation:** review buttons and founder approval are still local UI demonstrations and are NOT database-backed, independently reviewed, or publishable. A newly reopened job intentionally resets local review state.
 - **Still to verify:** TypeScript compilation, end-to-end signed-in browser load/save/revise, denied-role behavior, two-editor stale-write conflict, role provisioning, and save-during-edit race with a real session. This change is **committed but not proven deployed**.
 - Next slice: versioned companion spoken scripts and linked exercise content with curriculum QA gates; server-governed review/approval records, then authorization/CI acceptance.
+
+## Learning package editor increment — October 27, 2026
+- The existing versioned `studio_song_versions.exercises` JSONB field now carries editable spoken companion dialogue scripts plus listening, recall, production and unaided transfer tasks. No additional migration was required; the UI presents these as a unified lesson pack.
+- `assessSongPackage` blocks local readiness when spoken dialogue, listening activity, or unaided novel-context transfer is absent. It also checks that exercise concept IDs are within the package's selected targets.
+- Additional unit tests added to `tests/studio-pipeline.test.cjs` for missing dialogue, missing transfer and invalid mapping.
+- **Not verified:** compile, node unit tests, authenticated browser UAT, human/native audio review. A GitHub lookup returned no PR-triggered workflow run for the tested commit, which is not proof of passing.
+- Real QA reviewer independence, signed founder approval, and app-persisted approved/published transitions remain out of scope. No audio generator or learner publishing enabled.
