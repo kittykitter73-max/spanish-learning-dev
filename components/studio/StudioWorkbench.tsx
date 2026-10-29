@@ -35,6 +35,8 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
   const [song, setSong] = useState<SongPackage>(initial)
   const editCounter = useRef(0)
   const [savedJobs, setSavedJobs] = useState<SavedJob[]>([])
+  const [jobFilter, setJobFilter] = useState<'all'|'blocked'|'ready'>('all')
+  const [jobsError, setJobsError] = useState('')
   const [jobSummaries, setJobSummaries] = useState<Record<string,string[]>>({})
   const [loadingJobs, setLoadingJobs] = useState(false)
   const [loadingJob, setLoadingJob] = useState(false)
@@ -49,11 +51,12 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
   const problems = assessSongPackage(song)
   const loadJobs = async () => {
     setLoadingJobs(true)
+    setJobsError('')
     const { data, error } = await createClient().from('studio_song_jobs')
       .select('id,title,objective,current_version,status,updated_at')
       .order('updated_at', { ascending: false }).limit(40)
     setLoadingJobs(false)
-    if (error) setSaveMessage('Could not load saved jobs: ' + error.message)
+    if (error) setJobsError('Could not load saved jobs: ' + error.message)
     else {
       const jobs = (data ?? []) as SavedJob[]
       setSavedJobs(jobs)
@@ -231,7 +234,7 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
         <button className={view === 'draft' ? 'studio-side-active' : ''} onClick={() => setView('draft')}>01 <span>Song editor</span></button>
         <button className={view === 'review' ? 'studio-side-active' : ''} onClick={() => setView('review')}>02 <span>Quality review</span></button>
         <button className={view === 'catalog' ? 'studio-side-active' : ''} onClick={() => setView('catalog')}>03 <span>Saved jobs & catalog</span></button>
-        <div className="studio-side-note">Drafts can be saved and reopened if your account has Studio admin authorization. Reviews here are local previews; publication remains disabled.</div>
+        <div className="studio-side-note">Drafts can be saved and reopened by authorized Studio accounts. Reviews use server-side records. Publication remains disabled.</div>
       </aside>
       <section className="studio-main">
         <div className="studio-step">
@@ -320,7 +323,10 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
           <h2>Saved Studio jobs</h2>
           <p className="studio-muted">Open the latest saved draft. Edits and reviews not saved to Supabase will not return after refresh.</p>
           <button disabled={loadingJobs} onClick={loadJobs}>{loadingJobs ? 'Loading…' : 'Refresh saved jobs'}</button>
-          <div className="studio-saved-list">{savedJobs.length ? savedJobs.map(job =>
+          {jobsError && <p role="alert" className="studio-info">{jobsError}</p>}
+          <div className="studio-job-summary"><strong>{savedJobs.length} projects</strong><span>{savedJobs.filter(j => (jobSummaries[j.id] ?? ['Not checked']).length > 0).length} content-blocked</span><span>{savedJobs.filter(j => (jobSummaries[j.id] ?? ['Not checked']).length === 0).length} content-complete (review not verified)</span></div>
+          <label>Production filter <select value={jobFilter} onChange={e=>setJobFilter(e.target.value as typeof jobFilter)}><option value="all">All jobs</option><option value="blocked">Missing learning content</option><option value="ready">Content complete (not necessarily approved)</option></select></label>
+          <div className="studio-saved-list">{savedJobs.length ? savedJobs.filter(j => jobFilter==='all' || (jobSummaries[j.id]??['Not checked']).length === (jobFilter==='ready'?0:(jobSummaries[j.id]??['Not checked']).length) && (jobFilter!=='blocked' || (jobSummaries[j.id]??['Not checked']).length>0)).map(job =>
             <button key={job.id} disabled={loadingJob || saving} onClick={() => openJob(job)}>
               <strong>{job.title}</strong><span>v{job.current_version} · {job.status} · {new Date(job.updated_at).toLocaleDateString()} · {(jobSummaries[job.id]??[]).length ? (jobSummaries[job.id]??[]).join(', ') : 'Content checklist complete (reviews not verified)'}</span>
             </button>) : <p className="studio-muted">Click Refresh saved jobs to view persisted drafts.</p>}</div>
