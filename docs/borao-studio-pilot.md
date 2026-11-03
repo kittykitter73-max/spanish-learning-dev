@@ -125,3 +125,11 @@ This is the personal Borao development repository (`kittykitter73-max/spanish-le
 - No auth user had their app_metadata changed by this migration. The real founder account needs an authorized app_metadata role assignment and fresh JWT before founder features can be exercised.
 - Separate reviewer identities remain required for independent sign-off. The sole founder can draft and self-evaluate editorially but cannot claim formal independent QA. An approved release is not a publishing action. Do not bypass that distinction to force a green dashboard.
 - Outstanding: build/typecheck, browser QA, current-user role provisioning, founder create/revise with actual JWT, reviewer forbidden-write check, independent-review three-account test, version conflict test. No generation calls and no learner publication.
+
+## Persisted production-stage dashboard — November 3, 2026
+- The existing preview deployment `dpl_6x1esvWjhMbXTukKpyQwGCVDo5RA` was verified READY (commit `f493740`); the newer version-scoped dashboard is on the Studio feature branch awaiting its own preview validation.
+- Added pure read-only `lib/studio/production-overview.ts` to derive explicit content-incomplete / revision-required / awaiting-independent-QA / founder-queue / approved-unpublished / data-unavailable states from saved versions and current-version reviewer/approval records.
+- Added seven Node tests for missing content, stale reviews, stale approvals, revision requests and fail-closed unavailable version. Tests committed but not locally executed.
+- Updated saved-job dashboard to load version-matched reviews and approvals, display `N/3` verified review counts, and filter by production stage. Failure to load reviewer/approval records does not yield false "ready" labels.
+- Preview build initiated for commit `0deb620` (deployment `dpl_5y68DS5Jh6ZNsF4gT7PaptZTGgrA`), initially QUEUED; verify actual READY and browser behavior before declaring tested.
+- No learner writes, QA approvals, publishing, paid generation, or auth-role changes in this increment. User is solo founder; independent human QA still requires separate reviewers for release gate. Production still private.
