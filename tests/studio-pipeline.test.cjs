@@ -1,6 +1,6 @@
 const test = require('node:test')
 const assert = require('node:assert/strict')
-const { assessSongPackage, canMoveToFounderReview, canPublish, nextDraftVersion } = require('../.test-dist/lib/studio/pipeline.js')
+const { assessSongPackage, canMoveToFounderReview, canPublish, nextDraftVersion, stageDraftEdit } = require('../.test-dist/lib/studio/pipeline.js')
 
 const base = () => ({
   id: 'arc1-want', version: 1, status: 'approved', conceptIds: ['quiero'],
@@ -67,4 +67,16 @@ test('each exercise must map only to production target concepts', () => {
   const song = base()
   song.exercises[0].expectedConceptIds = ['not_in_curriculum_targets']
   assert.ok(assessSongPackage(song).includes('INVALID_EXERCISE_MAPPING'))
+})
+
+test('local editor changes never fabricate a new committed version', () => {
+  const initial = base()
+  const edited = stageDraftEdit(initial)
+  assert.equal(edited.version, 1)
+  assert.equal(edited.status, 'drafting')
+  assert.deepEqual(edited.reviews, [])
+  assert.equal(edited.founderApprovedVersion, undefined)
+  assert.equal(canPublish(edited), false)
+  const committed = nextDraftVersion(edited)
+  assert.equal(committed.version, 2)
 })
