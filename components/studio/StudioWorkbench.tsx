@@ -2,6 +2,7 @@
 import { useRef, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { assessSongPackage, nextDraftVersion, type SongPackage, type ReviewDimension, type StudioReview } from '@/lib/studio/pipeline'
+import { analyzeProductionJob, type ProductionOverview, type ProductionReview, type ProductionVersion } from '@/lib/studio/production-overview'
 import './studio.css'
 
 type CatalogItem = { id: string; title: string; content_type: string; status: string }
@@ -26,6 +27,10 @@ const initial: SongPackage = {
   ],
   reviews: []
 }
+const phases: Record<ProductionOverview['phase'],string> = {
+  content_blocked:'Content incomplete', revision_required:'Revision requested', in_review:'Awaiting independent QA',
+  founder_queue:'Founder review queue', approved:'Approved (not published)', data_unavailable:'Record unavailable'
+}
 const dimensions: ReviewDimension[] = ['language', 'pedagogy', 'creative']
 const labels: Record<ReviewDimension, string> = {
   language: 'Spanish & naturalness', pedagogy: 'Learning & retrieval', creative: 'Hook & replay value'
@@ -35,9 +40,9 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
   const [song, setSong] = useState<SongPackage>(initial)
   const editCounter = useRef(0)
   const [savedJobs, setSavedJobs] = useState<SavedJob[]>([])
-  const [jobFilter, setJobFilter] = useState<'all'|'blocked'|'ready'>('all')
+  const [jobFilter, setJobFilter] = useState<'all'|ProductionOverview['phase']>('all')
   const [jobsError, setJobsError] = useState('')
-  const [jobSummaries, setJobSummaries] = useState<Record<string,string[]>>({})
+  const [jobOverviews, setJobOverviews] = useState<Record<string,ProductionOverview>>({})
   const [loadingJobs, setLoadingJobs] = useState(false)
   const [loadingJob, setLoadingJob] = useState(false)
   const [dirty, setDirty] = useState(false)
@@ -50,33 +55,46 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
   const [view, setView] = useState<'draft'|'review'|'catalog'>('draft')
   const problems = assessSongPackage(song)
   const loadJobs = async () => {
+    if (loadingJobs) return
     setLoadingJobs(true)
     setJobsError('')
-    const { data, error } = await createClient().from('studio_song_jobs')
-      .select('id,title,objective,current_version,status,updated_at')
-      .order('updated_at', { ascending: false }).limit(40)
-    setLoadingJobs(false)
-    if (error) setJobsError('Could not load saved jobs: ' + error.message)
-    else {
+    const client = createClient()
+    try {
+      const { data, error } = await client.from('studio_song_jobs')
+        .select('id,title,objective,current_version,status,updated_at')
+        .order('updated_at', { ascending: false }).limit(40)
+      if (error) { setJobsError('Could not load saved jobs: ' + error.message); return }
       const jobs = (data ?? []) as SavedJob[]
       setSavedJobs(jobs)
-      const client = createClient()
-      const versions = await Promise.all(jobs.map(j => client.from('studio_song_versions').select('lyrics,hooks,music_prompt,exercises').eq('job_id',j.id).eq('version',j.current_version).maybeSingle()))
-      const summaries: Record<string,string[]> = {}
-      jobs.forEach((j,i) => {
-        const v = versions[i]?.data
-        if (!v) { summaries[j.id]=['Version unavailable or access denied']; return }
-        const ex = Array.isArray(v.exercises) ? v.exercises as SongPackage['exercises'] : []
-        const gaps = []
-        if (!String(v.lyrics??'').trim()) gaps.push('Lyrics missing')
-        if (!Array.isArray(v.hooks) || v.hooks.length<2) gaps.push('Alternative hooks missing')
-        if (!String(v.music_prompt??'').trim()) gaps.push('Production direction missing')
-        if (!ex.some(x=>x.kind==='dialogue' && x.prompt?.trim())) gaps.push('Dialogue missing')
-        if (!ex.some(x=>x.kind==='listening' && x.prompt?.trim())) gaps.push('Listening task missing')
-        if (!ex.some(x=>x.kind==='transfer' && x.prompt?.trim())) gaps.push('Transfer task missing')
-        summaries[j.id]=gaps
+      if (!jobs.length) { setJobOverviews({}); return }
+      const ids = jobs.map(j=>j.id)
+      const [versions,reviewsResult,approvalsResult] = await Promise.all([
+        Promise.all(jobs.map(j => client.from('studio_song_versions')
+          .select('lyrics,hooks,music_prompt,exercises')
+          .eq('job_id',j.id).eq('version',j.current_version).maybeSingle())),
+        client.from('studio_song_reviews').select('job_id,version,dimension,verdict').in('job_id',ids),
+        client.from('studio_song_approvals').select('job_id,version').in('job_id',ids)
+      ])
+      if (reviewsResult.error || approvalsResult.error) {
+        setJobsError('Review and approval records could not be verified. Readiness is unavailable.')
+        setJobOverviews({})
+        return
+      }
+      const reviews = reviewsResult.data ?? []
+      const approvals = approvalsResult.data ?? []
+      const next: Record<string,ProductionOverview> = {}
+      jobs.forEach((j,i)=>{
+        const v = versions[i]?.error ? null : (versions[i]?.data as ProductionVersion | null)
+        const decisions = reviews.filter(r=>r.job_id===j.id) as ProductionReview[]
+        const approval = approvals.find(a=>a.job_id===j.id && a.version===j.current_version)
+        next[j.id] = analyzeProductionJob(j,v,decisions,approval?.version)
       })
-      setJobSummaries(summaries)
+      setJobOverviews(next)
+    } catch {
+      setJobsError('Unable to load the Studio dashboard. Try refreshing.')
+      setJobOverviews({})
+    } finally {
+      setLoadingJobs(false)
     }
   }
   const openJob = async (job: SavedJob) => {
@@ -324,12 +342,33 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
           <p className="studio-muted">Open the latest saved draft. Edits and reviews not saved to Supabase will not return after refresh.</p>
           <button disabled={loadingJobs} onClick={loadJobs}>{loadingJobs ? 'Loading…' : 'Refresh saved jobs'}</button>
           {jobsError && <p role="alert" className="studio-info">{jobsError}</p>}
-          <div className="studio-job-summary"><strong>{savedJobs.length} projects</strong><span>{savedJobs.filter(j => (jobSummaries[j.id] ?? ['Not checked']).length > 0).length} content-blocked</span><span>{savedJobs.filter(j => (jobSummaries[j.id] ?? ['Not checked']).length === 0).length} content-complete (review not verified)</span></div>
-          <label>Production filter <select value={jobFilter} onChange={e=>setJobFilter(e.target.value as typeof jobFilter)}><option value="all">All jobs</option><option value="blocked">Missing learning content</option><option value="ready">Content complete (not necessarily approved)</option></select></label>
-          <div className="studio-saved-list">{savedJobs.length ? savedJobs.filter(j => jobFilter === 'all' || (jobFilter === 'ready' ? (jobSummaries[j.id] ?? ['Not checked']).length === 0 : (jobSummaries[j.id] ?? ['Not checked']).length > 0)).map(job =>
-            <button key={job.id} disabled={loadingJob || saving} onClick={() => openJob(job)}>
-              <strong>{job.title}</strong><span>v{job.current_version} · {job.status} · {new Date(job.updated_at).toLocaleDateString()} · {(jobSummaries[job.id]??[]).length ? (jobSummaries[job.id]??[]).join(', ') : 'Content checklist complete (reviews not verified)'}</span>
-            </button>) : <p className="studio-muted">Click Refresh saved jobs to view persisted drafts.</p>}</div>
+          <div className="studio-job-summary">
+            <strong>{savedJobs.length} projects</strong>
+            <span>{savedJobs.filter(j=>jobOverviews[j.id]?.phase==='content_blocked').length} content incomplete</span>
+            <span>{savedJobs.filter(j=>jobOverviews[j.id]?.phase==='in_review').length} awaiting QA</span>
+            <span>{savedJobs.filter(j=>jobOverviews[j.id]?.phase==='founder_queue').length} awaiting founder</span>
+            <span>{savedJobs.filter(j=>jobOverviews[j.id]?.phase==='approved').length} approved (unpublished)</span>
+          </div>
+          <label>Production stage
+            <select value={jobFilter} onChange={e=>setJobFilter(e.target.value as typeof jobFilter)}>
+              <option value="all">All jobs</option>
+              {Object.entries(phases).map(([phase,label])=><option key={phase} value={phase}>{label}</option>)}
+            </select>
+          </label>
+          <div className="studio-saved-list">{savedJobs.length ? savedJobs
+            .filter(j=>jobFilter==='all' || jobOverviews[j.id]?.phase===jobFilter)
+            .map(job => {
+              const overview = jobOverviews[job.id]
+              return <button key={job.id} disabled={loadingJob || saving} onClick={() => openJob(job)}>
+                <strong>{job.title}</strong>
+                <span>Version {job.current_version} · {overview ? phases[overview.phase] : 'Not verified'}
+                  {overview ? ' · '+overview.passedReviews+'/3 current reviews' : ''}
+                  {' · '+new Date(job.updated_at).toLocaleDateString()}
+                  {overview?.blockers.length ? ' · '+overview.blockers.join(', ') : ''}
+                </span>
+              </button>
+            }) : <p className="studio-muted">No Studio jobs saved yet. Use Refresh saved jobs after creating one.</p>}
+          </div>
           <h2>Existing Borao catalog</h2>
           <p className="studio-muted">Read-only snapshot of the actual content_items table. These are not yet Studio agent jobs.</p>
           {catalogError ? <div className="studio-info">Catalog unavailable: {catalogError}</div> : catalog.length ? <div className="studio-catalog">
