@@ -274,7 +274,7 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
         <div className="studio-side-title">PRODUCTION</div>
         <button className={view === 'draft' ? 'studio-side-active' : ''} onClick={() => setView('draft')}>01 <span>Song editor</span></button>
         <button className={view === 'review' ? 'studio-side-active' : ''} onClick={() => setView('review')}>02 <span>Quality review</span></button>
-        <button className={view === 'catalog' ? 'studio-side-active' : ''} onClick={() => setView('catalog')}>03 <span>Saved jobs & catalog</span></button>
+        <button className={view === 'catalog' ? 'studio-side-active' : ''} onClick={() => {setView('catalog'); void loadJobs()}}>03 <span>Saved jobs & catalog</span></button>
         <div className="studio-side-note">Drafts can be saved and reopened by authorized Studio accounts. Reviews use server-side records. Publication remains disabled.</div>
       </aside>
       <section className="studio-main">
@@ -361,7 +361,7 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
             {dimensions.map(d => {
               const review = song.reviews.find(r=>r.dimension===d && r.reviewedVersion===song.version)
               return <div className="studio-review" key={d}>
-                <div><strong>{labels[d]}</strong><span>{review ? review.verdict : 'Needs review'}</span></div>
+                <div><strong>{labels[d]}</strong><span>{review ? review.verdict : 'Needs review'}</span>{review?.notes && <p className="studio-muted">Saved reviewer feedback: {review.notes}</p>}</div>
                 <div className="studio-actions">
                   <button disabled={reviewBusy || dirty || !persisted || studioRole === 'founder'} onClick={() => void recordReview(d,'pass')}>Mark pass</button>
                   <button disabled={reviewBusy || dirty || !persisted || studioRole === 'founder'} onClick={() => void recordReview(d,'revise')}>Request revision</button>
