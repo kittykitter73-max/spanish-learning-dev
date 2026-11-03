@@ -141,3 +141,9 @@ This is the personal Borao development repository (`kittykitter73-max/spanish-le
 - Saved-project dashboard now refreshes when opened; reviewer cards display stored feedback notes.
 - New code is on `feature/borao-studio-pilot`. At checkpoint time, preview deployment for `7426bd0` (`dpl_FRZwAAP41CDq6mQHYPND2RxnvJrL`) was BUILDING, not READY. Later UI commit `2e4fe581` has not yet had a verified preview build. Do not claim end-to-end browser operation.
 - Outstanding: browser/UAT, full test suite (GitHub workflow run not confirmed), signed-in founder-role provisioning, and independent-review lifecycle. Nothing published, no paid generation.
+
+## Verified preview status — November 3, 2026
+- The current feature build including revision history, `stageDraftEdit`, locked approval-stage edits, reviewer feedback, and dashboard auto-refresh reached Vercel READY: deployment `dpl_9WXsQjDUBKQTm8PmcQLuzmAaqYYE`, URL `https://spanish-learning-r92oyze3m-kittykitter73-8615s-projects.vercel.app`, code commit `2d996ba3b62e1930f6e1346f45f36b4ee0de3f63`.
+- Vercel logs show successful Next.js build (TypeScript and route compilation), but **not** standalone `npm test`, authenticated browser QA, owner-role assignment, or review lifecycle proof.
+- No production promotion, learner publishing, audio generation, or paid model calls occurred.
+- Next gate: verify login and fail-closed `/studio` with a real authorized founder account; test create/save/reopen/revise and concurrent optimistic lock; then run separate distinct-reviewer sessions.
