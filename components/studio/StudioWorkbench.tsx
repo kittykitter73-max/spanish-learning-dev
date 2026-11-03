@@ -1,7 +1,7 @@
 'use client'
 import { useRef, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { assessSongPackage, nextDraftVersion, type SongPackage, type ReviewDimension, type StudioReview } from '@/lib/studio/pipeline'
+import { assessSongPackage, stageDraftEdit, type SongPackage, type ReviewDimension, type StudioReview } from '@/lib/studio/pipeline'
 import { analyzeProductionJob, type ProductionOverview, type ProductionReview, type ProductionVersion } from '@/lib/studio/production-overview'
 import './studio.css'
 
@@ -14,6 +14,7 @@ const exerciseLabels: Record<StudioExercise['kind'],string> = {
   dialogue: 'Spoken companion dialogue', listening: 'Listening comprehension',
   recall: 'Unprompted recall', production: 'Speaking practice', transfer: 'Novel situation transfer'
 }
+type StudioAudit = { id: number; action: string; old_version: number | null; new_version: number; occurred_at: string }
 type CurriculumConcept = { id: string; canonical_spanish: string; canonical_english: string | null; communicative_function: string | null; status: string }
 const initial: SongPackage = {
   id: 'arc-1-song-candidate', version: 1, status: 'drafting',
@@ -49,6 +50,9 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
   const [feedback, setFeedback] = useState('')
   const [reviewBusy, setReviewBusy] = useState(false)
   const [reviewNotice, setReviewNotice] = useState('')
+  const [history, setHistory] = useState<StudioAudit[]>([])
+  const [historyError, setHistoryError] = useState('')
+  const [historyLoading, setHistoryLoading] = useState(false)
   const [persisted, setPersisted] = useState<{ id: string; version: number } | null>(null)
   const [saving, setSaving] = useState(false)
   const [saveMessage, setSaveMessage] = useState('')
@@ -129,6 +133,7 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
     setView('draft')
     setSaveMessage('Opened saved version ' + record.version + '.')
     void refreshReviews(job.id, record.version)
+    void loadHistory(job.id)
   }
   const saveDraft = async () => {
     if (saving || loadingJob) return
@@ -170,11 +175,26 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
         ? 'Version ' + record.version + ' saved, but you edited during the request. Save again to retain your newest edits.'
         : 'Draft saved to Borao Studio as version ' + record.version + '.')
       void loadJobs()
+      void loadHistory(record.job_id)
     } catch {
       setSaveMessage('Unable to save the draft. Check connectivity and try again.')
     } finally {
       setSaving(false)
     }
+  }
+  const loadHistory = async (jobId: string) => {
+    setHistoryLoading(true)
+    setHistoryError('')
+    const result = await createClient().from('studio_song_audit')
+      .select('id,action,old_version,new_version,occurred_at')
+      .eq('job_id', jobId).order('new_version', { ascending: false }).limit(30)
+    setHistoryLoading(false)
+    if (result.error) {
+      setHistory([])
+      setHistoryError('Revision history unavailable: ' + result.error.message)
+      return
+    }
+    setHistory((result.data ?? []) as StudioAudit[])
   }
   const toggleConcept = (id: string) => {
     const conceptIds = song.conceptIds.includes(id) ? song.conceptIds.filter(x => x !== id) : [...song.conceptIds, id]
@@ -184,8 +204,7 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
     editCounter.current += 1
     setDirty(true)
     setSong(prev => {
-      const next = prev.reviews.length || prev.founderApprovedVersion !== undefined || prev.status === 'approved' ? nextDraftVersion(prev) : prev
-      return { ...next, ...changes }
+      return { ...stageDraftEdit(prev), ...changes }
     })
     setFeedback('Unsaved changes. Any previous local review approvals were reset.')
   }
@@ -265,6 +284,8 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
             if (dirty && !window.confirm('Discard unsaved changes and start a new song?')) return
             setSong({...initial, conceptIds:[], reviews:[]})
             setPersisted(null)
+            setHistory([])
+            setHistoryError('')
             setDirty(false)
             editCounter.current += 1
             setSaveMessage('')
@@ -310,8 +331,21 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
               kind: 'production', prompt: '', expectedConceptIds: [...song.conceptIds]
             }] })}>+ Add activity</button>
           </div>
-          <button className="studio-primary" onClick={saveDraft} disabled={saving || loadingJob || !song.conceptIds.length || !song.objective.trim() || song.musicPrompt.length > 900}>{saving ? 'Saving…' : persisted ? 'Save revised version' : 'Save first draft'}</button>
+          <button className="studio-primary" onClick={saveDraft} disabled={saving || loadingJob || (Boolean(persisted) && !dirty) || !song.conceptIds.length || !song.objective.trim() || song.musicPrompt.length > 900}>{saving ? 'Saving…' : persisted ? 'Save revised version' : 'Save first draft'}</button>
           {saveMessage && <p role="status" className="studio-muted">{saveMessage}</p>}
+          {persisted && <section className="studio-history">
+            <div className="studio-history-head"><h3>Revision history</h3>
+              <button type="button" disabled={historyLoading} onClick={()=>void loadHistory(persisted.id)}>
+                {historyLoading ? 'Loading…' : 'Refresh history'}
+              </button>
+            </div>
+            <p className="studio-muted">Saved versions are immutable. Unsaved edits are not listed.</p>
+            {historyError && <p role="alert">{historyError}</p>}
+            {history.length ? <ol>{history.map(entry=><li key={entry.id}>
+              <strong>Version {entry.new_version}</strong>
+              <span>{entry.action === 'created' ? 'Created' : 'Revised'} · {new Date(entry.occurred_at).toLocaleString()}</span>
+            </li>)}</ol> : !historyLoading && <p className="studio-muted">No saved history returned.</p>}
+          </section>}
           <button onClick={() => setView('review')}>Go to quality review →</button>
         </div>}
         {view === 'review' && <div className="studio-panel">
