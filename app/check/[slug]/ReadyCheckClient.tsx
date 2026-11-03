@@ -54,10 +54,11 @@ export default function ReadyCheckClient(props: {
   const [isPending, startTransition] = useTransition()
 
   useEffect(() => {
-    if (!props.initialAttemptId) return
+    const initialAttemptId = props.initialAttemptId
+    if (!initialAttemptId) return
     startTransition(async () => {
       try {
-        setAttempt(await getReadyCheckAttempt(props.initialAttemptId))
+        setAttempt(await getReadyCheckAttempt(initialAttemptId))
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Could not reopen this Ready Check.')
       }
