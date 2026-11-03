@@ -201,6 +201,10 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
     updateDraft({ conceptIds, exercises: song.exercises.map(e => ({...e, expectedConceptIds: conceptIds})) })
   }
   const updateDraft = (changes: Partial<SongPackage>) => {
+    if (song.status === 'approved' || song.status === 'awaiting_founder') {
+      setSaveMessage('This version is locked for approval. New edits require a separately authorized return-to-draft workflow.')
+      return
+    }
     editCounter.current += 1
     setDirty(true)
     setSong(prev => {
@@ -360,7 +364,7 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
                 <div><strong>{labels[d]}</strong><span>{review ? review.verdict : 'Needs review'}</span></div>
                 <div className="studio-actions">
                   <button disabled={reviewBusy || dirty || !persisted || studioRole === 'founder'} onClick={() => void recordReview(d,'pass')}>Mark pass</button>
-                  <button disabled={reviewBusy || dirty || !persisted} onClick={() => void recordReview(d,'revise')}>Request revision</button>
+                  <button disabled={reviewBusy || dirty || !persisted || studioRole === 'founder'} onClick={() => void recordReview(d,'revise')}>Request revision</button>
                 </div>
               </div>
             })}
@@ -368,12 +372,12 @@ export default function StudioWorkbench({ studioRole, catalog, catalogError, con
           <label>Reviewer notes<textarea rows={3} placeholder="Explain any changes or reasons..." value={feedback} onChange={e=>setFeedback(e.target.value)}/></label>
           <h3>Release readiness</h3>
           {problems.length ? <ul className="studio-issues">{problems.map(p => <li key={p}>{p.replaceAll('_',' ').toLowerCase()}</li>)}</ul> : <p className="studio-good">All prototype quality-gate checks passed.</p>}
-          <button className="studio-primary" disabled={problems.length > 0 || song.status==='approved'} onClick={() => void approve()}>Approve this version (founder only)</button>
+          <button className="studio-primary" disabled={reviewBusy || dirty || !persisted || studioRole !== 'founder' || problems.length > 0 || song.status==='approved'} onClick={() => void approve()}>Approve this version (founder only)</button>
           <p className="studio-muted">Approval is persisted but does not publish content. A distinct founder account and independent reviewers are required.</p>
         </div>}
         {view === 'catalog' && <div className="studio-panel">
           <h2>Saved Studio jobs</h2>
-          <p className="studio-muted">Open the latest saved draft. Edits and reviews not saved to Supabase will not return after refresh.</p>
+          <p className="studio-muted">Open the latest saved draft. Edits must be saved to persist. Authorized review decisions are recorded separately in Supabase.</p>
           <button disabled={loadingJobs} onClick={loadJobs}>{loadingJobs ? 'Loading…' : 'Refresh saved jobs'}</button>
           {jobsError && <p role="alert" className="studio-info">{jobsError}</p>}
           <div className="studio-job-summary">
