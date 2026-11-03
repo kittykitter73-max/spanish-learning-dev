@@ -133,3 +133,11 @@ This is the personal Borao development repository (`kittykitter73-max/spanish-le
 - Updated saved-job dashboard to load version-matched reviews and approvals, display `N/3` verified review counts, and filter by production stage. Failure to load reviewer/approval records does not yield false "ready" labels.
 - Preview build initiated for commit `0deb620` (deployment `dpl_5y68DS5Jh6ZNsF4gT7PaptZTGgrA`), initially QUEUED; verify actual READY and browser behavior before declaring tested.
 - No learner writes, QA approvals, publishing, paid generation, or auth-role changes in this increment. User is solo founder; independent human QA still requires separate reviewers for release gate. Production still private.
+
+## Save-version integrity and audit timeline — November 3, 2026
+- Added `stageDraftEdit` to keep the stored version number stable during unsaved edits. The server-side create/revise RPC, not the UI, advances the version on successful commit. Added a regression test for this distinction.
+- Editor now provides a read-only last-30 revision timeline from immutable `studio_song_audit` rows, including version and timestamp, with error reporting. Data is read under existing Studio RLS; no migrations needed.
+- Locked local edits of `approved` and `awaiting_founder` versions because their current database revise RPC rejects those states. Returning such a package to drafting requires an explicit, governed transition still to be implemented.
+- Saved-project dashboard now refreshes when opened; reviewer cards display stored feedback notes.
+- New code is on `feature/borao-studio-pilot`. At checkpoint time, preview deployment for `7426bd0` (`dpl_FRZwAAP41CDq6mQHYPND2RxnvJrL`) was BUILDING, not READY. Later UI commit `2e4fe581` has not yet had a verified preview build. Do not claim end-to-end browser operation.
+- Outstanding: browser/UAT, full test suite (GitHub workflow run not confirmed), signed-in founder-role provisioning, and independent-review lifecycle. Nothing published, no paid generation.
