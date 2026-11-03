@@ -101,3 +101,17 @@ export function nextDraftVersion(song: SongPackage): SongPackage {
     reviews: [],
   }
 }
+
+/**
+ * A local edit is NOT a committed database revision. The current server version
+ * must stay stable until studio_revise_song atomically accepts the edit.
+ * This avoids sending an invented version to reviews or showing v(N+1) before save.
+ */
+export function stageDraftEdit(song: SongPackage): SongPackage {
+  return {
+    ...song,
+    status: 'drafting',
+    reviews: [],
+    founderApprovedVersion: undefined,
+  }
+}
