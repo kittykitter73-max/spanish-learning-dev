@@ -52,3 +52,10 @@
 
 .studio-job-summary{display:flex;flex-wrap:wrap;gap:10px;padding:12px 0;color:#684e5d;font-size:12px}
 .studio-job-summary>*{padding:7px 10px;border-radius:9px;background:#f6ecf0}
+
+.studio-history{margin-top:24px;border-top:1px solid #e6d9df;padding-top:16px}
+.studio-history-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.studio-history-head h3{margin:0}
+.studio-history ol{padding-left:21px;display:grid;gap:8px}
+.studio-history li{padding:7px 0}
+.studio-history li span{display:block;font-size:12px;color:#705d68;margin-top:3px}
